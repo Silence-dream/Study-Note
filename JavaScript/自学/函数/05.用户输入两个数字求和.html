@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 写一个函数，用户输入任意两个不同数字,返回两个整数的和
+
+        //声明一个函数实现求任意两个数的和的功能
+        function getSum(num1,num2)//1.形参接收实参的值
+        {
+            //2.声明一个变量存储用户输入的两个数的和
+            var sum=0;
+            sum=num1+num2;//3.求和
+            return `${num1}+${num2}=${sum}`;//4.返回sum的值
+        }
+        // 6.使用promet让用户输入两个数字
+        var user1=prompt("请输入第一个数字")-0;
+        var user2=prompt("请输入第二个数字")-0;
+        //5.定义变量存储返回值
+        var result = getSum(user1,user2);
+        // 7.打印输出
+        alert(result);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
