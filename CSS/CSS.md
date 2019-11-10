@@ -719,6 +719,292 @@ div{
   - 由于父级盒子很多情况下，不方便给高度，但是子盒子浮动又不在占有位置，最后父级盒子高度为0的时候，就会影响下面的标准流盒子。
   - 由于浮动元素不再占用原文档流的位置没所以它会对后面的元素排版产生影响
   - 理想的状态应该是让自盒子撑开父盒子，有多少孩子，我父盒子就有多高。
+    - 简单来说就是：1.父级没有高度。
+      							2.子盒子浮动了。
+      							3.影响下面布局了，我们就应该清楚浮动了。
+
+- 语法:
+  - 选择器:{clear:属性值;}
+
+| 属性值 | 描述                                               |
+| ------ | -------------------------------------------------- |
+| left   | 不允许左侧有浮动元素(清除左侧浮动的影响)           |
+| right  | 不允许右侧有浮动元素(清除右侧浮动的影响)           |
+| both   | 同时清除左右两侧浮动的影响。`实际工作中几乎只有它` |
+
+> 清除浮动的策略是：闭合浮动
+
+### 清除浮动的方法
+
+#### 1.额外标签发也称为隔墙法，是W3C推荐的做法。
+
+- 额外标签法会在浮动元素末尾添加一个空的标签。例如`<div style="clear:both"></div>  `或者其他标签。
+  - 优点：通俗易懂，书写方便。
+  - 缺点：添加许多无意义的标签，结构化较差。
+  - 注意：添加的元素必须是块级元素block。
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .box {
+            margin: 0 auto;
+            width: 500px;
+            border: 1px solid red;
+        }
+
+        .one {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .two {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: blueviolet;
+        }
+
+        .xiaosan {
+            height: 200px;
+            background-color: black;
+        }
+
+        /* 额外标签法 */
+        .clear {
+            clear: both
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="one">11</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+        <!-- 额外标签法 -->
+        <div class="clear"></div>
+    </div>
+    <div class="xiaosan"></div>
+</body>
+
+</html>
+~~~
+
+
+
+#### 2.父级添加overflow属性
+
+- 给父级添加overflow属性，将其属性值设置为hidden、auto或scroll都可以清除浮动。
+  - 优点：代码简洁。
+  - 缺点：无法显示溢出部分。
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .box {
+            margin: 0 auto;
+            width: 500px;
+            border: 1px solid red;
+            /* 清除浮动 */
+            overflow: hidden;
+        }
+
+        .one {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .two {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: blueviolet;
+        }
+
+        .xiaosan {
+            height: 200px;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="one">11</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+    </div>
+    <div class="xiaosan"></div>
+</body>
+
+</html>
+~~~
+
+
+
+#### 3.父级添加after伪元素
+
+- 额外标签法的升级版，也是给父级元素添加
+  - 优点：没有增加标签，结构更简单。
+  - 缺点：照顾低版本浏览器。
+  - 代码网址：百度、淘宝、网易等
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .clearfix::after {
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        .clearfix {
+            /* IE6、7专有 */
+            *zoom: 1;
+        }
+
+        .box {
+            margin: 0 auto;
+            width: 500px;
+            border: 1px solid red;
+        }
+
+        .one {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .two {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: blueviolet;
+        }
+
+        .xiaosan {
+            height: 200px;
+            background-color: black;
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- 给父元素添加clearfix清除浮动 -->
+    <div class="box clearfix">
+        <div class="one">11</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+    </div>
+    <div class="xiaosan"></div>
+</body>
+
+</html>
+~~~
+
+
+
+#### 4.父级添加双伪元素
+
+- 给父级元素添加
+  - 优点：代码更简洁。
+  - 缺点：照顾低版本浏览器。
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        /* 双伪元素清除浮动 */
+        .clearfix:before,
+        .clearfix:after {
+            content: "";
+            display: table;
+        }
+
+        .clearfix::after {
+            clear: both;
+        }
+
+        .clearfix {
+            /* IE6、7专有 */
+            *zoom: 1;
+        }
+
+        .box {
+            margin: 0 auto;
+            width: 500px;
+            border: 1px solid red;
+        }
+
+        .one {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .two {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: blueviolet;
+        }
+
+        .xiaosan {
+            height: 200px;
+            background-color: black;
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- 给父元素添加clearfix清除浮动 -->
+    <div class="box clearfix">
+        <div class="one">11</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+    </div>
+    <div class="xiaosan"></div>
+</body>
+
+</html>
+~~~
+
+
+
+
 
 ## 定位
 

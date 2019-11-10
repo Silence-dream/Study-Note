@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        /* 双伪元素清除浮动 */
+        .clearfix:before,
+        .clearfix:after {
+            content: "";
+            display: table;
+        }
+
+        .clearfix::after {
+            clear: both;
+        }
+
+        .clearfix {
+            /* IE6、7专有 */
+            *zoom: 1;
+        }
+
+        .box {
+            margin: 0 auto;
+            width: 500px;
+            border: 1px solid red;
+        }
+
+        .one {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .two {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: blueviolet;
+        }
+
+        .xiaosan {
+            height: 200px;
+            background-color: black;
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- 给父元素添加clearfix清除浮动 -->
+    <div class="box clearfix">
+        <div class="one">11</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+        <div class="two">22</div>
+    </div>
+    <div class="xiaosan"></div>
+</body>
+
+</html>
