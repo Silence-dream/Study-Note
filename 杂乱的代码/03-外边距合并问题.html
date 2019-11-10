@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .one {
+            width: 200px;
+            height: 200px;
+            background: skyblue;
+            margin-bottom: 100px;
+        }
+
+        .two {
+            width: 200px;
+            height: 200px;
+            background: skyblue;
+            margin-top: 200px;
+        }
+        /* 当我给one一个margin-bottom:100px的时候，one盒子就会距离two盒子100px的距离。，但是当我给two盒子一个margin-top:200px的时候并没有出现one盒子和two盒子的距离是300px，反而是200px的距离，这些现象就是外边距合并的问题，解决的办法就是我们只需要给一个盒子设定margin值就行了。 */
+    </style>
+</head>
+
+<body>
+    <div class="one">我是第一个</div>
+    <div class="two">我是第二个</div>
+</body>
+
+</html>
