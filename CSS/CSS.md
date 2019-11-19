@@ -233,9 +233,86 @@ a,p,span{
 
 # 伪类选择器
 
-hover 鼠标经过元素时，显示样式
+## :link未访问的链接
+
+## :visited 已经访问的链接
+
+## :hover 鼠标经过元素时，显示样式
+
+## :active选定的链接
+
+~~~html
+<style type="text/css">
+a:link {color: #FF0000}
+a:visited {color: #00FF00}
+a:hover {color: #FF00FF}
+a:active {color: #0000FF}
+</style>
+
+</head>
+
+<body>
+
+<p><b><a href="/index.html" target="_blank">这是一个链接。</a></b></p>
+<p><b>注释：</b>在 CSS 定义中，a:hover 必须位于 a:link 和 a:visited 之后，这样才能生效！</p>
+<p><b>注释：</b>在 CSS 定义中，a:active 必须位于 a:hover 之后，这样才能生效！</p>
+
+~~~
 
 
+
+##  :focus
+
+- 只能给input使用
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        input:focus {
+            background: pink;
+            border: 1px solid red;
+            /* 去掉input的轮廓线就是蓝色那部分 */
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text">
+</body>
+
+</html>
+
+~~~
+
+
+
+# 结构伪类选择器
+
+## 元素:first-child
+
+- 选中第一个修改样式
+
+## 元素:last-child
+
+- 选中最后一个修改样式
+
+## 元素:nth-child()
+
+- 括号里面写的是几就选中第几个修改样式
+- nth-child(2n)偶数个修改样式
+- nth-child(2n-1)偶数个修改样式
+- nth-child(-n+10)选择前10个
+
+> n是从0到正无穷大开始
+
+## 元素:nth-last-child()
+
+- nth-last-child(-n+3)选择后面3个修改样式
 
 # CSS伪元素
 
@@ -511,7 +588,7 @@ background-image:url("路径");
 
 - 语法:border-radius : length;  // radius半径
 
-# 盒子阴影(重点)
+# 盒子阴影(重点)box-shadow
 
 - 语法: box-shadow: h-shadow v-shadow blur spread color inset
 
@@ -524,9 +601,66 @@ background-image:url("路径");
 | color    | 可选。阴影的颜色。                     |
 | inset    | 可选。将外部阴影(outset)改为内部阴影。 |
 
+~~~css
+div {
+	width: 200px;
+	height: 300px;
+	border: 1px solid red;
+	box-shadow: 0px 0px 20px red;
+}
+~~~
 
 
-# 文字阴影
+
+# 盒子尺寸box-sizing
+
+- 我们知道盒模型=content(内容)+padding(内边距)+border(边框)
+  但是我们通过width和height设置盒子的宽高之后就不想让padding就border把盒子变大了。
+  为了解决这个问题，CSS中提供了box-sizing来为我们解决这个问题。
+- 作用：当给盒子重新添加padding border的时候 重新计算盒子的宽和高
+
+| 属性        | 作用                                                         |
+| ----------- | ------------------------------------------------------------ |
+| content-box | (默认值)按盒模型计算                                         |
+| border-box  | 为元素设定的宽度和高度决定了元素的边框盒。就是说，为元素指定的任何内边距和边框都将在已设定的宽度和高度内进行绘制。通过从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度。 |
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        .one {
+            /* 没有加box-sizing */
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            border: 10px solid red;
+            background-color: pink;
+        }
+
+        .two {
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 10px solid red;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one"></div>
+    <div class="two"></div>
+</body>
+
+~~~
+
+
+
+# 文字阴影text-shadow
 
 - 语法:text-shadow: h-shadow v-shadow blur color;
 
@@ -729,11 +863,12 @@ div{
 - 为什么要清除浮动
   - 由于父级盒子很多情况下，不方便给高度，但是子盒子浮动又不在占有位置，最后父级盒子高度为0的时候，就会影响下面的标准流盒子。
   - 由于浮动元素不再占用原文档流的位置没所以它会对后面的元素排版产生影响
-  - 理想的状态应该是让自盒子撑开父盒子，有多少孩子，我父盒子就有多高。
+  - 理想的状态应该是让子盒子撑开父盒子，有多少孩子，我父盒子就有多高。
     - 简单来说就是：1.父级没有高度。
-      							2.子盒子浮动了。
-            							3.影响下面布局了，我们就应该清楚浮动了。
-
+      										2.子盒子浮动了。
+            						3.影响下面布局了，我们就应该清除浮动了。
+  - 满足以上条件之一就需要清除浮动
+  
 - 语法:
   - 选择器:{clear:属性值;}
 

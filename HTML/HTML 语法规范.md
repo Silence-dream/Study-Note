@@ -1,4 +1,4 @@
-# HTML 语法规范
+wwwHTML 语法规范
 
 - HTM标签由尖括号包围关键词，例如<html>
 - HTML标签通常成对出现，例如<html>和</html>我们称为双标签
@@ -329,6 +329,182 @@
 ### 删除线：`  <del></del>或<s></s>`
 
 ### 下划线：`<ins></ins>或<u></u>`
+
+
+
+## 表单
+
+- 表单是用来在网页中收集用户信息的元素
+
+### form标签
+
+| 属性   | 作用                                            |
+| ------ | ----------------------------------------------- |
+| action | 就是url地址代表了你将要把数据送往哪个地方来处理 |
+| method | 代表了表单使用哪种提交方法到服务器(GET POST)    |
+|        |                                                 |
+|        |                                                 |
+
+```html
+<form action="">
+    <!-- 表单线框 -->
+    <fieldset>
+        <!-- 线框标题 -->
+        <legend>
+            我是线框标题
+        </legend>
+    </fieldset>
+</form>
+```
+
+
+
+### label标签
+
+- label标签中的for值等于input中的id值的时候，点击label标签中的内容就可以选中input
+
+~~~html
+<label for="id1">文本: </label> <input type="text" name="" id="id1">
+
+~~~
+
+
+
+### 表单-input控件
+
+- 语法：
+  - `<input type="text">`
+  - `<input type="表单输入类型">`
+
+| 表单输入类型                  | 作用           |
+| ----------------------------- | -------------- |
+| `text`                        | 单行文本输入框 |
+| `password`                    | 密码输入框     |
+| `file`                        | 文件上传       |
+| week time date datetime-local | 时间选择       |
+| color                         | 颜色选取       |
+| number                        | 数字输入       |
+| `radio`                       | 单选框         |
+| `checkbox`                    | 复选框         |
+
+~~~html
+    <form action="">
+        <label for="id1">文本: </label> <input type="text" name="" id="id1"><br>
+        <label for="id2">密码: </label> <input type="password" name="" id="id2"><br>
+        <label for="id3">上传: </label> <input type="file" name="" id="id3"><br>
+        <label for="id4">时间: </label> <input type="datetime-local" name="" id="id4"><br>
+        <label for="id5">颜色: </label> <input type="color" name="" id="id5"><br>
+        <label for="id6">数字: </label> <input type="number" name="" id="id6"><br>
+        <label for="man">男</label><input type="radio" name="sex" id="man" value="男">
+        <label for="woman">女</label><input type="radio" checked name="sex" id="woman" value="女">
+        <label for="screct">保密</label><input type="radio" name="sex" id="screct" value="保密">
+        <br>
+        <label for="smoking">抽烟</label><input type="checkbox" name="hobby1" id="smoking" value="抽烟">
+        <label for="drinkbeer">喝酒</label><input type="checkbox" name="hobby2" id="drinkbeer" value="喝酒">
+        <label for="hothair">烫头</label><input type="checkbox" name="hobby3" id="hothair" value="烫头">
+    </form>
+~~~
+
+![image-20191118082122096](HTML 语法规范.assets/image-20191118082122096.png)
+
+
+
+### 表单属性
+
+| 属性        | 说明                                                      |
+| ----------- | --------------------------------------------------------- |
+| maxlength   | 设置控件中最多能输入多少个字符 maximum 最大值 length 长度 |
+| readonly    | 设置控件为只读模式 不能输入 read(阅读) only(只有)         |
+| disabled    | 设置控件为未激活(不能输入)                                |
+| name        | 为控件设置名称                                            |
+| id          | 设置控件唯一标识 identify                                 |
+| value       | 设置控件默认值                                            |
+| placeholder | 设置控件的提示信息 placeholder 占位符                     |
+
+~~~html
+<label for="">属性：<input type="text" placeholder="请输入用户名" name="username" value=""></label>
+~~~
+
+![image-20191118082433348](HTML 语法规范.assets/image-20191118082433348.png)
+
+~~~html
+    <label for="">属性：
+        <!--maxlength="5" 最多只能输入5个字符 -->
+        <input type="text" maxlength="5" name="num">
+    </label>
+~~~
+
+
+
+![image-20191118082605714](HTML 语法规范.assets/image-20191118082605714.png)
+
+~~~html
+    <label for="">
+        <!--readonly 只能看不能修改数值,可以点击 -->
+        <input type="text" readonly placeholder="readonly">
+    </label>
+~~~
+
+![image-20191118082800795](HTML 语法规范.assets/image-20191118082800795.png)
+
+
+
+~~~html
+<!-- disabled 不能点击可以复制 -->
+<label for="">属性：<input type="text" disabled placeholder="disabled"></label>
+
+~~~
+
+![image-20191118082950361](HTML 语法规范.assets/image-20191118082950361.png)
+
+~~~html
+<!-- value 设置控件默认值 -->
+<label for="">属性：<input type="text" name="user" placeholder="" id="" value="china"></label>
+~~~
+
+![image-20191118083125639](HTML 语法规范.assets/image-20191118083125639.png)
+
+~~~html
+<!-- id 设置控件唯一标识 -->
+<label for="">属性：<input type="text" placeholder="id" id="1"></label>
+
+~~~
+
+
+
+### 表单-多行文本域
+
+- ​     textarea 没有value，如果需要输入大量的信息，就需要用到`<textarea></textarea>`标签  
+
+~~~html
+<textarea cols="每行中的字符数" rows="显示的行数" name="name">
+       文本内容
+</textarea>
+<!--     name属性: 数据会按照 这样的格式 name属性的值=用户在多行文本中的内容 -->
+
+
+~~~
+
+
+
+# 下拉菜单
+
+- 下拉菜单，用来提供一系列菜单选项的控件
+
+- `<select></select>`中至少应包含一对`<option></option>`。
+
+  在option中定义selected =" selected "时，当前项即为默认选中项
+
+~~~html
+<select>
+    <option>北京</option>
+    <option>上海</option>
+    <option>广州</option> 
+</select>
+
+~~~
+
+![image-20191118083723925](HTML 语法规范.assets/image-20191118083723925.png)
 
 # 路径
 

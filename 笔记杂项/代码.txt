@@ -1,0 +1,6 @@
+/*white-space:nomal (默认换行)
+	nowrap 强制一行显示
+	overflow:hidden 文字溢出处理
+	clip 裁剪
+	cllipsis 省略号
+	white-space:nowrap    overflow:hidden        text-overflow:ellipsis; 这三个属性必写*/
