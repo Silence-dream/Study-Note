@@ -325,6 +325,33 @@ a:active {color: #0000FF}
 
 - 伪元素内必写属性 content:" "；
 
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        div{
+            width: 2000px;
+            height: 200px;
+            background-color: pink;
+        }
+        div::after{
+            content: "我在内容之后显示";
+        }
+        div::before{
+            content: "我在内容之前显示";
+        }
+    </style>
+</head>
+<body>
+    <div>=====是我内容=====</div>
+</body>
+</html>
+
+~~~
+
+
+
 # CSS元素的显示模式
 
 - 就是元素（标签）以书面方式进行显示，比如`<div>`会自己独占一行,一个行可以放多个`<span>`
@@ -419,17 +446,18 @@ background-image:url("路径");
 
 - 描述：用来设置背景图片大小的玩意
 
-- 语法: background-size:宽度 高度; //具体的数字
-
+- 语法: 
+          background-size:宽度 高度; //具体的数字
+  
   ​		  background-size: 10px 20px;
   ​          background-size: cover contain;
-  ​      
-
+​      
+  
   | 参数            | 含义                             |
   | --------------- | -------------------------------- |
   | cover（遮盖）   | 填满盒子，不管图片是否完全       |
-  | contain（包含） | 是把图片显示全，不管是否填满盒子 |
-
+| contain（包含） | 是把图片显示全，不管是否填满盒子 |
+  
      
 
 
@@ -578,7 +606,7 @@ background-image:url("路径");
    1.给真实元素添加
    2.真实元素:before 和 真实元素:after
    3.before和after能不能加上全看content有没有写
-   4.给某一个标签添加before和afte只能给该标签添加一个before 或一个after  不能给一个标签添加多个before 或after
+   4.给某一个标签添加before和after只能给该标签添加一个before 或一个after  不能给一个标签添加多个before 或after
 
 
 
@@ -865,8 +893,8 @@ div{
   - 由于浮动元素不再占用原文档流的位置没所以它会对后面的元素排版产生影响
   - 理想的状态应该是让子盒子撑开父盒子，有多少孩子，我父盒子就有多高。
     - 简单来说就是：1.父级没有高度。
-      										2.子盒子浮动了。
-            						3.影响下面布局了，我们就应该清除浮动了。
+      												   2.子盒子浮动了。
+                    						   3.影响下面布局了，我们就应该清除浮动了。
   - 满足以上条件之一就需要清除浮动
   
 - 语法:
@@ -1282,10 +1310,39 @@ div{
 ## visibility属性 
 
 -  visibility n. 能见度; 可见性; 可见距离; 清晰度;  visible  adj. 看得见的; 明显的，显然的; 手头的，可得到的; 可察觉到的; hidden v. 隐藏
-
 - 用于指定一个元素可见还是隐藏。visibility隐藏元素后，继续占有原来的位置。
 - visibility : visible 元素可看见   
 - visibility : hidden 隐藏元素保留原来位置
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        a{
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            visibility: hidden;
+            background-color: pink;
+        }
+        div{
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            background-color: hotpink;
+        }
+    </style>
+</head>
+<body>
+    <a href="">666</a>
+    <div></div>
+</body>
+</html>
+~~~
+
+
 
 ## overflow属性
 
