@@ -352,6 +352,42 @@ a:active {color: #0000FF}
 
 
 
+
+
+# 元素透明opacity
+
+- 让字和背景整体透明 用opacity 让整个元素中的所有都透明 opacity 取值0-1 0是完全透明 1是完全不透明 
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      /* 让字和背景整体透明 用opacity 让整个元素中的所有都透明 opacity 取值0-1 0是完全透明 1是完全不透明 */
+      opacity: 0.1;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    6666666
+  </div>
+</body>
+
+</html>
+~~~
+
+
+
 # CSS元素的显示模式
 
 - 就是元素（标签）以书面方式进行显示，比如`<div>`会自己独占一行,一个行可以放多个`<span>`
