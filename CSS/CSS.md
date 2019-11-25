@@ -6,6 +6,20 @@ CSS 能够对网页中元素位置的排版进行像素级精确控制，支持�
 
 
 
+# CSS的三种使用方式
+
+##  行内样式 
+
+-  就是代码写在具体网页中的一个元素内；比如：`<div style="color:#f00"></div> `
+
+##  内嵌式 
+
+-  就是在`</head>`前面写；比如：`<style type="text/css">.div{color:#F00}</style> `
+
+## 外部式
+
+-  就是引用外部css文件；比如：`<link href="css.css" type="text/css" rel="stylesheet" /> `
+
 # CSS基础选择器
 
 ## 标签选择器
@@ -661,7 +675,7 @@ background-image:url("路径");
 | h-shadow | 必需。水平阴影的位置。允许负值。       |
 | v-shadow | 必需。垂直阴影的位置。允许负值。       |
 | blur     | 可选。模糊距离。                       |
-| spread   | 可选。阴影的尺寸。                     |
+| spread   | 可选。阴影的尺寸。从什么值后开始模糊   |
 | color    | 可选。阴影的颜色。                     |
 | inset    | 可选。将外部阴影(outset)改为内部阴影。 |
 
@@ -1406,6 +1420,56 @@ div{
 - 兼容性: 几乎支持所有的浏览器，可以放心使用
 - 减少了服务器的请求次数
 
+
+
+
+
+# CSS过渡transition
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    a {
+      position: relative;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 200px;
+      height: 200px;
+      /* 初始状态 */
+      background-color: red;
+      /* 过渡 transition */
+      /* 让有初始状态 和结束状态的属性产生一个过渡 */
+
+      /* all代表所有变化了的属性  1s代表从开始到结束状态整个变化用了1s来完成 */
+      transition: all 1s;
+    }
+
+    a:hover {
+      top: -4px;
+      /* 结束状态 */
+      background-color: teal;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+
+<body>
+  <a href=""></a>
+</body>
+
+</html>
+~~~
+
+
+
 # 常见问题解决办法
 
 ## 1.去除行内块元素之间的距离
@@ -1424,4 +1488,78 @@ div{
 ## 4.margin : 0 auto无法居中的解决办法
 
 - 想要居中需要给盒子`宽度`才能居中
+
+## 5.为何img、input等内联元素可设置宽高
+
+### 简答：
+
+因为`<img>`、`<input>`属于替换元素，替换元素一般有内在尺寸和宽高比(auto时起作用)，所以具有width和height，可以设定。
+
+### 细答：
+
+元素是文档结构的基础，在CSS中，每个元素生成了一个包含了元素内容的框（box，也译为“盒子”）。但是不同的元素显示的方式会有所不同，例如` <div>`和`<span>`  就不同，而`<strong>`和 `<p>`也不一样。
+
+#### 1. 替换和不可替换元素
+
+从元素本身的特点来讲，可以分为替换和不可替换元素。
+
+##### a) 替换元素
+
+```
+替换元素 : 浏览器根据元素的标签和属性，来决定元素的具体显示内容。复制代码
+```
+
+例如浏览器会根据`<img>`标签的src属性的值来读取图片信息并显示出来;根据`<input>`标签的type属性来决定是显示输入框，还是单选按钮等。HTML中的` <img>、<input>、<textarea>、<select> ` 都是替换元素。这些元素往往没有实际的内容，即是一个空元素,浏览器会根据元素的标签类型和属性来显示这些元素。
+
+##### b) 不可替换元素
+
+```
+HTML 的大多数元素是不可替换元素，即其内容直接表现给用户端（例如浏览器）。复制代码
+```
+
+例如`<p>段落的内容</p>`，段落`<p>`是一个不可替换元素，文字“段落的内容”全被显示。
+
+#### 2. 块级和行内元素
+
+除了可替换元素和不可替换元素的分类方式外，CSS2.1中元素还有另外的分类方式：块级元素（block-level）和行内元素（inline-level，也译作“内联”元素）。
+
+##### a) 块级元素
+
+```
+在视觉上被格式化为块的元素，最明显的特征就是默认在横向充满其父元素的内容区域，而且在其左右两边没有其他元素，即独占一行。复制代码
+```
+
+典型的块级元素有`：<div>、<p>、<h1>到<h6>`，等等；通过CSS设定了浮动（float属性）以及设定显示（display）属性为“block”或“list-item”的元素都是块级元素。但是浮动元素比较特殊，由于浮动，其旁边可能会有其他元素的存在。而“list-item”（列表项`<li>`），会在其前面生成圆点符号，或者数字序号。
+
+##### b) 行内元素
+
+```
+行内元素不形成新内容块，即在其左右可以有其他元素。复制代码
+```
+
+例如`<a>、<span>、<strong>`等，都是典型的行内级元素。display属性等于“inline”的元素都是行内元素。
+
+### 结语
+
+1. 几乎所有的**替换元素**都是**行内元素**，例如`<img>、<input>`等等。不过元素的类型也不是固定的，通过设定CSS 的display属性，可以使行内元素变为块级元素，也可以让块级元素变为行内元素。
+2. 替换元素一般有内在尺寸，所以具有width和height，可以设定。例如你不指定img的width和height时，就按其内在尺寸显示，也就是图片被保存的时候的宽度和高度。对于表单元素，浏览器也有默认的样式，包括宽度和高度。
+
+### 补充知识点
+
+inline元素默认是基线对齐的 vertical-align=baseline                 
+
+
+
+## 6.强制出现省略号
+
+~~~css
+            /* 超出隐藏 */
+            overflow: hidden;
+            /* 强制一行显示 */
+            white-space: nowrap;
+            /* ellipsis省略 */
+            text-overflow: ellipsis;
+~~~
+
+
 

@@ -293,7 +293,7 @@ wwwHTML 语法规范
     </ul>
 ```
 
-### 自定义列表dt dl
+### 自定义列表dl>dt>dd
 
 ```html
 <!DOCTYPE html>
@@ -305,18 +305,16 @@ wwwHTML 语法规范
 
 <body>
     <h4>排行榜</h4>
-    <dt>1</dt>
-    <dt>2</dt>
-    <dt>3</dt>
-    <dl>张三</dl>
-    <dl>张四</dl>
-    <dl>张五</dl>
+    <dl>
+        <dt></dt>
+        <dl></dl>
+        <dl></dl>
+        <dl></dl>
+    </dl>
 </body>
 
 </html>
 ```
-
-### 
 
 
 
