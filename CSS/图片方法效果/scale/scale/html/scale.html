@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标放区缓慢放大效果</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		/*-----------第一种方式 这一种展示效果 有点感觉是从左上角开始的---------------*/
+		.main {
+			width: 400px;
+			height: 500px;
+			border: 1px solid #CCCCCC;
+			overflow: hidden;
+			float: left;
+			margin: 10px;
+		}
+
+		.main img {
+			transition: all 0.6s;
+		}
+
+		.main img:hover {
+			width: 110%;
+		}
+
+		/*------------第二种方式  利用translateZ实现  但是在兼容性上还会存在很多问题  这一种展示的效果给人的干酒才是从中间开始的 -------------*/
+		.main2 {
+			perspective: 500;
+			-webkit-perspective: 500;
+			/* Safari 和 Chrome */
+			width: 400px;
+			height: 500px;
+			border: 1px solid #CCCCCC;
+			overflow: hidden;
+			margin-bottom: 100px;
+			float: left;
+			margin: 10px;
+			-webkit-transform-style: preserve-3d;
+		}
+
+		.main2 img {
+			transition: ease 0.6s;
+		}
+
+		.main2 img:hover {
+			-webkit-transform: translateZ(50px);
+		}
+
+		/*第三种方式*/
+		.main3 {
+			width: 400px;
+			height: 500px;
+			border: 1px solid #CCCCCC;
+			overflow: hidden;
+			float: left;
+			margin: 10px;
+		}
+
+		.main3 img {
+			transition: all 0.6s;
+		}
+
+		.main3 img:hover {
+			transform: scale(1.2);
+		}
+
+
+		/*---------第四种方式  可以书写兼容ie的版本-------------*/
+		.main4 {
+			width: 400px;
+			height: 500px;
+			border: 1px solid #CCCCCC;
+			overflow: hidden;
+			float: left;
+			margin: 10px;
+			text-align: center;
+			vertical-align: middle;
+
+		}
+
+		.main4 img {
+			text-align: center;
+			vertical-align: middle;
+		}
+	</style>
+</head>
+
+<body>
+	<!--第一种放大效果 放图片的高度和宽度增大 -->
+	<!--不足之处显示的有点快  而且感觉不是从中间变过来的-->
+	<div class="main">
+		<img src="../img/test.jpg" width="100%" alt="" />
+	</div>
+
+
+	<!--第二种方式  通过透视 利用三维改变  -->
+	<div class="main2">
+		<img src="../img/test.jpg" width="100%" alt="" />
+	</div>
+
+	<!--第三种方式  scale实现-->
+	<div class="main3">
+		<img src="../img/test.jpg" width="100%" alt="" />
+	</div>
+
+	<!--第四种方式 利用js实现-->
+	<div class="main4">
+		<img src="../img/test.jpg" width="100%" alt="" />
+	</div>
+
+	<script>
+		var doc = document.getElementsByClassName('main4')[0];
+		var i = 100;
+		var s1, s2;
+		doc.addEventListener('mouseover', function () {
+			clearInterval(s2);
+			var img = doc.children[0];
+			s1 = setInterval(function () {
+				i += 0.1;
+				img.style.width = (i) + "%";
+				i = parseFloat(i);
+				if (i >= 110) clearInterval(s1);
+			}, 1);
+		})
+
+		doc.addEventListener('mouseout', function () {
+			clearInterval(s1);
+			var img = doc.children[0];
+			s2 = setInterval(function () {
+				i -= 0.1;
+				img.style.width = (i) + "%";
+				i = parseFloat(i);
+				if (i <= 100) clearInterval(s2);
+			}, 1);
+		})
+	</script>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-# 什么是CSS
+# 					什么是CSS
 
 层叠样式表(英文全称：Cascading Style Sheets)是一种用来表现[HTML](https://baike.baidu.com/item/HTML)（[标准通用标记语言](https://baike.baidu.com/item/标准通用标记语言/6805073)的一个应用）或[XML](https://baike.baidu.com/item/XML)（标准通用标记语言的一个子集）等文件样式的计算机语言。CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进行格式化。 
 
@@ -28,7 +28,7 @@ CSS 能够对网页中元素位置的排版进行像素级精确控制，支持�
 - 标签选择器 可以把某一类标签**全部**选择出来 比如所有的div标签 和 所有的 span标签
 
 ```html
-标签名{
+		标签名{
 	属性:属性值;
 ...
 }
@@ -207,6 +207,49 @@ a,p,span{
   - 给父元素定义内边距
   - 给父元素添加overflow : hidden
 
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <style>
+        .one {
+            width: 200px;
+            height: 200px;
+            background-color: hotpink;
+            /* 给父元素边框和溢出隐藏可以避免塌陷 */
+            /* border: 1px solid; */
+            /* overflow: hidden; */
+        }
+
+        .two {
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+            /* margin-top: 100px; */
+            /* 子元素浮动可以避免塌陷 */
+            /* float: left; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one">
+        <div class="two">12</div>
+    </div>
+</body>
+
+</html>
+~~~
+
+
+
 ## 外边距合并(重点)
 
 - 外边距合并的现象又称为`相邻块元素垂直外边距的合并`
@@ -247,13 +290,9 @@ a,p,span{
 
 # 伪类选择器
 
-## :link未访问的链接
+## 
 
-## :visited 已经访问的链接
 
-## :hover 鼠标经过元素时，显示样式
-
-## :active选定的链接
 
 ~~~html
 <style type="text/css">
@@ -434,7 +473,7 @@ a:active {color: #0000FF}
 
 ## 行内块元素 inline-block
 
-- 例子：img input td
+- 例子：input td textarea
 
 - 同时具有块元素和行内元素的特点
 - 特点
@@ -1426,6 +1465,14 @@ div{
 
 # CSS过渡transition
 
+- transition-property 过渡属性  指定哪个属性要过渡 如果要让所有变化的属性都过渡 那就加all
+
+- transition-timing-function 过渡速度 linear ease  ease-in ease-out ease-in-out
+
+- transition-duration 过渡总时间 从开始到结束总共多长时间 s ms
+
+- transition-delay 过渡延迟 等多长时间后才开始变化 s ms
+
 ~~~html
 <!DOCTYPE html>
 <html lang="en">
@@ -1470,9 +1517,62 @@ div{
 
 
 
+
+
+#  vertical-align 属性设置元素的垂直对齐方式。 
+
+-  用来指定行内元素（inline）或表格单元格（table-cell）元素的垂直对齐方式。 
+
+
+
+
+
+# transform   2D转换
+
+转换(tranform)是CSS3中具有颠覆性的特征之一，可以实现元素的位移、旋转、缩放等效果。
+
+- 移动：translate
+  - 重点:
+  - 定义2D转换中的移动，沿着X和Y轴移动元素
+  - translate最大的优点：不会影响到其他元素的位置
+  - translate中的百分比单位是相对于自身元素的translate
+  - 对inline标签没有效果
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            /* x,y */
+            transform: translate(20px, 10px);
+            /* 移动X轴 */
+            /* transform: translateX(20px); */
+            /* 移动Y轴 */
+            /* transform: translateY(10px); */
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <p>121</p>
+</body>
+
+</html>
+```
+
+- 旋转：roate
+- 缩放：scale
+
 # 常见问题解决办法
 
-## 1.去除行内块元素之间的距离
+## 1.去除行内块元素之间的距离 
 
 - 因为空格也算字符，所以我们只需要给父元素设置font-size:0;就行了
 
@@ -1563,3 +1663,4 @@ inline元素默认是基线对齐的 vertical-align=baseline
 
 
 
+​																																

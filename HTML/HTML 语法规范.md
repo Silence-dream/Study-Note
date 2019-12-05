@@ -1,4 +1,4 @@
-wwwHTML 语法规范
+# HTML 语法规范
 
 - HTM标签由尖括号包围关键词，例如<html>
 - HTML标签通常成对出现，例如<html>和</html>我们称为双标签
@@ -58,6 +58,57 @@ wwwHTML 语法规范
 ~~~html
 <meta charset="UTF-8">
 ~~~
+
+
+
+# HTML5语义化标签
+
+- `<header>`头部标签
+- `<nav>`导航标签
+- `article`内容标签
+- `<section>`块级标签
+- `<aside>`侧边栏标签
+- `<footer>`尾部标签
+
+![image-20191204083636198](HTML 语法规范.assets/image-20191204083636198.png)
+
+# HTML5多媒体标签
+
+- 音频：`<audio>`
+
+![image-20191204084406121](HTML 语法规范.assets/image-20191204084406121.png)
+
+因为不同的浏览器支持不同的格式，我们采取的解决方案是为这个音频准备多个格式
+
+~~~html
+    <audio controls autoplay="autoplay">
+        <source src="./呦猫UNEKO - 逆天.mp3" type="audio/mpeg">
+        <source src="./呦猫UNEKO - 逆天.ogg" type="audio/ogg">
+        你的浏览器版本过低请更新浏览器
+    </audio>
+~~~
+
+
+
+![image-20191204084747385](HTML 语法规范.assets/image-20191204084747385.png)
+
+> 谷歌浏览器禁用了autoplay属性，火狐也禁用了
+
+- 视频:`<video>`
+
+![image-20191204091121913](HTML 语法规范.assets/image-20191204091121913.png)
+
+![image-20191204091848928](HTML 语法规范.assets/image-20191204091848928.png)
+
+兼容写法
+
+```html
+    <video controls="controls">
+        <source src="./1.00HTML5导读.ogg" type="video/ogg">
+        <source src="./1.00HTML5导读.mp4" type="video/mp4">
+        你的浏览器版本过低,请更新浏览器
+    </video>
+```
 
 
 
