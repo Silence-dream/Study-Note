@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @keyframes move {
+
+            0% {
+                transform: translate(0, 0);
+            }
+
+
+            25% {
+                transform: translateX(1000px);
+            }
+
+            50% {
+                transform: translate(1000px, 500px);
+            }
+
+            75% {
+                transform: translate(0, 500px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            /* 调用名字是move的动画 */
+            animation-name: move;
+            /* 动画的播放时间 */
+            animation-duration: 2s;
+            /* 动画的速度曲线 */
+            animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+            /* 动画延迟多少秒播放 */
+            animation-delay: 1.5s;
+            /* 动画的播放次数 infinite无限次 */
+            animation-iteration-count: infinite;
+            /* 动画的播放循序 alternate逆向播放 */
+            animation-direction: alternate;
+            /* 规定动画结束后的状态 */
+            animation-fill-mode: forwards;
+        }
+
+        div:hover {
+            /* 规定动画的播放和暂停 */
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

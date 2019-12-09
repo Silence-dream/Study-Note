@@ -1529,14 +1529,23 @@ div{
 
 # transform   2D转换
 
+##  **`transform-origin`** CSS属性让你更改一个元素变形的原点。
+
+##   ![image-20191206103941964](CSS.assets/image-20191206103941964.png)
+
+![image-20191206103957151](CSS.assets/image-20191206103957151.png)
+
+![image-20191206104008519](CSS.assets/image-20191206104008519.png)
+
 转换(tranform)是CSS3中具有颠覆性的特征之一，可以实现元素的位移、旋转、缩放等效果。
 
-- 移动：translate
-  - 重点:
-  - 定义2D转换中的移动，沿着X和Y轴移动元素
-  - translate最大的优点：不会影响到其他元素的位置
-  - translate中的百分比单位是相对于自身元素的translate
-  - 对inline标签没有效果
+## 移动：translate
+
+- 重点:
+- 定义2D转换中的移动，沿着X和Y轴移动元素
+- translate最大的优点：不会影响到其他元素的位置
+- translate中的百分比单位是相对于自身元素的translate
+- 对inline标签没有效果
 
 ```html
 <!DOCTYPE html>
@@ -1567,8 +1576,107 @@ div{
 </html>
 ```
 
-- 旋转：roate
-- 缩放：scale
+## 旋转：rotate
+
+- rotate(数字+单位deg)
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            /* x,y */
+            transform: translate(20px, 10px);
+            /* 移动X轴 */
+            /* transform: translateX(20px); */
+            /* 移动Y轴 */
+            /* transform: translateY(10px); */
+        }
+
+        div:hover {
+            transition: all .4s;
+            transform: rotate(45deg)
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <p>1212</p>
+</body>
+
+</html>
+~~~
+
+
+
+## 缩放：scale
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        li {
+            float: left;
+            width: 50px;
+            height: 50px;
+            border: 1px solid wheat;
+            border-radius: 50%;
+            list-style-type: none;
+            line-height: 50px;
+            text-align: center;
+            margin: 0 20px;
+        }
+
+        li:hover {
+            transform: scale(1.5);
+            transition: all .4s;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+    </ul>
+</body>
+
+</html>
+~~~
+
+
+
+## 2D转换综合写法
+
+- 格式:transform:translate() rotate() scale() 
+- 其顺序会影响转换的效果(先旋转会改变坐标轴方向)
+- 当我们同时有位移和其他属性的时候，记得要讲位移放到最前面
+
+
+
+
+
+
+
+
+
+
 
 # 常见问题解决办法
 
