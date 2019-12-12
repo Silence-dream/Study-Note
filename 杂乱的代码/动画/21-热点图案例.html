@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #333;
+        }
+
+        .map {
+            position: relative;
+            width: 747px;
+            height: 617px;
+            margin: 0 auto;
+            background: url(./images/map.png) no-repeat;
+        }
+
+        .city {
+            position: absolute;
+            top: 221px;
+            left: 546px;
+            color: aliceblue;
+        }
+
+        .dotted {
+            width: 8px;
+            height: 8px;
+            background-color: #09f;
+            border-radius: 50%;
+        }
+
+        .city div[class^="pulse"] {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            box-shadow: 0 0 12px #009dfd;
+            border-radius: 50%;
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+            animation: pulse 2s linear infinite;
+        }
+
+        .tb {
+            top: 498px;
+            left: 657px;
+        }
+
+        .gz {
+            top: 532px;
+            left: 553px;
+        }
+
+        .map .city .pulse2 {
+            animation-delay: 0.4s;
+        }
+
+        .map .city .pulse3 {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes pulse {
+            0% {}
+
+            20% {
+                width: 20px;
+                height: 20px;
+                opacity: 1;
+            }
+
+            40% {
+                width: 25px;
+                height: 25px;
+                opacity: 0.6s;
+            }
+
+            70% {
+                width: 40px;
+                height: 40px;
+                opacity: 0.8s;
+            }
+
+            100% {
+                width: 100px;
+                height: 100px;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="map">
+        <div class="city">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+        <div class="city tb">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+        <div class="city gz">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+    </div>
+</body>
+
+</html>
