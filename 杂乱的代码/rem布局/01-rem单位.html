@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 1000-1200红色   1200-1300蓝色  1300-无穷大px紫色 */
+        /* 宽度>=1000px body显示粉色 */
+        /* 小于等于1200px 红色 */
+        @media screen and (max-width: 1200px) {
+            body {
+                background: red
+            }
+        }
+
+        /* 大于1200px 蓝色 */
+        @media screen and (min-width:1200px) {
+            body {
+                background: blue;
+            }
+        }
+
+        /* 大于1300px紫色 */
+        @media screen and (min-width:1300px) {
+            body {
+                background: purple;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
