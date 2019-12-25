@@ -1871,6 +1871,16 @@ inline元素默认是基线对齐的 vertical-align=baseline
             text-overflow: ellipsis;
 ~~~
 
+## 7.去掉移动端的蓝色点击块
+
+~~~css
+body {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+~~~
+
+
+
 
 
 ​																																
