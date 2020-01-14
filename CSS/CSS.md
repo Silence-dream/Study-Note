@@ -1870,6 +1870,15 @@ inline元素默认是基线对齐的 vertical-align=baseline
             white-space: nowrap;
             /* ellipsis省略 */
             text-overflow: ellipsis;
+
+
+
+//多行省略号
+overflow:hidden;
+text-overflow:ellipsis;
+display:-webkit-box;
+-webkit-line-clamp:2; (两行文字)
+-webkit-box-orient:vertical;
 ~~~
 
 ## 7.去掉移动端的蓝色点击块
@@ -1882,6 +1891,14 @@ body {
 
 
 
+## 8.link和@import有什么区别
 
+- link属于HTML标签，而@import是CSS提供的，且只能加载CSS
+- 页面被加载时，link会同时被加载，而@import引用的CSS会等到页面被加载完后再加载。
+- @import只能在IE5以上才能识别，而link是HTML标签，无兼容问题
+- link引入方式的权重高于@import的权重。
 
-​																																
+## 9.rgba()和opacity的透明效果有什么不同？
+
+-  opacity作用域元素，以及元素内的所有内容的透明度，rgba()只能作用域元素的颜色或者背景颜色。
+- 设置rgba透明的元素的子元素不会继承透明效果。
