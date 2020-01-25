@@ -48,11 +48,14 @@
         <li><img src="./images/4.jpg"></li>
     </ul>
     <script>
+        // 获取class是baidi的第一个元素，里面的标签名字是img的标签
         let imgs = document.getElementsByClassName('baidu')[0].getElementsByTagName("img");
         /* 批量注册 */
         for (let i = 0; i < imgs.length; i++) {
+            // 鼠标点击img
             imgs[i].onclick = () => {
-                document.body.style.backgroundImage = "url(" + imgs[i].src + ") "
+                // 设置页面的body的style里面的backgroundImage的路径为点击的图片的路径
+                document.body.style.backgroundImage = "url(" + imgs[i].src + ") ";
             }
         }
     </script>

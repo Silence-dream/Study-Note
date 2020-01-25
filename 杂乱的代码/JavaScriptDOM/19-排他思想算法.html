@@ -19,12 +19,18 @@
         <button>按钮7</button>
     </div>
     <script>
+        // 获取元素
         let btns = document.getElementsByTagName("button");
+        // 批量注册事件
         for (let i = 0; i < btns.length; i++) {
+            // 注册为鼠标点击事件
             btns[i].onclick = function () {
+                /* 每一次点击设置全部按钮没有颜色，然后再给点击的按钮一个颜色 */
+                // 循环设置全部按钮为默认值，即没有颜色
                 for (let j = 0; j < btns.length; j++) {
                     btns[j].style.backgroundColor = ""
                 }
+                // 点击按钮中的任意一个设置背景颜色为pink
                 this.style.backgroundColor = "pink";
             }
         }

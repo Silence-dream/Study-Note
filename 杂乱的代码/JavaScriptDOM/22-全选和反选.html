@@ -63,7 +63,7 @@
                     <th>价钱</th>
                 </tr>
             </thead>
-            <tbody id=" j_tb">
+            <tbody id="j_tb">
                 <tr>
                     <td>
                         <input type="checkbox" />
@@ -97,7 +97,31 @@
         </table>
     </div>
     <script>
+        // 全选按钮
+        let j_cbAll = document.querySelector("#j_cbAll");
+        // 单个按钮
+        let j_tbs = document.querySelector("#j_tb").querySelectorAll("input");
+        j_cbAll.onclick = function () {
+            for (let i = 0; i < j_tbs.length; i++) {
+                j_tbs[i].checked = this.checked;
+                console.log(this.checked);
 
+            }
+        }
+        // 已知选中是true，未选中是flase
+        for (let i = 0; i < j_tbs.length; i++) {
+            j_tbs[i].onclick = function () {
+                let flag = true;
+                // 每一次点击按钮都会检查一遍所有的按钮是否被勾选上，如果都勾选上了，就让flag等于true就行了；
+                for (let i = 0; i < j_tbs.length; i++) {
+                    if (j_tbs[i].checked == false) {
+                        flag = false;
+                        break;
+                    }
+                }
+                j_cbAll.checked = flag;
+            }
+        }
     </script>
 </body>
 

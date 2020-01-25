@@ -1,4 +1,4 @@
-## 1.1. Web API介绍
+# 1.1. Web API介绍
 
 ### 1.1.1 API的概念
 
@@ -58,7 +58,7 @@ DOM树 又称为文档树模型，把文档映射成树形结构，通过节点�
 
 ![1550732362134](Web APIs.assets/1550732362134.png)
 
-### 1.3. 获取元素
+# 1.3. 获取元素
 
 为什么要获取页面元素？
 
@@ -261,3 +261,855 @@ JavaScript 使我们有能力创建动态页面，而事件是可以被 JavaScri
 - 下拉菜单三要素
 
 - 关闭广告三要素
+
+# 自定义元素
+
+## 获取属性值
+
+~~~html
+<script>
+    //element.属性:获取属性值   // element.属性只能获取内置属性值(元素本身自带的属性)
+	//element.getAttribute("属性"); //// element.getAttribute("属性") 可以获取程序员自定义的属性(标准)
+</script>
+~~~
+
+案例
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- long是自定义属性 -->
+    <div id="demo" index="1" class="nav" long="66"></div>
+    <script>
+        let div = document.querySelector("#demo")
+        // 获取元素的属性值
+        //element.属性
+        console.log(div.id) //demo
+        // element.属性只能获取内置属性值(元素本身自带的属性)
+        console.log(div.long) //undefined
+        // element.getAttribute("属性")
+        console.log(div.getAttribute("id"))
+        // element.getAttribute("属性") 可以获取程序员自定义的属性(标准)
+        console.log(div.getAttribute("long"))
+    </script>
+</body>
+
+</html>
+~~~
+
+## 设置属性
+
+~~~html
+<script>
+    //element.属性=”值"
+	//element.className = "值"  //用于设置class比较特殊
+	//element.setAttribute("属性","值");
+</script>
+~~~
+
+案例
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- long是自定义属性 -->
+    <div id="demo" index="1" class="nav" long="66"></div>
+    <script>
+        let div = document.querySelector("#demo")
+        // 设置属性值
+        // element.属性="值"
+        div.id = "test";
+        div.className = "name" //比较特殊
+        console.log(div.id) //test
+        // element.setAttribute("属性","值")
+        div.setAttribute("long", 55);
+        console.log(div.getAttribute("long")) //100
+
+    </script>
+</body>
+
+</html>
+~~~
+
+## 移除属性
+
+~~~html
+<script>
+    //element.removeAttribute("属性")
+</script>
+~~~
+
+案例
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- long是自定义属性 -->
+    <div id="demo" index="1" class="nav" long="66"></div>
+    <script>
+        let div = document.querySelector("#demo")
+        // 移除属性
+        //removeAttribute("属性");
+        div.removeAttribute("long");
+    </script>
+</body>
+
+</html>
+~~~
+
+
+
+# H5自定义属性
+
+- 自定义属性目的:是为了保存并使用数据。有些数据可以保存到页面中而不用保存到数据库中。
+- 自定义属性获取是通过getAttribute( \属性')获取。
+- 但是有些自定义属性很容易引起歧义,不容易判断是元素的内置属性还是自定义属性。
+- H5给我们新增了自定义属性:
+  - `H5规定自定义属性data-开头做为属性名并且赋值`
+    比如：`<div data-index="1"></div>`
+
+## 获取自定义属性
+
+语法:
+
+~~~html
+<script>
+    element.attribute; //是无法使用的，这个只能获取内置属性
+    element.getAttribute("attribute")//兼容性获取，可以获取自定义属性
+    element.dataset;//获取data开头的属性集合
+    element.dataset.-后的name;//获取date开头中某一个具体的值
+</script>
+~~~
+
+案例:
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div getime="20" data-index="100" data-100-200="300" data-name-lida="500"></div>
+    <script>
+        let div = document.getElementsByTagName("div")[0];
+        console.log(div.getAttribute("getime"));
+        console.log(div.dataset.index);
+        // 获取data开头的集合
+        console.log(div.dataset);
+        console.log(div.dataset["100-200"]);
+        // 如果自定义属性里面有多个链接单词，获取的时候使用驼峰秘命名法
+        console.log(div.dataset.nameLida);
+    </script>
+</body>
+
+</html>
+~~~
+
+
+
+# 常见案例
+
+## 排他算法
+
+![image-20200116183226228](images/image-20200116183226228.png)
+
+
+
+如果有同一组元素，我们想要某一个元素实现某种样式， 需要用到循环的排他思想算法：
+
+1. 所有元素全部清除样式（干掉其他人）
+
+2. 给当前元素设置样式 （留下我自己）
+
+3. 注意顺序不能颠倒，首先干掉其他人，再设置自己
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="div">
+        <button>按钮1</button>
+        <button>按钮2</button>
+        <button>按钮3</button>
+        <button>按钮4</button>
+        <button>按钮5</button>
+        <button>按钮6</button>
+        <button>按钮7</button>
+    </div>
+    <script>
+        // 获取元素
+        let btns = document.getElementsByTagName("button");
+        // 批量注册事件
+        for (let i = 0; i < btns.length; i++) {
+            // 注册为鼠标点击事件
+            btns[i].onclick = function () {
+                /* 每一次点击设置全部按钮没有颜色，然后再给点击的按钮一个颜色 */
+                // 循环设置全部按钮为默认值，即没有颜色
+                for (let j = 0; j < btns.length; j++) {
+                    btns[j].style.backgroundColor = ""
+                }
+                // 点击按钮中的任意一个设置背景颜色为pink
+                this.style.backgroundColor = "pink";
+            }
+        }
+    </script>
+</body>
+
+</html>
+~~~
+
+## 百度换肤
+
+![image-20200119163640306](images/image-20200119163640306.png)
+
+- 案例分析
+  - 这个案例练习给一组元素注册事件
+  - 给4个小图片利用循环注册点击事件
+  - 当我们点击了这个图片，让我们页面背景改为当前的图片
+  - `核心算法:把当前图片的src路径去过来，给body做背景图片`
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: url(./images/1.jpg) no-repeat center top;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .baidu {
+            overflow: hidden;
+            margin: 100px auto;
+            background-color: #fff;
+            width: 410px;
+            padding-top: 3px;
+        }
+
+        .baidu li {
+            float: left;
+            margin: 0 1px;
+            cursor: pointer;
+        }
+
+        .baidu img {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="baidu">
+        <li><img src="./images/1.jpg"></li>
+        <li><img src="./images/2.jpg"></li>
+        <li><img src="./images/3.jpg"></li>
+        <li><img src="./images/4.jpg"></li>
+    </ul>
+    <script>
+        // 获取class是baidi的第一个元素，里面的标签名字是img的标签
+        let imgs = document.getElementsByClassName('baidu')[0].getElementsByTagName("img");
+        /* 批量注册 */
+        for (let i = 0; i < imgs.length; i++) {
+            // 鼠标点击img
+            imgs[i].onclick = () => {
+                // 设置页面的body的style里面的backgroundImage的路径为点击的图片的路径
+                document.body.style.backgroundImage = "url(" + imgs[i].src + ") ";
+            }
+        }
+    </script>
+</body>
+
+</html>
+~~~
+
+## 表格隔行变色
+
+![image-20200119181748207](images/image-20200119181748207.png)
+
+- 案例分析
+  - `核心思路:鼠标进过tr，当前的行变背景颜色，鼠标离开去掉当前的背景颜色`
+  - 鼠标移入(onmouseover)、鼠标移出(onmouseout)
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            width: 800px;
+            margin: 100px auto;
+            text-align: center;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        thead tr {
+            height: 30px;
+            background-color: skyblue;
+        }
+
+        tbody tr {
+            height: 30px;
+        }
+
+        tbody td {
+            border-bottom: 1px solid #d7d7d7;
+            font-size: 12px;
+            color: blue;
+        }
+
+        .bg {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>代码</th>
+                <th>名称</th>
+                <th>最新公布净值</th>
+                <th>累计净值</th>
+                <th>前单位净值</th>
+                <th>净值增长率</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>003526</td>
+                <td>农银金穗3个月定期开放债券</td>
+                <td>1.075</td>
+                <td>1.079</td>
+                <td>1.074</td>
+                <td>+0.047%</td>
+            </tr>
+            <tr>
+                <td>003526</td>
+                <td>农银金穗3个月定期开放债券</td>
+                <td>1.075</td>
+                <td>1.079</td>
+                <td>1.074</td>
+                <td>+0.047%</td>
+            </tr>
+            <tr>
+                <td>003526</td>
+                <td>农银金穗3个月定期开放债券</td>
+                <td>1.075</td>
+                <td>1.079</td>
+                <td>1.074</td>
+                <td>+0.047%</td>
+            </tr>
+            <tr>
+                <td>003526</td>
+                <td>农银金穗3个月定期开放债券</td>
+                <td>1.075</td>
+                <td>1.079</td>
+                <td>1.074</td>
+                <td>+0.047%</td>
+            </tr>
+            <tr>
+                <td>003526</td>
+                <td>农银金穗3个月定期开放债券</td>
+                <td>1.075</td>
+                <td>1.079</td>
+                <td>1.074</td>
+                <td>+0.047%</td>
+            </tr>
+            <tr>
+                <td>003526</td>
+                <td>农银金穗3个月定期开放债券</td>
+                <td>1.075</td>
+                <td>1.079</td>
+                <td>1.074</td>
+                <td>+0.047%</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        let tr = document.querySelector("tbody").querySelectorAll("tr");
+        //批量注册事件
+        for (let i = 0; i < tr.length; i++) {
+            // 鼠标移入让 tr 的样式修改成.bg里面的样式
+            tr[i].onmouseover = function () {
+                this.className = 'bg';
+            }
+            // 鼠标移出 tr 的样式修改成没有
+            tr[i].onmouseout = function () {
+                this.className = ""
+            }
+        }
+    </script>
+</body>
+
+</html>
+~~~
+
+## 全选和反选
+
+![image-20200119182148040](images/image-20200119182148040.png)
+
+- 案例分析
+  - 全选和反选：让下面所有复选框的checked属性（选中状态）跟随全选按钮。
+  - 下面复选框需要全部选中，上面全选才能选中：给下面所有复选框绑定点击事件，每次点击，都要循环查看下面所有的复选框是否有没选中的，如果有一个没选中的，上面全选就不选中。
+    设置一个变量来控制全选是否选中。
+
+~~~html
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            width: 300px;
+            margin: 100px auto 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+            width: 300px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+
+        td {
+            font: 14px "微软雅黑";
+        }
+
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="j_cbAll" />
+                    </th>
+                    <th>商品</th>
+                    <th>价钱</th>
+                </tr>
+            </thead>
+            <tbody id="j_tb">
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>iPhone8</td>
+                    <td>8000</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>iPad Pro</td>
+                    <td>5000</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>iPad Air</td>
+                    <td>2000</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>Apple Watch</td>
+                    <td>2000</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        // 全选按钮
+        let j_cbAll = document.querySelector("#j_cbAll");
+        // 单个按钮
+        let j_tbs = document.querySelector("#j_tb").querySelectorAll("input");
+        j_cbAll.onclick = function () {
+            for (let i = 0; i < j_tbs.length; i++) {
+                j_tbs[i].checked = this.checked;
+                console.log(this.checked);
+
+            }
+        }
+        // 已知选中是true，未选中是flase
+        for (let i = 0; i < j_tbs.length; i++) {
+            j_tbs[i].onclick = function () {
+                let flag = true;
+                // 每一次点击按钮都会检查一遍所有的按钮是否被勾选上，如果都勾选上了，就让flag等于true就行了；
+                for (let i = 0; i < j_tbs.length; i++) {
+                    if (j_tbs[i].checked == false) {
+                        flag = false;
+                        break;
+                    }
+                }
+                j_cbAll.checked = flag;
+            }
+        }
+    </script>
+</body>
+
+</html>
+~~~
+
+## Tab切换
+
+- 业务需求
+
+  每一次点击标签下面的内容跟着变化
+
+  ![tab切换](images/tab切换.gif)
+
+- 案例分析
+
+Tab栏切换有2个大的模块
+上的模块选项卡，点击某-个，当前这一 个底色会是红色，其余不变(排他思想) 修改类
+名的方式
+下面的模块内容，会跟随上面的选项卡变化。所以下面模块变化写到点击事件里面。
+规律:下面的模块显示内容和上面的选项卡一 对应，相匹配。
+核心思路:给上面的tab_ list里面的所有小i添加自定义属性，属性值从0开始编号。
+当我们点击tab_ list 里面的某个小i，让tab_ con里面对应序号的内容显示，其余隐藏(排他
+思想)
+
+
+
+方法一
+
+~~~js
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        .tab {
+            width: 978px;
+            margin: 100px auto;
+        }
+
+        .tab_list {
+            height: 39px;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        .tab_list li {
+            float: left;
+            height: 39px;
+            line-height: 39px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .tab_list .current {
+            background-color: #c81623;
+            color: #fff;
+        }
+
+        .item_info {
+            padding: 20px 0 0 20px;
+        }
+
+        .item {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评价（50000）</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display: block;">
+                商品介绍模块内容
+            </div>
+            <div class="item">
+                规格与包装模块内容
+            </div>
+            <div class="item">
+                售后保障模块内容
+            </div>
+            <div class="item">
+                商品评价（50000）模块内容
+            </div>
+            <div class="item">
+                手机社区模块内容
+            </div>
+
+        </div>
+    </div>
+    <script>
+        // 获取切换栏
+        let tab_lists = document.querySelector(".tab_list").querySelectorAll("li");
+
+        // 获取切换内容
+        let tab_cons = document.getElementsByClassName("tab_con")[0].getElementsByTagName("div");
+        // 批量注册事件
+        for (let i = 0; i < tab_lists.length; i++) {
+            tab_lists[i].onclick = function () {
+                // 排他算法开始
+                for (let j = 0; j < tab_lists.length; j++) {
+                    // 1 每一次点击都移除掉  li标签的 class属性
+                    tab_lists[j].removeAttribute("class");
+                }
+                // 2 然后再添加css属性上去
+                tab_lists[i].className = "current";
+                // 排他算法结束
+
+                // 内容显示模块开始,核心排他算法
+                for (let p = 0; p < tab_cons.length; p++) {
+                    // 1 每一次点击都清空div里面的style属性
+                    tab_cons[p].removeAttribute("style");
+                    // tab_cons[p].style.display = '';
+
+                }
+                // 2 然后再添加行内式上去
+                tab_cons[i].style.display = 'block';
+                // 内容显示模块结束
+
+            }
+        }
+    </script>
+</body>
+
+</html>
+~~~
+
+方法二
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        .tab {
+            width: 978px;
+            margin: 100px auto;
+        }
+
+        .tab_list {
+            height: 39px;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        .tab_list li {
+            float: left;
+            height: 39px;
+            line-height: 39px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .tab_list .current {
+            background-color: #c81623;
+            color: #fff;
+        }
+
+        .item_info {
+            padding: 20px 0 0 20px;
+        }
+
+        .item {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评价（50000）</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display: block;">
+                商品介绍模块内容
+            </div>
+            <div class="item">
+                规格与包装模块内容
+            </div>
+            <div class="item">
+                售后保障模块内容
+            </div>
+            <div class="item">
+                商品评价（50000）模块内容
+            </div>
+            <div class="item">
+                手机社区模块内容
+            </div>
+
+        </div>
+    </div>
+    <script>
+        // 获取切换栏
+        let tab_lists = document.querySelector(".tab_list").querySelectorAll("li");
+
+        // 获取切换内容
+        let tab_cons = document.getElementsByClassName("tab_con")[0].getElementsByTagName("div");
+        // 批量注册事件
+        for (let i = 0; i < tab_lists.length; i++) {
+            // 给5个li设置自定义属性
+            tab_lists[i].setAttribute("index", i);
+            tab_lists[i].onclick = function () {
+                // 排他算法开始
+                for (let j = 0; j < tab_lists.length; j++) {
+                    // 1 每一次点击都移除掉  li标签的 class属性
+                    tab_lists[j].removeAttribute("class");
+                }
+                // 2 然后再添加css属性上去
+                tab_lists[i].className = "current";
+                // 排他算法结束
+
+                // 内容显示模块开始,核心排他算法
+                let index = tab_lists[i].getAttribute("index");
+                console.log(index);
+                for (let i = 0; i < tab_cons.length; i++) {
+                    // tab_cons[i].style.display = "";
+                    tab_cons[i].removeAttribute("style");
+                }
+                tab_cons[index].style.display = "block";
+                // 内容显示模块结束
+
+            }
+        }
+    </script>
+</body>
+
+</html>
+~~~
+

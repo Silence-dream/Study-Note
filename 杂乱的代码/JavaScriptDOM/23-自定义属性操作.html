@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- long是自定义属性 -->
+    <div id="demo" index="1" class="nav" long="66"></div>
+    <script>
+        let div = document.querySelector("#demo")
+        // 获取元素的属性值
+        //element.属性
+        console.log(div.id) //demo
+        // element.属性只能获取内置属性值(元素本身自带的属性)
+        console.log(div.long) //undefined
+        // element.getAttribute("属性")
+        console.log(div.getAttribute("id"))
+        // element.getAttribute("属性") 可以获取程序员自定义的属性(标准)
+        console.log(div.getAttribute("long"))
+
+        // 设置属性值
+        // element.属性="值"
+        div.id = "test";
+        div.className = "name" //比较特殊
+        console.log(div.id) //test
+        // element.setAttribute("属性","值")
+        div.setAttribute("long", 55);
+        console.log(div.getAttribute("long")) //100
+
+        // 移除属性
+        //removeAttribute("属性");
+        div.removeAttribute("long");
+    </script>
+</body>
+
+</html>

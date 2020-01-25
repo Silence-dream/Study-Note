@@ -103,9 +103,11 @@
         let tr = document.querySelector("tbody").querySelectorAll("tr");
         //批量注册事件
         for (let i = 0; i < tr.length; i++) {
+            // 鼠标移入让 tr 的样式修改成.bg里面的样式
             tr[i].onmouseover = function () {
                 this.className = 'bg';
             }
+            // 鼠标移出 tr 的样式修改成没有
             tr[i].onmouseout = function () {
                 this.className = ""
             }
