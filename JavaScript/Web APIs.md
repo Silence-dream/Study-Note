@@ -188,7 +188,7 @@ DOM树 又称为文档树模型，把文档映射成树形结构，通过节点�
 
 ![1550733794816](Web APIs.assets/1550733794816.png)
 
-### 1.4. 事件基础
+# 1.4. 事件基础
 
 ### 1.4.1. 事件概述
 
@@ -261,6 +261,210 @@ JavaScript 使我们有能力创建动态页面，而事件是可以被 JavaScri
 - 下拉菜单三要素
 
 - 关闭广告三要素
+
+
+
+# 1.5. 操作元素
+
+​	JavaScript的 DOM 操作可以改变网页内容、结构和样式，我们可以利用 DOM 操作元素来改变元素里面的内容、属性等。（注意：这些操作都是通过元素对象的属性实现的）
+
+### 1.5.1. 改变元素内容（获取或设置）
+
+![1550735016756](images/1550735016756.png)
+
+**innerText改变元素内容**
+
+```js
+<body>
+    <button>显示当前系统时间</button>
+    <div>某个时间</div>
+    <p>1123</p>
+    <script>
+        // 当我们点击了按钮，  div里面的文字会发生变化
+        // 1. 获取元素 
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        // 2.注册事件
+        btn.onclick = function() {
+            // div.innerText = '2019-6-6';
+            div.innerHTML = getDate();
+        }
+        function getDate() {
+            var date = new Date();
+            // 我们写一个 2019年 5月 1日 星期三
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var dates = date.getDate();
+            var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            var day = date.getDay();
+            return '今天是：' + year + '年' + month + '月' + dates + '日 ' + arr[day];
+        }
+    </script>
+</body>
+```
+
+**innerText和innerHTML的区别**
+
+- 获取内容时的区别：
+
+​	innerText会去除空格和换行，而innerHTML会保留空格和换行	
+
+- 设置内容时的区别：
+
+​	innerText不会识别html，而innerHTML会识别
+
+**案例代码**
+
+```js
+<body>
+    <div></div>
+    <p>
+        我是文字
+        <span>123</span>
+    </p>
+    <script>
+        // innerText 和 innerHTML的区别 
+        // 1. innerText 不识别html标签 非标准  去除空格和换行
+        var div = document.querySelector('div');
+        // div.innerText = '<strong>今天是：</strong> 2019';
+        // 2. innerHTML 识别html标签 W3C标准 保留空格和换行的
+        div.innerHTML = '<strong>今天是：</strong> 2019';
+        // 这两个属性是可读写的  可以获取元素里面的内容
+        var p = document.querySelector('p');
+        console.log(p.innerText);
+        console.log(p.innerHTML);
+    </script>
+</body>
+```
+
+### 1.5.2. 常用元素的属性操作
+
+![1550735556297](images/1550735556297.png)
+
+**获取属性的值**
+
+> 元素对象.属性名
+
+**设置属性的值**
+
+> 元素对象.属性名 = 值
+
+**案例代码**
+
+```js
+<body>
+    <button id="ldh">刘德华</button>
+    <button id="zxy">张学友</button> <br>
+    <img src="images/ldh.jpg" alt="" title="刘德华">
+    <script>
+        // 修改元素属性  src
+        // 1. 获取元素
+        var ldh = document.getElementById('ldh');
+        var zxy = document.getElementById('zxy');
+        var img = document.querySelector('img');
+        // 2. 注册事件  处理程序
+        zxy.onclick = function() {
+            img.src = 'images/zxy.jpg';
+            img.title = '张学友思密达';
+        }
+        ldh.onclick = function() {
+            img.src = 'images/ldh.jpg';
+            img.title = '刘德华';
+        }
+    </script>
+</body>
+```
+
+
+
+### 1.5.3. 案例：分时问候
+
+![1550735858049](images/1550735858049.png)
+
+![1550735877145](images/1550735877145.png)
+
+### 1.5.4. 表单元素的属性操作
+
+![1550736039005](images/1550736039005.png)
+
+**获取属性的值**
+
+> 元素对象.属性名
+
+**设置属性的值**
+
+> 元素对象.属性名 = 值
+>
+> 表单元素中有一些属性如：disabled、checked、selected，元素对象的这些属性的值是布尔型。
+
+**案例代码**
+
+```js
+<body>
+    <button>按钮</button>
+    <input type="text" value="输入内容">
+    <script>
+        // 1. 获取元素
+        var btn = document.querySelector('button');
+        var input = document.querySelector('input');
+        // 2. 注册事件 处理程序
+        btn.onclick = function() {
+            // 表单里面的值 文字内容是通过 value 来修改的
+            input.value = '被点击了';
+            // 如果想要某个表单被禁用 不能再点击 disabled  我们想要这个按钮 button禁用
+            // btn.disabled = true;
+            this.disabled = true;
+            // this 指向的是事件函数的调用者 btn
+        }
+    </script>
+</body>
+```
+
+### 1.5.5. 案例：仿京东显示密码
+
+![1550736330331](images/1550736330331.png)
+
+![1550736346822](images/1550736346822.png)
+
+### 1.5.6. 样式属性操作
+
+我们可以通过 JS 修改元素的大小、颜色、位置等样式。
+
+**常用方式**
+
+![1550736488634](images/1550736488634.png)
+
+
+
+#### 方式1：通过操作style属性
+
+> 元素对象的style属性也是一个对象！
+>
+> 元素对象.style.样式属性 = 值;
+
+![1550736620181](images/1550736620181.png)
+
+**案例代码**
+
+```js
+<body>
+    <div></div>
+    <script>
+        // 1. 获取元素
+        var div = document.querySelector('div');
+        // 2. 注册事件 处理程序
+        div.onclick = function() {
+            // div.style里面的属性 采取驼峰命名法 
+            this.style.backgroundColor = 'purple';
+            this.style.width = '250px';
+        }
+    </script>
+</body>
+```
+
+#### 案例：淘宝点击关闭二维码
+
+
 
 # 自定义元素
 
@@ -437,6 +641,593 @@ JavaScript 使我们有能力创建动态页面，而事件是可以被 JavaScri
 
 </html>
 ~~~
+
+
+
+
+
+# 节点操作
+
+## 概述
+
+​	网页中的所有内容都是节点（标签、属性、文本、注释等），在DOM 中，节点使用 node 来表示。
+
+​	HTML DOM 树中的所有节点均可通过 JavaScript 进行访问，所有 HTML 元素（节点）均可被修改，也可以创建或删除。
+
+![image-20200204004700082](images/image-20200204004700082.png)
+
+​	一般地，节点至少拥有nodeType（节点类型）、nodeName（节点名称）和nodeValue（节点值）这三个基本属性。
+
+![image-20200204004717950](images/image-20200204004717950.png)
+
+
+
+### 节点类型
+
+- 元素节点 nodeType 1
+- 属性节点 nodeType 2
+- 文本节点 nodeType 3  (文本节点包含文字、空格、换行等)
+
+
+
+
+
+
+
+## 节点层级
+
+​	利用 DOM 树可以把节点划分为不同的层级关系，常见的是**父子兄层级关系**。
+
+![image-20200204004753466](images/image-20200204004753466.png)
+
+## 父级节点
+
+![image-20200204004805794](images/image-20200204004805794.png)
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 节点的优点 -->
+    <div>我是div</div>
+    <span>我是span</span>
+    <ul>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </ul>
+    <div class="demo">
+        <div class="box">
+            <span class="erweima">×</span>
+        </div>
+    </div>
+
+    <script>
+        // 1. 父节点 parentNode
+        var erweima = document.querySelector('.erweima');
+        // var box = document.querySelector('.box');
+        // 得到的是离元素最近的父级节点(亲爸爸) 如果找不到父节点就返回为 null
+        console.log(erweima.parentNode); //返回的是html里面类名为box的节点
+    </script>
+</body>
+
+</html>
+~~~
+
+
+
+## 子节点
+
+**所有子节点**
+
+![image-20200204011027608](images/image-20200204011027608.png)
+
+**子元素节点**
+
+![image-20200204011047626](images/image-20200204011047626.png)
+
+
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 节点的优点 -->
+    <div>我是div</div>
+    <span>我是span</span>
+    <ul>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+
+    </ul>
+    <ol>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </ol>
+
+    <div class="demo">
+        <div class="box">
+            <span class="erweima">×</span>
+        </div>
+    </div>
+
+    <script>
+        // DOM 提供的方法（API）获取
+        var ul = document.querySelector('ul');
+        var lis = ul.querySelectorAll('li');
+        // 1. 子节点  childNodes 所有的子节点 包含 元素节点 文本节点等等
+        console.log(ul.childNodes);
+        console.log(ul.childNodes[0].nodeType); // 3
+        console.log(ul.childNodes[1].nodeType); // 2
+        // 2. children 获取所有的子元素节点 也是我们实际开发常用的
+        console.log(ul.children);
+    </script>
+</body>
+
+</html>
+~~~
+
+### 获取第一个和最后一个子节点
+
+![image-20200204012004093](images/image-20200204012004093.png)
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ol>
+        <li>我是li1</li>
+        <li>我是li2</li>
+        <li>我是li3</li>
+        <li>我是li4</li>
+        <li>我是li5</li>
+    </ol>
+    <script>
+        var ol = document.querySelector('ol');
+        // 1. firstChild 第一个子节点 不管是文本节点还是元素节点
+        console.log(ol.firstChild);
+        console.log(ol.lastChild);
+        // 2. firstElementChild 返回第一个子元素节点 ie9才支持
+        console.log(ol.firstElementChild);
+        console.log(ol.lastElementChild);
+        // 3. 实际开发的写法  既没有兼容性问题又返回第一个子元素
+        console.log(ol.children[0]);
+        console.log(ol.children[ol.children.length - 1]);
+    </script>
+</body>
+
+</html>
+~~~
+
+
+
+## 兄弟节点
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>我是div</div>
+    <span>我是span</span>
+    <script>
+        var div = document.querySelector('div');
+        // 1.nextSibling 下一个兄弟 节点 包含元素节点或者 文本节点等等
+        console.log(div.nextSibling);
+        /* 得到上一个兄弟节点 */
+        console.log(div.previousSibling);
+        // 2. nextElementSibling 得到下一个兄弟  元素  节点   (有兼容性问题)
+        console.log(div.nextElementSibling);
+        console.log(div.previousElementSibling);
+    </script>
+</body>
+
+</html>
+~~~
+
+
+
+## 创建节点
+
+**`Document.createElement()`** 方法用于创建一个由标签名称 tagName 指定的 HTML 元素
+
+```js
+var element = document.createElement(tagName[, options]);
+var li = document.createElement('li');
+```
+
+## 添加节点
+
+![image-20200204021257009](images/image-20200204021257009.png)
+
+
+
+语法
+
+```js
+var insertedNode = parentNode.insertBefore(newNode, referenceNode);
+node.insertBefore(你所创建的元素, 创建在谁的前面);
+```
+
+- `insertedNode` 已经经过插入`newNode`的新的节点
+- `parentNode` 新插入节点的父节点
+- `newNode` 用于插入的节点
+- `referenceNode` `newNode` 将要插在这个节点之前
+
+如果 `referenceNode` 为 `null` 则 `newNode` 将被插入到子节点的末尾*。*
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>123</li>
+    </ul>
+    <script>
+        // 1. 创建节点元素节点
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        // 2. 添加节点 node.appendChild(child)  node 父级  child 是子级 后面追加元素  类似于数组中的push
+        var ul = document.querySelector('ul');
+        ul.appendChild(li);
+        // 3. 添加节点 node.insertBefore(你所创建的元素, 创建在谁的前面);
+        ul.insertBefore(a, ul.children[0]);
+        // 4. 我们想要页面添加一个新的元素 ： 1. 创建元素 2. 添加元素
+    </script>
+</body>
+
+</html>
+~~~
+
+
+
+
+
+
+
+## 删除节点
+
+语法
+
+​	
+
+```js
+let oldChild = node.removeChild(child);
+
+//OR
+
+element.removeChild(child);
+```
+
+- `child` 是要移除的那个子节点.
+- `node` 是`child`的父节点.
+- oldChild保存对删除的子节点的引用. `oldChild` === `child`.
+
+例子
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>删除</button>
+    <ul>
+        <li>熊大</li>
+        <li>熊二</li>
+        <li>光头强</li>
+    </ul>
+    <script>
+        /* 获取元素 */
+        let ul = document.querySelector("ul");
+        let btn = document.querySelector("button");
+        /* 点击删除按钮 */
+        btn.onclick = function () {
+            // 如果ul里面没有子元素了就把按钮禁用掉
+            if (ul.children.length == 0) {
+                this.disabled = true;
+            } else {
+                /* 移除ul里面的第一个子元素节点 */
+                ul.removeChild(ul.children[0]);
+            }
+        }
+    </script>
+</body>
+
+</html>
+~~~
+
+
+
+
+
+
+
+## 复制（克隆）节点
+
+![image-20200204145103386](images/image-20200204145103386.png)
+
+
+
+
+
+ 语法
+
+```
+var dupNode = node.cloneNode(deep);
+```
+
+- `node`
+
+  将要被克隆的节点
+
+- `dupNode`
+
+  克隆生成的副本节点
+
+- `deep` 可选
+
+  是否采用深度克隆`,如果为true,`则该节点的所有后代节点也都会被克隆,如果为`false,则只克隆该节点本身.`
+
+
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1111</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        var ul = document.querySelector('ul');
+        // node.cloneNode(deep);   deep=true复制ul里面的所有子元素    deep=false只复制标签本身
+        let clone = ul.cloneNode(true);
+        ul.appendChild(clone);
+    </script>
+</body>
+
+</html>
+~~~
+
+
+
+
+
+## 创建元素的三种方式
+
+![image-20200204155944378](images/image-20200204155944378.png)
+
+
+
+
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击</button>
+    <p>abc</p>
+    <div class="inner"></div>
+    <div class="create"></div>
+    <script>
+        // window.onload = function() {
+        //         document.write('<div>123</div>');
+
+        //     }
+        // 三种创建元素方式区别 
+
+
+        // 1. document.write() 创建元素  如果页面文档流加载完毕，再调用这句话会导致页面重绘
+        var btn = document.querySelector('button');
+        btn.onclick = function () {
+            document.write('<div>123</div>');
+        }
+
+        // 2. innerHTML 创建元素
+        var inner = document.querySelector('.inner');
+        // for (var i = 0; i <= 100; i++) {
+        //     inner.innerHTML += '<a href="#">百度</a>'
+        // }
+        var arr = [];
+        for (var i = 0; i <= 100; i++) {
+            arr.push('<a href="#">百度</a>');
+        }
+        inner.innerHTML = arr.join('');
+        // 3. document.createElement() 创建元素
+        var create = document.querySelector('.create');
+        for (var i = 0; i <= 100; i++) {
+            var a = document.createElement('a');
+            a.innerHTML = "6"
+            a.href = "javascript:;"
+            create.appendChild(a);
+        }
+    </script>
+</body>
+
+</html>
+~~~
+
+
+
+### 效率的对比
+
+**innerHTML字符串拼接方式（效率低）**
+
+```js
+<script>
+    function fn() {
+        var d1 = +new Date();
+        var str = '';
+        for (var i = 0; i < 1000; i++) {
+            document.body.innerHTML += '<div style="width:100px; height:2px; border:1px solid blue;"></div>';
+        }
+        var d2 = +new Date();
+        console.log(d2 - d1);
+    }
+    fn();
+</script>
+```
+
+**createElement方式（效率一般）**
+
+```js
+<script>
+    function fn() {
+        var d1 = +new Date();
+
+        for (var i = 0; i < 1000; i++) {
+            var div = document.createElement('div');
+            div.style.width = '100px';
+            div.style.height = '2px';
+            div.style.border = '1px solid red';
+            document.body.appendChild(div);
+        }
+        var d2 = +new Date();
+        console.log(d2 - d1);
+    }
+    fn();
+</script>
+```
+
+**innerHTML数组方式（效率高）**
+
+```js
+<script>
+    function fn() {
+        var d1 = +new Date();
+        var array = [];
+        for (var i = 0; i < 1000; i++) {
+            array.push('<div style="width:100px; height:2px; border:1px solid blue;"></div>');
+        }
+        document.body.innerHTML = array.join('');
+        var d2 = +new Date();
+        console.log(d2 - d1);
+    }
+    fn();
+</script>
+```
+
+
+
+# DOM重点核心（总结）
+
+
+
+![1551164669434](images/1551164669434-1580805041185.png)
+
+![1551164715018](images/1551164715018-1580805041185.png)
+
+
+
+关于dom操作，我们主要针对于元素的操作。主要有创建、增、删、改、查、属性操作、事件操作。
+
+### 1.2.1. 创建
+
+1. document.write
+2. innerHTML
+3. createElement
+
+### 1.2.2. 增加
+
+1. appendChild
+2. insertBefore
+
+### 1.2.3. 删
+
+1. removeChild
+
+### 1.2.4. 改
+
+主要修改dom的元素属性，dom元素的内容、属性,表单的值等
+1.修改元素属性: src、 href、 title等
+2.修改普通元素内容: innerHTML、 innerText
+3.修改表单元素: value、 type、 disabled等
+4.修改元素样式: style、 className
+
+### 1.2.5. 查
+
+主要获取查询dom的元素
+
+1. DOM提供的API 方法: getElementByld、 getElementsByTagName 古老用法不太推荐
+2. H5提供的新方法: querySelector、 querySelectorAll 提倡
+   3.利用节点操作获取元素: 父(parentNode) 子(children)、 兄(previousElementSibling、
+   nextElementSibling)提倡
+
+### 1.2.6. 属性操作
+
+主要针对于自定义属性。
+
+1. setAttribute:设置dom的属性值
+2. getAttribute:得到dom的属性值
+3. removeAttribute移除属性
 
 
 
@@ -1105,6 +1896,433 @@ Tab栏切换有2个大的模块
                 tab_cons[index].style.display = "block";
                 // 内容显示模块结束
 
+            }
+        }
+    </script>
+</body>
+
+</html>
+~~~
+
+## 新浪下拉菜单
+
+案例分析
+
+![image-20200204012838702](images/image-20200204012838702.png)
+
+核心代码
+
+~~~html
+    <script>
+        // 1. 获取元素
+        var nav = document.querySelector('.nav');
+        var lis = nav.children; // 得到4个小li
+        // 2.循环注册事件
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onmouseover = function() {
+                this.children[1].style.display = 'block';
+            }
+            lis[i].onmouseout = function() {
+                this.children[1].style.display = 'none';
+            }
+        }
+    </script>
+~~~
+
+完整代码
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .nav {
+            margin: 100px;
+        }
+
+        .nav>li {
+            position: relative;
+            float: left;
+            width: 80px;
+            height: 41px;
+            text-align: center;
+        }
+
+        .nav li a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            line-height: 41px;
+            color: #333;
+        }
+
+        .nav>li>a:hover {
+            background-color: #eee;
+        }
+
+        .nav ul {
+            display: none;
+            position: absolute;
+            top: 41px;
+            left: 0;
+            width: 100%;
+            border-left: 1px solid #FECC5B;
+            border-right: 1px solid #FECC5B;
+        }
+
+        .nav ul li {
+            border-bottom: 1px solid #FECC5B;
+        }
+
+        .nav ul li a:hover {
+            background-color: #FFF5DA;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="nav">
+        <li>
+            <a href="#">微博</a>
+            <ul>
+                <li>
+                    <a href="">私信</a>
+                </li>
+                <li>
+                    <a href="">评论</a>
+                </li>
+                <li>
+                    <a href="">@我</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">微博</a>
+            <ul>
+                <li>
+                    <a href="">私信</a>
+                </li>
+                <li>
+                    <a href="">评论</a>
+                </li>
+                <li>
+                    <a href="">@我</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">微博</a>
+            <ul>
+                <li>
+                    <a href="">私信</a>
+                </li>
+                <li>
+                    <a href="">评论</a>
+                </li>
+                <li>
+                    <a href="">@我</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">微博</a>
+            <ul>
+                <li>
+                    <a href="">私信</a>
+                </li>
+                <li>
+                    <a href="">评论</a>
+                </li>
+                <li>
+                    <a href="">@我</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        /* 获取nav */
+        let navs = document.getElementsByClassName('nav')[0];
+        /* 获取nav里面所有的li */
+        let lis = navs.children;
+
+        for (let i = 0; i < lis.length; i++) {
+            lis[i].onmouseover = function () {
+                /* 获取li里面的所有子元素 a  和 ul   选择下标为1的ul进行显示 */
+                this.children[1].style.display = "block";
+            }
+            lis[i].onmouseout = function () {
+                this.children[1].style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
+~~~
+
+## 简单版留言发布
+
+案例分析
+
+![image-20200204023115854](images/image-20200204023115854.png)
+
+
+
+
+
+
+
+
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding: 100px;
+        }
+
+        textarea {
+            width: 200px;
+            height: 100px;
+            border: 1px solid pink;
+            outline: none;
+            resize: none;
+        }
+
+        ul {
+            margin-top: 50px;
+        }
+
+        li {
+            width: 300px;
+            padding: 5px;
+            background-color: rgb(245, 209, 243);
+            color: red;
+            font-size: 14px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea name="" id=""></textarea>
+    <button>发布</button>
+    <ul>
+
+    </ul>
+    <script>
+        /* 获取元素 */
+        let btn = document.querySelector("button");
+        let text = document.querySelector("textarea");
+        let ul = document.querySelector("ul");
+        /* 注册事件 */
+        btn.onclick = function () {
+            if (text.value == "") {
+                alert("你没有输入内容");
+                return false;
+            } else {
+                /* 创建元素 */
+                let li = document.createElement("li");
+                /* 添加textarer里面的内容到li里面 */
+                li.innerHTML = text.value;
+                /* 添加元素 */
+                // ul.appendChild(li);
+                ul.insertBefore(li, ul.children[0]);
+            }
+        }
+    </script>
+</body>
+
+</html>
+~~~
+
+
+
+
+
+## 删除留言
+
+案例分析
+
+![image-20200204144751696](images/image-20200204144751696.png)
+
+~~~html
+    <textarea name="" id=""></textarea>
+    <button>发布</button>
+    <ul>
+
+    </ul>
+    <script>
+        // 1. 获取元素
+        var btn = document.querySelector('button');
+        var text = document.querySelector('textarea');
+        var ul = document.querySelector('ul');
+        // 2. 注册事件
+        btn.onclick = function() {
+            if (text.value == '') {
+                alert('您没有输入内容');
+                return false;
+            } else {
+                // console.log(text.value);
+                // (1) 创建元素
+                var li = document.createElement('li');
+                // 先有li 才能赋值
+                li.innerHTML = text.value + "<a href='javascript:;'>删除</a>";
+                // (2) 添加元素
+                // ul.appendChild(li);
+                ul.insertBefore(li, ul.children[0]);
+                // (3) 删除元素 删除的是当前链接的li  它的父亲
+                var as = document.querySelectorAll('a');
+                for (var i = 0; i < as.length; i++) {
+                    as[i].onclick = function() {
+                        // 删除的是 li 当前a所在的li  this.parentNode;
+                        ul.removeChild(this.parentNode);
+                    }
+                }
+            }
+        }
+    </script>
+~~~
+
+## 动态生成表格创建学生数据
+
+案例分析
+
+​	![image-20200204151058914](images/image-20200204151058914.png)
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            width: 500px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        td,
+        th {
+            border: 1px solid #333;
+        }
+
+        thead tr {
+            height: 40px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        // 1.先去准备好学生的数据
+        var datas = [{
+                name: '魏璎珞',
+                subject: 'JavaScript',
+                score: 100
+            }, {
+                name: '弘历',
+                subject: 'JavaScript',
+                score: 98
+            }, {
+                name: '傅恒',
+                subject: 'JavaScript',
+                score: 99
+            }, {
+                name: '明玉',
+                subject: 'JavaScript',
+                score: 88
+            }, {
+                name: '大猪蹄子',
+                subject: 'JavaScript',
+                score: 0,
+            },
+
+        ];
+
+        // 在tbody里面创建行
+        let tbody = document.querySelector("tbody");
+        /* 创建单元格 */
+        for (let i = 0; i < datas.length; i++) {
+            /* 创建tr行 */
+            let tr = document.createElement("tr");
+            /* 控制新添加的在前面 */
+            tbody.insertBefore(tr, tbody.children[0]);
+            /* 行里面创建单元格 */
+            /* 行里面创建单元格td  单元格的数量取决于每个对象的属性个数 所以使用for循环遍历对象 */
+            for (let k in datas[i]) {
+                // 创建单元格
+                let td = document.createElement("td");
+                /* 把对象里面的属性值给td */
+                td.innerHTML = datas[i][k];
+                // console.log(datas[i][k]);     //至于为什么用append添加进去请打开我
+                /* 在tr里面从创建td 始终创建在最后面 */
+                tr.appendChild(td)
+                // tr.insertBefore(td, tr.children[0]);
+            }
+            /* 创建有 删除单元格 */
+            let td = document.createElement("td");
+            tr.append(td);
+            td.innerHTML = "<a href='javascript:;'>删除</a>"
+
+        }
+        /* 为什么删除操作要写在for循环外面，因为上面的for循环是创建单元格使用的，创建完成之后就是删除操作所以放外面 */
+        // 删除操作
+        let as = document.querySelectorAll("a");
+        for (let i = 0; i < as.length; i++) {
+            as[i].onclick = function () {
+                /* 删除的是tbody里面的行     因为a标签在td里面  td在tr里面   所以删除的是a的爷爷 */
+                tbody.removeChild(as[i].parentNode.parentNode);
             }
         }
     </script>

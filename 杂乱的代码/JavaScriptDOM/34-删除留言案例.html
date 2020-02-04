@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding: 100px;
+        }
+
+        textarea {
+            width: 200px;
+            height: 100px;
+            border: 1px solid pink;
+            outline: none;
+            resize: none;
+        }
+
+        ul {
+            margin-top: 50px;
+        }
+
+        li {
+            width: 300px;
+            padding: 5px;
+            background-color: rgb(245, 209, 243);
+            color: red;
+            font-size: 14px;
+            margin: 15px 0;
+        }
+
+        li a {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea name="" id=""></textarea>
+    <button>发布</button>
+    <ul>
+    </ul>
+    <script>
+        let btn = document.querySelector("button");
+        let text = document.querySelector("textarea");
+        let ul = document.querySelector("ul");
+        btn.onclick = function () {
+
+            if (text.value == "") {
+                alert("请输入内容")
+                return false;
+            } else {
+
+                /* 创建元素节点li */
+                let li = document.createElement("li");
+                /* 把文本域里面的内柔给li */
+
+                li.innerHTML = text.value + "<a href='javascript:;'>删除</a>";
+                /* 添加到ul里面，添加的是li元素节点，添加到ul里面的第一个子元素节点前面 */
+                ul.insertBefore(li, ul.children[0]);
+                /* 添加完成之后清空文本域 */
+                text.value = "";
+
+
+                /* 删除元素 */
+                let as = document.querySelectorAll("a");
+                console.log(as);
+
+                for (let i = 0; i < as.length; i++) {
+                    as[i].onclick = function () {
+                        /* 移除a所对应的li */
+                        // ul.removeChild(ul.children[i]);
+                        /* 移除a的父亲li */
+                        ul.removeChild(as[i].parentNode);
+                        console.log(1);
+                    }
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

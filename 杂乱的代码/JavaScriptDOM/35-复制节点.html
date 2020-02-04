@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1111</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        var ul = document.querySelector('ul');
+        // node.cloneNode(deep);   deep=true复制ul里面的所有子元素    deep=false只复制标签本身
+        let clone = ul.cloneNode(true);
+        ul.appendChild(clone);
+    </script>
+</body>
+
+</html>

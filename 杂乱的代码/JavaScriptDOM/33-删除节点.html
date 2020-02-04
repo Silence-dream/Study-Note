@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>删除</button>
+    <ul>
+        <li>熊大</li>
+        <li>熊二</li>
+        <li>光头强</li>
+    </ul>
+    <script>
+        /* 获取元素 */
+        let ul = document.querySelector("ul");
+        let btn = document.querySelector("button");
+        /* 点击删除按钮 */
+        btn.onclick = function () {
+            // 如果ul里面没有子元素了就把按钮禁用掉
+            if (ul.children.length == 0) {
+                this.disabled = true;
+            } else {
+                /* 移除ul里面的第一个子元素节点 */
+                ul.removeChild(ul.children[0]);
+            }
+        }
+    </script>
+</body>
+
+</html>
