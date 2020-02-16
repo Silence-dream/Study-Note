@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    手机号码： <input type="number"> <button>发送</button>
+    <script>
+        let input = document.querySelector("input");
+        let btn = document.querySelector("button");
+
+
+        btn.addEventListener("click", function () {
+            btn.disabled = true;
+            // 定义倒计时秒数
+            let time = 3;
+            let timer = setInterval(() => {
+                if (time == 0) {
+                    clearInterval(timer);
+                    btn.disabled = false;
+                    btn.innerHTML = "发送";
+                } else {
+                    btn.innerHTML = "还剩下" + time + "秒";
+                    time--;
+                }
+            }, 1000);
+
+        })
+    </script>
+</body>
+
+</html>

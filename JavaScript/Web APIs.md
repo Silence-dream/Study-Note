@@ -1231,6 +1231,1072 @@ var dupNode = node.cloneNode(deep);
 
 
 
+
+
+# 事件高级
+
+### 1.3.1. 注册事件（2种方式）
+
+语法
+
+```
+target.addEventListener(type, listener, options);
+target.addEventListener(type, listener, useCapture);
+target.addEventListener(type, listener, useCapture, wantsUntrusted  );  // Gecko/Mozilla only
+```
+
+- 参数
+
+- `type`
+
+  表示监听[事件类型](https://developer.mozilla.org/zh-CN/docs/Web/Events)的字符串。
+
+- `listener`
+
+  当所监听的事件类型触发时，会接收到一个事件通知（实现了 [`Event`](https://developer.mozilla.org/zh-CN/docs/Web/API/Event) 接口的对象）对象。`listener` 必须是一个实现了 [`EventListener`](https://developer.mozilla.org/zh-CN/docs/Web/API/EventListener) 接口的对象，或者是一个[函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions)。有关回调本身的详细信息，请参阅[The event listener callback](https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener#The_event_listener_callback) 
+
+- options 可选
+
+  一个指定有关 `listener `属性的可选参数**对象**。可用的选项如下：`capture`:  [`Boolean`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Boolean)，表示 `listener` 会在该类型的事件捕获阶段传播到该 `EventTarget` 时触发。`once`:  [`Boolean`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Boolean)，表示 `listener 在添加之后最多只调用一次。如果是` `true，` `listener` 会在其被调用之后自动移除。`passive`: [`Boolean`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Boolean)，设置为true时，表示 `listener` 永远不会调用 `preventDefault()。如果 listener 仍然调用了这个函数，客户端将会忽略它并抛出一个控制台警告。`` mozSystemGroup`: 只能在 XBL 或者是 Firefox' chrome 使用，这是个 [`Boolean`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Boolean)，表示 `listener `被添加到 system group。
+
+- `useCapture` 可选
+
+  [`Boolean`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Boolean)，在DOM树中，注册了listener的元素， 是否要先于它下面的EventTarget，调用该listener。 当useCapture(设为true) 时，沿着DOM树向上冒泡的事件，不会触发listener。当一个元素嵌套了另一个元素，并且两个元素都对同一事件注册了一个处理函数时，所发生的事件冒泡和事件捕获是两种不同的事件传播方式。事件传播模式决定了元素以哪个顺序接收事件。进一步的解释可以查看 [事件流](http://www.w3.org/TR/DOM-Level-3-Events/#event-flow) 及 [JavaScript Event order](http://www.quirksmode.org/js/events_order.html#link4) 文档。 如果没有指定， `useCapture` 默认为 false 。 
+
+**注意:** 对于事件目标上的事件监听器来说，事件会处于“目标阶段”，而不是冒泡阶段或者捕获阶段。在目标阶段的事件会触发该元素（即事件目标）上的所有监听器，而不在乎这个监听器到底在注册时`useCapture` 参数值是true还是false。
+
+**注意:** `useCapture` 仅仅在现代浏览器最近的几个版本中是可选的。 例如 Firefox 6以前的版本都不是可选的。为了能够提供更广泛的支持，你应该提供这个参数。
+
+- `wantsUntrusted` 
+
+  如果为 `true `, 则事件处理程序会接收网页自定义的事件。此参数只适用于 Gecko（[chrome](https://developer.mozilla.org/en-US/docs/Glossary/chrome)的默认值为true，其他常规网页的默认值为false），主要用于附加组件的代码和浏览器本身。
+
+返回值
+
+`undefined`.
+
+![1551165252019](images/1551165252019.png)
+
+### 1.3.2 事件监听
+
+#### addEventListener()事件监听（IE9以后支持）
+
+![1551165364122](images/1551165364122.png)
+
+eventTarget.addEventListener()方法将指定的监听器注册到 eventTarget（目标对象）上，当该对象触发指定的事件时，就会执行事件处理函数。
+
+![1551165604792](images/1551165604792.png)
+
+#### attacheEvent()事件监听（IE678支持）
+
+![1551165781836](images/1551165781836.png)
+
+​	eventTarget.attachEvent()方法将指定的监听器注册到 eventTarget（目标对象） 上，当该对象触发指定的事件时，指定的回调函数就会被执行。
+
+![1551165843912](images/1551165843912.png)
+
+```js
+<button>传统注册事件</button>
+<button>方法监听注册事件</button>
+<button>ie9 attachEvent</button>
+<script>
+    var btns = document.querySelectorAll('button');
+    // 1. 传统方式注册事件
+    btns[0].onclick = function() {
+        alert('hi');
+    }
+    btns[0].onclick = function() {
+            alert('hao a u');
+        }
+   // 2. 事件侦听注册事件 addEventListener 
+   // (1) 里面的事件类型是字符串 必定加引号 而且不带on
+   // (2) 同一个元素 同一个事件可以添加多个侦听器（事件处理程序）
+    btns[1].addEventListener('click', function() {
+        alert(22);
+    })
+    btns[1].addEventListener('click', function() {
+            alert(33);
+    })
+    // 3. attachEvent ie9以前的版本支持
+    btns[2].attachEvent('onclick', function() {
+        alert(11);
+    })
+</script>
+```
+
+#### 事件监听兼容性解决方案
+
+封装一个函数，函数中判断浏览器的类型：
+
+![1551166023885](images/1551166023885.png)
+
+### 1.3.3. 删除事件（解绑事件）
+
+![1551166185410](images/1551166185410.png)
+
+```js
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script>
+        var divs = document.querySelectorAll('div');
+        divs[0].onclick = function() {
+            alert(11);
+            // 1. 传统方式删除事件
+            divs[0].onclick = null;
+        }
+        // 2. removeEventListener 删除事件
+        divs[1].addEventListener('click', fn) // 里面的fn 不需要调用加小括号
+        function fn() {
+            alert(22);
+            divs[1].removeEventListener('click', fn);
+        }
+        // 3. detachEvent
+        divs[2].attachEvent('onclick', fn1);
+
+        function fn1() {
+            alert(33);
+            divs[2].detachEvent('onclick', fn1);
+        }
+    </script>
+```
+
+**删除事件兼容性解决方案 **
+
+![1551166332453](images/1551166332453.png)
+
+### 1.3.4. DOM事件流
+
+> ```
+> html中的标签都是相互嵌套的，我们可以将元素想象成一个盒子装一个盒子，document是最外面的大盒子。
+> 当你单击一个div时，同时你也单击了div的父元素，甚至整个页面。
+> 
+> 那么是先执行父元素的单击事件，还是先执行div的单击事件 ？？？
+> ```
+
+![1551166423144](images/1551166423144.png)
+
+> 比如：我们给页面中的一个div注册了单击事件，当你单击了div时，也就单击了body，单击了html，单击了document。
+
+![1551166555833](images/1551166555833.png)
+
+![1551166581552](images/1551166581552.png)
+
+> ```
+> 当时的2大浏览器霸主谁也不服谁！
+> IE 提出从目标元素开始，然后一层一层向外接收事件并响应，也就是冒泡型事件流。
+> Netscape（网景公司）提出从最外层开始，然后一层一层向内接收事件并响应，也就是捕获型事件流。
+> 
+> 江湖纷争，武林盟主也脑壳疼！！！
+> 
+> 最终，w3c 采用折中的方式，平息了战火，制定了统一的标准 —--— 先捕获再冒泡。
+> 现代浏览器都遵循了此标准，所以当事件发生时，会经历3个阶段。
+> ```
+
+DOM 事件流会经历3个阶段： 
+
+1. 捕获阶段
+
+2. 当前目标阶段
+
+3. 冒泡阶段 
+
+
+
+​	我们向水里面扔一块石头，首先它会有一个下降的过程，这个过程就可以理解为从最顶层向事件发生的最具体元素（目标点）的捕获过程；之后会产生泡泡，会在最低点（ 最具体元素）之后漂浮到水面上，这个过程相当于事件冒泡。 
+
+![1551169007768](images/1551169007768.png)
+
+![1551169042295](images/1551169042295.png)
+
+**事件冒泡**
+
+```js
+    <div class="father">
+        <div class="son">son盒子</div>
+    </div>
+    <script>
+        // onclick 和 attachEvent（ie） 在冒泡阶段触发
+        // 冒泡阶段 如果addEventListener 第三个参数是 false 或者 省略 
+        // son -> father ->body -> html -> document
+        var son = document.querySelector('.son');
+		// 给son注册单击事件
+        son.addEventListener('click', function() {
+            alert('son');
+        }, false);
+		// 给father注册单击事件
+        var father = document.querySelector('.father');
+        father.addEventListener('click', function() {
+            alert('father');
+        }, false);
+		// 给document注册单击事件，省略第3个参数
+        document.addEventListener('click', function() {
+            alert('document');
+        })
+    </script>
+```
+
+**事件捕获**
+
+```js
+    <div class="father">
+        <div class="son">son盒子</div>
+    </div>
+    <script>
+        // 如果addEventListener() 第三个参数是 true 那么在捕获阶段触发
+        // document -> html -> body -> father -> son
+         var son = document.querySelector('.son');
+		// 给son注册单击事件，第3个参数为true
+         son.addEventListener('click', function() {
+             alert('son');
+         }, true);
+         var father = document.querySelector('.father');
+		// 给father注册单击事件，第3个参数为true
+         father.addEventListener('click', function() {
+             alert('father');
+         }, true);
+		// 给document注册单击事件，第3个参数为true
+        document.addEventListener('click', function() {
+            alert('document');
+        }, true)
+    </script>
+```
+
+### 1.3.5. 事件对象e
+
+#### 什么是事件对象
+
+事件发生后，跟事件相关的一系列信息数据的集合都放到这个对象里面，这个对象就是事件对象。
+
+比如：  
+
+1. 谁绑定了这个事件。
+
+2. 鼠标触发事件的话，会得到鼠标的相关信息，如鼠标位置。
+
+3. 键盘触发事件的话，会得到键盘的相关信息，如按了哪个键。
+
+#### 事件对象的使用
+
+事件触发发生时就会产生事件对象，并且系统会以实参的形式传给事件处理函数。
+
+所以，在事件处理函数中声明1个形参用来接收事件对象。
+
+![1551169537789](images/1551169537789.png)
+
+#### 事件对象的兼容性处理
+
+事件对象本身的获取存在兼容问题：
+
+1. 标准浏览器中是浏览器给方法传递的参数，只需要定义形参 e 就可以获取到。
+
+2. 在 IE6~8 中，浏览器不会给方法传递参数，如果需要的话，需要到 window.event 中获取查找。
+
+![1551169680823](images/1551169680823.png)
+
+```
+只要“||”前面为false, 不管“||”后面是true 还是 false，都返回 “||” 后面的值。
+只要“||”前面为true, 不管“||”后面是true 还是 false，都返回 “||” 前面的值。
+```
+
+```js
+    <div>123</div>
+    <script>
+        var div = document.querySelector('div');
+        div.onclick = function(e) {
+                // 事件对象
+                e = e || window.event;
+                console.log(e);
+        }
+    </script>
+```
+
+#### 事件对象的属性和方法
+
+![1551169931778](images/1551169931778.png)
+
+#### e.target 和 this 的区别
+
+-  this 是事件绑定的元素（绑定这个事件处理函数的元素） 。
+
+-  e.target 是事件触发的元素。
+
+> ```
+> 常情况下terget 和 this是一致的，
+> 但有一种情况不同，那就是在事件冒泡时（父子元素有相同事件，单击子元素，父元素的事件处理函数也会被触发执行），
+> 	这时候this指向的是父元素，因为它是绑定事件的元素对象，
+> 	而target指向的是子元素，因为他是触发事件的那个具体元素对象。
+> ```
+
+```js
+    <div>123</div>
+    <script>
+        var div = document.querySelector('div');
+        div.addEventListener('click', function(e) {
+            // e.target 和 this指向的都是div
+            console.log(e.target);
+            console.log(this);
+
+        });
+    </script>
+```
+
+事件冒泡下的e.target和this
+
+```js
+    <ul>
+        <li>abc</li>
+        <li>abc</li>
+        <li>abc</li>
+    </ul>
+    <script>
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click', function(e) {
+              // 我们给ul 绑定了事件  那么this 就指向ul  
+              console.log(this); // ul
+
+              // e.target 触发了事件的对象 我们点击的是li e.target 指向的就是li
+              console.log(e.target); // li
+        });
+    </script>
+```
+
+### 1.3.6 阻止默认行为
+
+> html中一些标签有默认行为，例如a标签被单击后，默认会进行页面跳转。
+
+```js
+    <a href="http://www.baidu.com">百度</a>
+    <script>
+        // 2. 阻止默认行为 让链接不跳转 
+        var a = document.querySelector('a');
+        a.addEventListener('click', function(e) {
+             e.preventDefault(); //  dom 标准写法
+        });
+        // 3. 传统的注册方式
+        a.onclick = function(e) {
+            // 普通浏览器 e.preventDefault();  方法
+            e.preventDefault();
+            // 低版本浏览器 ie678  returnValue  属性
+            e.returnValue = false;
+            // 我们可以利用return false 也能阻止默认行为 没有兼容性问题
+            return false;
+        }
+    </script>
+```
+
+### 1.3.7 阻止事件冒泡
+
+事件冒泡本身的特性，会带来的坏处，也会带来的好处。
+
+![1551171467194](images/1551171467194.png)
+
+```js
+    <div class="father">
+        <div class="son">son儿子</div>
+    </div>
+    <script>
+        var son = document.querySelector('.son');
+		// 给son注册单击事件
+        son.addEventListener('click', function(e) {
+            alert('son');
+            e.stopPropagation(); // stop 停止  Propagation 传播
+            window.event.cancelBubble = true; // 非标准 cancel 取消 bubble 泡泡
+        }, false);
+
+        var father = document.querySelector('.father');
+		// 给father注册单击事件
+        father.addEventListener('click', function() {
+            alert('father');
+        }, false);
+		// 给document注册单击事件
+        document.addEventListener('click', function() {
+            alert('document');
+        })
+    </script>
+```
+
+**阻止事件冒泡的兼容性处理**
+
+![1551171657513](images/1551171657513.png)
+
+### 1.3.8 事件委托
+
+事件冒泡本身的特性，会带来的坏处，也会带来的好处。
+
+#### 什么是事件委托
+
+```
+把事情委托给别人，代为处理。
+```
+
+事件委托也称为事件代理，在 jQuery 里面称为事件委派。
+
+> 说白了就是，不给子元素注册事件，给父元素注册事件，把处理代码在父元素的事件中执行。
+
+
+
+**生活中的代理：**
+
+![1551172082624](images/1551172082624.png)
+
+**js事件中的代理：**
+
+![1551172159273](images/1551172159273.png)
+
+#### 事件委托的原理
+
+​	给父元素注册事件，利用事件冒泡，当子元素的事件触发，会冒泡到父元素，然后去控制相应的子元素。
+
+#### 事件委托的作用
+
+- 我们只操作了一次 DOM ，提高了程序的性能。
+
+- 动态新创建的子元素，也拥有事件。
+
+```js
+    <ul>
+        <li>知否知否，点我应有弹框在手！</li>
+        <li>知否知否，点我应有弹框在手！</li>
+        <li>知否知否，点我应有弹框在手！</li>
+        <li>知否知否，点我应有弹框在手！</li>
+        <li>知否知否，点我应有弹框在手！</li>
+    </ul>
+    <script>
+        // 事件委托的核心原理：给父节点添加侦听器， 利用事件冒泡影响每一个子节点
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click', function(e) {
+            // e.target 这个可以得到我们点击的对象
+            e.target.style.backgroundColor = 'pink';
+        })
+    </script>
+```
+
+# 常用鼠标事件
+
+![1551172699854](images/1551172699854.png)
+
+### 1.4.1 案例：禁止选中文字和禁止右键菜单
+
+![1551172755484](images/1551172755484.png)
+
+```js
+<body>
+    我是一段不愿意分享的文字
+    <script>
+        // 1. contextmenu 我们可以禁用右键菜单
+        document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+        })
+        // 2. 禁止选中文字 selectstart
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        })
+    </script>
+</body>
+```
+
+### 1.4.2 鼠标事件对象
+
+![1551173103741](images/1551173103741.png)
+
+### 1.4.3 获取鼠标在页面的坐标
+
+```js
+    <script>
+        // 鼠标事件对象 MouseEvent
+        document.addEventListener('click', function(e) {
+            // 1. client 鼠标在可视区的x和y坐标
+            console.log(e.clientX);
+            console.log(e.clientY);
+            console.log('---------------------');
+
+            // 2. page 鼠标在页面文档的x和y坐标
+            console.log(e.pageX);
+            console.log(e.pageY);
+            console.log('---------------------');
+
+            // 3. screen 鼠标在电脑屏幕的x和y坐标
+            console.log(e.screenX);
+            console.log(e.screenY);
+
+        })
+    </script>
+```
+
+
+
+
+
+#  常用的键盘事件
+
+### 1.1.1 键盘事件
+
+![1551318122855](images/1551318122855.png)
+
+![1551318160371](images/1551318160371.png)
+
+```js
+    <script>
+        // 常用的键盘事件
+        //1. keyup 按键弹起的时候触发 
+        document.addEventListener('keyup', function() {
+            console.log('我弹起了');
+        })
+
+        //3. keypress 按键按下的时候触发  不能识别功能键 比如 ctrl shift 左右箭头啊
+        document.addEventListener('keypress', function() {
+                console.log('我按下了press');
+        })
+        //2. keydown 按键按下的时候触发  能识别功能键 比如 ctrl shift 左右箭头啊
+        document.addEventListener('keydown', function() {
+                console.log('我按下了down');
+        })
+        // 4. 三个事件的执行顺序  keydown -- keypress -- keyup
+    </script>
+```
+
+### 1.1.2 键盘事件对象
+
+![1551318355505](images/1551318355505.png)
+
+![1551318404238](images/1551318404238.png)
+
+**使用keyCode属性判断用户按下哪个键**
+
+```js
+    <script>
+        // 键盘事件对象中的keyCode属性可以得到相应键的ASCII码值
+        document.addEventListener('keyup', function(e) {
+            console.log('up:' + e.keyCode);
+            // 我们可以利用keycode返回的ASCII码值来判断用户按下了那个键
+            if (e.keyCode === 65) {
+                alert('您按下的a键');
+            } else {
+                alert('您没有按下a键')
+            }
+        })
+        document.addEventListener('keypress', function(e) {
+            // console.log(e);
+            console.log('press:' + e.keyCode);
+        })
+    </script>
+```
+
+### 1.1.3 案例：模拟京东按键输入内容
+
+当我们按下 s 键， 光标就定位到搜索框（文本框获得焦点）。
+
+![1551318669520](images/1551318669520.png)
+
+> 注意：触发获得焦点事件，可以使用 元素对象.focus()
+
+```js
+    <input type="text">
+    <script>
+        // 获取输入框
+        var search = document.querySelector('input');
+		// 给document注册keyup事件
+        document.addEventListener('keyup', function(e) {
+            // 判断keyCode的值
+            if (e.keyCode === 83) {
+                // 触发输入框的获得焦点事件
+                search.focus();
+            }
+        })
+    </script>
+```
+
+### 1.1.4 案例：模拟京东快递单号查询
+
+要求：当我们在文本框中输入内容时，文本框上面自动显示大字号的内容。
+
+![1551318882189](images/1551318882189.png)
+
+![1551318909264](images/1551318909264.png)
+
+```js
+    <div class="search">
+        <div class="con">123</div>
+        <input type="text" placeholder="请输入您的快递单号" class="jd">
+    </div>
+    <script>
+        // 获取要操作的元素
+        var con = document.querySelector('.con');
+        var jd_input = document.querySelector('.jd');
+		// 给输入框注册keyup事件
+        jd_input.addEventListener('keyup', function() {
+				// 判断输入框内容是否为空
+                if (this.value == '') {
+                    // 为空，隐藏放大提示盒子
+                    con.style.display = 'none';
+                } else {
+                    // 不为空，显示放大提示盒子，设置盒子的内容
+                    con.style.display = 'block';
+                    con.innerText = this.value;
+                }
+            })
+        // 给输入框注册失去焦点事件，隐藏放大提示盒子
+        jd_input.addEventListener('blur', function() {
+                con.style.display = 'none';
+            })
+        // 给输入框注册获得焦点事件
+        jd_input.addEventListener('focus', function() {
+            // 判断输入框内容是否为空
+            if (this.value !== '') {
+                // 不为空则显示提示盒子
+                con.style.display = 'block';
+            }
+        })
+    </script>
+```
+
+# BOM
+
+### 1.2.1. 什么是BOM
+
+​	BOM（Browser Object Model）即浏览器对象模型，它提供了独立于内容而与浏览器窗口进行交互的对象，其核心对象是 window。
+
+​	BOM 由一系列相关的对象构成，并且每个对象都提供了很多方法与属性。
+
+​	BOM 缺乏标准，JavaScript 语法的标准化组织是 ECMA，DOM 的标准化组织是 W3C，BOM 最初是Netscape 浏览器标准的一部分。
+
+![1551319264407](images/1551319264407.png)
+
+### 1.2.2. BOM的构成
+
+BOM 比 DOM 更大，它包含 DOM。
+
+![1551319344183](images/1551319344183.png)
+
+### 1.2.3. 顶级对象window
+
+![1551319372909](images/1551319372909.png)
+
+### 1.2.4. window对象的常见事件
+
+#### 页面（窗口）加载事件（2种）
+
+**第1种**
+
+![1551319525109](images/1551319525109.png)
+
+window.onload 是窗口 (页面）加载事件，**当文档内容完全加载完成**会触发该事件(包括图像、脚本文件、CSS 文件等), 就调用的处理函数。
+
+![1551319600263](images/1551319600263.png)
+
+**第2种**
+
+![1551319620299](images/1551319620299.png)
+
+​	DOMContentLoaded 事件触发时，仅当DOM加载完成，不包括样式表，图片，flash等等。
+
+​	IE9以上才支持！！！
+
+​	如果页面的图片很多的话, 从用户访问到onload触发可能需要较长的时间, 交互效果就不能实现，必然影响用户的体验，此时用 DOMContentLoaded 事件比较合适。
+
+```js
+    <script>
+        window.addEventListener('load', function() {
+            var btn = document.querySelector('button');
+            btn.addEventListener('click', function() {
+                alert('点击我');
+            })
+        })
+        window.addEventListener('load', function() {
+            alert(22);
+        })
+        document.addEventListener('DOMContentLoaded', function() {
+            alert(33);
+        })
+    </script>
+```
+
+#### 调整窗口大小事件
+
+![1551319803117](images/1551319803117.png)
+
+​	window.onresize 是调整窗口大小加载事件,  当触发时就调用的处理函数。
+
+注意：
+
+1. 只要窗口大小发生像素变化，就会触发这个事件。
+
+2. 我们经常利用这个事件完成响应式布局。 window.innerWidth 当前屏幕的宽度
+
+```js
+    <script>
+        // 注册页面加载事件
+        window.addEventListener('load', function() {
+            var div = document.querySelector('div');
+        	// 注册调整窗口大小事件
+            window.addEventListener('resize', function() {
+                // window.innerWidth 获取窗口大小
+                console.log('变化了');
+                if (window.innerWidth <= 800) {
+                    div.style.display = 'none';
+                } else {
+                    div.style.display = 'block';
+                }
+            })
+        })
+    </script>
+    <div></div>
+```
+
+
+
+### 1.2.5. 定时器（两种）
+
+window 对象给我们提供了 2 个非常好用的方法-定时器。
+
+- setTimeout()   延迟一定时间执行一次
+
+- setInterval()    延迟一定时间重复执行
+
+#### setTimeout() 炸弹定时器
+
+##### 开启定时器
+
+![1551320279307](images/1551320279307.png)
+
+![1551320408854](images/1551320408854.png)
+
+![1551320298981](images/1551320298981.png)
+
+> ```
+> 普通函数是按照代码顺序直接调用。
+> 
+> 简单理解： 回调，就是回头调用的意思。上一件事干完，再回头再调用这个函数。
+> 例如：定时器中的调用函数，事件处理函数，也是回调函数。
+> 
+> 以前我们讲的   element.onclick = function(){}   或者  element.addEventListener(“click”, fn);   里面的 函数也是回调函数。
+> 
+> ```
+
+
+
+```js
+    <script>
+        // 回调函数是一个匿名函数
+         setTimeout(function() {
+             console.log('时间到了');
+
+         }, 2000);
+        function callback() {
+            console.log('爆炸了');
+        }
+		// 回调函数是一个有名函数
+        var timer1 = setTimeout(callback, 3000);
+        var timer2 = setTimeout(callback, 5000);
+    </script>
+```
+
+
+
+#### setInterval() 闹钟定时器
+
+##### 开启定时器
+
+![1551321162158](images/1551321162158.png)
+
+```js
+    <script>
+        // 1. setInterval 
+        setInterval(function() {
+            console.log('继续输出');
+        }, 1000);
+    </script>
+```
+
+
+
+##### 停止定时器
+
+![1551321444559](images/1551321444559.png)
+
+#### 案例：发送短信倒计时
+
+​	点击按钮后，该按钮60秒之内不能再次点击，防止重复发送短信。
+
+![1551321540676](images/1551321540676.png)
+
+![1551321564247](images/1551321564247.png)
+
+```js
+    手机号码： <input type="number"> <button>发送</button>
+    <script>
+        var btn = document.querySelector('button');
+		// 全局变量，定义剩下的秒数
+        var time = 3; 
+		// 注册单击事件
+        btn.addEventListener('click', function() {
+            // 禁用按钮
+            btn.disabled = true;
+            // 开启定时器
+            var timer = setInterval(function() {
+                // 判断剩余秒数
+                if (time == 0) {
+                    // 清除定时器和复原按钮
+                    clearInterval(timer);
+                    btn.disabled = false;
+                    btn.innerHTML = '发送';
+                } else {
+                    btn.innerHTML = '还剩下' + time + '秒';
+                    time--;
+                }
+            }, 1000);
+        });
+    </script>
+```
+
+
+
+### 1.2.6. this指向问题
+
+​	this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，一般情况下this的最终指向的是那个调用它的对象。
+
+现阶段，我们先了解一下几个this指向
+
+1. 全局作用域或者普通函数中this指向全局对象window（注意定时器里面的this指向window）
+
+2. 方法调用中谁调用this指向谁
+3. 构造函数中this指向构造函数的实例
+
+```js
+    <button>点击</button>
+    <script>
+        // this 指向问题 一般情况下this的最终指向的是那个调用它的对象
+        // 1. 全局作用域或者普通函数中this指向全局对象window（ 注意定时器里面的this指向window）
+        console.log(this);
+        function fn() {
+            console.log(this);
+        }
+        window.fn();
+        window.setTimeout(function() {
+            console.log(this);
+        }, 1000);
+        // 2. 方法调用中谁调用this指向谁
+        var o = {
+            sayHi: function() {
+                console.log(this); // this指向的是 o 这个对象
+            }
+        }
+        o.sayHi();
+        var btn = document.querySelector('button');
+        btn.addEventListener('click', function() {
+                console.log(this); // 事件处理函数中的this指向的是btn这个按钮对象
+            })
+        // 3. 构造函数中this指向构造函数的实例
+        function Fun() {
+            console.log(this); // this 指向的是fun 实例对象
+        }
+        var fun = new Fun();
+    </script>
+```
+
+
+
+### 1.2.7. location对象
+
+#### 什么是 location 对象
+
+![1551322091638](images/1551322091638.png)
+
+#### URL
+
+![1551322373704](images/1551322373704.png)
+
+![1551322387201](images/1551322387201.png)
+
+#### location 对象的属性
+
+![1551322416716](images/1551322416716.png)
+
+![1551322438200](images/1551322438200.png)
+
+#### 案例：5分钟自动跳转页面
+
+![1551322496871](images/1551322496871.png)
+
+![1551322517605](images/1551322517605.png)
+
+```js
+    <button>点击</button>
+    <div></div>
+    <script>
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        btn.addEventListener('click', function() {
+            // console.log(location.href);
+            location.href = 'http://www.itcast.cn';
+        })
+        var timer = 5;
+        setInterval(function() {
+            if (timer == 0) {
+                location.href = 'http://www.itcast.cn';
+            } else {
+                div.innerHTML = '您将在' + timer + '秒钟之后跳转到首页';
+                timer--;
+            }
+        }, 1000);
+    </script>
+```
+
+#### 案例：获取URL参数
+
+![1551322622640](images/1551322622640.png)
+
+![1551322639241](images/1551322639241.png)
+
+```js
+    <div></div>
+	<script>
+        console.log(location.search); // ?uname=andy
+        // 1.先去掉？  substr('起始的位置'，截取几个字符);
+        var params = location.search.substr(1); // uname=andy
+        console.log(params);
+        // 2. 利用=把字符串分割为数组 split('=');
+        var arr = params.split('=');
+        console.log(arr); // ["uname", "ANDY"]
+        var div = document.querySelector('div');
+        // 3.把数据写入div中
+        div.innerHTML = arr[1] + '欢迎您';
+    </script>
+```
+
+#### location对象的常见方法
+
+![1551322750241](images/1551322750241.png)
+
+```js
+    <button>点击</button>
+    <script>
+        var btn = document.querySelector('button');
+        btn.addEventListener('click', function() {
+            // 记录浏览历史，所以可以实现后退功能
+            // location.assign('http://www.itcast.cn');
+            // 不记录浏览历史，所以不可以实现后退功能
+            // location.replace('http://www.itcast.cn');
+            location.reload(true);
+        })
+    </script>
+```
+
+### 1.2.8. navigator对象
+
+​	navigator 对象包含有关浏览器的信息，它有很多属性，我们最常用的是 userAgent，该属性可以返回由客户机发送服务器的 user-agent 头部的值。
+
+下面前端代码可以判断用户那个终端打开页面，实现跳转
+
+```js
+if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+    window.location.href = "";     //手机
+ } else {
+    window.location.href = "";     //电脑
+ }
+```
+
+### 1.2.9 history对象
+
+​	window对象给我们提供了一个 history对象，与浏览器历史记录进行交互。该对象包含用户（在浏览器窗口中）访问过的URL。
+
+![1551322885216](images/1551322885216.png)
+
+history对象一般在实际开发中比较少用，但是会在一些 OA 办公系统中见到。
+
+![1551322959148](images/1551322959148.png)
+
+#  JS执行机制
+
+以下代码执行的结果是什么？
+
+```js
+ console.log(1);
+ 
+ setTimeout(function () {
+     console.log(3);
+ }, 1000);
+ 
+ console.log(2);
+```
+
+以下代码执行的结果是什么？
+
+```js
+ console.log(1);
+ 
+ setTimeout(function () {
+     console.log(3);
+ }, 0);
+ 
+ console.log(2);
+```
+
+
+
+### 1.3.1 JS 是单线程
+
+![1551415019322](images/1551415019322.png)
+
+```js
+	单线程就意味着，所有任务需要排队，前一个任务结束，才会执行后一个任务。如果前一个任务耗时很长，后一个任务就不得不一直等着。
+	这样所导致的问题是： 如果 JS 执行的时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞的感觉。
+```
+
+### 1.3.2 同步任务和异步任务
+
+​	单线程导致的问题就是后面的任务等待前面任务完成，如果前面任务很耗时（比如读取网络数据），后面任务不得不一直等待！！
+
+​	为了解决这个问题，利用多核 CPU 的计算能力，HTML5 提出 Web Worker 标准，允许 JavaScript 脚本创建多个线程，但是子线程完全受主线程控制。于是，JS 中出现了**同步任务**和**异步任务**。
+
+#### 同步
+
+​	前一个任务结束后再执行后一个任务，程序的执行顺序与任务的排列顺序是一致的、同步的。比如做饭的同步做法：我们要烧水煮饭，等水开了（10分钟之后），再去切菜，炒菜。
+
+#### 异步
+
+​	你在做一件事情时，因为这件事情会花费很长时间，在做这件事的同时，你还可以去处理其他事情。比如做饭的异步做法，我们在烧水的同时，利用这10分钟，去切菜，炒菜。
+
+![1551434295074](images/1551434295074.png)
+
+> ```js
+> JS中所有任务可以分成两种，一种是同步任务（synchronous），另一种是异步任务（asynchronous）。
+> 
+> 同步任务指的是：
+> 	在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务；
+> 异步任务指的是：
+> 	不进入主线程、而进入”任务队列”的任务，当主线程中的任务运行完了，才会从”任务队列”取出异步任务放入主线程执行。
+> ```
+
+![1551434972778](images/1551434972778.png)
+
+### 1.3.3 JS执行机制（事件循环）
+
+![1551435335464](images/1551435335464.png)
+
+![1551435398306](images/1551435398306.png)
+
+![1551435449634](images/1551435449634.png)
+
+### 1.3.4 代码思考题
+
+```js
+ console.log(1);
+ document.onclick = function() {
+   console.log('click');
+ }
+
+ setTimeout(function() {
+   console.log(3)
+ }, 3000)
+ console.log(2);
+```
+
+
+
+
+
 # 常见案例
 
 ## 排他算法
@@ -2331,3 +3397,184 @@ Tab栏切换有2个大的模块
 </html>
 ~~~
 
+##  案例：禁止选中文字和禁止右键菜单
+
+![1551172755484](images/1551172755484.png)
+
+```js
+<body>
+    我是一段不愿意分享的文字
+    <script>
+        // 1. contextmenu 我们可以禁用右键菜单
+        document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+        })
+        // 2. 禁止选中文字 selectstart
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        })
+    </script>
+</body>
+```
+
+## 案例：跟随鼠标的天使
+
+![1551173172613](images/1551173172613.png)
+
+![1551173186812](images/1551173186812.png)
+
+```js
+    <img src="images/angel.gif" alt="">
+    <script>
+        var pic = document.querySelector('img');
+        document.addEventListener('mousemove', function(e) {
+        	// 1. mousemove只要我们鼠标移动1px 就会触发这个事件
+        	// 2.核心原理： 每次鼠标移动，我们都会获得最新的鼠标坐标， 
+            // 把这个x和y坐标做为图片的top和left 值就可以移动图片
+        	var x = e.pageX;
+        	var y = e.pageY;
+        	console.log('x坐标是' + x, 'y坐标是' + y);
+        	//3 . 千万不要忘记给left 和top 添加px 单位
+        	pic.style.left = x - 50 + 'px';
+        	pic.style.top = y - 40 + 'px';
+    	});
+    </script>
+```
+
+
+
+
+
+
+
+##  案例：5秒后关闭广告
+
+![1551320924828](images/1551320924828.png)
+
+
+
+![1551320959756](images/1551320959756.png)
+
+```js
+<body>
+    <img src="images/ad.jpg" alt="" class="ad">
+    <script>
+        // 获取要操作的元素
+        var ad = document.querySelector('.ad');
+		// 开启定时器
+        setTimeout(function() {
+            ad.style.display = 'none';
+        }, 5000);
+    </script>
+</body>
+```
+
+##  停止定时器
+
+![1551321051001](images/1551321051001.png)
+
+![1551321064154](images/1551321064154.png)
+
+```js
+    <button>点击停止定时器</button>
+    <script>
+        var btn = document.querySelector('button');
+		// 开启定时器
+        var timer = setTimeout(function() {
+            console.log('爆炸了');
+        }, 5000);
+		// 给按钮注册单击事件
+        btn.addEventListener('click', function() {
+            // 停止定时器
+            clearTimeout(timer);
+        })
+    </script>
+```
+
+##  案例：倒计时
+
+![1551321298787](images/1551321298787.png)
+
+![1551321322188](images/1551321322188.png)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        div {
+            margin: 200px;
+        }
+
+        span {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span class="hour">1</span>
+        <span class="minute">2</span>
+        <span class="second">3</span>
+    </div>
+    <script>
+        // 1. 获取元素 
+        var hour = document.querySelector('.hour'); // 小时的黑色盒子
+        var minute = document.querySelector('.minute'); // 分钟的黑色盒子
+        var second = document.querySelector('.second'); // 秒数的黑色盒子
+        // 因为要延迟一秒才显示，所以先调用一次
+        countTime();
+        setInterval(() => {
+            countTime();
+        }, 1000);
+
+        function countTime() {
+            // 设定一个倒计时的时间
+            var endTime = +new Date("2020-02-15 17:00:00");
+            // var endTime = +new Date("2020-02-14 21:00:00");
+            // console.log(endTime);
+            // 获取当前时间
+            var nowTime = +new Date();
+            // console.log(nowTime);
+
+            // 求两个时间的差的总秒数
+            var times = parseInt((endTime - nowTime) / 1000);
+            // console.log(times);
+            // 求相差的小时
+            var h = parseInt(times / 60 / 60 % 24);
+            // console.log(h);
+            h = h < 10 ? "0" + h : h;
+            hour.innerHTML = h;
+            // 求相差的分钟
+            var f = parseInt(times / 60 % 60);
+            f = f < 10 ? "0" + f : f;
+            minute.innerHTML = f;
+            // console.log(f);
+            // 求相差的秒
+            var m = parseInt(times % 60);
+            m = m < 10 ? "0" + m : m;
+            second.innerHTML = m;
+            // console.log(m);
+        }
+    </script>
+</body>
+
+</html>
+```

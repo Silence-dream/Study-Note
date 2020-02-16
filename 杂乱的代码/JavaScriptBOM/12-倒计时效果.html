@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 200px;
+        }
+
+        span {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span class="hour">1</span>
+        <span class="minute">2</span>
+        <span class="second">3</span>
+    </div>
+    <script>
+        // 1. 获取元素 
+        var hour = document.querySelector('.hour'); // 小时的黑色盒子
+        var minute = document.querySelector('.minute'); // 分钟的黑色盒子
+        var second = document.querySelector('.second'); // 秒数的黑色盒子
+        // 因为要延迟一秒才显示，所以先调用一次
+        countTime();
+        setInterval(() => {
+            countTime();
+        }, 1000);
+
+        function countTime() {
+            // 设定一个倒计时的时间
+            var endTime = +new Date("2020-02-15 17:00:00");
+            // var endTime = +new Date("2020-02-14 21:00:00");
+            // console.log(endTime);
+            // 获取当前时间
+            var nowTime = +new Date();
+            // console.log(nowTime);
+
+            // 求两个时间的差的总秒数
+            var times = parseInt((endTime - nowTime) / 1000);
+            // console.log(times);
+            // 求相差的小时
+            var h = parseInt(times / 60 / 60 % 24);
+            // console.log(h);
+            h = h < 10 ? "0" + h : h;
+            hour.innerHTML = h;
+            // 求相差的分钟
+            var f = parseInt(times / 60 % 60);
+            f = f < 10 ? "0" + f : f;
+            minute.innerHTML = f;
+            // console.log(f);
+            // 求相差的秒
+            var m = parseInt(times % 60);
+            m = m < 10 ? "0" + m : m;
+            second.innerHTML = m;
+            // console.log(m);
+        }
+    </script>
+</body>
+
+</html>
