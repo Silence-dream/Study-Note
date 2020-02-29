@@ -27,8 +27,9 @@
         <li>多个里面筛选几个</li>
     </ol>
     <script>
-        $(function() {
-            $("ul li:first").css("color", "red");
+        $(function () {
+            // $("ul li:nth-child(1)").css("color", "red");
+            $("ul li:first").css("color", "yellow");
             $("ul li:eq(2)").css("color", "blue");
             $("ol li:odd").css("color", "skyblue");
             $("ol li:even").css("color", "pink");
