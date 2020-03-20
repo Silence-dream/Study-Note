@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+
+        span {
+            display: block;
+            position: absolute;
+            top: 100px;
+            left: 10px;
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <span></span>
+    <script>
+        const div = document.querySelector('div');
+        const span = document.querySelector('span');
+
+        function name(obj, target) {
+            let divF = setInterval(() => {
+                obj.style.left = obj.offsetLeft + 5 + "px"
+                if (obj.offsetLeft > 400) {
+                    clearInterval(divF);
+                }
+            }, target);
+        }
+        name(div, 30)
+        name(span, 10)
+    </script>
+</body>
+
+</html>

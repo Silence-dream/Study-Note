@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        const div = document.querySelector('div');
+
+        let divF = setInterval(() => {
+            div.style.left = div.offsetLeft + 5 + "px"
+            if (div.offsetLeft > 400) {
+                clearInterval(divF);
+            }
+        }, 30);
+    </script>
+</body>
+
+</html>
