@@ -75,62 +75,73 @@ window.addEventListener('load', function () {
     // 8.每次点击右侧按钮小圆点跟着一起动
     // 创建一个变量来变化
     let lis_circle = 0;
-
+    // 添加节流阀，使得多次点击按钮必须等图片运行完才换成下一张
+    let flag = true;
     arrow_r.addEventListener("click", function () {
-        // 8.start
-        // lis_circle = this.dataset.num - 1
-        // lis_circle控制小圆点
-        lis_circle++;
-        if (lis_circle == circle.children.length) {
-            lis_circle = 0;
+        if (flag) {
+            flag = false;
+            // 8.start
+            // lis_circle = this.dataset.num - 1
+            // lis_circle控制小圆点
+            lis_circle++;
+            if (lis_circle == circle.children.length) {
+                lis_circle = 0;
+            }
+            // 排他算法
+            for (let i = 0; i < circle.children.length; i++) {
+                circle.children[i].className = "";
+            }
+            circle.children[lis_circle].className = "current";
+            // 8.end
+            // circle.children[lis_circle].className = "current";
+            // arrow_r_count控制右侧按钮
+            if (arrow_r_count == ul.children.length - 1) {
+                ul.style.left = 0;
+                console.log(ul);
+                arrow_r_count = 0;
+            }
+            arrow_r_count++;
+            animate(ul, -focusWidth * arrow_r_count, function () {
+                flag = true;
+            });
+            // console.log(arrow_r_count);
         }
-        // 排他算法
-        for (let i = 0; i < circle.children.length; i++) {
-            circle.children[i].className = "";
-        }
-        circle.children[lis_circle].className = "current";
-        // 8.end
-        // circle.children[lis_circle].className = "current";
-        // arrow_r_count控制右侧按钮
-        if (arrow_r_count == ul.children.length - 1) {
-            ul.style.left = 0;
-            console.log(ul);
-            arrow_r_count = 0;
-        }
-        arrow_r_count++;
-        animate(ul, -focusWidth * arrow_r_count);
-        // console.log(arrow_r_count);
     })
 
 
     // 9.左侧按钮
 
     arrow_l.addEventListener("click", function () {
-        // 8.start
-        // lis_circle = this.dataset.num - 1
-        // lis_circle控制小圆点
-        lis_circle--;
-        if (lis_circle < 0) {
-            lis_circle = circle.children.length - 1;
-        }
-        // 排他算法
-        for (let i = 0; i < circle.children.length; i++) {
-            circle.children[i].className = "";
-        }
-        circle.children[lis_circle].className = "current";
-        // 8.end
-        // circle.children[lis_circle].className = "current";
-        // arrow_r_count控制右侧按钮
-        console.log(arrow_r_count);
+        if (flag) {
+            flag = false;
+            // 8.start
+            // lis_circle = this.dataset.num - 1
+            // lis_circle控制小圆点
+            lis_circle--;
+            if (lis_circle < 0) {
+                lis_circle = circle.children.length - 1;
+            }
+            // 排他算法
+            for (let i = 0; i < circle.children.length; i++) {
+                circle.children[i].className = "";
+            }
+            circle.children[lis_circle].className = "current";
+            // 8.end
+            // circle.children[lis_circle].className = "current";
+            // arrow_r_count控制右侧按钮
+            console.log(arrow_r_count);
 
-        if (arrow_r_count == 0) {
-            arrow_r_count = ul.children.length - 1;
-            ul.style.left = -arrow_r_count * focusWidth + "px";
+            if (arrow_r_count == 0) {
+                arrow_r_count = ul.children.length - 1;
+                ul.style.left = -arrow_r_count * focusWidth + "px";
+            }
+            arrow_r_count--;
+            // arrow_r_count*focusWidth等于移动的距离
+            animate(ul, -focusWidth * arrow_r_count, function () {
+                flag = true;
+            });
+            // console.log(arrow_r_count);
         }
-        arrow_r_count--;
-        // arrow_r_count*focusWidth等于移动的距离
-        animate(ul, -focusWidth * arrow_r_count);
-        // console.log(arrow_r_count);
     })
 
     // 10.自动播放轮播图
