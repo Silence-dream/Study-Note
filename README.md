@@ -38,12 +38,12 @@ HTML+CSS+JavaStript
 
 [Set集合和Array数组](./JavaScript/Set集合和Array数组.md)
 
-[Web APIs](./JavaScript/Web APIs.md)
+[Web APIs DOM BOM](./JavaScript/Web APIs.md)
 
 [思维导图](./JavaScript/思维导图)
 
 =======
 这是一个学习笔记。
- 
-  
+
+
 >>>>>>> 83bd035f28a61167e1ce15ca226740b8171bc834
