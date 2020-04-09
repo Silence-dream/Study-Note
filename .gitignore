@@ -1,5 +1,7 @@
 
+
 .vscode/*
+/python/.vscode/*
 # Logs
 logs
 *.log
