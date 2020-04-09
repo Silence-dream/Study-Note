@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+</head>
+
+<body>
+    <input type="text">
+    <input type="text" disabled>
+    <input type="radio">
+    <input type="email">
+    <input type="button">
+    <input type="checkbox" checked>
+    <script>
+        // 所有的input标签
+        console.log($(":input"));
+        // 所有能用的标签
+        console.log($(":enabled"));
+        // 被选中的
+        console.log($(":checked"));
+        // 返回被禁用的
+        console.log($(":disabled"));
+    </script>
+</body>
+
+</html>

@@ -38,7 +38,7 @@ git config core.ignorecase false
 
 解决方法就是先把本地缓存删除（改变成未track状态），然后再提交:
 
-
+//注意后面的那个  点点点
 git rm -r --cached .
 git add .
 git commit -m 'update .gitignore'

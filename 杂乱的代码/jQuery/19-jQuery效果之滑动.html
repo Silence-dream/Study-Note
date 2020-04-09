@@ -23,24 +23,16 @@
     <button>切换滑动</button>
     <div></div>
     <script>
-        $(function() {
-            $("button").eq(0).click(function() {
-                // 下滑动 slideDown()
+        $(function () {
+            $("button").eq(0).click(function () {
                 $("div").slideDown();
             })
-            $("button").eq(1).click(function() {
-                // 上滑动 slideUp()
-                $("div").slideUp(500);
-
-
+            $("button").eq(1).click(function () {
+                $("div").slideUp();
             })
-            $("button").eq(2).click(function() {
-                // 滑动切换 slideToggle()
-
-                $("div").slideToggle(500);
-
-            });
-
+            $("button").eq(2).click(function () {
+                $("div").slideToggle();
+            })
         });
     </script>
 </body>
