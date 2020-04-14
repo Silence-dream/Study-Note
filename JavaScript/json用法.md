@@ -63,3 +63,6 @@ let obj=JSON.parse(objJson)
 console.log(obj) // { name: '我好帅', age: 18 }
 ```
 
+## 本地存储
+
+本地存储里面只能存储字符串的数据格式,所以我们需要使用上面的两个方法
