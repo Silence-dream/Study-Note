@@ -32,7 +32,7 @@ git config core.ignorecase false
 
 
 
-
+ .git 
 .gitignore规则不生效
 .gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。
 
@@ -43,3 +43,11 @@ git rm -r --cached .
 git add .
 git commit -m 'update .gitignore'
 
+
+
+回退命令：
+
+
+$ git reset --hard HEAD^         回退到上个版本
+$ git reset --hard HEAD~3        回退到前3次提交之前，以此类推，回退到n次提交之前
+$ git reset --hard commit_id     退到/进到 指定commit的sha码

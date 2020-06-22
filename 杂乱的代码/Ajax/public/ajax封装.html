@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <h1>你好</h1>
+    <button>按钮</button>
+
+
+
+    <script src="./ajaxTools.js"></script>
+    <script>
+        const btn = document.querySelector('button');
+        const h1 = document.querySelector('h1');
+        btn.addEventListener("click", function () {
+
+
+            ajax2({
+                type: "GET",
+                url: "/simple",
+                data: "name=123",
+                success: function (data) {
+                    console.log(data);
+                }
+            })
+
+
+        })
+    </script>
+</body>
+
+</html>

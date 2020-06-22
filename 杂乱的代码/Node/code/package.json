@@ -1,0 +1,16 @@
+{
+  "name": "name",
+  "version": "1.0.0",
+  "main": "01-a.js",
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "易成龙",
+  "license": "ISC",
+  "description": ""
+}

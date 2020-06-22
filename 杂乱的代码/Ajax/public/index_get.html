@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>你好</h1>
+    <button>按钮</button>
+    <script>
+        const btn = document.querySelector('button');
+        const h1 = document.querySelector('h1');
+        btn.addEventListener("click", function () {
+
+            //get 
+            //创建XMLHttpRequest对象
+            let xhr = new XMLHttpRequest();
+            //设置请求方式和请求地址
+            xhr.open("GET", "/请求地址");
+            //发送请求
+            xhr.send();
+            //当请求被发送到服务器的时候
+            xhr.onreadystatechange = function () {
+                // 当请求已完成和发送成功的时候
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    //输出返回的数据
+                    console.log(xhr.responseText)
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

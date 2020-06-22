@@ -1,0 +1,1 @@
+// 新成员到来之后给他package.json文件让他通过npm install就行

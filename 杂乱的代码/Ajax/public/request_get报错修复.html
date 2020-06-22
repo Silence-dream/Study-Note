@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 点击按钮发送用户名和密码给后端,服务器吧用户名密码打印到div中 -->
+
+    <form>
+        <input type="text" name="username">
+        <input type="password" name="userpwd">
+    </form>
+    <button>提交</button>
+    <script>
+        const btn = document.querySelector('button');
+        const text = document.querySelector('input[type=text]');
+        const pwd = document.querySelector('input[type=password]');
+
+        btn.onclick = function () {
+            let username = text.value;
+            let userpwd = pwd.value;
+
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("get", `/getParam?username=${username}&userpwd=${userpwd}`);
+            xhr.send();
+
+            xhr.onreadystatechange = function () {
+
+
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    let data = JSON.parse(xhr.responseText);
+                    console.log(data);
+                }
+                // console.log(JSON.parse(xhr.responseText));
+
+                // console.log(JSON.stringify(xhr.responseText));
+            }
+        }
+    </script>
+</body>
+
+</html>
