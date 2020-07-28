@@ -1,0 +1,21 @@
+{
+  "name": "My",
+  "version": "1.0.0",
+  "description": "- express快速搭建服务器\r - ejs后端渲染模板\r - joi数据校验\r - mysql连接数据库",
+  "main": "app.js",
+  "dependencies": {
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "joi": "^14.3.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
