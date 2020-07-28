@@ -27,7 +27,14 @@ body {
   height: 100%;
 
   background-color: #2f4050;
+  transition: all 1s;
+
 }
+
+.aside.toggle {
+  transform: translateX(-100%);
+}
+
 
 .aside .profile {
   padding: 25px;
@@ -55,7 +62,7 @@ body {
   padding: 10px 0;
 }
 
-.aside .nav li + li {
+.aside .nav li+li {
   margin-top: 1px;
 }
 
@@ -67,7 +74,7 @@ body {
   color: #a9b0c2;
 }
 
-.aside .nav .active > a {
+.aside .nav .active>a {
   color: #f6f6f6;
   background-color: #243443;
 }
@@ -102,7 +109,7 @@ body {
   transform: rotate(0);
 }
 
-.aside .nav a + ul {
+.aside .nav a+ul {
   overflow: hidden;
 
   padding: 0;
@@ -115,15 +122,15 @@ body {
   font-size: .9em;
 }
 
-.aside .nav a + ul li:first-child {
+.aside .nav a+ul li:first-child {
   margin-top: 8px;
 }
 
-.aside .nav a + ul li:last-child {
+.aside .nav a+ul li:last-child {
   margin-bottom: 8px;
 }
 
-.aside .nav a + ul a {
+.aside .nav a+ul a {
   padding-left: 30px;
 }
 
@@ -135,7 +142,16 @@ body {
   min-width: 844px;
   min-height: 100vh;
   padding: 70px 5px 20px 185px;
+  transition: all 1s;
+
 }
+
+.main.toggle {
+  padding-left: 0;
+}
+
+
+
 
 .main .navbar {
   position: fixed;
@@ -150,7 +166,14 @@ body {
   border-bottom: 1px solid #eee;
   border-radius: 0;
   background-color: #fff;
+  transition: all 1s;
 }
+
+.main.toggle .navbar {
+  width: 100%;
+  left: 0;
+}
+
 
 .main .navbar .navbar-btn {
   padding: 10px 12px;
