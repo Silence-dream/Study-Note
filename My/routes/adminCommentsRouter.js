@@ -6,7 +6,7 @@ const adminCommentsRouter = express.Router();
 
 adminCommentsRouter.get("/comments", (req, res) => {
   // res.send("login");
-  res.render("./admin/comments.html");
+  res.render("./admin/comments.html", { title: "后台评论管理页面" });
 });
 // 导出路由
 
