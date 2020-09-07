@@ -1,4 +1,4 @@
-# JavaScript高级第01天笔记
+# JavaScript高级
 
 ## 1.面向过程与面向对象
 
