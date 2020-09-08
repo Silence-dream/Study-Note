@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="pos">
+    <div class="box">
+      <div class="class" id="id" data-m="55">hello word</div>
+    </div>
+  </div>
+
+  <script>
+    let a = document.getElementById("id");
+    console.log(a.parentNode)
+    console.log(a.parentElement)
+    let btn = document.createElement("btn")
+    btn.className = "btn"
+    a.append(btn)
+    let b = document.querySelector(".btn")
+    btn.innerHTML = "123"
+    a.onclick = function () {
+      console.log(a.getAttribute("data-m"))
+    }
+    window.onload = function () {
+      console.log(1)
+    }
+  </script>
+</body>
+
+</html>
