@@ -90,26 +90,27 @@ class Tab {
     editTab(e) {
         window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
         // console.log(this)
-        console.dir(this)
-        if (this.tagName == "SPAN" || this.tagName == "SECTION") {
-            // 得到span里面的文字
-            let spanText = this.innerHTML;
-            this.innerHTML = `<input type="text" value='${spanText}'/>`;
-            // 选中input
-            let input = this.children[0];
-            input.select();
-
-            // 失去焦点把input的内容给span
-            input.onblur = function () {
-                this.parentNode.innerHTML = input.value;
-            }
-
-            input.onkeyup = function (e) {
-                if (e.keyCode == 13) {
-                    input.blur();
-                }
+        // console.dir(this)
+        // if (this.tagName == "SPAN" || this.tagName == "SECTION") {
+        // 得到span里面的文字
+        let spanText = this.innerHTML;
+        this.innerHTML = `<input type="text" value='${spanText}'/>`;
+        // 选中input
+        let input = this.children[0];
+        input.select();
+        // 失去焦点把input的内容给span
+        input.onblur = function () {
+            this.parentNode.innerHTML = input.value;
+        }
+        input.onkeyup = function (e) {
+            if (e.keyCode == 13) {
+                input.blur();
             }
         }
+        input.ondblclick = function () {
+            input.blur();
+        }
+        // }
 
 
 

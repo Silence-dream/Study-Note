@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">按钮</button>
+  <script>
+    class Btn {
+      alter(btn) {
+        // let btn = document.querySelector("#btn");
+        btn.onclick = function () {
+          alert("111");
+        };
+      }
+    }
+    let btn = new Btn();
+
+    btn.alter(a);
+  </script>
+</body>
+
+</html>
