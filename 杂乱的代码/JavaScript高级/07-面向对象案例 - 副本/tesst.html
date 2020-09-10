@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <li>123</li>
+  <li class="">123</li>
   <li>123</li>
   <li>123</li>
   <li>123</li>
@@ -20,8 +20,13 @@
   <script>
     const lis = document.querySelectorAll('li');
     for (let i = 0; i < lis.length; i++) {
-      lis[i].a = i;
-      console.log(lis[i].a)
+      lis[i].addEventListener("click", function () {
+        if (document.querySelector(".a")) {
+          console.log(this)
+        } else {
+          console.log('没有a啊')
+        }
+      })
     }
   </script>
 </body>
