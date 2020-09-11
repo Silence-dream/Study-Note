@@ -88,6 +88,7 @@ class Tab {
     }
     //修改功能
     editTab(e) {
+        e.stopPropagation()
         window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
         // console.log(this)
         // console.dir(this)
@@ -100,6 +101,8 @@ class Tab {
         input.select();
         // 失去焦点把input的内容给span
         input.onblur = function () {
+            // console.log(1)
+            // console.log(input.value)
             this.parentNode.innerHTML = input.value;
         }
         input.onkeyup = function (e) {
@@ -107,7 +110,8 @@ class Tab {
                 input.blur();
             }
         }
-        input.ondblclick = function () {
+        input.ondblclick = function (e) {
+            e.stopPropagation();
             input.blur();
         }
         // }
