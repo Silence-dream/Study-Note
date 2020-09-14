@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Father(uname, age) {
+      this.uname = uname;
+      this.age = age;
+    }
+
+    Father.prototype.sing = function () {
+      console.log("heelo word");
+    };
+
+    function Son(uname, age, score) {
+      Father.call(this, uname, age);
+      this.score = score;
+    }
+    Son.prototype = new Father()
+    Son.prototype.constructor = Son;
+    // console.log(Son.prototype)
+    Son.prototype.aaa = function () {
+      console.log(22)
+    }
+
+    console.log("Father", Father.prototype)
+    console.log("Son", Son.prototype)
+
+    let result = new Son("李四", 19, 100);
+    // console.log(result);
+    result.sing();
+  </script>
+</body>
+
+</html>
