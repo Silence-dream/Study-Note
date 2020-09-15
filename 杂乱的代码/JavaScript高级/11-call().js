@@ -7,5 +7,5 @@ let a = {
   name: "罗志祥",
 };
 fn.call();
-fn.call(a);
 fn.call(a, 1, 2);
+fn.call();

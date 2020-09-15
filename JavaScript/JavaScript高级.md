@@ -581,6 +581,7 @@ console.log(that === ldh);//true
 
 - call()可以调用函数
 - call()可以修改this的指向,使用call()的时候 参数一是修改后的this指向,参数2,参数3..使用逗号隔开连接
+- 改变的this指向只是临时的
 
 ```js
  function fn(x, y) {
