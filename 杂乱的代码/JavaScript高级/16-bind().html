@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function fn(x, y) {
+      console.log(this);
+      console.log(x + y)
+    }
+    // fn();
+
+    let a = {
+      name: "li"
+    }
+    let result = fn.bind(a)
+    result(1, 2)
+  </script>
+</body>
+
+</html>
