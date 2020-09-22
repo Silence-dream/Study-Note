@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            display: none;
+        }
+
+        .right {
+            display: inline-block;
+            color: green;
+        }
+
+        .left {
+            display: inline-block;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="username">
+        用户名: <input type="text" id="username"> <span>用户名格式输入正确</span>
+    </label>
+    <script>
+        const input = document.querySelector('#username');
+        const span = document.querySelector('span');
+        const regexp = /^[a-zA-Z0-9_-]{6,16}$/;
+        input.addEventListener("keyup", function () {
+            let flag = regexp.test(input.value)
+            if (flag) {
+                span.innerHTML = "用户名格式输正确";
+                span.className = "right"
+            } else {
+                span.innerHTML = "用户名格式输不正确";
+                span.className = "left"
+            }
+        })
+    </script>
+</body>
+
+</html>

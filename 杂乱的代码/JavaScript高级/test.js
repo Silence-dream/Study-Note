@@ -29,30 +29,30 @@
 
 // console.log(reverse(arr))
 
-function Father(uname, age) {
-  this.uname = uname;
-  this.age = age;
-}
+// function Father(uname, age) {
+//   this.uname = uname;
+//   this.age = age;
+// }
 
-Father.prototype.sing = function () {
-  console.log("heelo word");
-};
+// Father.prototype.sing = function () {
+//   console.log("heelo word");
+// };
 
-function Son(uname, age, score) {
-  Father.call(this, uname, age);
-  this.score = score;
-}
-Son.prototype = new Father();
-Son.prototype.constructor = Son;
+// function Son(uname, age, score) {
+//   Father.call(this, uname, age);
+//   this.score = score;
+// }
+// Son.prototype = new Father();
+// Son.prototype.constructor = Son;
 
-Son.prototype.aaa = function () {
-  console.log(22);
-};
+// Son.prototype.aaa = function () {
+//   console.log(22);
+// };
 
-let result = new Son("李四", 18, 200);
-result.sing();
-console.log(result);
-console.log(result.constructor);
+// let result = new Son("李四", 18, 200);
+// result.sing();
+// console.log(result);
+// console.log(result.constructor);
 
 /**
  * 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
@@ -71,3 +71,20 @@ console.log(result.constructor);
 //  a ="34",b="1234567"，返回2
 //  a = '35', b= "1234567" 返回-1
 //  a = "355", b = "12354355"  返回5
+
+function fn(n) {
+  if (n == 1) {
+    return 1;
+  }
+
+  return n * fn(n - 1);
+}
+
+console.log(fn(3));
+
+let obj = { a: 1 };
+let newObj = {};
+
+let copy = Object.assign(newObj, obj);
+// console.log(copy);
+console.log(newObj);

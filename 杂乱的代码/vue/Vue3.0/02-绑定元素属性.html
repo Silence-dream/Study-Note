@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/vue3.0.global.js"></script>
+
+</head>
+
+<body>
+    <div id="bind-attribute">
+        <span v-bind:title="message">
+            鼠标悬停几秒钟查看此处动态绑定的提示信息！
+        </span>
+    </div>
+    <script>
+        const AttributeBinding = {
+            data() {
+                return {
+                    message: 'You loaded this page on ' + new Date().toLocaleString()
+                }
+            }
+        }
+
+        Vue.createApp(AttributeBinding).mount('#bind-attribute')
+    </script>
+</body>
+
+</html>
