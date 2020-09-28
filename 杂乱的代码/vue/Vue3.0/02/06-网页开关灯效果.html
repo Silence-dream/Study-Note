@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html,
+    body,
+    #app,
+    .ccc {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .light {
+      background-color: pink;
+      color: black;
+    }
+
+    .dark {
+      background-color: #000;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 1. 不要直接让 vm 的el 指向 html 或 body 标签 -->
+  <div id="app">
+    <div v-bind:class="['light','ccc', flag?'dark':'']">
+      <button @click="handleClass">Toggle</button>
+      <h3>大渣好，我系咕天乐，我系渣渣辉，贪挽难约，介系一个你没有挽过的船新版本，挤需体验3番钟，里就会干我一样，挨上节款游戏</h3>
+    </div>
+  </div>
+
+
+
+  <script src="./lib/vue-3.0.js"></script>
+  <script>
+    const vm = Vue.createApp({
+      data() {
+        return {
+          flag: false
+        }
+      },
+      methods: {
+        handleClass() {
+          this.flag = !this.flag;
+        }
+      }
+    })
+
+    vm.mount('#app');
+    console.log(vm.data)
+
+
+
+  </script>
+</body>
+
+</html>

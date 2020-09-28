@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+
+        .green {
+            color: green;
+        }
+    </style>
+    <script src="../lib/vue3.0.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <span :class="[ c ? a : b ]">1232133132132312231</span>
+        <button @click="fn">点我</button>
+    </div>
+    <script>
+        let vm = Vue.createApp({
+            data() {
+                return {
+                    a: "red",
+                    b: "green",
+                    c: false
+                }
+            },
+            methods: {
+                fn() {
+                    this.c = !this.c
+                }
+            }
+        }).mount("#app")
+    </script>
+</body>
+
+</html>

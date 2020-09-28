@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue3.0.global.js"></script>
+
+
+</head>
+
+<body>
+    <div id="app">
+        <div v-html="msg"></div>
+    </div>
+    <script>
+        // const vm = {
+        //     data() {
+        //         return {
+        //             msg: `<a href="">我去帮你买橘子</a>`
+        //         }
+        //     }
+        // }
+        // Vue.createApp(vm).mount("#app")
+        // // console.log(Vue.createApp(vm).mount("#app").$data)
+
+
+        const vm = Vue.createApp({
+            data() {
+                return {
+                    msg: `<a href="">我去帮你买橘子</a>`
+                }
+            },
+        })
+
+        let a = vm.mount("#app")
+        // Proxy
+        // let that = Vue
+        console.log(a)
+    </script>
+</body>
+
+</html>

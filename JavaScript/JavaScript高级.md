@@ -1595,3 +1595,86 @@ var newStr = str.replace(/a/gi,'哈哈')//"哈哈哈哈bc哈哈b哈哈"
 
 
 
+
+# 总结
+
+## forEach((value,index,array)=>{})循环数组
+
+```js
+let arr=[1,2,3,4,5];
+
+arr.forEach((value,index,array)=>{
+    console.log(value)
+})
+```
+
+
+
+## filter((value, index, array) => {})找出满足条件的值返回数组
+
+```js
+let a=arr.filter((value,index,array)=>{
+    // console.log(value>2)
+    return value>2
+})
+
+console.log(a)
+```
+
+
+
+## some((value, index, array) => {})找出满足条件的值返回布尔值
+
+```js
+let b=arr.some((value,index,array)=>{
+    return value>2
+})
+console.log(b)
+```
+
+
+
+## insertAdjacentHTML解析html代码插入html中
+
+```
+element.insertAdjacentHTML(position, text);
+```
+
+-   `position`
+
+    一个 [`DOMString`](https://developer.mozilla.org/zh-CN/docs/Web/API/DOMString)，表示插入内容相对于元素的位置，并且必须是以下字符串之一：`'beforebegin'`：元素自身的前面。`'afterbegin'`：插入元素内部的第一个子节点之前。`'beforeend'`：插入元素内部的最后一个子节点之后。`'afterend'`：元素自身的后面。
+
+- `text`
+
+    是要被解析为HTML或XML元素，并插入到DOM树中的 [`DOMString`](https://developer.mozilla.org/zh-CN/docs/Web/API/DOMString)。
+
+
+
+ 位置名称的可视化
+
+```
+<!-- beforebegin --> 
+<p> 
+<!-- afterbegin -->
+foo
+<!-- beforeend -->
+</p>
+<!-- afterend -->
+```
+
+
+
+```html
+// 原为 <div id="one">one</div> 
+var d1 = document.getElementById('one'); 
+d1.insertAdjacentHTML('afterend', '<div id="two">two</div>');
+
+// 此时，新结构变成：
+// <div id="one">one</div><div id="two">two</div>
+```
+
+
+
+
+
+

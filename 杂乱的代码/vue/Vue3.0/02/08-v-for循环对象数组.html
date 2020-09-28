@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.5.16.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(item, i) in arr">
+        索引：{{i}} - 编号：{{item.id}} -- 姓名:{{item.name}} -- 性别：{{item.gender}}
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    // 创建 Vue 实例，得到 ViewModel
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        arr: [
+          { id: 1, name: '嬴政', gender: '男' },
+          { id: 2, name: '吕不韦', gender: '男' },
+          { id: 3, name: '赵姬', gender: '女' }
+        ]
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- M(数据)V(模板)VM(控制器 调度者) -->
+
+  <!-- 1.写模板(V) -->
+  <div id="app">
+    <!-- 如果flag为真 就渲染这个p标签 -->
+    <!-- <p v-if="flag">我是真的真的很帅</p>
+    <p v-else-if="flag">刚才说错了，其实我很丑</p>
+    <p v-else>嘿嘿嘿，骗你的，其实大家都是普通人，只不过我比普通人稍微稍微的丑了点</p> -->
+
+    <p v-show="flag">墨镜魔镜,世界上谁最丑</p>
+  </div>
+
+  <!-- 0.引入vue库文件 -->
+  <!-- 0.1 当页面中g引入vue库文件 那么全局对象window中就有了一个Vue的实例对象 -->
+  <script src="./lib/vue-3.0.js"></script>
+  <script>
+    let vm = Vue.createApp(
+      {
+        // 初始化数据
+        data() {
+          return {
+            flag: false
+          }
+        },
+        // 该组件所用方法
+        methods: {}
+      }
+    ).mount("#app");
+
+
+  </script>
+
+</body>
+
+</html>

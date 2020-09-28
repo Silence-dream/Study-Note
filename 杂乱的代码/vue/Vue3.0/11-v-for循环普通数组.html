@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/vue3.0.global.js"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <!-- <ul>
+      <li v-for="元素 in 数组名"></li>
+    绝不推荐使用index作为key的值
+    <li v-for="(item,index) in aStar" :key="index">{{item}}</li>
+    </ul>
+
+    <ol>
+      <li v-for="item in aActor" :key="item.id">
+
+        {{item.name}} 今年 {{item.age}} 有{{item.fans}}粉丝
+        <ul>
+          <li v-for=""></li>
+        </ul>
+    </li>
+    </ol>-->
+
+
+
+    <ul>
+      <!-- <li v-for="元素 in 数组名"></li>
+      绝不推荐使用index作为key的值 -->
+      <li v-for="(item,index) in aStar">{{item}}</li>
+    </ul>
+
+    <ol>
+      <li v-for="item in aActor">
+
+        {{item.name}} 今年 {{item.age}} 有{{item.fans}}粉丝
+        <ul>
+          <!-- <li v-for=""></li> -->
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+  <!-- 1.引入库文件 -->
+  <script src="./lib/vue-3.0.js"></script>
+  <!-- 2.写代码 -->
+  <script>
+    // 2.1 先写VM 并且挂载到app上
+    let vm = Vue.createApp({
+      // 2.1.2 写存储数据的结构
+      data() {
+        return {
+          aStar: ["于文文", "佟丽娅", "杨幂", "高圆圆", "马思纯", "马冬梅", "张元乙", "袁华"],
+          aActor: [{
+              id: 1,
+              name: '岳云鹏',
+              age: 32,
+              fans: '1000w'
+            },
+            {
+              id: 2,
+              name: '张云雷',
+              age: 34,
+              fans: '10w'
+            },
+            {
+              id: 3,
+              name: '郭麒麟',
+              age: 20,
+              fans: '100w',
+              family: [{
+                father: "于谦",
+                brother: "于斯洋"
+              }]
+            },
+            {
+              name: '秦霄贤',
+              age: 23,
+              fans: '2000w'
+            }
+          ]
+        }
+      },
+      // 2.1.3 写声明方法的结构
+      methods: {
+
+      }
+    }).mount("#app")
+  </script>
+</body>
+
+</html>
