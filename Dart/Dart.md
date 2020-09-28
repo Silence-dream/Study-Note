@@ -29,7 +29,6 @@
 -   substring(0,1) 返回[0,3)的字符串
 -   startsWith("str") 返回布尔,哪个字母开头
 -   endWith("str") 返回布尔,哪个字母结尾
-
 -   布尔型-Boolean
     -   bool 创建布尔值 
 -   列表(数组)-List
@@ -38,4 +37,27 @@
     -   List var list = const[1,2,3] 创建不可变的
     -   var list = new List(); 构造创建
 -   键值对-Map
+    -   Map 创建对象
+    -   var obj={"name":"123",age:9}
+    -   var obj=const {"name":"123",age:9} 创建不可变的
+    -   var obj= new Map(); 构造创建
 -   Runes、Symbols
+-   dynamic动态类型
+
+```dart
+void main(){
+  var a;
+  a = 10;
+  a = "Dart";
+
+  dynamic b = 20;
+  b = "JavaScript";
+
+  var list = new List<dynamic>();
+  list.add(1);
+  list.add("hello");
+  list.add(true);
+  print(list);
+}
+```
+
