@@ -138,9 +138,11 @@ bool isTrue = true;
 bool isFalse = false;
 ```
 
-## List body ol,body ul{margin:0;padding:0;}body .list-paddingleft-1{padding-left:0} body .list-paddingleft-2{padding-left:20px} body .list-paddingleft-3{padding-left:40px}
+ List body ol,body ul{margin:0;padding:0;}body .list-paddingleft-1{padding-left:0} body .list-paddingleft-2{padding-left:20px} body .list-paddingleft-3{padding-left:40px}
 
 Dart 中使用 **List** 表示列表，它和数组是同一概念。
+
+## List
 
 1.创建 List,使用 **const** 创建不可变的 List
 
@@ -939,10 +941,31 @@ class Student extends Person{
 ## 抽象类
 
 -   抽象类使用abstract表示，不能直接被实例化
-
 -   抽象方法不用abstract修饰，无实现
 -   抽象类可以没有抽象方法
 -   有抽象方法的类一定得声明为抽象类
+
+```dart
+void main() {
+  var person = new Student();
+  person.run();
+}
+
+abstract class Person{
+
+  void run();
+}
+
+class Student extends Person{
+  @override
+  void run() {
+    print("run...");
+  }
+
+}
+```
+
+
 
 
 
@@ -951,3 +974,253 @@ class Student extends Person{
 -   类和接口是统一的，类就是接口
 -   每个类都隐式的定义了一个包含所有实例成员的接口
 -   如果是复用已有类的实现，使用继承（extends）
+-   如果只是使用已有类的外在行为，使用接口（implements）
+
+```dart
+void main() {
+  var student = new Student();
+  student.run();
+}
+
+//class Person{
+//  String name;
+//
+//  int get age => 18;
+//
+//  void run(){
+//    print("Person run...");
+//  }
+//}
+
+abstract class Person{
+
+  void run();
+
+}
+
+class Student implements Person{
+
+  @override
+  void run() {
+    print("Student run...");
+  }
+
+}
+```
+
+## Mixins多继承
+
+-   Mixins类似于多继承，是在多类继承中重用一个类代码的方式
+-   谁在with的最后面,就调用谁,后面覆盖前面的
+-   作为Mixin的类不能有显示声明构造方法
+-   作为Mixin的类只能继承自Object
+
+```dart
+main(List<String> args) {
+  var d = new D();
+  d.a();
+  d.b();
+  d.c();
+}
+
+class A {
+  void a() {
+    print("A.a()...");
+  }
+}
+
+class B {
+  void a() {
+    print("B.a()...");
+  }
+
+  void b() {
+    print("B.b()...");
+  }
+}
+
+class Test {}
+
+class C {
+  void a() {
+    print("C.a()...");
+  }
+
+  void b() {
+    print("C.b()...");
+  }
+
+  void c() {
+    print("C.c()...");
+  }
+}
+
+class D extends A with B, C {}
+
+
+
+
+
+
+
+
+
+
+// 高级用法
+abstract class Engine{
+  void work();
+}
+
+class OilEngine implements Engine{
+  @override
+  void work() {
+    print("Work with oil...");
+  }
+
+}
+
+class ElectricEngine implements Engine{
+
+  @override
+  void work() {
+    print("Work with Electric...");
+  }
+
+}
+
+class Tyre{
+  String name;
+
+  void run(){}
+}
+
+class Car = Tyre with ElectricEngine;
+
+class Bus = Tyre with OilEngine;
+```
+
+## 操作符覆写
+
+-   覆写操作符需要在类中定义
+    返回类型operator 操作符（参数1，参数2..…）{
+    实现体.…
+    return 返回值
+
+```dart
+void main() {
+  var person1 = new Person(20);
+  var person2 = new Person(20);
+
+  print(person1 > person2);
+
+  person1.age;
+  print(person1['age']);
+
+  print(person1 == person2);
+}
+
+class Person {
+  int age;
+
+  Person(this.age);
+
+  bool operator >(Person person) {
+    return this.age > person.age;
+  }
+
+  int operator [](String str) {
+    if ("age" == str) {
+      return age;
+    }
+
+    return 0;
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Person && runtimeType == other.runtimeType && age == other.age;
+
+  @override
+  int get hashCode => age.hashCode;
+}
+
+```
+
+## 枚举
+
+-   枚举是一种有穷序列集的数据类型
+-   使用关键字enum 定义一个枚举
+-   常用于代替常量，控制语句等
+
+## Dart枚举特性
+
+-   index从0开始，依次累加
+-   不能指定原始值
+-   不能添加方法
+
+```dart
+void main() {
+  var currentSeason = Season.autumn; //autumn 是第三个
+
+  print(currentSeason.index); // so index==3
+
+  switch (currentSeason) {
+    case Season.spring:
+      print("1-3月");
+      break;
+    case Season.summer:
+      print("4-6月");
+      break;
+    case Season.autumn:
+      print("7-9月");
+      break;
+    case Season.winter:
+      print("10-12月");
+      break;
+  }
+}
+
+enum Season {
+  spring, // 枚举index从0开始 spring 是 0
+  summer,
+  autumn,
+  winter // index = 3
+}
+
+```
+
+## 泛型
+
+-   Dart中类型是可选的，可使用泛型限定类型
+-   使用泛型能够有效的减少代码重复
+
+## 泛型的使用
+
+-   类的泛型
+-   方法的泛型
+
+```dart
+void main() {
+  var list = new List<int>();
+  list.add(1);
+
+//  var utils = new Utils<int>();
+//  utils.put(1);
+
+  var utils = new Utils();
+  utils.put<int>(1);
+}
+
+class Utils {
+  void put<T>(T element) {
+    print(element);
+  }
+
+//  void putString(String element){
+//    this.elementStr = element;
+//  }
+}
+
+```
+
