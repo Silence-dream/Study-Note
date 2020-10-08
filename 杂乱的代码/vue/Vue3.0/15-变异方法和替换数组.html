@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue3.0.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in arr">{{item}}</li>
+
+        </ul>
+        <button @click="addbtn">添加</button>
+        <button @click="deletebtn">删除</button>
+        <button @click="repbtn">替换</button>
+    </div>
+
+    <script>
+        let vm = Vue.createApp({
+            data() {
+                return {
+                    arr: ["a", "b", "c", "d"]
+                }
+            },
+            methods: {
+                addbtn() {
+                    this.arr.push("新");
+                },
+                deletebtn() {
+                    this.arr.pop()
+                },
+                repbtn() {
+                    let arr = this.arr.splice(0, 2)
+                    this.arr = arr
+                }
+            },
+        }).mount("#app");
+    </script>
+</body>
+
+</html>
