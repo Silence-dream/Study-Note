@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .gege {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .didi {
+            width: 200px;
+            height: 200px;
+            background-color: deeppink;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <gege></gege>
+        <didi></didi>
+    </div>
+    <script src="../lib/vue3.0.global.js"></script>
+    <script src="../lib/mitt-2.1.0.js"></script>
+
+    <script>
+        let vm = Vue.createApp({});
+        const mitter = mitt();
+        vm.component("gege", {
+            data() {
+                return {
+                    msg: "我是哥哥"
+                }
+            },
+            methods: {
+                gege() {
+                    //  emit 发送了一个名为foo的信息出去
+                    mitter.emit("foo", {
+                        msg: "我是哥哥发送出来的信息"
+                    })
+                }
+            },
+            template: `<div class="gege" @click="gege">{{msg}}</div>`
+        })
+
+        vm.component("didi", {
+            data() {
+                return {
+                    msg: "我是弟弟"
+                }
+            },
+            created() {
+                let that = this
+                // 在DOM加载完成之后就可以访问兄弟组件发出的信息了
+                mitter.on("foo", function (e) {
+                    console.log(e);
+                    that.msg = e.msg
+                })
+            },
+            template: `<div class="didi">{{msg}}</div>`
+        })
+
+
+        vm.mount("#app")
+    </script>
+
+</body>
+
+</html>

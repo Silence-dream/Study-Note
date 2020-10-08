@@ -50,22 +50,21 @@
             template: `
                     <div class="father">
                         {{msg}}
-                        <son :content="msg" @father="father"></son>
-                    </div>`
+                       <son @father="father"></son>
+                    </div>
+                    `
+
         })
-        /* 传值核心点  父组件中写入子组件并且在子组件上自定义要传入的变量名(:变量名="父节点data中的数据")
-         * 然后在子组件中声明变量 props:["变量名"]
-         * 在子组件写入变量即可把父组件的值传给子元素
-         */
+
         vm.component("son", {
-            props: ["content"],
+            props: ["father"],
             data() {
                 return {
                     msg: "son",
                     mm: "我在子组件的信息" // 子组件向父组件传值用过回调函数实现
                 }
             },
-            template: `<div class="son" @click="$emit('father',mm)">{{msg}}-----{{content}}</div>`
+            template: `<div class="son" @click="$emit('father',mm)">{{msg}}</div>`
         })
         vm.mount('#app')
     </script>
