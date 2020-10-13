@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    span {
+      display: inline-block;
+      width: 33.333%;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <toubu>
+      <template v-slot:left>
+        三
+      </template>
+
+      <template #center>
+        <input type="text">
+      </template>
+
+      <template v-slot:right>
+        <button>登录</button>
+      </template>
+
+      <template v-slot:default>
+        <button>我是匿名插槽</button>
+      </template>
+    </toubu>
+  </div>
+  <script src="./lib/vue-3.0.0.js"></script>
+  <script>
+    // 插槽(slot)
+    // 就是子组件给父组件留的一个坑，等未来给根据需求来填坑
+
+    let vm = Vue.createApp({});
+
+    vm.component('toubu', {
+      template: `
+        <header>
+         <slot name="left">阿斯蒂芬撒地方</slot>
+         <slot name="center">
+          <h1>我本来input</h1>
+          </slot>
+         <slot name="right"></slot>
+         <slot></slot>
+        </header>
+      `
+    });
+    vm.mount('#app');
+
+
+  </script>
+
+  <!-- <header>
+  <span>左</span>
+  <span>中</span>
+  <span>右</span>
+</header> -->
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    span {
+      display: inline-block;
+      width: 33.333%;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <toubu>
+      <span>对开门冰箱</span>
+      <span>对开门冰箱1</span>
+      <span>对开门冰箱2</span>
+    </toubu>
+  </div>
+  <script src="./lib/vue-3.0.0.js"></script>
+  <script>
+    // 插槽(slot)
+    // 就是子组件给父组件留的一个坑，等未来给根据需求来填坑
+
+    let vm = Vue.createApp({});
+
+    vm.component('toubu', {
+      template: `
+        <header>
+         <slot></slot>
+         <slot></slot>
+        </header>
+      `
+    });
+    vm.mount('#app');
+
+
+  </script>
+
+  <!-- <header>
+  <span>左</span>
+  <span>中</span>
+  <span>右</span>
+</header> -->
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .current {
+      color: orange;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <fruit-list :list="list">
+      <!-- slotProps本来是可以自定义的但是我们一般都用这个名字 -->
+      <template v-slot="slotProps">
+        <!-- 如果id为2 就用strong 如果id部位2就用span渲染 -->
+        <strong v-if="slotProps.info.id == 2" class="current">{{slotProps.info.name}}</strong>
+        <span v-else>{{slotProps.info.name}}</span>
+      </template>
+    </fruit-list>
+  </div>
+  <script src="./lib/vue-3.0.0.js"></script>
+  <script>
+    let vm = Vue.createApp({
+      data() {
+        return {
+          list: [{
+            id: 1,
+            name: "apple"
+          },
+          {
+            id: 2,
+            name: "orange"
+          },
+          {
+            id: 3,
+            name: "lemon"
+          }]
+        }
+      }
+    })
+
+    vm.component('fruit-list', {
+      props: ["list"],
+      template: `
+      <ul>
+      <li v-for="(item,index) in list">
+        <slot :info="item">{{item.name}}</slot>
+      </li>
+      </ul>
+      `
+    });
+
+    vm.mount('#app');
+
+  </script>
+</body>
+
+</html>

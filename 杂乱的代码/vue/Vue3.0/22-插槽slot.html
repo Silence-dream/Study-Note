@@ -9,22 +9,22 @@
 
 <body>
     <div id="app">
-        <cpn></cpn>
+        <todo-button>
+
+        </todo-button>
     </div>
 
-
-    <template id="cpn">
-        <div>123123</div>
-    </template>
     <script src="../lib/vue3.0.global.js"></script>
     <script>
-        let vm = Vue.createApp({
-            comments: {
-                template: `#cpn`
-            }
+        let vm = Vue.createApp({})
+
+        vm.component("todo-button", {
+            template: `
+            <button class="btn-primary">
+                Create a new item
+            </button>
+            `
         })
-
-
 
         vm.mount("#app")
     </script>
