@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="add">add hash</button>
+    <button id="update">update hash</button>
+    <script>
+        var i = 1;
+        document.querySelector("#add").addEventListener('click', () => {
+            location.hash = "abc" + i++; //http://xxx.html#abc 哈希必有#
+        });
+        document.querySelector("#update").addEventListener('click', () => {
+            location.hash = "efg" + i++;
+        });
+        //监听hash的变化
+        addEventListener("hashchange", () => {
+            console.dir(location.hash);
+        })
+    </script>
+</body>
+
+</html>

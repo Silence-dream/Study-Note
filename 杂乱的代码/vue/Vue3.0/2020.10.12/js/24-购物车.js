@@ -17,8 +17,8 @@ window.onload = function () {
         <div class="name">{{item.name}}</div>
         <div class="change">
             <a href="">－</a>
-            <input type="text" class="num" :value="item.num"/>
-            <a href="">＋</a>
+            <input type="text" class="num" :value="item.num" @change="$emit('getSum',item.id,$event)"/>
+            <a href="" >＋</a>
         </div>
         <div class="del" @click="del(item.id)">×</div>
         </div>
@@ -109,12 +109,26 @@ window.onload = function () {
         });
         this.list.splice(index, 1);
       },
+      /**
+       * 得到商品数量
+       */
+      getNum(id, event) {
+        // id用来识别用户修改了哪一个项目的数量
+        // 通过 事件对象event中的targe.value拿到修改的值
+        // console.log(id);
+        let index = this.list.findIndex((ele) => {
+          return ele.id == id;
+        });
+        console.log(event.target.value);
+        this.list[index].num = event.target.value - 0;
+        // console.log();
+      },
     },
     template: `
     <div class="cart">
       <cart-title :uname="uname"></cart-title>
-      <cart-list :list="list" @delete="delNode"></cart-list>
-      <cart-total :list=list></cart-total>
+      <cart-list :list="list" @delete="delNode" @getSum="getNum"></cart-list>
+      <cart-total :list=list ></cart-total>
     </div>`,
     components: {
       "cart-title": cart_title_template,

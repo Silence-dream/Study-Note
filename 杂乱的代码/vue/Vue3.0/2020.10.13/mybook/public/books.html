@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" type="text/css" href="css/index.css"> -->
+  <script src="https://unpkg.com/dayjs"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="grid">
+      <div>
+        <h1>图书管理</h1>
+        <div class="book">
+          <div>
+            <label for="id">
+              编号：
+            </label>
+            <input type="text" id="id" disabled="false">
+            <label for="name">
+              名称：
+            </label>
+            <input type="text" id="name">
+            <button>提交</button>
+          </div>
+        </div>
+      </div>
+      <div class="total">
+        <span>图书总数：</span>
+        <span>total</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>名称</th>
+            <th>时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in books">
+            <td> {{item.id}} </td>
+            <td> {{item.name }}</td>
+            <td> {{item.date}} </td>
+            <td>
+              <a href="">修改</a>
+              <span>|</span>
+              <a href="">删除</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="/js/axios.js"></script>
+  <script src="/js/vue3.0.global.js"></script>
+  <script src="/js/books.js"></script>
+
+</body>
+
+</html>
