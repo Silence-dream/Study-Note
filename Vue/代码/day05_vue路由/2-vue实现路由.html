@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    a {
+      margin: 0 5px;
+    }
+  </style>
+  <script src="../lib/vue3.0.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 路由书写的地方 -->
+    <nav>
+      <a href="#/zhuye">主页</a>
+      <a href="#/keji">科技</a>
+      <a href="#/caijing">财经</a>
+      <a href="#/yule">娱乐</a>
+    </nav>
+
+    <!-- 对应路由的内容 -->
+    <main>
+      <!-- 占位符 至于放什么组件 由is属性决定 -->
+      <!-- <component :is="'yule'"></component> -->
+      <!-- 变量来控制渲染哪个组件 -->
+      <component :is="cname"></component>
+    </main>
+  </div>
+
+
+
+  <script>
+    // 主页组件
+    let zhuye = {
+      template: `<div><h2>主页信息</h2></div>`
+    }
+    // 科技组件
+    let keji = {
+      template: `<div><h2>科技信息</h2></div>`
+    }
+    // 主页组件
+    let caijing = {
+      template: `<div><h2>财经信息</h2></div>`
+    }
+    // 主页组件
+    let yule = {
+      template: `<div><h2>娱乐信息</h2></div>`
+    }
+    let vm = Vue.createApp({
+      // 数据域
+      data() {
+        return {
+          cname: 'zhuye'
+        }
+      },
+      // 局部组件
+      components: {
+        zhuye,
+        caijing,
+        yule,
+        keji
+      }
+    }).mount('#app');
+
+
+
+    // 能不能用hashchange事件改变vm中的cname的值
+    // console.log(vm);
+    // setTimeout(function(){
+    //   vm.$data.cname="keji"
+    // },4000)
+
+    window.onhashchange = function () {
+      console.log(location.hash);
+      if (location.hash == "#/zhuye") {
+        vm.$data.cname = "zhuye"
+      }
+      if (location.hash == "#/keji") {
+        vm.$data.cname = "keji"
+      }
+      if (location.hash == "#/caijing") {
+        vm.$data.cname = "caijing"
+      }
+      if (location.hash == "#/yule") {
+        vm.$data.cname = "yule"
+      }
+    }
+  </script>
+</body>
+
+</html>

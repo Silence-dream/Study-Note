@@ -10,7 +10,7 @@ export default {
   data() {
     return {
       msg: "123",
-      msg2: "<div>我曹你妈的</div>"
+      msg2: "<div>wdnmd</div>"
     };
   }
 };
