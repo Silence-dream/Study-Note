@@ -8,7 +8,8 @@ import About from "../views/About.vue";
 // Each route should map to a component.
 // We'll talk about nested routes later.
 const routes = [
-  { path: "/", name: "home", component: Home },
+  { path: "/", redirect: "/home" },
+  { path: "/home", name: "home", component: Home },
   { path: "/about", name: "about", component: About }
 ];
 
