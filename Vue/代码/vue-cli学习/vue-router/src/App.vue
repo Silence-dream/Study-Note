@@ -1,16 +1,24 @@
 <template>
-  <HelloWorld />
+  <div>
+    <router-link to="/">Go to Home</router-link>
+    <router-link to="/about">Go to About</router-link>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
 export default {
   name: "App",
-  components: {
-    HelloWorld
-  }
+  components: {}
 };
 </script>
 
-<style></style>
+<style>
+html,
+body {
+  text-align: center;
+}
+a {
+  margin: 0 5px;
+}
+</style>
