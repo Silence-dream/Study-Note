@@ -1,13 +1,11 @@
 <template>
-$END$
+  <h3>系统设置页面</h3>
 </template>
 
 <script>
 export default {
-name: "Settings"
-}
+  name: "Settings"
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

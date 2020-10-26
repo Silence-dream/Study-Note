@@ -1,13 +1,11 @@
 <template>
-$END$
+  <h3>权限管理页面</h3>
 </template>
 
 <script>
 export default {
-name: "Rights"
-}
+  name: "Rights"
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
