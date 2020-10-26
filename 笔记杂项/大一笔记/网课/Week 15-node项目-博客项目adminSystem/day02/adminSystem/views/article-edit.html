@@ -1,0 +1,61 @@
+{{extend './common/layout.html'}}
+{{block 'main'}}
+<!-- 头部 -->
+{{include './common/header.html'}}
+<!-- /头部 -->
+<!-- 主体内容 -->
+<div class="content">
+  <!-- 侧边栏 -->
+  {{include './common/aside.html'}}
+  <!-- 侧边栏 -->
+  <div class="main">
+    <!-- 分类标题 -->
+    <div class="title">
+      <h4>修改文章</h4>
+    </div>
+    <!-- /分类标题 -->
+    <form class="form-container" id="article-modify-form">
+
+
+    </form>
+
+  </div>
+</div>
+<!-- /主体内容 -->
+{{/block}}
+
+<!-- 插槽 -->
+{{block 'script'}}
+<script src="/lib/jquery-validation-1.15.0/jquery.validate.min.js"></script>
+<script src="/lib/moment/moment-2.24.0.js"></script>
+<script type="text/template" id="modify_templ">
+  <div class="form-group">
+    <label>标题</label>
+    <input type="text" class="form-control" name="title" placeholder="请输入文章标题" value="{& title &}">
+  </div>
+  <div class="form-group">
+    <label>作者</label>
+    <input type="text" class="form-control" readonly name="author" value="{& @author &}">
+  </div>
+  <div class="form-group">
+    <label>发布时间</label>
+    <input type="date" class="form-control" name="publishDate" value="{& publishDate &}">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputFile">文章封面</label>
+    <input type="file" name="cover" value="{& cover?cover:'' &}" >
+    <div class="thumbnail-waper">
+      <img class="img-thumbnail" src="{& 'http://localhost:3000/'+cover &}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>内容</label>
+    <textarea class="form-control" id="editor" name="content" >{& content &}</textarea>
+  </div>
+  <div class="buttons">
+    <input type="submit" class="btn btn-primary">
+  </div>
+</script>
+<script src="/js/articleEdit.js"></script>
+{{/block}}

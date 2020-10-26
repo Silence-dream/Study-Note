@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!-- 导入公共头部 -->
+<%- include('common/head'); %>
+
+<body>
+  <script>
+    NProgress.start()
+  </script>
+
+  <div class="main">
+    <nav class="navbar">
+      <button class="btn btn-default navbar-btn fa fa-bars"></button>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/admin/profile"><i class="fa fa-user"></i>个人中心</a></li>
+        <li><a href="javascript:;" class="loggedOut"><i class="fa fa-sign-out"></i>退出</a></li>
+      </ul>
+    </nav>
+    <div class="container-fluid">
+      <div class="page-title">
+        <h1>所有文章</h1>
+        <a href="post-add.html" class="btn btn-primary btn-xs">写文章</a>
+      </div>
+      <!-- 有错误信息时展示 -->
+      <!-- <div class="alert alert-danger">
+        <strong>错误！</strong>发生XXX错误
+      </div> -->
+      <div class="page-action">
+        <!-- show when multiple checked -->
+        <a class="btn btn-danger btn-sm" href="javascript:;" style="display: none">批量删除</a>
+        <form class="form-inline" id='form-inline'>
+          <select name="cid" class="form-control input-sm">
+            <option value="-1">所有分类</option>
+            <option value="0">未分类</option>
+            <option value="2">潮生活</option>
+            <option value="1">潮科技</option>
+          </select>
+          <select name="state" class="form-control input-sm">
+            <option value="-1">所有状态</option>
+            <option value="草稿">草稿</option>
+            <option value="已发布">已发布</option>
+          </select>
+          <button class="btn btn-default btn-sm" id="filtrate">筛选</button>
+        </form>
+        <!-- 分页 -->
+        <ul class="pagination pagination-sm pull-right" id="pagination">
+          <li><a href="#" class="pageUp" data-pageUp="1">上一页</a></li>
+          <% for(var i=0;i < Math.ceil((posts.length+1) / 3);i++){%>
+          <li><a href="#" class="pageYeMa"><%- i+1  %></a></li>
+          <%}%>
+          <li><a href="#" class="pageDown" data-pageDown="2">下一页</a></li>
+        </ul>
+      </div>
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th class="text-center" width="40"><input type="checkbox"></th>
+            <th>标题</th>
+            <th>作者</th>
+            <th>分类</th>
+
+            <th class="text-center">发表时间</th>
+            <th class="text-center">状态</th>
+            <th class="text-center" width="100">操作</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <!-- 文章列表 -->
+          <% for(var i=0;i < posts.length;i++){%>
+          <!-- 测试使用代码 -->
+          <!-- <div>
+            <p><%- posts[i].pname %></p>
+          </div> -->
+          <!-- 测试使用代码 -->
+          <tr>
+            <td class="text-center"><input type="checkbox"></td>
+            <td><%- posts[i].ptitle %></td>
+            <td><%- posts[i].pname %></td>
+            <td>潮科技</td>
+            <td class="text-center"><%- posts[i].publish_time %></td>
+            <td class="text-center"><%- posts[i].state %></td>
+            <td class="text-center">
+              <a href="/admin/edit" class="btn btn-default btn-xs" data-pid="<%- posts[i].pid %>">编辑</a>
+              <a href="javascript:;" class="btn btn-danger btn-xs" data-pid="<%- posts[i].pid %>">删除</a>
+            </td>
+          </tr>
+
+          <%}%>
+
+          
+          <!-- 文章列表结束 -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 导入公共侧边栏 -->
+  <%- include('common/aside'); %>
+
+          <!-- 导入公共脚本 -->
+          <%- include('common/script'); %>
+          <script src="/js/posts.js"></script>
+
+          <script>
+            NProgress.done()
+          </script>
+          <!-- 分页按钮 -->
+          <script type="text/template" id="pageTemplate">
+            <li><a href="#" class="pageUp {{data.pageNow<=1? 'disable' : '' }}" data-pageNumber="{{data.pageNow - 1 }}">上一页</a></li>
+
+            {{each data.pageNumBer}}
+              <li><a href="#" class="pageYeMa" data-pageNumber='{{$index+1}}'>{{$index+1}}</a></li>
+            {{/each}}
+            
+            <li><a href="#" class="pageDown {{data.pageNow>=data.pageNumBer.length ? 'disable' : '' }}" data-pageNumber="{{data.pageNow+1}}">下一页</a></li>
+          </script>
+          <!-- 文章渲染 -->
+          <script type="text/template" id="postsTemplate">
+            {{each data.postsData[0]}}
+            <tr>
+              <td class="text-center"><input type="checkbox"></td>
+              <td>{{$value.ptitle}}</td>
+              <td>{{$value.pname}}</td>
+              <td>潮科技</td>
+              <td class="text-center">{{$value.publish_time}}</td>
+              <td class="text-center">{{$value.state}}</td>
+              <td class="text-center">
+                <a href="/admin/edit" class="btn btn-default btn-xs" data-pid="{{$value.pid}}">编辑</a>
+                <a href="javascript:;" class="btn btn-danger btn-xs" data-pid="{{$value.pid}}">删除</a>
+              </td>
+            </tr>
+            {{/each}}
+          </script>
+
+          <!-- 模糊查询文章渲染 -->
+          <script type="text/template" id="findpostsTemplate">
+            {{each data}}
+            <tr>
+              <td class="text-center"><input type="checkbox"></td>
+              <td>{{$value.ptitle}}</td>
+              <td>{{$value.pname}}</td>
+              <td>潮科技</td>
+              <td class="text-center">{{$value.publish_time}}</td>
+              <td class="text-center">{{$value.state}}</td>
+              <td class="text-center">
+                <a href="/admin/edit" class="btn btn-default btn-xs" data-pid="{{$value.pid}}">编辑</a>
+                <a href="javascript:;" class="btn btn-danger btn-xs" data-pid="{{$value.pid}}">删除</a>
+              </td>
+            </tr>
+            {{/each}}
+          </script>
+</body>
+
+</html>

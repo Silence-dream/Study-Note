@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/13.css">
+    <style>
+        .current {
+            border: 1px solid #ED5759;
+            background: #FDEEEE;
+            font-size: 12px;
+            color: #ED5759;
+            padding-left: 6px;
+            padding-top: 2px;
+            height: 34px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">
+        <img src="img/top1.png" alt="" />
+    </div>
+    <div class="louceng">
+        <!-- 楼层1 -->
+        <div class="jd jia">
+            <img src="img/jia.png" alt="" />
+        </div>
+        <!-- 楼层2 -->
+        <div class="jd dian">
+            <img src="img/dian.png" alt="" />
+        </div>
+        <!-- 楼层3 -->
+        <div class="jd fu">
+            <img src="img/fu.png" alt="" />
+        </div>
+        <!-- 楼层4 -->
+        <div class="jd mei">
+            <img src="img/mei.png" alt="" />
+        </div>
+    </div>
+    <div class="bottom">
+        <img src="img/bottom.png" alt="" />
+    </div>
+    <!-- 侧边栏 -->
+    <div class="subnav">
+        <ul>
+            <li>家电通讯</li>
+            <li>电脑数码</li>
+            <li>服饰精品</li>
+            <li>美容珠宝</li>
+        </ul>
+        <div class="back">返回</div>
+
+    </div>
+    <script>
+        window.addEventListener("load", function () {
+            const jia = document.querySelector('.jia');
+            const dian = document.querySelector('.dian');
+            const fu = document.querySelector('.fu');
+            const mei = document.querySelector('.mei');
+            const btn = document.querySelector('.bottom');
+            const subnav = document.querySelector('.subnav');
+            const lis = subnav.querySelector("ul").querySelectorAll("li");
+            subnav.style.display = "none";
+            window.addEventListener("scroll", function () {
+                let moveY = parseInt(scrollY);
+                // 侧边栏的显示与隐藏
+                if (moveY >= jia.offsetTop) {
+                    subnav.style.display = "block";
+                } else {
+                    subnav.style.display = "none";
+                }
+
+
+                // 到谁谁红
+                if (moveY >= mei.offsetTop) {
+                    for (let i = 0; i < lis.length; i++) {
+                        lis[i].className = "";
+                    }
+                    lis[3].className = "current";
+                } else if (moveY >= fu.offsetTop) {
+                    for (let i = 0; i < lis.length; i++) {
+                        lis[i].className = "";
+                    }
+                    lis[2].className = "current";
+                } else if (moveY >= dian.offsetTop) {
+                    for (let i = 0; i < lis.length; i++) {
+                        lis[i].className = "";
+                    }
+                    lis[1].className = "current";
+                } else if (moveY >= jia.offsetTop) {
+                    for (let i = 0; i < lis.length; i++) {
+                        lis[i].className = "";
+                    }
+                    lis[0].className = "current";
+                }
+
+                // 侧面栏点谁去谁
+                for (let i = 0; i < lis.length; i++) {
+                    lis[i].addEventListener("click", function () {
+                        // console.log(i);
+                        // 获取html
+                        let html = document.documentElement;
+                        if (i == 0) {
+                            html.scrollTop = jia.offsetTop + 1;
+                        }
+                        if (i == 1) {
+                            html.scrollTop = dian.offsetTop + 1;
+                        }
+                        if (i == 2) {
+                            html.scrollTop = fu.offsetTop + 1;
+                        }
+                        if (i == 3) {
+                            html.scrollTop = mei.offsetTop + 1;
+                        }
+                    })
+
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

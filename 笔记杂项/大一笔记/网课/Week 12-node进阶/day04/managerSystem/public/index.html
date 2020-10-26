@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>用户列表</title>
+  <link rel="stylesheet" href="./lib/bootstrap-3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <h6>
+      <a href="#" class="btn btn-primary">添加用户</a>
+    </h6>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>用户名</th>
+          <th>年龄</th>
+          <th>爱好</th>
+          <th>邮箱</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>张三</td>
+          <td>20</td>
+          <td>
+            <span>抽烟</span>
+            <span>喝酒</span>
+            <span>烫头</span>
+          </td>
+          <td>zhangsan@itcast.cn</td>
+          <td>
+            <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
+            <a href="javascript:;" class="btn btn-success btn-xs">修改</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="./lib/artTemplate/template-web.js"></script>
+  <script src="./lib/jquery/jquery-3.5.1.js"></script>
+  <!-- 模板 -->
+  <script type="text/html" id="muban">
+    {{each data}}
+    <tr>
+      <td>{{$value.username}}</td>
+      <td>{{$value.age}}</td>
+      <td>
+        {{each $value.hobbies}}
+        <span>{{$value}}</span>
+        {{/each}}
+      </td>
+      <td>{{$value.email}}</td>
+      <td>
+        <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
+        <a href="javascript:;" class="btn btn-success btn-xs">修改</a>
+      </td>
+    </tr>
+    {{/each}}
+  </script>
+  <script>
+    $(function () {
+
+
+      // 请求地址list 
+
+      $.ajax({
+        type: "get",
+        url: "/list",
+        success: function (response) {
+          console.log(response);
+
+          let htmlStr = template("muban", {
+            data: response
+          })
+          console.log(htmlStr)
+          // 渲染数据
+          $(".table tbody").empty();
+          $(".table tbody").append(htmlStr);
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 需求: 点击按钮  修改兴趣 -->
+
+  <!-- 1.写按钮 -->
+  <button id="btn">修改兴趣</button>
+  <!-- 2.写各种兴趣 复选框 -->
+  <label for="basketball">
+    <input type="checkbox" value="1" name="hobby" id="basketball" disabled> 打篮球
+  </label>
+
+  <label for="ymq">
+    <input type="checkbox" value="2" name="hobby" id="ymq"> 打羽毛球
+  </label>
+
+  <label for="pingpang">
+    <input type="checkbox" value="3" name="hobby" id="pingpang"> 打乒乓球
+  </label>
+
+  <label for="doudou">
+    <input type="checkbox" value="4" name="hobby" id="doudou"> 打豆豆
+  </label>
+  <script>
+    const btn = document.querySelector('button');
+    const input = document.querySelectorAll('input');
+    console.log(typeof input[0].disabled)
+    console.log(Boolean("111"))
+    console.log(Boolean("true"))
+    console.log(Boolean(""))
+    btn.addEventListener("click", () => {
+      for (let i = 0; i < input.length; i++) {
+        input[i].disabled = "bbasdas";
+        // input[i].checked = true;
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        .box:checked {
+            background-color: green;
+        }
+
+        #thisOnClick:checked~div {
+            background: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <input id="thisOnClick" type="checkbox">
+    <div>
+        不稀罕js，咱用css做点击！
+    </div>
+</body>
+
+</html>

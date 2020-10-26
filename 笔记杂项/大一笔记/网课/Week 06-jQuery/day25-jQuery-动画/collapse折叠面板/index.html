@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 500px;
+            padding: 20px;
+            margin: 0 auto;
+            border: 1px solid #484b492f;
+        }
+
+        .item {
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .item span {
+            /* display: none; */
+            overflow: hidden;
+        }
+
+        .item div {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .item h3 {
+            float: left;
+            width: 200px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .item i {
+            float: left;
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-style: normal;
+        }
+    </style>
+    <script src="./lib/jQuery.js"></script>
+    <!--让animate支持rotate -->
+    <script src="./lib/jquery-animate-css-rotate-scale.js"></script>
+    <script src="./js/index.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <div class="item">
+            <div>
+                <h3>我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题</h3>
+                <i>></i>
+            </div>
+            <span>
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+            </span>
+        </div>
+        <div class="item">
+            <div>
+                <h3>我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题</h3>
+                <i>></i>
+            </div>
+            <span>
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+            </span>
+        </div>
+        <div class="item">
+            <div>
+                <h3>我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题</h3>
+                <i>></i>
+            </div>
+            <span>
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+            </span>
+        </div>
+        <div class="item">
+            <div>
+                <h3>我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题</h3>
+                <i>></i>
+            </div>
+            <span>
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+            </span>
+        </div>
+        <div class="item">
+            <div>
+                <h3>我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题</h3>
+                <i>></i>
+            </div>
+            <span>
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+                我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+            </span>
+        </div>
+
+    </div>
+    <script>
+        // $(".item>div").on("click", function () {
+        //     $(this).siblings("span").slideToggle("linear")
+        // });
+    </script>
+</body>
+
+</html>

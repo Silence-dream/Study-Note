@@ -1,0 +1,41 @@
+{
+    "configurations": [
+
+        {
+            "name": "运行Python: 当前文件",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+            // 弹出控制台显示
+            // "console": "externalTerminal"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - he",
+            "request": "launch",
+            "mainClass": "he",
+            "projectName": "上课_2c7901c8"
+        },
+        {
+            "name": "nodeLauch",
+            "type": "node",
+            "request": "launch",
+            "program": "${file}",
+            "stopOnEntry": false,
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "console": "internalConsole",
+            "preLaunchTask": "",
+            "sourceMaps": false
+        }
+    ]
+
+}

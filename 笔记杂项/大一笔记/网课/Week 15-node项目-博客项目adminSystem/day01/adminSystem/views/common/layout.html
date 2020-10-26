@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Blog - Content Manager</title>
+  <link rel="stylesheet" href="/lib/bootstrap-3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <!-- 不同的页面 css文件是不一样 如果是不同的CSS文件 我应该变成一个坑 等未来想要什么样的css文件 把这个坑填上就可以了 -->
+  {{block 'link'}}{{/block}}
+</head>
+
+<body>
+  <!-- 因为主体内容不一样 因此也要留下一个空位(坑) -->
+  {{block 'main'}}{{/block}}
+  <script src="/lib/jquery/jquery-3.5.1.js"></script>
+  <script src="/lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+  <script src="/lib/artTemplate/template-web.js"></script>
+
+
+  <script>
+    // 界定符 就是{{}} 也是<%%> 变成了 {^ ^}
+    // 在后端和前端渲染的时候 不要使用同一个模板引擎ejs arttemplate
+
+    // 改后端arttemplate包里面的配置
+    // 前端 用老版本(<%%> {{}})
+    template.defaults.rules[1].test = /{& ([@#]?)[ \t]*(\/?)([\w\W]*?)[ \t]*&}/;
+  </script>
+  <!-- 当点击头部或者侧边栏的时候 要做的功能 -->
+  <!-- 不同的页面 需要不同的js文件 引入 因此也要留下一个空位 -->
+  <!-- <script src="/js/common.js"></script> -->
+  {{block 'script'}}{{/block}}
+</body>
+
+</html>

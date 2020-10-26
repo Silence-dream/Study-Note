@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0 auto;
+      padding: 0px;
+      font-size: 12px;
+      background: url(images/bg.gif) repeat center 36px;
+      text-align: center;
+      background-color: #c30230;
+    }
+
+    #content {
+      margin: 0 auto;
+      width: 960px;
+      background: url(images/content_bg.jpg) no-repeat left top;
+      height: 627px;
+      position: relative;
+    }
+
+    #content .tip1,
+    #content .tip2,
+    #content .tip3,
+    #content .tip4,
+    #content .tip5,
+    #content .tip6,
+    #content .tip7,
+    #content .tip8 {
+      position: absolute;
+      width: 227px;
+      left: 200px;
+      top: 100px;
+    }
+
+    #content .tip1 .tip_h {
+      background: url(images/tip1_h.gif) no-repeat left top;
+    }
+
+    #content .tip1 .tip_h,
+    #content .tip2 .tip_h,
+    #content .tip3 .tip_h,
+    #content .tip4 .tip_h,
+    #content .tip5 .tip_h,
+    #content .tip6 .tip_h,
+    #content .tip7 .tip_h,
+    #content .tip8 .tip_h {
+      width: 227px;
+      padding-top: 45px;
+      height: 23px;
+      text-align: left;
+      cursor: move;
+    }
+
+    #content .tip1 .tip_c {
+      background: url(images/tip1_c.gif) repeat-y;
+    }
+
+    #content .tip1 .tip_c,
+    #content .tip2 .tip_c,
+    #content .tip3 .tip_c,
+    #content .tip4 .tip_c,
+    #content .tip5 .tip_c,
+    #content .tip6 .tip_c,
+    #content .tip7 .tip_c,
+    #content .tip8 .tip_c {
+      width: 200px;
+      padding-left: 12px;
+      padding-right: 15px;
+      min-height: 40px;
+      text-align: left;
+      line-height: 20px;
+      max-height: 160px;
+      word-wrap: break-word;
+      word-break: break-all;
+      overflow: hidden;
+    }
+
+    #content .tip1 .tip_f {
+      background: url(images/tip1_f.gif) no-repeat left top;
+    }
+
+    #content .tip1 .tip_f,
+    #content .tip2 .tip_f,
+    #content .tip3 .tip_f,
+    #content .tip4 .tip_f,
+    #content .tip5 .tip_f,
+    #content .tip6 .tip_f,
+    #content .tip7 .tip_f,
+    #content .tip8 .tip_f {
+      width: 227px;
+      height: 53px;
+      padding-top: 20px;
+    }
+
+    #content .close,
+    #content .close2 {
+      float: left;
+      font-size: 12px;
+      cursor: pointer;
+      color: #000000;
+    }
+
+    .clr {
+      clear: both;
+      overflow: auto;
+      display: block;
+      height: 0px;
+    }
+
+    #content .icon {
+      float: left;
+      width: 35px;
+      padding-left: 15px;
+      height: 35px;
+      text-align: center;
+    }
+
+    #content .name {
+      float: right;
+      padding-right: 15px;
+      text-align: right;
+      font-size: 14px;
+      line-height: 35px;
+      color: #C0F;
+    }
+
+    #content .num {
+      float: left;
+      padding-left: 7px;
+      width: 195px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 纸条墙 -->
+  <div id="content">
+    <!-- <div class="tip1" id="tip7" style="top: 63px; left: 82px;">
+      <div class="tip_h" title="双击关闭纸条">
+        <div class="num">第[49568]条 2020-03-13 16:30:00</div>
+        <div class="close" title="关闭纸条">×</div>
+        <div class="clr"></div>
+      </div>
+      <div class="tip_c">希望疫情早日过去,我在学校等你们</div>
+      <div class="tip_f">
+        <div class="icon"><img src="images/bpic_1.gif" alt="" title=""></div>
+        <div class="name">小羊留言</div>
+        <div class="clr"></div>
+      </div>
+    </div> -->
+  </div>
+  <script src="./data.js"></script>
+  <script>
+    // 许愿墙
+    // 1.把data.js中提供好的数据渲染到页面上
+    // 2.把愿望随机分布在许愿墙上
+    // 3.点击删除按钮，删除某一个愿望
+    // 4.双击愿望的头部 删除某一个愿望
+
+
+    // 功能1: 把data.js中提供好的数据渲染到页面上
+    // 步骤: 
+    // 1.获取装留言的容器
+    let content = document.querySelector('#content');
+    // 2.遍历data.js中的数据(1.为了填充数据 2.只有知道了有多少留言 我们才能创建多少留言结构)
+    for (let i = 0; i < messages.length; i++) {
+      // console.log(i+1);
+
+      // 2.1 创建留言结构
+      let newTip = document.createElement('div');
+      // 根据上面结构给div设置class
+      newTip.className = "tip1";
+      // console.log(messages[i]);
+      // 给div设置id
+      newTip.id = "tip" + messages[i].id;
+      //功能2: 给留言div设置随机的位置 top left
+      let topValue = parseInt(Math.random() * 400);
+      let leftValue = parseInt(Math.random() * 700);
+      // newTip设置left 和top值 201 402
+      newTip.style.top = topValue + 'px';
+      newTip.style.left = leftValue + 'px';
+      // 2.2 把留言结构中填充上数据
+      newTip.innerHTML = `
+     <div class="tip_h" title="双击关闭纸条">
+        <div class="num">第[49568]条 ${messages[i].time}</div>
+        <div class="close" title="关闭纸条">×</div>
+        <div class="clr"></div>
+      </div>
+      <div class="tip_c">${messages[i].content}</div>
+      <div class="tip_f">
+        <div class="icon"><img src="images/bpic_1.gif" alt="" title=""></div>
+        <div class="name">${messages[i].name}</div>
+        <div class="clr"></div>
+      </div>
+     `
+      // 3.把数据和html结构 组合好的html字符串插入到装留言的容器中
+      content.appendChild(newTip);
+    }
+
+    // 功能3：点击删除按钮，删除某一个愿望
+    // 步骤: 
+    // 3.1获取删除按钮
+    let aClose = document.querySelectorAll('.close');
+
+    // 3.2 给每个删除按钮添加点击事件
+    for (let i = 0; i < aClose.length; i++) {
+      aClose[i].onclick = function () {
+        // console.log(11111);
+        // 让content删除自己的孩子 删除按钮的爸爸的爸爸
+        // 3.3 删除删除按钮所在的留言
+        content.removeChild(this.parentNode.parentNode);
+      }
+    }
+
+    // 功能4: 双击愿望的头部 删除某一个愿望
+    // 步骤: 
+    // 4.1 获取所有的tip_h
+    let aTiph = document.querySelectorAll('.tip_h');
+    // console.log(aTiph);
+    // 4.2 给每个tip_h添加双击事件
+    for (let i = 0; i < aTiph.length; i++) {
+      aTiph[i].ondblclick = function () {
+        // console.log(1111111);
+        // 4.3 通过content删除自己的孩子
+        content.removeChild(this.parentNode);
+      }
+    }
+  </script>
+</body>
+
+</html>
