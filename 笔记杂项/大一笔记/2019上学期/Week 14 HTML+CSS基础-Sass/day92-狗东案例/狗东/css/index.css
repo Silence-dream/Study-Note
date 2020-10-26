@@ -1,0 +1,650 @@
+body {
+  background-color: #f5f5f5;
+}
+/* 1.导航 */
+nav {
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 44px;
+  background-color: #fff;
+}
+
+nav a {
+  flex: 1;
+  height: 100%;
+  text-align: center;
+}
+
+nav img {
+  width: auto;
+  height: 100%;
+}
+
+/* 2.头部 */
+header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 40px;
+  background-color: #c91523;
+  cursor: pointer;
+}
+
+.header-logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 58px;
+  height: 20px;
+  background-position: 0px -109px;
+}
+
+.header-search {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  padding-left: 78px;
+  padding-right: 55px;
+}
+
+.header-search i {
+  position: absolute;
+  top: 10px;
+  left: 84px;
+  width: 20px;
+  height: 20px;
+  background-position: -59px -109px;
+
+}
+
+.header-search input {
+  border: none;
+  width: 100%;
+  height: 30px;
+  margin-top: 5px;
+  background-color: #fff;
+  border-radius: 15px;
+  padding-left: 30px;
+}
+
+.header-login {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 40px;
+  width: 54px;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  font-size: 14px;
+}
+
+/* 主体 */
+main {
+  padding-top: 40px;
+  padding-bottom: 44px;
+}
+
+
+/* 主体-轮播图 */
+.carousel {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.carousel ul {
+  width: 1000%;
+  overflow: hidden;
+}
+
+.carousel li {
+  float: left;
+  width: 10%;
+}
+
+.carousel a {
+  width: 100%;
+  display: block;
+}
+
+.carousel img {
+  width: 100%;
+}
+
+/* 3.2 主体-导航 */
+.navigate {
+  width: 100%;
+  background-color: #fff;
+  padding-top: 10px;
+}
+
+.navigate ul {
+  width: 100%;
+  overflow: hidden;
+}
+
+.navigate li {
+  float: left;
+  width: 25%;
+  margin-bottom: 10px;
+}
+
+.navigate  a {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.navigate img {
+  width: 40px;
+  height: 40px;
+}
+
+.navigate span {
+  display: block;
+  margin-top: 5px;
+}
+
+/* 3.3 主体-秒杀 */
+.seckill {
+  width: 100%;
+  margin-top: 5px;
+  background-color: #fff;
+}
+
+.seckill-title {
+  padding: 0 10px;
+  width: 100%;
+  height: 30px;
+}
+
+.seckill-title h3 {
+  position: relative;
+  float: left;
+  line-height: 32px;
+  font-weight: normal;
+  padding-left: 24px;
+  font-size: 16px;
+  color: #c91523;
+}
+
+.seckill-title h3:before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 18px;
+  height: 24px;
+
+  background-image: url(../image/jd-sprites.png);
+  background-size: 200px 200px;
+  background-position: -84px -109px;
+}
+
+.seckill-title .time {
+  float: left;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+/* odd(奇数) even(偶数) */
+.seckill-title .time span:nth-child(odd) {
+  background-color: black;
+  color: #fff;
+  padding: 0 2px;
+  padding-top: 1px;
+  border-radius: 3px;
+ 
+}
+
+.seckill-title .more {
+  float: right;
+  color: #666;
+  line-height: 30px;
+}
+
+.seckill-list {
+  width: 100%;
+  padding: 0 10px;
+  padding-bottom: 15px;
+}
+
+.seckill-list ul {
+  width: 100%;
+  overflow: hidden;
+}
+
+.seckill-list li {
+  float: left;
+  width: 33.333333%;
+ 
+}
+
+.seckill-list a {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
+
+.seckill-list span {
+  position: absolute;
+  right: 5px;
+  bottom: 0;
+  height: 20px;
+  padding: 0 5px;
+  background-color: #fdb60a;
+  color: #fff;
+  border-radius: 50%;
+  /* text-align: center; */
+  line-height: 20px;
+  font-size: 12px;
+}
+
+.seckill-list img {
+  width: 100%;
+}
+
+.seckill-list b,
+.seckill-list s {
+  display: block;
+  text-align: center;
+}
+
+.seckill-list b {
+  font-weight: normal;
+  font-size: 16px;
+  color: #c91523;
+  margin-bottom: 5px;
+}
+
+.seckill-list s {
+  font-weight: normal;
+  font-size: 12px;
+  color: #666;
+  text-decoration: line-through;
+}
+
+/* 主体 活动 */
+.active {
+  position: relative;
+  width: 100%;
+}
+
+.active > img {
+  width: 100%;
+}
+
+.active ul {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.active li {
+  float: left;
+  width: 50%;
+}
+
+.active a {
+  display: block;
+  width: 100%;
+}
+
+.active img {
+  width: 100%;
+}
+
+/* 3.5 主体-产品 */
+.product {
+  width: 100%;
+}
+
+.product ul {
+  width: 100%;
+}
+
+.product li {
+  width: 100%;
+  overflow: hidden;
+}
+
+.product a {
+  float: left;
+}
+
+.product img {
+  width: 100%;
+}
+
+.product li:first-child a{
+  width: 33.3333333%;
+}
+
+.product li:last-child a{
+  width: 50%;
+}
+
+/* 3.6 主体-广告 */
+.adv {
+  width: 100%;
+  padding: 10px;
+}
+
+.adv a {
+  display: block;
+  width: 100%;
+}
+
+.adv img {
+  width: 100%;
+}
+
+/* 3.7 主体-超市 */
+.market {
+  width: 100%;
+  margin-top: 5px;
+  padding: 0 10px;
+  background-color: #fff;
+}
+
+.market-title,.brand-title  {
+  height: 30px;
+  font-size: 16px;
+  color: #f25353;
+  line-height: 30px;
+  font-weight: normal;
+}
+
+.market ul {
+  width: 100%;
+}
+
+.market li {
+  width: 100%;
+  overflow: hidden;
+}
+
+.market a {
+  float: left;
+  width: 50%;
+}
+
+.market img {
+  width: 100%;
+}
+
+/* 3.8 主题街 theme */
+.theme {
+  width: 100%;
+}
+.theme ul {
+  width: 100%;
+}
+
+.theme li {
+  width: 100%;
+  overflow: hidden;
+}
+
+.theme a {
+  float: left;
+}
+
+.theme img {
+  width: 100%;
+}
+
+.theme li:first-child a {
+  width: 50%;
+}
+
+.theme li:last-child a {
+  width: 25%;
+}
+
+.theme li:first-child a:nth-last-child(-n+2) {
+  width: 25%;
+}
+
+
+
+/* 3.9 主体-品牌推荐 */
+.brand {
+  width: 100%;
+  background-color: #fff;
+}
+
+.brand-title {
+ padding-left: 10px;
+}
+
+.brand ul {
+  width: 100%;
+ 
+  overflow: hidden;
+}
+
+.brand li {
+  float: left;
+  width: 30%;
+}
+
+.brand a {
+  display: block;
+  width: 100%;
+
+}
+
+.brand img {
+  width: 100%;
+}
+
+.brand li:nth-child(1) {
+  width: 40%;
+}
+
+
+/* 3.10 猜你喜欢 */
+.guess {
+  width: 100%;
+  background-color: #fff;
+}
+
+.guess-title {
+  width: 100%;
+  height: 30px;
+  padding: 0 10px;
+  line-height: 30px;
+}
+
+.guess-title h3 {
+  float: left;
+  font-weight: lighter;
+  font-size: 16px;
+  color: #666;
+}
+
+
+.guess-title a {
+  position: relative;
+  float: right;
+  color: #f25353;
+  
+}
+
+.guess-title a:before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: -22px;
+  width: 18px;
+  height: 18px;
+  background-image: url(../image/icon-login.png);
+  background-size: 18px 18px;
+}
+
+.guess-list {
+  width: 100%;
+}
+
+.guess-list ul {
+  width: 100%;
+  overflow: hidden;
+}
+
+.guess-list li {
+  float: left;
+  width: 50%;
+  padding: 0 10px;
+  padding-bottom: 10px;
+}
+
+.guess-list li > a {
+  display: block;
+  width: 100%;
+} 
+
+
+.guess-list li img {
+  width: 100%;
+  padding: 15px 0;
+} 
+
+.guess-list li p {
+  /* 1.规定p标签的宽度 */
+  width: 100%;
+  /* 2.让文字超出以后自动出现省略号(ellipsis) */
+  text-overflow: ellipsis;
+  /* 3.规定p标签的显示方式 */
+  display: -webkit-box;
+  /* 4.规定文字显示几行 */
+  -webkit-line-clamp: 2;
+  /* 5.设置排列方式 横向和竖向  */
+  -webkit-box-orient: vertical;
+  /* 6. 换行方式 单词换行 不论是不是单词 换行 */
+  /* word-break: normal; */
+  word-break: break-all;
+  /* 隐藏多余的文字 */
+  overflow: hidden;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.guess-list-price {
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+  overflow: hidden;
+
+}
+
+.guess-list-price b {
+  line-height: 20px;
+  color: #f25353;
+  font-weight: normal;
+}
+
+.guess-list-price a {
+  float: right;
+  color: #999;
+  border:1px solid #999;
+  border-radius: 2px;
+  padding: 0 2px;
+  padding-top: 2px;
+}
+
+
+/* 3.11 底部 */
+footer {
+  width: 100%;
+  /* background-color: #f5f5f5; */
+}
+
+.load-more {
+  display: block;
+  width: 100%;
+  height: 35px;
+  text-align: center;
+  /* line-height: 1.5; */
+  line-height: 35px;
+  border-top: 1px solid #ccc;
+  /* border-bottom: 1px solid #ccc; */
+  color: #666;
+  font-size: 14px;
+}
+
+.feedback {
+  width: 100%;
+  overflow: hidden;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  padding: 15px 0;
+}
+
+.feedback a {
+  color: #999;
+  font-size: 12px;
+  padding: 0 24px;
+  border-right: 1px solid #ccc;
+}
+
+.feedback a:last-child {
+  border-right: none;
+}
+
+.version {
+  border-top: 1px solid #ccc;
+  text-align: center;
+  padding-top: 60px;
+}
+
+.version a {
+  position: relative;
+  font-size: 12px;
+  padding: 0 24px;
+  color: #999;
+}
+
+
+.version a:before {
+  content: '';
+  position: absolute;
+ 
+  width: 33px;
+  height: 33px;
+  background-image: url("../image/jd-sprites.png");
+  background-size: 200px 200px;
+}
+
+.version a:first-child::before {
+  top: -42px;
+  left: 25px;
+  background-position: -120px -70px;
+}
+
+.version a:nth-child(2)::before {
+  top: -42px;
+  left: 25px;
+  background-position: -40px -70px;
+}
+
+.version a:last-child::before {
+  top: -42px;
+  left: 25px;
+  background-position: -80px -70px;
+}
+
+footer p {
+  border-top: 1px solid #ccc;
+  padding: 15px 0;
+  text-align: center;
+}
+

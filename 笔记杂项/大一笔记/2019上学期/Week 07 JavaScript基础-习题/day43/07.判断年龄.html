@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 7. 利用JavaScript编写程序：通过用户输入的年龄判断是哪个年龄段的人（儿童：年龄＜14；青少年：14<=年龄＜24；青年：24<年龄＜40; 中年：40＜=年龄＜60; 老年：年龄>=60），
+        //     并在页面上输出判断结果。
+
+        let userAge = +prompt("请输入你的年龄");
+        if (userAge < 14) {
+            alert('你居然是儿童')
+        } else if (userAge >= 14 && userAge < 24) {
+            alert('你居然是青少年')
+        } else if (userAge >= 24 && userAge < 40) {
+            alert('你居然是青年')
+        } else if (userAge >= 40 && userAge < 60) {
+            alert('你居然是中年人')
+        }
+        if (userAge >= 60) {
+            alert('你居然是老年人')
+        }
+    </script>
+</body>
+
+</html>

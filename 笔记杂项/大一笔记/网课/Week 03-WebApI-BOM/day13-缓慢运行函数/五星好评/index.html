@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            position: relative;
+            width: 350px;
+            height: 80px;
+            border: 1px solid #cacaca;
+            margin: 200px auto;
+        }
+
+        ul {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            height: 31px;
+        }
+
+        li {
+            float: left;
+            width: 16px;
+            height: 16px;
+            background-image: url(./star2.png);
+            background-repeat: no-repeat;
+            margin-top: 2px;
+        }
+
+        span {
+            display: none;
+            float: left;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="box">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <span>XX</span>
+        </ul>
+
+    </div>
+    <script>
+        //         - 后面的文字分别是: 极差，失望，一般，满意，惊喜
+        // - 功能一: 鼠标经过哪个五角星上面，哪个就变成黄色的星星，(图片已经给了)，假设鼠标直接移动到第 4 个五角星上面， 那么前面 4 个五角星背景图都会变成那种黄色的背景图，后面一个是没色的，依此类推，后面的文字也在随着鼠标在五角星上面不断经过，进行不断的切换
+        window.addEventListener("load", function () {
+            const ul = document.querySelector('ul');
+            const lis = document.querySelectorAll('li');
+            const span = document.querySelector('span');
+            for (let i = 0; i < lis.length; i++) {
+                lis[i].addEventListener("mouseenter", function () {
+                    for (let j = 0; j <= i; j++) {
+                        lis[j].style.backgroundImage = "url(./star1.png)";
+                    }
+                    lis[i].dataset.a = i;
+                    if (lis[i].dataset.a == 0) {
+                        span.style.display = "block";
+                        span.innerHTML = "极差";
+                    } else if (lis[i].dataset.a == 1) {
+                        span.style.display = "block";
+                        span.innerHTML = "失望";
+                    } else if (lis[i].dataset.a == 2) {
+                        span.style.display = "block";
+                        span.innerHTML = "一般";
+                    } else if (lis[i].dataset.a == 3) {
+                        span.style.display = "block";
+                        span.innerHTML = "满意";
+                    } else if (lis[i].dataset.a == 4) {
+                        span.style.display = "block";
+                        span.innerHTML = "惊喜";
+                    }
+
+                })
+
+                lis[i].addEventListener("mouseleave", mouseLeave)
+
+                function mouseLeave() {
+                    console.log("啊哈哈");
+                    for (let j = 0; j < lis.length; j++) {
+                        lis[j].style.backgroundImage = "url(./star2.png)";
+                    }
+                    for (let i = 0; i < lis.length; i++) {
+                        lis[i].style.backgroundImage = "url(./star2.png)";
+                    }
+                    span.style.display = "none";
+                }
+                // 存储点击是第几个li
+                let num = 0;
+                lis[i].addEventListener("click", function () {
+                    for (let j = 0; j <= i; j++) {
+                        lis[j].style.backgroundImage = "url(./star1.png)";
+                        // console.log(j);
+                        num = j;
+                    }
+
+                    for (let z = num + 1; z < lis.length; z++) {
+                        // console.log(z);
+                        lis[z].style.backgroundImage = "url(./star2.png)";
+                    }
+                    lis[i].removeEventListener("mouseleave", mouseLeave)
+                })
+            }
+        })
+        // - 功能二：当鼠标在没有点击的情况下，鼠标没有悬停道任何一个五角星上面，那么所有的五角星都变成灰色的背景图，后面的文字也不显示
+        // - 功能三：当鼠标点击了某个星星，对应的它前面所有的星星，包括它自己都会变成黄色的那种背景图，从点击开始的后面所有星星都是灰色的那种，后面文字显示你的是你点击的对应的那个文字
+        // - 注意:当点击完之后，再次移动到那些星星上面看看你的效果是否和视频的吻合
+    </script>
+</body>
+
+</html>

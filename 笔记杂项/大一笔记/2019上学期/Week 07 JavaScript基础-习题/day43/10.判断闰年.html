@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 10. 获取当前时间，判断今年是否为闰年。两种方法判断
+        //     1)判断今年是否为闰年；  能被400整除 或 被4整除但不能被100整除
+        //     2)判断本年2月是否为28天。闰年：2月有29天  平年：2月有28天
+
+        //第一问
+        let userYear = +prompt("请输入年");
+        if (userYear % 4 == 0 && userYear % 100 != 0 || userYear % 400 == 0) {
+            alert("是闰年")
+        } else {
+            alert("不是闰年");
+        }
+
+        //第二问
+        function getDate(year, month) {
+            var d = new Date(year, month, 0);
+            return d.getDate();
+        }
+        let a = getDate(userYear, 2)
+        if (a == 29) {
+            alert(`${userYear}的2月份是${a}天所以是闰年`)
+        } else if (a == 28) {
+            alert(`${userYear}的2月份是${a}天所以不是闰年`)
+        }
+    </script>
+</body>
+
+</html>

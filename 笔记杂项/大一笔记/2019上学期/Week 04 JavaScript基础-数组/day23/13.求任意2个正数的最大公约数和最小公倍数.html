@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 需求：求任意2个正数的最大公约数和最小公倍数。
+        
+        // 分析：
+        //     1.定义两个变量让用户输入
+        //     2.用循环和条件语句来写
+        var n1=prompt("请输入第一个正数")-0;
+        var n2=prompt("请输入第二个正数")-0;
+        var a;
+        var b;
+        var t;
+        if(n1<n2)
+        {
+            t=n1;
+            n1=n2;
+            n2=t;
+        }
+        a=n1;
+        b=n2;
+        while(b!=0)//利用辗除法，直到b为0为止
+        {
+            t=a%b;
+            a=b;
+            b=t;
+        }
+        alert("最大公约数为:"+a);
+        alert("最大公倍数为:"+n1*n2/a);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

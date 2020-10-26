@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+        // 2.输出下列代码a的值分别是多少？并且把预解析的过程写出来
+        // var a = 25;
+        // function abc() {
+        //     alert(a);   // 25
+        //     a = 10; //全局变量
+        // }
+        // abc();
+        // alert(a)  //10;
+
+        //过程
+        var a;
+        function abc() {
+            alert(a);//因为26行已经是全局变量了所以检测到a=25
+            a = 10;//全局变量  
+        }
+        a = 25;//变成全局变量
+        abc();
+        alert(a);//因为a的值有发生了变化变成了10所以输出10
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

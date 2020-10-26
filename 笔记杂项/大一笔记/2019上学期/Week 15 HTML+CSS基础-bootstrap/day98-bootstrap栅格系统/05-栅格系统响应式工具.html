@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <style>
+        .row div {
+            height: 50px;
+        }
+
+        .row div:nth-child(1) {
+            background-color: red;
+        }
+
+        .row div:nth-child(2) {
+            background-color: bisque;
+        }
+
+        .row div:nth-child(3) {
+            background-color: aqua;
+        }
+
+        .row div:nth-child(4) {
+            background-color: pink;
+        }
+
+        span {
+            font-size: 50px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3">
+                <span class="visible-lg">我真是神</span>
+            </div>
+            <div class="col-xs-3">2</div>
+            <div class="col-xs-3 hidden-xs">我是神</div>
+            <div class="col-xs-3">4</div>
+        </div>
+    </div>
+</body>
+
+</html>

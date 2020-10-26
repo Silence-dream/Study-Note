@@ -1,0 +1,131 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  width: 540px;
+  margin: 0 auto;
+  background-color: #cbcbc7;
+}
+
+.box-top {
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.box-bottom {
+  padding: 0 5px;
+
+  .box-bottom-row {
+    /* 设置飞机行 */
+    &:nth-child(2) {
+      background-color: #3495ff;
+
+      .row-1 {
+        background-position: 0 -300px;
+      }
+    }
+
+    /* 设置自由女神像 */
+    &:nth-child(3) {
+      background-color: #3baf1e;
+
+      .row-1 {
+        background-position: 0 -181px;
+      }
+    }
+  }
+
+  .items {
+    display: flex;
+    background-color: #ff9a1a;
+    border-radius: 5px;
+
+    a {
+      color: #ffffff;
+    }
+
+    div {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+
+      &:nth-child(1),
+      &:nth-child(2) {
+        border-right: 1px solid #fff;
+      }
+
+      a {
+        flex: 1;
+        padding-top: 12px;
+        padding-bottom: 12px;
+
+        &:nth-child(2) {
+          border-top: 1px solid #fff;
+        }
+      }
+    }
+  }
+}
+
+.box-bottom-row {
+  display: flex;
+  background-color: #ff7878;
+  border-radius: 5px;
+  margin-bottom: 5px;
+
+  div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    text-align: center;
+    height: 90px;
+
+    span {
+      flex: 1;
+      line-height: 45px;
+      color: #ffffff;
+    }
+
+    &:nth-child(2) {
+      border-left: 1px solid #ffffff;
+
+      span {
+        &:nth-child(2) {
+          border-top: 1px solid #fff;
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      border-left: 1px solid #ffffff;
+
+      span {
+        &:nth-child(2) {
+          border-top: 1px solid #fff;
+        }
+      }
+    }
+  }
+
+  .row-1 {
+    display: block;
+    width: 40px;
+    height: 33px;
+    margin: 0 auto;
+    background-image: url(../img/sprite.png);
+    background-repeat: no-repeat;
+    background-size: 104px auto;
+    background-position: 0 -130px;
+  }
+}

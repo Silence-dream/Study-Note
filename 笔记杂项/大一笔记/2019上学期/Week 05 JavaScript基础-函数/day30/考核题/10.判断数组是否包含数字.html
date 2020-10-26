@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 10.定义一个长度为10的数组，在每一个元素存放一个单词，然后用户输入单词进行匹配，通过程序判断数组是否包含有这个单词，包含这个单词打印"YES",否则就是"NO"
+
+        var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        var user = prompt("请输入数字") - 0;
+        for (var i = 0; i < arr.length; i++) {
+            var b = true;//定义开关
+            if (arr[i] == user) {//当用户输入等于元素的时候
+                b = true;//true
+                break;//跳出循环
+            }
+            else {
+                b = false;//
+            }
+        }
+        if (b) {//当b是true的时候就输出y
+            alert("y");
+        }
+        else {//b是false的时候就输出n
+            alert("n");
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

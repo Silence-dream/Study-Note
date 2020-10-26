@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 1.定义2个数组，let arrA = [1,2,3,3]; let arrB = [2,4,5,6]求2个数组的并集，交集
+
+    // 交集和并集，  交集:  2    并集: [1,2,3,4,5,6]  // 并集需要去重
+
+
+    // 王文静
+    let arrA = [1, 2, 3, 3];
+    let arrB = [2, 4, 5, 6];
+    // 又定义了一个数组
+    let arrC = [];
+    //交集
+    for (var i = 0; i < arrA.length; i++) {
+      for (var j = 0; j < arrB.length; j++) {
+        // 判断数组arrA的元素和arrB是否相等
+        if (arrA[i] == arrB[j]) {
+          // 如果相等放入到arrC中
+          arrC.push(arrB[j]);
+        }
+      }
+    }
+    console.log(arrC); // [2]
+    //并集
+    let arrD = Array.from(new Set(arrA.concat(arrB)));
+    console.log(arrD); // [1, 2, 3, 4, 5, 6]
+
+
+    // 烟乐乐
+    let arrA = [1, 2, 3, 3];
+    let arrB = [2, 4, 5, 6]
+    // 并集
+    // [1, 2, 3, 3, 4, 5, 6]
+    // filter()方法会创建一个新数组，原数组的每个元素传入回调函数中，
+    // 回调函数中有return返回值，若返回值为true，这个元素保存到新数组中 
+
+    // var arrC = arrB.filter(v => !arrA.includes(v))  // arrC是一个数组
+
+    //  var arrC = arrB.filter(function(v){  // v就是数组的每一项
+    //    return !arrA.includes(v)   // 2
+    //  })    // arrC结果  [4,5,6]
+    //  let union = arrA.concat(arrC)  // [1,2,3,3].concat([4,5,6]) // [1,2,3,3,4,5,6]
+    //  console.log(Array.from(new Set(union)))   // [1, 2, 3, 4, 5, 6] 
+
+    // 交集
+    // let intersection = arrA.filter(v => arrB.includes(v)) // [2]
+
+
+
+    // 2.随机产生一个十六进制的颜色值 ,例如：#90E353
+
+    // 左君玮
+    function color() {
+      // 首先定义了一个字符串
+      var str = '#'
+      // 定义一个数组,
+      var arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
+      // 循环产生6个数字 0-5
+      for (var i = 0; i < 6; i++) {
+        // 产生随机数.产生的是索引
+        var num = parseInt(Math.random() * 16)
+        // 字符串拼接
+        str += arr[num]
+      }
+      return str
+    }
+    console.log(color())
+
+
+
+    // 邓林洋
+    var str = "#";
+    var arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
+    for (var i = 0; i < 6; i++) {
+      var num = parseInt(Math.random() * 16);
+      str += arr[num];
+    }
+    console.log(str)
+
+
+    // 3.封装一个函数，把一个时间日期对象转成yyyy-mm-dd HH:mm:ss
+
+    function formateDate() {
+      // 获取当前日期
+      var date = new Date();
+      // 获取年
+      var year = date.getFullYear()
+      // 获取月
+      var month = date.getMonth() + 1 // 
+      // 获取日
+      var day = date.getDate() // 
+      // 获取小时
+      var hours = date.getHours()
+      // 获取分钟
+      var min = date.getMinutes()
+      // 获取秒
+      var seconds = date.getSeconds()
+
+      // 处理不足10的
+      month = month < 10 ? "0" + month : month;
+      day = day < 10 ? "0" + day : day;
+      hours = hours < 10 ? "0" + hours : hours;
+      min = min < 10 ? "0" + min : min;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      //yyyy-mm-dd HH:mm:ss
+      //  return year + '-' + month  + '-' + day + ' ' + hours + ':' + min + ':' + seconds
+
+      return `${year}-${month}-${day} ${hours}:${min}:${seconds}`
+
+    }
+
+    console.log(formateDate())
+
+
+    // 4.获取指定数组中元素值为奇数的元素个数，具体要求如下：
+    // 使用javascript定义函数getEvens实现要求：获取指定数组arr中元素值为奇数的元素个数，并返回
+    // 1).定义一个整数数组arr;
+    // 2).获取4个1~50之间（包含1和50）的随机整数，并存入arr
+    // 3).传递arr调用getEvens(arr)方法，获取返回值，并打印在控制台
+
+    // 曾鹏
+    var arr = [];
+    for (var i = 0; i < 4; i++) {
+      // 将产生的随机数放入数组中
+      arr.push(Math.ceil(Math.random() * (50 - 1) + 1))
+    }
+
+    // 定义一个函数
+    function getEvens(arr) {
+      // 累加个数
+      var count = 0
+      // 数组的循环遍历
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 != 0) {
+          // 整明是奇数
+          count++
+        }
+      }
+      return count
+    }
+    var result = getEvens(arr)
+    console.log(result)
+
+
+
+    // 赵瑞轩 
+    function getEvens(a) {
+      // 累加
+      var add = 0;
+      for (var i = 0; i < a.length; i++) {
+        if (a[i] % 2 != 0) {
+          add++;
+        }
+      }
+      return add;
+    }
+    // 产生数组
+    var arr = [];
+    for (var i = 0; i < 4; i++) {
+      // 随机数的产生
+      arr.push(parseInt(Math.random() * 50 + 1)); // [0,50)+1===>[1,51)
+    }
+    console.log(getEvens(arr));
+
+
+    // 黄选平
+    function getEvens(arr) {
+      var sum = 0;
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 != 0) {
+          sum++;
+        }
+      }
+      return sum;
+    }
+
+    var arr = [];
+    for (var i = 0; i < 5; i++) {
+      // [20,50]    但是我要的是[1,50]
+      var num = parseInt((Math.random() * 50 + 1)); // [0,1)*31===>[0,31)+20 ==>parseInt[20,51)  //50.999... 
+      arr.unshift(num);
+    }
+
+    // console.log(arr);
+
+    console.log(getEvens(arr));
+
+
+
+
+    // 5.定义一个函数， 接收一个字符串数组， 方法中打印姓 "张"的名字
+    // 输入： ["张三丰","李晓阳","大张","刘张伟","张章"]
+    // 输出： 张三丰 张章
+    // 要求： 至少用3种方式判断姓是张
+
+    // 曹喜娟  很好
+
+    // 第一种方式
+    var arr = ["张三丰", "李晓阳", "大张", "刘张伟", "张章"]
+
+    function name(arr) {
+      // 循环遍历数组
+      for (var i = 0; i < arr.length; i++) {
+        // arr[i].charAt(0)或者是 arr[i][0]
+        if (arr[i][0] == "张") {
+          console.log(arr[i])
+        }
+      }
+    }
+    name(arr) // 张三丰   张章
+
+    // 谢仲龙  第二种方式
+    function ebg(arr) {
+      for (var i = 0; i < arr.length; i++) {
+        // arr[i].charAt(0)
+        if (arr[i].charAt() == "张") {
+          console.log(arr[i])
+        }
+      }
+    }
+    var arr = ["张三丰", "李晓阳", "大张", "刘张伟", "张章"]
+    ebg(arr) //  // 张三丰   张章
+
+    // 张雪  第三种方式
+    function getName(arr) {
+      // 循环遍历数组
+      for (var i = 0; i < arr.length; i++) {
+        // indexOf(),
+        if (arr[i].indexOf('张') == 0) {
+          console.log(arr[i]); //  张三丰   张章
+        }
+      }
+    }
+    var arr = ["张三丰", "李晓阳", "大张", "刘张伟", "张章"]
+    getName(arr)
+
+
+    // 范志伟  第四种方式
+    function fn(arr) {
+      for (let i = 0; i < arr.length; i++) {
+        //slice(),substring(start,end) 但是取不到end 
+        if (arr[i].slice(0, 1) === '张') {
+          arrx.push(arr[i])
+        }
+      }
+      return arrx
+    }
+
+    // 范志伟  第五种方式
+    function fn(arr) {
+      for (let i = 0; i < arr.length; i++) {
+        // substr(index,length)
+        if (arr[i].substr(0, 1) === '张') {
+          arrx.push(arr[i])
+        }
+      }
+      return arrx
+    }
+    var arr = ["张三丰", "李晓阳", "大张", "刘张伟", "张章"]
+    let jg = fn(arr);
+    console.log(jg);
+
+    // 袁旭东 第六种方式
+    // str.charCodeAt(0) == 24352 
+
+
+    // function search(arr) {
+    //   let count = 0;
+    //   // 遍历数组
+    //   for (let i = 0; i < arr.length; i++) {
+    //     if (arr[i].indexOf('张') != -1 && arr[i].indexOf('张') == 0) {
+    //       console.log(arr[i]);
+    //       count++;
+    //     }
+    //   }
+    //   if (count == 0) {
+    //     console.log('没有人姓张');
+    //   }
+    // }
+
+    
+  </script>
+</body>
+
+</html>

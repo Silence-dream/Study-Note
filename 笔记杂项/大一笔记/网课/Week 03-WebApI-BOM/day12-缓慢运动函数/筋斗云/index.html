@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0
+    }
+
+    ul {
+      list-style: none
+    }
+
+    body {
+      background-color: #333;
+    }
+
+    .nav {
+      width: 800px;
+      height: 42px;
+      margin: 100px auto;
+      background: url(images/rss.png) right center no-repeat;
+      background-color: #fff;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .nav li {
+      width: 83px;
+      height: 42px;
+      text-align: center;
+      line-height: 42px;
+      float: left;
+      cursor: pointer;
+    }
+
+    .nav span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 83px;
+      height: 42px;
+      background: url(images/cloud.gif) no-repeat;
+    }
+
+    ul {
+      position: relative;
+    }
+  </style>
+  <script src="./animate.js"></script>
+</head>
+
+<body>
+  <div class="nav">
+    <span id="cloud"></span>
+    <ul id="navBar">
+      <li>北京校区</li>
+      <li>上海校区</li>
+      <li>广州校区</li>
+      <li>深圳校区</li>
+      <li>武汉校区</li>
+      <li>关于我们</li>
+      <li>联系我们</li>
+      <li>招贤纳士</li>
+    </ul>
+  </div>
+
+  <script>
+    // - 功能1：鼠标悬停到哪个li上面，对应的绿色的云也会移动到那个li上面
+    // - 功能2：如果鼠标没有点击任何一个li，并且鼠标没有悬停到任何一个li上面的时候，那么绿色的云就会回到最起始的位置
+    // - 功能3：如果鼠标点击了某一个li，并且当鼠标没有悬停到任何一个li上面的时候，那么绿色的云就会停留到点击的那个li的位置
+    window.addEventListener('load', function () {
+      // 云
+      const cloud = document.querySelector('#cloud');
+      const lis = document.querySelectorAll('li');
+      let initial = 0;
+      for (let i = 0; i < lis.length; i++) {
+        lis[i].addEventListener("mouseenter", function (e) {
+          // cloud.style.left = lis[i].offsetLeft + "px";
+          animate(cloud, lis[i].offsetLeft);
+        })
+        lis[i].addEventListener("mouseleave", function (e) {
+          // cloud.style.left = lis[i].offsetLeft + "px";
+          animate(cloud, initial);
+        })
+        lis[i].addEventListener("mousedown", function (e) {
+          // cloud.style.left = lis[i].offsetLeft + "px";
+          for (let i = 0; i < lis.length; i++) {
+            lis[i].className = "";
+          }
+          initial = lis[i].offsetLeft;
+        })
+      }
+    })
+  </script>
+</body>
+
+</html>

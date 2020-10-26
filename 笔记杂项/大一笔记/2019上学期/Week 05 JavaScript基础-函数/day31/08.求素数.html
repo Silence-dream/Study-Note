@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //5. 写一个函数，判断一个数是否是素数，并返回结果true 或 false(又叫质数，只能被1和自身整数的数)
+        // 质数又称素数。一个大于1的自然数，除了1和它自身外，不能被其他自然数整除的数叫做质数；否则称为合数。
+        //     0和1既不是质数也不是合数，最小的质数是2
+
+        // 思路1)：因此判断一个整数m是否是素数，只需把 m 被 2 ~ m-1 之间的每一个整数去除，如果都不能被整除，那么 m 就是一个素数
+
+
+        //定义一个函数
+        function getPrime(num) {
+            // 使用循环让num范围内的值都除以num除开1和它num之外如果还有数能够除以num那么它就不是素数
+            for (var i = 2; i < num - 1; i++) {
+                if (num % i == 0) {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+            if (num = 1)//因为1也是素数所以单独判断
+            {
+                return true;
+            }
+        }
+        //定义变量让用户输入一个数字判断它是否是素数;
+        var user = prompt("请输入一个数字判断它是否是素数") - 0;
+        //把user赋值给实参
+        var result = getPrime(user);
+        //打印
+        alert(result);
+
+// var user = 8;
+// var temp = true;//定义开关
+// for (var i = 2; i <= user - 1; i++) {
+//     if (user % i == 0) {
+//         temp = false;
+//         break;//跳出循环防止temp的值被再次改变
+//     }
+//     else {
+//         temp = true;
+//     }
+// }
+// if (temp) {
+//     console.log("是");
+// }
+// else {
+//     console.log("不是");
+// }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

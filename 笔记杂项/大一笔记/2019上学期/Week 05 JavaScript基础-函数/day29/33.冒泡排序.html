@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 33.  有一个从大到小排好序的数组[99,85,82,63,60],现从页面输入一个数,要求按原来的规律将它插入数组中,
+        // 要求,假设你输入的80,则应该插入到82和63之间
+
+        var arr = [99, 85, 82, 63, 60];
+        var user=prompt("请输入一个数字")-0;//减0是为了通过隐式转换把输入的数字转为number
+        arr[arr.length]=user;//把输入的数字添加到数组中
+        //冒泡排序
+        for (var i = 0; i < arr.length-1; i++) {
+            for (var j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j] < arr[j + 1]) {
+                    //交换数值
+                    var temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+        alert(arr);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./animate.js"></script>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 250px;
+            margin: 0 auto;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            padding-left: 20px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            padding: 0;
+            margin: 0;
+            background-color: #02a6c1;
+            color: #ffffff;
+            padding-left: 10px;
+            cursor: pointer;
+        }
+
+        #h1,
+        #h2,
+        #h3 {
+            overflow: hidden;
+        }
+
+        #h2,
+        #h3 {
+            height: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul id="h1">
+            <h3>我是一级导航</h3>
+            <li>我是二级导航</li>
+            <li>我是二级导航</li>
+            <li>我是二级导航</li>
+        </ul>
+        <ul id="h2">
+            <h3>我是一级导航</h3>
+            <li>我是二级导航</li>
+            <li>我是二级导航</li>
+            <li>我是二级导航</li>
+        </ul>
+        <ul id="h3">
+            <h3>我是一级导航</h3>
+            <li>我是二级导航</li>
+            <li>我是二级导航</li>
+            <li>我是二级导航</li>
+        </ul>
+    </div>
+    <script>
+        const h1 = document.querySelector('#h1');
+        const h2 = document.querySelector('#h2');
+        const h3 = document.querySelector('#h3');
+        // 获取单个li
+        const lis = h1.querySelectorAll('li');
+        const oh3 = h1.querySelector('h3');
+        // falseHeight为回收的高度
+        // 回收的高度
+        let falseHeight = oh3.offsetHeight;
+        // 获得展开的的高度
+        let trueHeight = lis[0].offsetHeight * lis.length + falseHeight;
+
+        h1.addEventListener("click", function () {
+            // h2是展开的
+            if (h2.offsetHeight == trueHeight) {
+                // h1展开
+                animate(h1, {
+                    height: trueHeight
+                });
+                // h2回收
+                animate(h2, {
+                    height: falseHeight
+                });
+            }
+            if (h3.offsetHeight == trueHeight) {
+                animate(h1, {
+                    height: trueHeight
+                });
+                animate(h3, {
+                    height: falseHeight
+                });
+            }
+        })
+        h2.addEventListener("click", function () {
+            if (h3.offsetHeight == trueHeight) {
+                animate(h3, {
+                    height: falseHeight
+                });
+                animate(h2, {
+                    height: trueHeight
+                });
+            } else {
+                animate(h1, {
+                    height: falseHeight
+                });
+                animate(h2, {
+                    height: trueHeight
+                });
+            }
+
+        })
+        h3.addEventListener("click", function () {
+            if (h1.offsetHeight == trueHeight) {
+                animate(h1, {
+                    height: falseHeight
+                });
+                animate(h3, {
+                    height: trueHeight
+                });
+            } else {
+                animate(h2, {
+                    height: falseHeight
+                });
+                animate(h3, {
+                    height: trueHeight
+                });
+            }
+
+
+        })
+    </script>
+</body>
+
+</html>

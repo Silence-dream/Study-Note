@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 343px;
+            height: 200px;
+            background-color: #00366d;
+            margin: 300px auto;
+            background-image: url(./images/paopao.png);
+            background-repeat: no-repeat;
+            background-position: 0 0;
+        }
+
+        .row {
+            width: 343px;
+            height: 200px;
+            background-image: url(./images/paopao.png);
+            background-repeat: no-repeat;
+            background-position: 0 -209px;
+        }
+
+        .box:hover {
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+            animation: move1 5s ease;
+        }
+
+        .row:hover {
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+            animation: move2 5s ease;
+        }
+
+        @keyframes move1 {
+            100% {
+                background-position: 0 -209px;
+            }
+        }
+
+        @keyframes move2 {
+            100% {
+                background-position: 0 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="row"></div>
+    </div>
+</body>
+
+</html>

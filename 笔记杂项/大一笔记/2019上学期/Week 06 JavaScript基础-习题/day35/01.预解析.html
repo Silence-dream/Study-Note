@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function b(x, y, a) {
+            a = 10
+            alert(arguments[2]);//？
+        }
+        b(1, 2, 3);
+
+        //过程
+        // 1、首先声明函数b
+        // 2、调用函数b把实参的值1、2、3分别赋值给形参x、y、a， 即为x = 1, y = 2, a = 3;
+        // 3、当执行到a=10的时候将原来a=3的值重新覆盖了，所以a=10
+        // 4、因为arguments会接收所以传入过来的实参形成伪数组，且传入的顺序为x、y、a，所以下标为2的元素是10，即输出的是10。
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

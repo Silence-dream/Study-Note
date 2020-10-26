@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 假设一个简单的ATM机的取款过程是这样的：
+        // 首先提示用户输入密码（password），
+        // 最多只能输入三次，超过3次则提示用户“密码错误，
+        // 请取卡”结束交易。
+        // 如果用户密码正确，
+        // 再提示用户输入取款金额（amount），
+        // ATM机只能输出100元的纸币，一次取钱数要求最低
+        // 100元，最高1000元。
+        // 若用户输入的金额符合上述要求，则打印输出用户取得钱数，
+        // 最后提示用户“交易完成，请取卡”，否则提示用户重新输入金额。
+        // 假设用户密码是111111，请编程实现。
+        var isTrue = false,
+            n = 1;
+        //判断密码输入开始
+        while (n <= 3) {
+            var pwd = prompt("请输入用户密码~");
+            if (pwd == 111111) {
+                isTrue = true;
+                break;
+            } else {
+                n++;
+                if (n > 3) {
+                    document.write("密码错误，请取卡!");
+                }
+            }
+        }
+        //判断密码输入结束
+
+        //输入密码成功之后
+        if (isTrue) {
+            while (1) {
+                var num = prompt("请输入取款金额：(100~1000元)")
+                if (num % 100 == 0 && num >= 0 && num <= 1000) {
+                    document.write("您的取款金额为" + num + "元~<br />交易完成，请取卡！");
+                    break;
+                } else {
+                    alert("你输入不合法！请重新输入！")
+                }
+            }
+            //循环输入金额操作
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

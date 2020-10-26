@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            width: 50px;
+            height: 20px;
+            padding: 0 5px;
+            margin: 200px auto;
+            background-color: #ff1e01;
+            border-radius: 20px;
+            box-sizing: border-box;
+        }
+
+        span {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+    </style>
+    <script src="./animate.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <span></span>
+    </div>
+    <script>
+        const div = document.querySelector('.box');
+        const span = document.querySelector('.box span');
+        // 保存div的padding
+        let divPadding = getComputedStyle(div, null).padding.split(" ")[1];
+        // 定义字符串拼接数字
+        let sNum = ""
+        for (let i = 0; i < divPadding.length; i++) {
+            if (!isNaN(divPadding[i])) {
+                sNum += divPadding[i];
+            }
+        }
+        console.log(sNum);
+        // span移动的距离  40-5+22
+        let spanLeft = div.scrollWidth - Number(sNum) * 2 - span.offsetWidth + Number(sNum);
+        let flag = true;
+        div.addEventListener("click", function () {
+            if (flag) {
+                flag = false;
+                div.style.backgroundColor = "#007103";
+                animate(span, {
+                    left: spanLeft
+                })
+            } else {
+                flag = true;
+                div.style.backgroundColor = "#ff1e01";
+                animate(span, {
+                    left: Number(sNum)
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>

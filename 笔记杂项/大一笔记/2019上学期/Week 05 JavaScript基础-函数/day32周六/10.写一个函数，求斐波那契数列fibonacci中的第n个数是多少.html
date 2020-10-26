@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 写一个函数，求斐波那契数列fibonacci中的第n个数是多少？？1  1  2  3  5   8  13  21
+        // 规律1+1=2 2+3=5 3+5=8
+        function getFib()
+        {
+                    //定义用户输入变量n
+        var n = +prompt("请输入一个数字");
+        //定义数列的前两个数
+        var a = 1;
+        var b = 1
+        //定义变量储存临时数据
+        var temp = 0;
+        if (n == 1 || n == 2) {
+            temp = 1;
+            return temp;
+            // alert(temp);
+        } else {
+            // 定义循环
+            for (var i = 2; i < n; i++) {
+                //传递数值
+                temp = a + b;
+                b = a;
+                a = temp;
+            }
+            return temp;
+            // alert(temp);
+        }
+        }
+        //定义变量保存返回值
+        var result=getFib()
+        //输出
+        alert(result);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

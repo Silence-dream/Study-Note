@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 需求:素质教育（把分数变成ABCDE),A是>=90的分数，B是80-90的分数，以此类推，千万不要写100个case哟,分数需要接收用户输入的
+
+        // 分析:
+        //     1.定义变量让用户输入分数
+        //     2.使用条件语句写
+        
+
+        var num = prompt("说吧你考了多少分") - 0;
+
+        if(num>=90)
+        {
+            alert("A");
+        }
+        else if(num<90&&num>=80)
+        {
+            alert("B");
+        }
+        else if(num<80&&num>=70)
+        {
+            alert("C");
+        }
+        else if(num<70&&num>=60)
+        {
+            alert("D");
+        }
+        else
+        {
+            alert("E");
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

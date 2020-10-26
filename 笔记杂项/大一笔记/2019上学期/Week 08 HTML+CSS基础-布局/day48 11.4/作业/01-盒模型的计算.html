@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+
+    /* 情况一 */
+    .box {
+      width: 200px;
+      height: 200px;
+      border: 10px solid red;
+
+      /* 说出盒子的宽度是多少，高度是多少 */
+      /* width=220 */
+      /* height=220 */
+    }
+
+
+
+    /* 情况二 */
+    .box {
+      width: 200px;
+      height: 200px;
+      border: 10px solid red;
+      padding: 20px;
+
+      /* 说出盒子的宽度是多少，高度是多少 */
+      /* width=260
+      height=260 */
+    }
+
+
+
+    /* 情况三 */
+    .box {
+      width: 200px;
+      height: 200px;
+      border: 10px solid red;
+      padding: 20px;
+      margin: 20px;
+
+      /* 说出盒子的宽度是多少，高度是多少 */
+      /* width=260
+      height=260 */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+</body>
+
+</html>

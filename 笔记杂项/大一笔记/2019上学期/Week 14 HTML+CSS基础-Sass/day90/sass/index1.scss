@@ -1,0 +1,109 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+@mixin boxCenter {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul {
+    position: fixed;
+    top: 500px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    // margin-top: 200px;
+    list-style-type: none;
+    // @include boxCenter();
+}
+
+body {
+    background-color: #fff;
+}
+
+@mixin list($width:35px, $height:35px, $x:-9px, $y:-11px) {
+    display: block;
+    width: $width;
+    height: $height;
+    background: #eee url(../img/spirte.png) no-repeat $x $y;
+    // background-position: top center;
+    // margin: 0 auto;
+}
+
+.list-1 {
+    @include list(35px, 35px, -9px, -11px)
+}
+
+@mixin listBefore($width, $height, $padding, $x, $y, $color) {
+    content: "图书";
+    width: $width;
+    height: $height;
+    padding-left: $padding;
+    box-sizing: border-box;
+    background: $color url(../img/spirte.png) no-repeat $x $y;
+}
+
+.list-1:hover::before {
+    display: block;
+}
+
+.list-1::before {
+    display: none;
+    @include listBefore(80px, 35px, 35px, -49px, -11px, #93d46f)
+}
+
+
+.list-2 {
+    @include list(35px, 35px, -9px, -91px)
+}
+
+.list-2:hover::before {
+    display: block;
+}
+
+.list-2::before {
+    display: none;
+    @include listBefore(80px, 35px, 35px, -49px, -91px, #93d46f)
+}
+
+.list-3 {
+    @include list(35px, 35px, -9px, -251px)
+}
+
+.list-3:hover::before {
+    display: block;
+}
+
+.list-3::before {
+    display: none;
+    @include listBefore(80px, 35px, 35px, -49px, -251px, #93d46f)
+}
+
+.list-4 {
+    @include list(35px, 35px, -9px, -533px)
+}
+
+.list-4:hover::before {
+    display: block;
+}
+
+.list-4::before {
+    display: none;
+    @include listBefore(80px, 35px, 35px, -49px, -533px, #93d46f)
+}
+
+.list-5 {
+    @include list(35px, 35px, -9px, -573px)
+}
+
+.list-5:hover::before {
+    display: block;
+}
+
+.list-5::before {
+    display: none;
+    @include listBefore(80px, 35px, 35px, -49px, -573px, #93d46f)
+}

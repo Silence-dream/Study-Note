@@ -1,0 +1,91 @@
+$no:640/10;
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* 头部导航 */
+.nav {
+    position: relative;
+    width: 100%;
+    height: 88rem /$no;
+    background-color: #ff9b25;
+    line-height: 88rem /$no;
+
+    i {
+        position: absolute;
+        top: 50%;
+        left: 20rem /$no;
+        transform: translateY(-50%);
+        display: inline-block;
+        width: 20rem / $no;
+        height: 32rem / $no;
+        background: url(../images/Rectangle1copy16.png) no-repeat;
+        background-size: 20rem / $no 32rem / $no;
+    }
+
+    span {
+        font-size: 30rem / $no;
+        color: #ffffff;
+        padding-left: 56rem /$no;
+    }
+}
+
+.container {
+    background-color: #f7f4f1;
+    padding: 0 24rem/$no;
+}
+
+.discounts {
+    // background-color: #f7f4f1;
+
+    .discounts-title {
+        height: 84rem /$no;
+        // background-color: red;
+        line-height: 84rem /$no;
+
+        h3 {
+            float: left;
+            // padding-left: 24rem / $no;
+            font-size: 25rem /$no;
+        }
+
+        span {
+            float: right;
+            font-size: 24rem/$no;
+            color: #888888;
+            // padding-right: 25rem /$no;
+        }
+    }
+
+    .discounts-content {
+        position: relative;
+        width: 600rem/ $no;
+        height: 226rem /$no;
+        margin: 0 auto;
+        border: 3px dashed #dedede;
+
+        a {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        p {
+            font-size: 24rem / $no;
+            color: #888888;
+            text-align: center;
+            line-height: 15;
+        }
+    }
+}
+
+.tips {
+    color: #999999;
+    font-size: 24rem /$no;
+    margin-top: 120rem/$no;
+    padding-bottom: 160rem /$no;
+}

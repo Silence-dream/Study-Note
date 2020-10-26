@@ -1,0 +1,106 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    position: fixed;
+    top: 0;
+    right: 500px;
+    list-style-type: none;
+}
+
+@mixin list($width, $height, $x, $y) {
+    width: $width;
+    height: $height;
+    background: url(../img/1.png) no-repeat $x $y;
+}
+
+.list-1 {
+    @include list(34px, 34px, 0, 0);
+}
+
+.list-1:hover {
+    transition: all 0.2s;
+    @include list(34px, 34px, -40px, 0);
+
+    b {
+        display: block;
+    }
+
+}
+
+.list-2 {
+    @include list(34px, 34px, 0, -35px);
+}
+
+.list-2:hover {
+    transition: all 0.2s;
+    @include list(34px, 34px, -40px, -35px);
+
+    b {
+        display: block;
+    }
+
+}
+
+.list-3 {
+    @include list(34px, 34px, 0, -70px);
+}
+
+.list-3:hover {
+    transition: all 0.2s;
+    @include list(34px, 34px, -40px, -70px);
+
+    b {
+        display: block;
+    }
+
+}
+
+.list-4 {
+    @include list(34px, 34px, 0, -105px);
+}
+
+.list-4:hover {
+    transition: all 0.2s;
+    @include list(34px, 34px, -40px, -105px);
+
+    b {
+        display: block;
+    }
+
+}
+
+.list-5 {
+    @include list(34px, 34px, 0, -140px);
+}
+
+.list-5:hover {
+    transition: all 0.2s;
+    @include list(34px, 34px, -40px, -140px);
+
+    b {
+        display: block;
+    }
+
+}
+
+/* 设置b的样式 */
+.list-1 b,
+.list-2 b,
+.list-3 b,
+.list-4 b,
+.list-5 b {
+    display: none;
+    position: absolute;
+    // top: 0;
+    left: -74px;
+    width: 74px;
+    height: 34px;
+    background-color: #4f4f4f;
+    text-align: center;
+    line-height: 34px;
+    font-size: 12px;
+    color: #fff;
+}

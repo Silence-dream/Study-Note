@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 下面数组存储的为用户信息，根据要求编写程序
+        // var users = [
+        //     //用户编号 用户名 密码 权限 
+        //     { userId: "u01", userName: "曹操", upwd: 123, uadministor: "管理员" },
+        //     { userId: "u02", userName: "许褚", upwd: 123, uadministor: "普通用" },
+        //     { userId: "u03", userName: "徐晃", upwd: 123, uadministor: "普通用户" },
+        //     { userId: "u04", userName: "张辽", upwd: 123, uadministor: "普通用户" }
+        // ];
+
+
+        // 用户输入 1, 则将所有用户的信息展示出来
+        // 用户输入 2, 则需要判断用户是否为管理员
+        // 如果为普通用户，则提示您没有权限修改密码
+        // 如果为管理员，则提示
+        // 请您输入需要修改的用户编号
+        // 请您输入新的密码
+        // 用户操作完成后更新该用户编号的密码，并回到主页
+        // 用户输入 3，则弹出输出“欢迎下次光临”，程序结束
+
+        var usersArr = [
+            //用户编号 用户名 密码 权限 
+            { userId: "u01", userName: "曹操", upwd: 123, uadministor: "管理员" },
+            { userId: "u02", userName: "许褚", upwd: 123, uadministor: "普通用户" },
+            { userId: "u03", userName: "徐晃", upwd: 123, uadministor: "普通用户" },
+            { userId: "u04", userName: "张辽", upwd: 123, uadministor: "普通用户" }
+        ];
+
+        // 1.用户登录
+        // 程序运行开始，输入用户名和密码，
+        // 用户名和密码输入正确，则进入程序主页
+        // 用户名和密码输入错误，则弹出用户名密码错误，并重新输入用户名密码
+
+
+        while (true) {
+            let uname = prompt("请输入用户名");
+            let upassword = +prompt("请输入密码");
+            // 遍历数组
+            for (let key in usersArr) {
+                if (usersArr[key]["userName"] == uname && usersArr[key]["upwd"] == upassword) {
+                    cxzy(uname, (usersArr[key]["uadministor"]), usersArr);
+                    break;
+                }
+                else if (usersArr[key]["userName"] != uname && usersArr[key]["upwd"] != upassword) {
+                    alert("用户名密码错误");
+                    break;
+                }
+            }
+        }
+
+
+        // 2.程序主页
+        // 程序主页：
+        // 尊敬的xx(管理员 / 普通用户) XX(用户名) 欢迎光临
+        // 1.查看所有用户列表
+        // 2.修改用户密码
+        // 3.退出程序
+        // 3.用户操作
+        function cxzy(uname, quanxian, usersArr) {
+            while (true) {
+                let tishi = alert(`尊敬的${quanxian} ${uname},欢迎光临
+                1.查看所有用户列表
+                2.修改用户密码
+                3.退出程序
+            `)
+                if (tishi == undefined) {
+                    user_id = prompt("请输入数字1-3")
+                }
+                if (user_id == 1) {
+                    // 遍历数组对象
+                    let str = "用户编号 用户名 密码 权限 \n"
+                    for (let key in usersArr) {
+                        str += `    ${usersArr[key].userId}   ${usersArr[key].userName}   ${usersArr[key].upwd}   ${usersArr[key].uadministor}\n `
+                    }
+                    alert(str);
+                }
+                if (user_id == 2) {
+                    // 遍历数组
+                    for (let key in usersArr) {
+                        if (quanxian == "管理员") {
+                            let sbianhao = prompt("请输入要修改的用户编号");
+                            // break;
+                            //遍历数组
+                            for (let key in usersArr) {
+                                if (usersArr[key].userId == sbianhao) {
+                                    let smima = +prompt("请输入要修改的密码")
+                                    usersArr[key].upwd = smima;
+                                    break;
+                                }
+                                break;
+                            }
+                            break;
+                        }
+                        if (quanxian != "管理员") {
+                            alert("你没有权限修改密码")
+                            break;
+                        }
+                    }
+                }
+                if (user_id == 3) {
+                    return tc()
+                }
+            }
+        }
+        function tc() {
+            alert("欢迎下次使用本系统")
+            break;
+        }
+
+
+    </script>
+</body>
+
+</html>

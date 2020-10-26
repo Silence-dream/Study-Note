@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 需求1.实现隔行变色的效果(效果在附件):
+
+        //     -页面中有一个按钮和一个ul, ul里面有10个li元素 -
+        //     点击按钮， 实现10个li的隔行变色效果， 奇数行是红色， 偶数行是黄色 -
+        //     鼠标经过li元素上面， 当前的这个li就是绿色， 鼠标离开这个li， 这个li显示原来的颜色
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <button>按钮</button>
+    <script>
+        const lis = document.querySelector('ul').children;
+        const btn = document.querySelector('button');
+        let flag = true;
+        btn.addEventListener("click", function () {
+            console.log(flag)
+            if (flag) {
+                for (let i = 0; i < lis.length; i++) {
+                    function green() {
+                        lis[i].style.background = "green"
+                    }
+
+                    function red() {
+                        if (i % 2 == 1) {
+                            lis[i].style.background = "red";
+                        } else {
+                            lis[i].style.background = "yellow"
+                        }
+                    }
+                    if (i % 2 == 1) {
+                        lis[i].style.background = "red";
+                    } else {
+                        lis[i].style.background = "yellow"
+                    }
+                    lis[i].onmouseover = function () {
+                        lis[i].style.background = "green"
+                    }
+                    lis[i].onmouseout = function () {
+                        if (i % 2 == 1) {
+                            lis[i].style.background = "red";
+                        } else {
+                            lis[i].style.background = "yellow"
+                        }
+                    }
+                }
+                flag = false;
+                console.log(false);
+
+            } else {
+                for (let i = 0; i < lis.length; i++) {
+                    lis[i].style.background = "#fff";
+                }
+                for (let i = 0; i < lis.length; i++) {
+                    lis[i].onmouseover = null;
+                    lis[i].onmouseout = null;
+                }
+                flag = true;
+                console.log(flag);
+            }
+        })
+    </script>
+</body>
+
+</html>

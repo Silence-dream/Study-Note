@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var n = +prompt("请输入一个数字");
+        var num;
+        var sum = 0;
+        if (n % 2 == 0) {
+            num = 2;
+        } else {
+            num = 3;
+        }
+
+        for (var i = num; i <= n; i += 2) {
+            sum += 1 / i;
+        }
+        alert(sum + 1);
+    </script>
+</body>
+
+</html>

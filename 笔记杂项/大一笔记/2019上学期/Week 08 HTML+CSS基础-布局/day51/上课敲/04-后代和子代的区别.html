@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>后代与子代选择器的区别</title>
+    <!--<link rel="stylesheet" type="text/css" href="*.css"/>-->
+    <script language="javascript" type="text/javascript"></script>
+    <style>
+        .zero>li {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="zero">
+        <li>我是祖先</li>
+        <ul>zero
+            <li>我是第二代</li>
+            <ul>
+                <li>
+                    我是第三代
+                </li>
+            </ul>
+        </ul>
+    </ul>
+
+</body>
+
+</html>

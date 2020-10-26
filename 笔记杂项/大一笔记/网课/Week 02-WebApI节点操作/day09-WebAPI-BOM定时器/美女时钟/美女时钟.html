@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>title</title>
+
+</head>
+
+<body>
+  <img src="" alt="" id="im" />
+  <script>
+    const im = document.querySelector('#im');
+    timer = setInterval(() => {
+      let date = new Date();
+      let h = date.getHours();
+      let s = date.getSeconds();
+      h = h < 9 ? "0" + h : h;
+      s = s < 9 ? "0" + s : s;
+      im.src = `./meimei/${h}_${s}.jpg`;
+
+    }, 1000);
+  </script>
+
+</body>
+
+</html>

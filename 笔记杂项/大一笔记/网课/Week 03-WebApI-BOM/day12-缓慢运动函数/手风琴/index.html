@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        ul {
+            list-style-type: none;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        li {
+            position: relative;
+            float: left;
+            width: 100px;
+            height: 260px;
+            overflow: hidden;
+            /* background: url(./images/ifold1.jpg) center center no-repeat; */
+            background-image: url(./images/ifold1.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+
+        span {
+            display: block;
+            font-size: 24px;
+            color: #ffffff;
+            width: 24px;
+            line-height: 24px;
+            margin: 0 auto;
+            margin-top: 100px;
+            /* transform: translate(-50%, -50%); */
+            writing-mode: vertical-lr
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li><span>园林酒店</span></li>
+            <li><span>情侣酒店</span></li>
+            <li><span>设计师酒店</span></li>
+            <li><span>青年旅舍</span></li>
+            <li><span>特色客栈</span></li>
+            <li><span>海岛酒店</span></li>
+            <li><span>海外温泉</span></li>
+        </ul>
+    </div>
+    <script>
+        // 循环上图
+        const lis = document.querySelectorAll('li');
+        for (let i = 0; i < lis.length; i++) {
+            lis[i].style.backgroundImage = "url(./images/ifold" + (i + 1) + ".jpg)";
+            // 鼠标移入
+            lis[i].addEventListener("mouseenter", function () {
+                animate(lis[i], 400);
+                console.log(1);
+            })
+            // 鼠标移出
+            lis[i].addEventListener("mouseleave", function () {
+                animate(lis[i], 100);
+                console.log(2);
+            })
+        }
+
+        function animate(obj, target) {
+            // 清空上一个定时器
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                // 递减步长
+                let step = (target - obj.offsetWidth) / 10
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                obj.style.width = obj.offsetWidth + step + "px";
+                if (obj.offsetWidth == target) {
+                    clearInterval(obj.timer);
+                }
+            }, 15)
+        }
+    </script>
+</body>
+
+</html>

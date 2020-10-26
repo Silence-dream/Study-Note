@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .mid {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .class {
+            width: 180px;
+        }
+
+        .name {
+            width: 175px;
+        }
+
+        .age {
+            width: 150px;
+        }
+
+        .call {
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 作业题第三，里面的3.jpg和2.jpg一样啊！！？？ -->
+    <table border="1" cellspacing='0' class="mid">
+        <!-- 表头 -->
+        <tr>
+            <th class="class">班级</th>
+            <th class="name" colspan="2">姓名和年龄</th>
+            <!-- <th class="age">年龄</th> -->
+            <th class="call">电话</th>
+        </tr>
+        <!-- 第1行 -->
+        <tr>
+            <td rowspan="2">601班</td>
+            <td>Jack</td>
+            <td>24</td>
+            <td>1351234567</td>
+        </tr>
+        <!-- 第2行 -->
+        <tr>
+            <!-- <td>601班</td> -->
+            <td>Tom</td>
+            <td>24</td>
+            <td>1351234567</td>
+        </tr>
+        <!-- 第3行 -->
+        <tr>
+            <td rowspan="3">602班</td>
+            <td>Rose</td>
+            <td>22</td>
+            <td>1351234567</td>
+        </tr>
+        <!-- 第4行 -->
+        <tr>
+            <!-- <td>602班</td> -->
+            <td>张三</td>
+            <td>25</td>
+            <td>1351234567</td>
+        </tr>
+        <!-- 第5行 -->
+        <tr>
+            <!-- <td>602班</td> -->
+            <td>李四</td>
+            <td>25</td>
+            <td>1351234567</td>
+        </tr>
+    </table>
+</body>
+
+</html>

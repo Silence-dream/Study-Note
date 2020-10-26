@@ -1,0 +1,117 @@
+@import "common.scss";
+
+body {
+    min-width: 320px;
+    width: 15rem;
+    margin: 0 auto;
+    line-height: 1.5;
+    background: #f2f2f2;
+}
+
+$baseFont:50;
+
+/* 头部固定搜索框 */
+.search-content {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15rem;
+    height: 88rem / $baseFont;
+    background-color: #ffc001;
+
+    .classify {
+        width: 44rem / $baseFont;
+        height: 70rem / $baseFont;
+        margin: 11rem / $baseFont 25rem /$baseFont 7rem /$baseFont 24rem /$baseFont;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .search {
+        flex: 1;
+        // background-color: green;
+
+        input {
+            width: 100%;
+            height: 66rem /$baseFont;
+            background-color: #fff2cc;
+            margin-top: (88rem/$baseFont)/2 - (66rem / $baseFont)/2;
+            border-radius: 33rem / $baseFont;
+            border: none;
+            font-size: 25rem /$baseFont;
+            padding-left: 55rem / $baseFont;
+        }
+    }
+
+    .login {
+        width: 75rem / $baseFont;
+        height: 70rem / $baseFont;
+        color: #fff;
+        text-align: center;
+        margin: 10rem / $baseFont;
+        line-height: 70rem / $baseFont;
+        font-size: 25rem / $baseFont;
+    }
+}
+
+
+/* banner */
+
+
+.banner {
+    &>a {
+        display: block;
+    }
+
+    img {
+        width: 750rem / $baseFont;
+        height: 368rem / $baseFont;
+    }
+}
+
+/* 广告 */
+.ad {
+    @include clearfix();
+
+    a {
+        float: left;
+        width: 250rem /$baseFont;
+        height: 199.27rem /$baseFont;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* nav模块 */
+.nav {
+    @include clearfix();
+    text-align: center;
+    background-color: #fff;
+    padding-top: 10rem /$baseFont;
+
+    a {
+        float: left;
+        width: 150rem /$baseFont;
+        height: 140rem / $baseFont;
+    }
+
+    img {
+        margin: 0 auto;
+        width: 82rem /$baseFont;
+        height: 82rem / $baseFont;
+    }
+
+    span {
+        display: block;
+        font-size: 0.5rem;
+        color: #333;
+    }
+}

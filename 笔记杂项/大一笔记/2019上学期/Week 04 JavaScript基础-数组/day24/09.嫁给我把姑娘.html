@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 使用do-while循环：输出询问“我爱你，嫁给我吧？”，选择“你喜欢我吗？(y/n):"，如果输入为y则打印”我们形影不离“，若输入为n,则继续询问 
+        do {
+            //1.定义name输入
+            var name = prompt("我爱你嫁给我吧?");
+            // 2.用if判断y and n
+            if (name == "y") {
+                alert("我们形影不离");
+                break;
+            }
+            else if (name == "n") {
+                alert("你是个好人");
+            }
+        } while (true);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

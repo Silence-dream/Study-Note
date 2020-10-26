@@ -1,0 +1,452 @@
+@charset "UTF-8";
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* 头部导航 */
+.nav {
+  position: relative;
+  width: 100%;
+  height: 1.375rem;
+  background-color: #ff9b25;
+  line-height: 1.375rem;
+}
+
+.nav i {
+  position: absolute;
+  top: 50%;
+  left: 0.3125rem;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  display: inline-block;
+  width: 0.3125rem;
+  height: 0.5rem;
+  background: url(../images/Rectangle1copy16.png) no-repeat;
+  background-position: center;
+  background-size: 0.3125rem 0.5rem;
+}
+
+.nav span {
+  font-size: 0.46875rem;
+  color: #ffffff;
+  padding-left: 0.875rem;
+}
+
+.container {
+  background-color: #f7f4f1;
+  padding: 0 0.375rem;
+}
+
+.discounts .discounts-title {
+  height: 1.3125rem;
+  line-height: 1.3125rem;
+}
+
+.discounts .discounts-title h3 {
+  float: left;
+  font-size: 0.39062rem;
+}
+
+.discounts .discounts-title span {
+  float: right;
+  font-size: 0.375rem;
+  color: #888888;
+}
+
+.discounts .discounts-content {
+  position: relative;
+  width: 9.39062rem;
+  height: 5.125rem;
+  margin: 0 auto;
+  background: url(../images/discounts-back.png) no-repeat;
+  background-size: 100%;
+  overflow: hidden;
+}
+
+.discounts .discounts-content h3 {
+  font-size: 0.67188rem;
+  font-weight: 400;
+  color: #ffffff;
+  margin-top: 0.51562rem;
+  margin-left: 0.46875rem;
+}
+
+.discounts .discounts-content p {
+  font-size: 0.35938rem;
+  color: #bdf3ce;
+  margin-left: 0.46875rem;
+}
+
+.discounts .discounts-content span {
+  position: relative;
+  display: inline-block;
+}
+
+.discounts .discounts-content span:nth-of-type(1) {
+  color: #ffffff;
+  margin-top: 0.9375rem;
+  margin-left: 0.46875rem;
+  font-size: 0.25rem;
+  padding-left: 0.57812rem;
+}
+
+.discounts .discounts-content span:nth-of-type(1)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.34375rem;
+  height: 0.34375rem;
+  background: url(../images/block.png) no-repeat;
+  background-size: 0.34375rem;
+}
+
+.discounts .discounts-content span:nth-of-type(2) {
+  width: 1.46875rem;
+  height: 0.51562rem;
+  background-color: #2a603b;
+  font-size: 0.3125rem;
+  text-align: center;
+  line-height: 0.51562rem;
+  color: #bdf3ce;
+  margin-left: 1.17188rem;
+}
+
+.discounts .discounts-content a {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  width: 4.6875rem;
+  height: 1.25rem;
+  margin-top: 1.03125rem;
+  font-size: 0.40625rem;
+  color: #888888;
+}
+
+.discounts .discounts-content a:nth-of-type(1)::before {
+  content: "";
+  position: absolute;
+  top: 0.07812rem;
+  left: 1.32812rem;
+  width: 0.375rem;
+  height: 0.375rem;
+  background: url(../images/bianji.png) no-repeat;
+}
+
+.discounts .discounts-content a:nth-of-type(1)::after {
+  content: "";
+  position: absolute;
+  top: -0.25rem;
+  left: 4.67188rem;
+  height: 0.73438rem;
+  border: 1px solid #e8e2d9;
+}
+
+.discounts .discounts-content a:nth-of-type(2)::before {
+  content: "";
+  position: absolute;
+  top: 0.07812rem;
+  left: 1.32812rem;
+  width: 0.39062rem;
+  height: 0.42188rem;
+  background: url(../images/share.png) no-repeat;
+}
+
+.ticket .ticket-title {
+  height: 1.3125rem;
+  line-height: 1.3125rem;
+}
+
+.ticket .ticket-title h3 {
+  float: left;
+  font-size: 0.39062rem;
+}
+
+.ticket .ticket-title span {
+  float: right;
+  font-size: 0.375rem;
+  color: #888888;
+}
+
+.ticket .ticket-content {
+  position: relative;
+  width: 9.39062rem;
+  height: 3.925rem;
+  margin: 0 auto;
+  background: url(../images/SALE.png) no-repeat;
+  background-size: 100%;
+  overflow: hidden;
+}
+
+.ticket .ticket-content h3 {
+  font-size: 1.04688rem;
+  font-weight: 400;
+  color: #ffffff;
+  margin-top: 0.51562rem;
+  margin-left: 0.46875rem;
+}
+
+.ticket .ticket-content h3::before {
+  content: "\0A5";
+  font-size: 0.4375rem;
+}
+
+.ticket .ticket-content h3::after {
+  content: "(满0.00可用)";
+  font-size: 0.375rem;
+}
+
+.ticket .ticket-content p {
+  font-size: 0.32812rem;
+  color: #ffffff;
+  margin-left: 0.46875rem;
+  margin-top: 0.625rem;
+}
+
+.ticket .ticket-content span {
+  position: relative;
+  display: inline-block;
+}
+
+.ticket .ticket-content span:nth-of-type(1) {
+  color: #ffffff;
+  font-size: 0.25rem;
+  padding-left: 0.57812rem;
+  margin-left: 0.46875rem;
+}
+
+.ticket .ticket-content span:nth-of-type(1)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.34375rem;
+  height: 0.34375rem;
+  background: url(../images/block.png) no-repeat;
+  background-size: 0.34375rem;
+}
+
+.ticket .ticket-content span:nth-of-type(2) {
+  width: 1.46875rem;
+  height: 0.51562rem;
+  background-color: #6a4279;
+  font-size: 0.3125rem;
+  text-align: center;
+  line-height: 0.51562rem;
+  color: #f2d8fb;
+  margin-left: 3.04688rem;
+}
+
+.ticket .ticket-content a {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  width: 4.6875rem;
+  height: 1.25rem;
+  margin-top: 1.03125rem;
+  font-size: 0.40625rem;
+  color: #888888;
+}
+
+.ticket .ticket-content a:nth-of-type(1)::before {
+  content: "";
+  position: absolute;
+  top: 0.07812rem;
+  left: 1.32812rem;
+  width: 0.375rem;
+  height: 0.375rem;
+  background: url(../images/bianji.png) no-repeat;
+}
+
+.ticket .ticket-content a:nth-of-type(1)::after {
+  content: "";
+  position: absolute;
+  top: -0.25rem;
+  left: 4.67188rem;
+  height: 0.73438rem;
+  border: 1px solid #e8e2d9;
+}
+
+.ticket .ticket-content a:nth-of-type(2)::before {
+  content: "";
+  position: absolute;
+  top: 0.07812rem;
+  left: 1.32812rem;
+  width: 0.39062rem;
+  height: 0.42188rem;
+  background: url(../images/share.png) no-repeat;
+}
+
+.ticket .ticket-content-2 {
+  position: relative;
+  width: 9.39062rem;
+  height: 5.125rem;
+  margin: 0 auto;
+  background: url(../images/discounts-back-2.png) no-repeat;
+  background-size: 100%;
+  overflow: hidden;
+}
+
+.ticket .ticket-content-2 h3 {
+  font-size: 1.04688rem;
+  font-weight: 400;
+  color: #ffffff;
+  margin-top: 0.51562rem;
+  margin-left: 0.46875rem;
+}
+
+.ticket .ticket-content-2 h3::before {
+  content: "\0A5";
+  font-size: 0.4375rem;
+}
+
+.ticket .ticket-content-2 h3::after {
+  content: "(满500.00可用)";
+  font-size: 0.375rem;
+}
+
+.ticket .ticket-content-2 p {
+  font-size: 0.32812rem;
+  color: #ffffff;
+  margin-left: 0.46875rem;
+  margin-top: 0.625rem;
+}
+
+.ticket .ticket-content-2 span {
+  position: relative;
+  display: inline-block;
+}
+
+.ticket .ticket-content-2 span:nth-of-type(1) {
+  color: #ffffff;
+  font-size: 0.25rem;
+  padding-left: 0.57812rem;
+  margin-left: 0.46875rem;
+}
+
+.ticket .ticket-content-2 span:nth-of-type(1)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.34375rem;
+  height: 0.34375rem;
+  background: url(../images/block.png) no-repeat;
+  background-size: 0.34375rem;
+}
+
+.ticket .ticket-content-2 span:nth-of-type(2) {
+  width: 1.46875rem;
+  height: 0.51562rem;
+  background-color: #6a4279;
+  font-size: 0.3125rem;
+  text-align: center;
+  line-height: 0.51562rem;
+  color: #f2d8fb;
+  margin-left: 3.04688rem;
+}
+
+.ticket .ticket-content-2 div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 1.25rem;
+  margin-top: 0.3125rem;
+  text-align: center;
+  line-height: 1.25rem;
+}
+
+.ticket .ticket-content-2 div a {
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  color: #888888;
+  font-size: 0.39062rem;
+}
+
+.ticket .ticket-content-2 div a:nth-child(1)::before {
+  content: "";
+  position: absolute;
+  top: 0.375rem;
+  left: 0.625rem;
+  width: 0.35938rem;
+  height: 0.42188rem;
+  background: url(../images/Rectangle-2-copy.png) no-repeat;
+}
+
+.ticket .ticket-content-2 div a:nth-child(1)::after {
+  content: "";
+  position: absolute;
+  top: 0.3125rem;
+  left: 3.125rem;
+  height: 0.73438rem;
+  border: 1px solid #e8e2d9;
+}
+
+.ticket .ticket-content-2 div a:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  top: 0.46875rem;
+  left: 0.625rem;
+  width: 0.5rem;
+  height: 0.28125rem;
+  background: url(../images/yen.png) no-repeat;
+}
+
+.ticket .ticket-content-2 div a:nth-child(3)::before {
+  content: "";
+  position: absolute;
+  top: 0.375rem;
+  left: 0.625rem;
+  width: 0.39062rem;
+  height: 0.42188rem;
+  background: url(../images/share-people.png) no-repeat;
+}
+
+.ticket .ticket-content-2 div a:nth-child(3)::after {
+  content: "";
+  position: absolute;
+  top: 0.3125rem;
+  right: 3.125rem;
+  height: 0.73438rem;
+  border: 1px solid #e8e2d9;
+}
+
+.ticket .discounts-content-3 {
+  position: relative;
+  width: 9.375rem;
+  height: 3.53125rem;
+  margin: 0 auto;
+  border: 3px dashed #dedede;
+  margin-top: 0.42188rem;
+}
+
+.ticket .discounts-content-3 a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.ticket .discounts-content-3 p {
+  font-size: 0.375rem;
+  color: #888888;
+  text-align: center;
+  line-height: 15;
+}
+
+.tips {
+  color: #999999;
+  font-size: 0.375rem;
+  margin-top: 1.875rem;
+  padding-bottom: 2.5rem;
+}

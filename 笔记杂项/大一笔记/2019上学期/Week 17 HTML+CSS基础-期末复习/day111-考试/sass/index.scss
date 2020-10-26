@@ -1,0 +1,303 @@
+// 页面基于640
+@import "commont";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f7f7f7;
+    // height: 5000px;
+}
+
+
+
+/* 定义基准字体大小 */
+$bastFont:64;
+/* 顶部导航 */
+
+.top-nav {
+    display: flex;
+    height: 45rem/$bastFont;
+    align-items: center;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #dddddd;
+
+    .top-nav-left {
+        font-size: 12rem/$bastFont;
+        color: #d3079e;
+        margin-left: 22rem/$bastFont;
+    }
+
+    .top-nav-md {
+        flex: 1;
+        font-size: 18rem/$bastFont;
+        color: #000000;
+        text-align: center;
+    }
+
+    .top-nav-right {
+        width: 21rem/$bastFont;
+        height: 23rem/$bastFont;
+        margin-right: 22rem/$bastFont;
+
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+
+/* banner */
+.banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    ul {
+        width: 700%;
+    }
+
+    li {
+        float: left;
+        width: 14.28571%;
+
+        a {
+            display: block;
+        }
+
+        img {
+            display: block;
+        }
+    }
+
+    .banner-btn {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        div {
+            display: inline-block;
+            width: 9rem/$bastFont;
+            height: 8rem/$bastFont;
+            border: 1px solid #e5e0e1;
+            border-radius: 50%;
+            background-color: #e7e3e3;
+            margin: 0 2rem/$bastFont;
+
+            &:hover {
+                background-color: #ffffff;
+
+            }
+        }
+    }
+}
+
+/* 中部导航 */
+.md-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    // padding: 0 4rem/$bastFont;
+    margin-top: 10rem/$bastFont;
+
+    div {
+        width: 206rem/$bastFont;
+        height: 110rem/$bastFont;
+        margin-bottom: 8rem/$bastFont;
+
+        a {
+            display: block;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .md-nav-set {
+        margin: 0 8rem/$bastFont;
+    }
+}
+
+/* 票 */
+.ticket {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10rem/$bastFont;
+
+    .ticket-row1,
+    .ticket-row2 {
+        display: flex;
+
+        li {
+            flex: 1;
+            border: 1px solid #e6e6e6;
+        }
+    }
+}
+
+/* 热门活动 */
+
+.hot {
+    display: flex;
+    flex-direction: column;
+}
+
+.hot-title {
+    h3 {
+        font-size: 16rem/$bastFont;
+        color: #555555;
+        background-color: #f1f1f1;
+        padding-left: 15rem/$bastFont;
+        height: 36rem/$bastFont;
+        line-height: 36rem/$bastFont;
+        border-bottom: 1px solid #dddddd;
+    }
+}
+
+.hot-content {
+    flex: 1;
+    padding-bottom: 16rem/$bastFont;
+
+    ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    li {
+        flex: 1;
+        border-bottom: 1px solid #dddddd;
+    }
+
+    a {
+        display: block;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* 度假了 */
+.holiday {
+
+    font-size: 12rem/$bastFont;
+
+    .holiday-title {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-top: 1px solid #dddddd;
+        height: 46rem/$bastFont;
+        color: #555555;
+
+        div {
+            &:nth-child(1) {
+                position: relative;
+                color: #d3079e;
+
+                &:before {
+                    position: absolute;
+                    bottom: -16rem/$bastFont;
+                    left: -12rem/$bastFont;
+                    content: "";
+                    display: block;
+                    width: 1.01562rem;
+                    height: 0.03125rem;
+                    background-color: #d3079e;
+                }
+            }
+
+        }
+    }
+
+    .holiday-content {
+        ul {
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            display: block;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        li {
+            flex: 1;
+            border-bottom: 1px solid #dddddd;
+            margin-bottom: 15rem/$bastFont;
+
+        }
+
+        /* 设置字体颜色大小 */
+        h4 {
+            /* 继承12px */
+            color: #000000;
+            padding: 3rem/$bastFont 0;
+        }
+
+        p {
+            font-size: 16rem/$bastFont;
+            color: #555555;
+            padding: 3rem/$bastFont 0;
+        }
+    }
+
+
+    /* 底部更多信息 */
+    .holiday-bottom {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 31rem/$bastFont;
+        border-bottom: 1px solid #dddddd;
+        background-color: #ffffff;
+
+        i {
+            margin-left: 30rem/$bastFont;
+        }
+    }
+}
+
+/* 底部登陆注册 */
+.login {
+    display: flex;
+    align-items: center;
+    margin-top: 15rem/$bastFont;
+    height: 30rem/$bastFont;
+    background-color: #d3079e;
+    border-bottom: #f1f1f1;
+    margin-bottom: 1px;
+
+    a {
+        font-size: 14rem/$bastFont;
+        color: #ffffff;
+
+        &:nth-child(1) {
+            padding-left: 10rem/$bastFont;
+            padding-right: 10rem/$bastFont;
+        }
+
+        &:nth-child(2) {
+            flex: 1;
+        }
+
+        &:nth-child(3) {
+            padding-right: 10rem/$bastFont;
+        }
+    }
+}

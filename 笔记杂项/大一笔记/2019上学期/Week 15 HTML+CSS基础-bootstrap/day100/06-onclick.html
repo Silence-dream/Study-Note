@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="p">点我</p>
+
+    <script>
+        // 执行事件步骤
+        // 点击P 控制台输出 1
+        // 1. 获取事件源
+        let p = document.getElementById("p");
+        // 或者
+        // let p = document.querySelector("p");
+        console.log(p);
+        console.log(typeof p);
+        // 2.绑定事件 注册事件
+        // div.onclick 
+        // 3.添加事件处理程序 
+        p.onclick = function () {
+            console.log("1");
+        }
+    </script>
+</body>
+
+</html>

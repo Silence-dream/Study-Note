@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* 头部导航 */
+.nav {
+  position: relative;
+  width: 100%;
+  height: 1.375rem;
+  background-color: #ff9b25;
+  line-height: 1.375rem;
+}
+
+.nav i {
+  position: absolute;
+  top: 50%;
+  left: 0.3125rem;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  display: inline-block;
+  width: 0.3125rem;
+  height: 0.5rem;
+  background: url(../images/Rectangle1copy16.png) no-repeat;
+  background-size: 0.3125rem 0.5rem;
+}
+
+.nav span {
+  font-size: 0.46875rem;
+  color: #ffffff;
+  padding-left: 0.875rem;
+}

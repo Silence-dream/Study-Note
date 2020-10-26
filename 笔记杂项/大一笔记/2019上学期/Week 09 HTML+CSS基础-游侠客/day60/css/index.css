@@ -1,0 +1,339 @@
+body {
+  /* background-color: #2b2b2b; */
+  background-color: rgb(154, 167, 172);
+  height: 10000px;
+}
+
+/* 1.顶部导航 */
+.topnav {
+  width: 100%;
+  height: 28px;
+  background-color: #2b2b2b;
+  border-bottom: 1px solid #222222;
+  /* overflow: hidden; */
+}
+
+/* 辅助 */
+/* .topnav .container {
+  background-color: rgba(255,255,255,0.5);
+} */
+
+.topnav-left {
+  float: left;
+  height: 28px;
+}
+
+.topnav-left a {
+  float: left;
+  color: #ccc;
+  line-height: 28px;
+  margin: 0 10px;
+}
+
+.topnav-left a:hover {
+  color: #ff9d00;
+}
+
+.topnav-right {
+  float: right;
+}
+
+.topnav-right>li {
+  float: left;
+}
+
+.topnav-right a,
+.topnav-right span {
+  position: relative;
+  line-height: 28px;
+  color: #ccc;
+  margin: 0 10px;
+
+}
+
+/* 我的游侠客 */
+.topnav-right li:nth-child(3) {
+  position: relative;
+}
+
+
+
+.topnav-right li:nth-child(3):hover .top-right-myyxk-ul-li {
+  display: block;
+  color: #2b2b2b;
+  z-index: 1;
+}
+
+.topnav-right li:nth-child(3) .top-right-myyxk-ul-li:hover a {
+
+  display: block;
+  color: #2b2b2b;
+}
+
+.topnav-right li:nth-child(3) .top-right-myyxk-ul-li li:hover {
+  background-color: #fdd000;
+}
+
+.topnav-right li:nth-child(3) .top-right-myyxk-ul-li li:hover a {
+  color: #ffffff;
+}
+
+.top-right-myyxk-ul-li {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  color: #ccc;
+  top: 0;
+  left: 0;
+  /* z-index: 1;` */
+}
+
+.topnav-right span:first-child {
+  background-image: url(../img/search-area-xsj.png);
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 10px;
+}
+
+.topnav-right a:hover {
+  color: #ff9d00;
+}
+
+.topnav-right i {
+  font-size: 22px;
+}
+
+.topnav-right .app {
+  display: block;
+}
+
+.topnav-right .app span {
+  float: right;
+  margin: 0;
+  line-height: 28px;
+}
+
+.topnav-right .app:hover span {
+  color: #ff9d00;
+}
+
+.topnav-right .app i {
+  color: #fdd000;
+}
+
+.topnav-right img {
+  display: none;
+  position: absolute;
+  top: 12px;
+  left: -64px;
+  z-index: 1;
+}
+
+.topnav-right a:hover img {
+  display: block;
+}
+
+.topnav-right li:nth-last-child(-n+3) a:hover i {
+  color: #fdd000;
+}
+
+.topnav-right li:last-child img {
+  width: 150px;
+  height: 150px;
+}
+
+
+/* 搜索栏开始 */
+.search {
+  /* position: relative; */
+  height: 120px;
+  background-color: #333333;
+  z-index: -1;
+}
+
+.search-logo {
+  float: left;
+  margin-left: 10px;
+  margin-top: 35px;
+}
+
+/* 搜索框 */
+.search-box {
+  /* position: relative; */
+  float: left;
+  height: 40px;
+  margin-left: 100px;
+  margin-top: 40px;
+}
+
+/* 南京站 */
+.search-box span {
+  position: relative;
+  display: inline-block;
+  float: left;
+  width: 76px;
+  height: 41px;
+}
+
+
+.search-box span>a {
+  float: left;
+  color: #fdd000;
+  font-size: 16px;
+  padding: 0 14px;
+  line-height: 41px;
+  background-image: url(../img/search-area-xsj.png);
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.search-box span>ul {
+  display: none;
+  position: absolute;
+  top: 37px;
+  left: 12px;
+}
+
+.search-box span:hover>ul {
+  display: block;
+}
+
+.search-box span>ul li:hover {
+  background-color: #fdd000;
+}
+
+
+
+.search-box span ul li {
+  width: 65px;
+  /* height: 30px; */
+  text-align: center;
+  padding: 10px 0;
+  background-color: #ffffff;
+}
+
+.search-box>span ul li a {
+  color: #737373;
+}
+
+.search-box>span ul li a:hover {
+  color: #fff;
+}
+
+.search-box-area {
+  float: left;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 564px;
+  height: 40px;
+  border: 2px solid #fdd000;
+  border-right: 0 none;
+  margin-left: 20px;
+
+}
+
+.search-box-area span ul {
+  position: absolute;
+  top: 37px;
+  left: -2px;
+}
+
+.search-box-area span>a {
+  float: left;
+  height: 41px;
+  font-size: 14px;
+  line-height: 41px;
+  padding: 0 10px;
+  color: #8b8888;
+  background-image: url(../img/search-area-xsj.png);
+  background-position: right center;
+  background-repeat: no-repeat;
+
+}
+
+
+/* 南京站下拉菜单 */
+.search-box-area ul {
+  display: none;
+}
+
+.search-box-area span:hover ul {
+  display: block;
+}
+
+.search-box-area ul {
+  position: absolute;
+  text-align: center;
+  top: 42px;
+  left: -2px;
+}
+
+.search-box-area ul li {
+  width: 80px;
+  height: 20px;
+  padding: 8px 5px;
+  background-color: #ffffff;
+}
+
+.search-box-area ul li:hover {
+  color: #ffffff;
+  background-color: #ebc203;
+}
+
+.search-box-area ul li>a {
+  color: 14px;
+}
+
+.search-box-area ul li a:hover {
+  color: #fff;
+}
+
+.search-box-area input {
+  float: left;
+  color: #fff;
+  width: 354px;
+  height: 41px;
+  border: none;
+  background-color: transparent;
+}
+
+.search-box-area button {
+  float: left;
+  width: 134px;
+  height: 41px;
+  font-weight: 700;
+  font-size: 18px;
+  border: none;
+  background-color: #fdd000;
+}
+
+/* 服务热线 */
+.serach-serve {
+  float: left;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+
+.serach-serve p:first-child {
+  color: #b2b2b2;
+  margin-bottom: 10px;
+}
+
+.serach-serve p:last-child {
+  color: #fdd000;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.pk a {
+  display: block;
+  position: absolute;
+  width: 73px;
+  height: 77px;
+  background-image: url(../img/search_service.png);
+  top: 52px;
+  right: -70px;
+}
+
+/* 搜索栏结束 */

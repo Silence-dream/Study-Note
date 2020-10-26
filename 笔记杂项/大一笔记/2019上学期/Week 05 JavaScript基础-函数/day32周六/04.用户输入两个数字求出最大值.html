@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 04.用户输入两个数字求出最大值
+        function getSum (num1,num2)//定义函数，让实参传递值给实参
+        {
+            //使用if判断大小，输出大的值
+            if(num1>num2)
+            {
+                return num1;
+            }
+            else
+            {
+                return num2;
+            }
+            //三目运算求出最大值
+            // return num1 >num2 ? num1 :num2;
+        }
+        //让用户输入两个数字进行比大小
+        var user1=prompt("请输入第一个数字")-0;
+        var user2=prompt("请输入第二个数字")-0;
+        //用变量存储结果,并给实参值
+        var result = getSum(user1,user2);
+        alert('最大值是'+result)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

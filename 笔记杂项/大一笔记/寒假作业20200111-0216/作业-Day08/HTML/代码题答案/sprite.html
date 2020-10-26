@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 820px;
+            margin: 0 auto;
+        }
+
+        a {
+            float: left;
+            text-decoration: none;
+            color: #ffffff;
+            padding: 0 15px;
+        }
+
+        a:hover {
+            background-color: #1066a4;
+        }
+
+        .box {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #444444;
+            margin-top: 200px;
+        }
+
+        .box a:nth-child(1) {
+            background-color: #1066a4;
+        }
+
+        .box a:nth-child(5) {
+            position: relative;
+        }
+
+        .box a:nth-child(5):before {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            content: "";
+            width: 24px;
+            height: 19px;
+            background: url(./img/sprite1.png) no-repeat;
+            background-position: -59px 0;
+        }
+
+        .box a:nth-child(8) {
+            position: relative;
+        }
+
+        .box a:nth-child(8):before {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            content: "";
+            width: 24px;
+            height: 19px;
+            background: url(./img/sprite1.png) no-repeat;
+            background-position: -137px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="container">
+            <a href="#">首页</a>
+            <a href="#">Java</a>
+            <a href="#">iOS</a>
+            <a href="#">UI设计</a>
+            <a href="#">前端与移动开发</a>
+            <a href="#">PHP</a>
+            <a href="#">C/C++</a>
+            <a href="#">python</a>
+            <a href="#">网络营销</a>
+            <a href="#">问答专区</a>
+        </div>
+    </div>
+</body>
+
+</html>

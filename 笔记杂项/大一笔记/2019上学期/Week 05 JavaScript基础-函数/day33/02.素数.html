@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script>
+
+
+		let a = 0;  // 素数的个数
+		// let num = 0;  // 输入的整数
+		let num = prompt("输入一个整数：");
+		for (var i = 2; i < num; i++) {
+			if (num % i == 0) {
+				a++;  // 素数个数加1
+			}
+		}
+		if (a == 0) {
+			alert("true");
+		}
+		else {
+			alert("false");
+		}
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

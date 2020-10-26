@@ -1,0 +1,52 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>留言板</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <h1>留言板</h1>
+  <div id="content">
+    <div id="post">
+      <div style="background:#3EADC5 ;height:30px;">
+        昵称：<input type="submit" id="shangtian" name="Submit3"
+          style="border:none; background-color:#3EADC5; color:white;" value="默认用户点击改变" />
+      </div>
+      <div>
+        <textarea class="transition"></textarea>
+      </div>
+      <input id="postBt" type="button"
+        style="border:none; background-color:#3EADC5; color:white;border-radius:5px; width:80px; height:30px;"
+        value="发表留言" />
+      <input id="clearBt" type="button"
+        style="border:none; background-color:#3EADC5; color:white;border-radius:5px; width:80px; height:30px;"
+        value="清空" />
+    </div>
+    <!-- 留言区 -->
+    <div id="comment">
+      <!-- 这是创建元素的模板 -->
+      <!-- <span>
+        匿名发言者
+        <span class="fr">2020-03-13 21:08:55</span>
+        <p>
+          <span class="msg">111<input id="clear" type="button" value="删除"></span>
+        </p>
+      </span> -->
+    </div>
+  </div>
+  <script>
+    // 功能1，点击留言，用户在文本框中输入内容，先判断输入的内容是否为空，如果为空，则弹出”请填写您的留言“
+    // 功能2，如果用户输入的内容不为空，那么就会将内容添加下面的留言区域内，
+    // 功能3：点击清空留言的时候，下面的留言区的内容就会被清空
+    // 功能4：点击留言区域内的”删除“按钮的时候，会将当前的这一行进行删除
+    // 功能5：默认用户点击改变，会弹出prompt，请输入您的文字，点击确定，弹出”欢迎你，xxx“,点击确定，新的昵称就会覆盖那些文字
+  </script>
+  <script src="./index.js"></script>
+
+</body>
+
+</html>

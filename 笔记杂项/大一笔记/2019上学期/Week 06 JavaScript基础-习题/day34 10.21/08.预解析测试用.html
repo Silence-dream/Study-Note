@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 8.下列代码控制台打印出的值是多少？并且把预解析的过程写出来
+        var n = 0;
+        function a() {
+            var n = 10;
+            function b() {
+                n++;
+                alert(n);
+            }
+            b();
+            return b;
+        }
+        var c = a();   //?
+        c(); //?
+        alert(n); // ?
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 2.下列代码控制台打印出的值是多少？写出执行过程
+        function fn() {
+            alert("我们是全局的fn");
+        }
+        function fn2() {
+            alert(fn);  // ？
+            fn = 3;
+            return;
+            function fn() {
+                alert("我是fn2里面的");
+            }
+        }
+        fn2();
+
+        // 过程
+        // 1、声明函数fn
+        // 2、声明函数fn2
+        // 3、调用函数fn2()
+        // 4、进入函数fn2里面，优先执行fn2里面声明的函数fn,然后再执行alert(fn)注意括号里面写的是fn不是fn()所以会输出整个fn2函数里面的函数fn即18行到20行的内容都会输出出来，如果写的是alert(fn())则只会执行第19行alert("我是fn2里面的")
+        // 5、执行fn=3赋值操作
+        // 6、return 返回了个undefined(寂寞)并结束了整个函数fn2,
+        // 7、最后输出的结果是:
+        // function fn() {
+        //     alert("我是fn2里面的");
+        // }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

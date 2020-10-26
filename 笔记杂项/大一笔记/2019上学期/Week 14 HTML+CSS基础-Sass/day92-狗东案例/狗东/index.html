@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- 视口设置  width=device-width让html的宽度等于设备宽度 initial-scale=1.0不放大也不缩小 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 如果电脑中既有ie又有edge浏览器 那么渲染方式按照edge的渲染去渲染网页 -->
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>多快好省，购物上京东！</title>
+  <!-- keywords -->
+  <meta name="Keywords" content="网上购物,网上商城,手机,笔记本,电脑,MP3,CD,VCD,DV,相机,数码,配件,手表,存储卡,京东">
+  <!-- description -->
+  <meta name="description"
+    content="京东JD.COM-专业的综合网上购物商城,销售家电、数码通讯、电脑、家居百货、服装服饰、母婴、图书、食品等数万个品牌优质商品.便捷、诚信的服务，为您提供愉悦的网上购物体验!">
+  <!-- 网站小图标 link:favicon  -->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- 先引入 normalize == reset -->
+  <link rel="stylesheet" href="./lib/normalize.css">
+  <!-- 然后引入 common -->
+  <link rel="stylesheet" href="./css/common.css">
+  <!-- 最后引入 当前页面样式 -->
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+  <!-- 2.头部 -->
+  <header>
+    <!-- 2.1 logo -->
+    <a href="" class="header-logo sprites">
+
+    </a>
+    <!-- 2.2 搜索 -->
+    <div class="header-search">
+      <i class="search-icon sprites"></i>
+      <input type="text" placeholder="100万件超级爆品疯抢">
+    </div>
+    <!-- 2.3 登录 -->
+    <a href="javascript:;" class="header-login">登录</a>
+  </header>
+  <!-- 3.主体 -->
+  <main>
+    <!-- ### 3.1 轮播图 carousel -->
+    <div class="carousel">
+      <ul>
+        <li>
+          <a href="">
+            <img src="./upload/slide_1.jpg" alt=""></a></li>
+      </ul>
+    </div>
+    <!-- ### 3.2 主体导航 nav -->
+    <div class="navigate">
+      <ul>
+        <li><a href=""><img src="./image/nav_1.png" alt=""><span>京东超市</span></a></li>
+        <li><a href=""><img src="./image/nav_2.png" alt=""><span>全球购</span></a></li>
+        <li><a href=""><img src="./image/nav_3.png" alt=""><span>充值中心</span></a></li>
+        <li><a href=""><img src="./image/nav_4.png" alt=""><span>服装城</span></a></li>
+        <li><a href=""><img src="./image/nav_5.png" alt=""><span>理财</span></a></li>
+        <li><a href=""><img src="./image/nav_6.png" alt=""><span>领券</span></a></li>
+        <li><a href=""><img src="./image/nav_7.png" alt=""><span>物流查询</span></a></li>
+        <li><a href=""><img src="./image/nav_8.png" alt=""><span>我的关注</span></a></li>
+      </ul>
+    </div>
+    <!-- ### 3.3 秒杀 seckill -->
+    <div class="seckill">
+      <div class="seckill-title">
+        <h3>掌上秒杀</h3>
+        <div class="time">
+          <span>02</span>
+          <span>:</span>
+          <span>56</span>
+          <span>:</span>
+          <span>42</span>
+        </div>
+        <a class="more" href="">更多秒杀 ></a>
+      </div>
+      <div class="seckill-list">
+        <ul>
+          <li>
+            <a href=""><img src="./upload/seckill_1.jpg" alt=""><span>热卖</span></a>
+            <b>&yen;79</b>
+            <s>&yen;138</s>
+          </li>
+          <li><a href=""><img src="./upload/seckill_2.jpg" alt=""><span>超值</span></a>
+            <b>&yen;169</b>
+            <s>&yen;238</s>
+          </li>
+          <li><a href=""><img src="./upload/seckill_3.jpg" alt=""><span>推荐</span></a><b>&yen;179</b>
+            <s>&yen;198</s></li>
+        </ul>
+      </div>
+    </div>
+    <!-- ### 3.4 活动 active -->
+    <div class="active">
+      <img src="./upload/banner_bg.jpg" alt="">
+      <ul>
+        <li><a href=""><img src="./upload/banner_1.jpg" alt=""></a></li>
+        <li><a href=""><img src="./upload/banner_2.jpg" alt=""></a></li>
+        <li><a href=""><img src="./upload/banner_3.jpg" alt=""></a></li>
+      </ul>
+    </div>
+    <!-- ### 3.5 产品 product -->
+    <div class="product">
+      <ul>
+        <li>
+          <a href=""><img src="./upload/major_1.jpg" alt=""></a>
+          <a href=""><img src="./upload/major_2.jpg" alt=""></a>
+          <a href=""><img src="./upload/major_3.jpg" alt=""></a>
+
+        </li>
+        <li>
+          <a href=""><img src="./upload/major_4.jpg" alt=""></a>
+          <a href=""><img src="./upload/major_5.jpg" alt=""></a>
+          <a href=""><img src="./upload/major_6.jpg" alt=""></a>
+          <a href=""><img src="./upload/major_7.jpg" alt=""></a>
+        </li>
+      </ul>
+    </div>
+    <!-- ### 3.6 广告 adv -->
+    <div class="adv">
+      <a href="">
+        <img src="./upload/advert_1.jpg" alt="">
+      </a>
+    </div>
+    <!-- ### 3.7 超市 market -->
+    <div class="market">
+      <h3 class="market-title">特色超市</h3>
+      <ul>
+        <li>
+          <a href=""><img src="./upload/market_1.jpg" alt=""></a>
+          <a href=""><img src="./upload/market_2.jpg" alt=""></a>
+          <a href=""><img src="./upload/market_3.jpg" alt=""></a>
+          <a href=""><img src="./upload/market_4.jpg" alt=""></a>
+          <a href=""><img src="./upload/market_5.jpg" alt=""></a>
+        </li>
+      </ul>
+    </div>
+    <!-- ### 3.6 广告 adv -->
+    <div class="adv">
+      <a href="">
+        <img src="./upload/advert_2.jpg" alt="">
+      </a>
+    </div>
+    <!-- ### 3.8 主题街 theme -->
+    <div class="theme">
+      <h3 class="brand-title">品牌推荐</h3>
+      <ul>
+        <li>
+          <a href=""><img src="./upload/theme_1.jpg" alt=""></a>
+          <a href=""><img src="./upload/theme_2.jpg" alt=""></a>
+          <a href=""><img src="./upload/theme_3.jpg" alt=""></a>
+          <a href=""><img src="./upload/theme_4.jpg" alt=""></a>
+        </li>
+        <li>
+          <a href=""><img src="./upload/theme_5.jpg" alt=""></a>
+          <a href=""><img src="./upload/theme_6.jpg" alt=""></a>
+          <a href=""><img src="./upload/theme_7.jpg" alt=""></a>
+          <a href=""><img src="./upload/theme_8.jpg" alt=""></a>
+          <a href=""><img src="./upload/theme_9.jpg" alt=""></a>
+          <a href=""><img src="./upload/theme_10.jpg" alt=""></a>
+          <a href=""><img src="./upload/theme_11.jpg" alt=""></a>
+          <a href=""><img src="./upload/theme_12.jpg" alt=""></a>
+        </li>
+      </ul>
+    </div>
+    <!-- ### 3.6 广告 adv -->
+    <div class="adv">
+      <a href="">
+        <img src="./upload/advert_3.jpg" alt="">
+      </a>
+    </div>
+    <!-- ### 3.9 品牌推荐 brand -->
+    <div class="brand">
+      <h3 class="brand-title">品牌推荐</h3>
+      <ul>
+        <li><a href=""><img src="./upload/brand_1.jpg" alt=""></a></li>
+        <li><a href=""><img src="./upload/brand_2.jpg" alt=""></a></li>
+        <li><a href=""><img src="./upload/brand_3.jpg" alt=""></a></li>
+      </ul>
+    </div>
+    <!-- ### 3.6 广告 adv -->
+    <div class="adv">
+      <a href="">
+        <img src="./upload/advert_7.jpg" alt="">
+      </a>
+    </div>
+    <!-- 3.10 猜你喜欢 guess-->
+    <div class="guess">
+      <div class="guess-title">
+        <h3>猜你喜欢</h3>
+        <a href="javascript:;" class="guess-title-login">登陆后更懂你 ></a>
+      </div>
+      <div class="guess-list">
+        <ul>
+          <li>
+            <a href="">
+              <img src="./upload/item_1.jpg" alt="">
+              <p>曼秀雷敦（Mentholatum）控油抗痘洁面乳150ml（男士洗面奶 洁面 控（男士洗面奶 洁面 控（男士洗面奶 洁面 控（男士洗面奶 洁面 控（男士洗面奶 洁面 控油）</p>
+            </a>
+            <div class="guess-list-price">
+              <b>&yen;25.20</b>
+              <a href="javascript:;">看相似</a>
+            </div>
+          </li>
+          <li>
+            <a href="">
+              <img src="./upload/item_2.jpg" alt="">
+              <p> Apple iPad Pro平板电脑 9.7 英寸（32G WLAN版/A9X芯片/Retina显示屏/Multi-Touch技术MM172CH）玫瑰金色</p>
+            </a>
+            <div class="guess-list-price">
+              <b>&yen;109.00</b>
+              <a href="javascript:;">看相似</a>
+            </div>
+          </li>
+          <li>
+            <a href="">
+              <img src="./upload/item_1.jpg" alt="">
+              <p>曼秀雷敦（Mentholatum）控油抗痘洁面乳150ml（男士洗面奶 洁面 控（男士洗面奶 洁面 控（男士洗面奶 洁面 控（男士洗面奶 洁面 控（男士洗面奶 洁面 控油）</p>
+            </a>
+            <div class="guess-list-price">
+              <b>&yen;25.20</b>
+              <a href="javascript:;">看相似</a>
+            </div>
+          </li>
+          <li>
+            <a href="">
+              <img src="./upload/item_2.jpg" alt="">
+              <p> Apple iPad Pro平板电脑 9.7 英寸（32G WLAN版/A9X芯片/Retina显示屏/Multi-Touch技术MM172CH）玫瑰金色</p>
+            </a>
+            <div class="guess-list-price">
+              <b>&yen;109.00</b>
+              <a href="javascript:;">看相似</a>
+            </div>
+          </li>  <li>
+            <a href="">
+              <img src="./upload/item_1.jpg" alt="">
+              <p>曼秀雷敦（Mentholatum）控油抗痘洁面乳150ml（男士洗面奶 洁面 控（男士洗面奶 洁面 控（男士洗面奶 洁面 控（男士洗面奶 洁面 控（男士洗面奶 洁面 控油）</p>
+            </a>
+            <div class="guess-list-price">
+              <b>&yen;25.20</b>
+              <a href="javascript:;">看相似</a>
+            </div>
+          </li>
+          <li>
+            <a href="">
+              <img src="./upload/item_2.jpg" alt="">
+              <p> Apple iPad Pro平板电脑 9.7 英寸（32G WLAN版/A9X芯片/Retina显示屏/Multi-Touch技术MM172CH）玫瑰金色</p>
+            </a>
+            <div class="guess-list-price">
+              <b>&yen;109.00</b>
+              <a href="javascript:;">看相似</a>
+            </div>
+          </li>  <li>
+            <a href="">
+              <img src="./upload/item_1.jpg" alt="">
+              <p>曼秀雷敦（Mentholatum）控油抗痘洁面乳150ml（男士洗面奶 洁面 控（男士洗面奶 洁面 控（男士洗面奶 洁面 控（男士洗面奶 洁面 控（男士洗面奶 洁面 控油）</p>
+            </a>
+            <div class="guess-list-price">
+              <b>&yen;25.20</b>
+              <a href="javascript:;">看相似</a>
+            </div>
+          </li>
+          <li>
+            <a href="">
+              <img src="./upload/item_2.jpg" alt="">
+              <p> Apple iPad Pro平板电脑 9.7 英寸（32G WLAN版/A9X芯片/Retina显示屏/Multi-Touch技术MM172CH）玫瑰金色</p>
+            </a>
+            <div class="guess-list-price">
+              <b>&yen;109.00</b>
+              <a href="javascript:;">看相似</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- 3.11 底部 footer -->
+    <footer>
+      <a href="" class="load-more">点击加载更多</a>
+      <div class="feedback">
+        <a href="javascript:;">登录</a>
+        <a href="javascript:;">注册</a>
+        <a href="javascript:;">反馈</a>
+        <a href="javascript:;">回到顶部</a>
+      </div>
+      <div class="version">
+        <a href="javascript:;">客户端</a>
+        <a href="javascript:;">触屏版</a>
+        <a href="javascript:;">电脑版</a>
+      </div>
+      <p>Copyright &copy; 2004-2016京东JD.com版权所有 </p>
+    </footer>
+  </main>
+  <!-- 1.导航 -->
+
+  
+  <nav>
+    <!-- 1.1 链接 -->
+    <a href="javascript:;">
+      <!-- 1.1.1 图片 --><img src="./image/index-icon.png" alt=""></a>
+    <a href="./sort.html"><img src="./image/sort-icon.png" alt=""></a>
+    <a href="javascript:;"><img src="./image/618-icon.png" alt=""></a>
+    <a href="javascript:;"><img src="./image/cart-icon.png" alt=""></a>
+    <a href="javascript:;"><img src="./image/center-icon.png" alt=""></a>
+  </nav>
+</body>
+
+</html>

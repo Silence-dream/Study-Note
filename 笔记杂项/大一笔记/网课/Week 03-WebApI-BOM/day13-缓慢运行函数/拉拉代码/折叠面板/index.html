@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .accordion {
+      width: 255px;
+      margin: 100px auto;
+    }
+
+    .list {
+      height: 40px;
+      overflow: hidden;
+      /* transition: all 0.6s; */
+    }
+
+    .list h4 {
+      height: 40px;
+      line-height: 40px;
+      background-color: #0bb0ba;
+      color: #fff;
+      padding-left: 15px;
+      box-sizing: border-box;
+    }
+
+    .list:first-child {
+      height: 130px;
+    }
+
+    .list li {
+      background-color: #f7f7f7;
+      border: 1px solid #fff;
+      height: 30px;
+      line-height: 30px;
+      padding-left: 15px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="accordion">
+    <div class="list">
+      <h4>我是一级导航</h4>
+      <ul>
+        <li>二级导航</li>
+        <li>二级导航</li>
+        <li>二级导航</li>
+      </ul>
+    </div>
+    <div class="list">
+      <h4>我是一级导航</h4>
+      <ul>
+        <li>二级导航</li>
+        <li>二级导航</li>
+        <li>二级导航</li>
+      </ul>
+    </div>
+    <div class="list">
+      <h4>我是一级导航</h4>
+      <ul>
+        <li>二级导航</li>
+        <li>二级导航</li>
+        <li>二级导航</li>
+      </ul>
+    </div>
+  </div>
+  <script src="./animate.js"></script>
+  <script>
+      
+      // 获取元素
+      var h4Objs = document.querySelectorAll('.list h4')
+
+      // 添加点击事件
+      for(let i = 0;i<h4Objs.length;i++){
+         h4Objs[i].onclick = function(){
+           // 思路是:点击当前的h4，他的父元素list高度变成130，其他的兄弟list高度是40
+
+           // 排他思想
+          var lists =  this.parentNode.parentNode.children
+          for(let j =0;j<lists.length;j++){
+             // 调用动画
+             animate(lists[j],{"height":40})
+          }
+
+          // 当前的父元素的高度是130
+          animate(this.parentNode,{"height":130})
+
+         }
+      }
+
+   
+  </script>
+</body>
+
+</html>

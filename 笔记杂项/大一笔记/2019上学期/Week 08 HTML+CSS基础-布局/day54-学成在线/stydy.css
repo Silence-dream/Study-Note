@@ -1,0 +1,325 @@
+* {
+    margin: 0;
+    padding: 0;  
+}
+
+body {
+    background-color: #f3f5f7;
+    height: 2300px;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+/* 居中页面整体内容使用  */
+.mid {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.head {
+    height: 42px;
+    /* background-color: aquamarine; */
+    margin: 30px auto;
+}
+
+/* logo开始 */
+.head .logo {
+    float: left;
+    width: 198px;
+    height: 42px;
+    /* background-color: pink; */
+}
+
+/* logo结束 */
+
+/* 首页课程开始 */
+.nav {
+    float: left;
+    margin-left: 60px;
+}
+
+.nav ul li {
+    float: left;
+    margin: 0 15px;
+}
+
+.nav ul a {
+    display: block;
+    height: 42px;
+    padding: 0 10px;
+    line-height: 42px;
+    font-size: 18px;
+    color: #050505;
+}
+
+.nav ul a:hover {
+    border-bottom: 2px solid #00a4ff;
+    color: #00a4ff;
+}
+
+/* 首页课程结束 */
+
+/* 输入框开始 */
+.search {
+    float: left;
+    width: 412px;
+    height: 42px;
+    background-color: skyblue;
+    margin-left: 50px;
+}
+
+.search input {
+    float: left;
+    width: 345px;
+    height: 40px;
+    border: 1px solid #00a4ff;
+    border-right: 0;
+    padding-left: 15px;
+    color: #bfbfbf;
+    font-size: 14px;
+}
+
+.search button {
+    float: left;
+    width: 50px;
+    height: 42px;
+    background-color: tomato;
+    border: 0;
+    background: url(./images/btn.png);
+}
+
+/* 输入框结束 */
+
+/* 用户信息开始 */
+.user {
+    float: left;
+}
+
+.user li {
+    margin-left: 10px;
+    float: left;
+    line-height: 42px;
+}
+
+/* 用户信息结束 */
+
+/* 紫色区域开始 */
+.zi {
+    height: 421px;
+    background-color: #1c036c;
+}
+
+/* 中心信息区域开始 */
+.zi .mid {
+    height: 421px;
+    background: url(./images/php.png) no-repeat top center;
+}
+
+/* 中心信息区域结束 */
+/* 信息左开始 */
+.zi .left {
+    float: left;
+    width: 190px;
+    height: 421px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.zi .left ul li {
+    height: 45px;
+    line-height: 45px;
+    padding: 0 10px;
+}
+
+.zi .left ul li a {
+    font-size: 14px;
+    color: white;
+}
+
+.zi .left ul li a:hover {
+    color: #00a4ff;
+}
+
+.zi .left ul li a span {
+    float: right;
+}
+
+/* 信息左结束 */
+
+/* 信息右开始 */
+.zi .right {
+    float: right;
+    width: 230px;
+    height: 300px;
+    margin-top: 50px;
+    background-color: #fff;
+}
+
+.zi .right h3 {
+    color: #fff;
+    font-size: 18px;
+    height: 48px;
+    background-color: #9bceea;
+    text-align: center;
+    line-height: 48px;
+
+}
+
+.zi .right .content {
+    padding: 0 20px;
+}
+
+/* .zi .right .content li {
+    padding: 14px 0;
+    border-bottom: 1px solid #ccc;
+} */
+.zi .right ul li {
+    padding: 12px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.zi .right .content h4 {
+    font-size: 14px;
+    color: #4e4e4e;
+}
+
+.zi .right .content p {
+    font-size: 12px;
+    color: #a5a5a5;
+}
+
+.zi .right .content .curriculum {
+    display: block;
+    height: 38px;
+    border: 1px solid #00a4ff;
+    margin-top: 5px;
+    text-align: center;
+    line-height: 38px;
+    color: #00a4ff;
+    font-size: 16px;
+    font-weight: 700px;
+
+}
+
+/* 信息右结束 */
+/* 紫色区域结束 */
+
+
+
+/* 精品推荐行栏开始 */
+.boutique {
+    height: 60px;
+    margin-top: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    line-height: 60px;
+}
+
+.boutique h3 {
+    float: left;
+    font-size: 16px;
+    color: #00a4ff;
+    margin-left: 30px;
+}
+
+.boutique ul {
+    float: left;
+    margin-left: 30px;
+}
+
+.boutique ul li {
+    float: left;
+}
+
+.boutique .nterest {
+    float: right;
+    font-size: 16px;
+    color: #050505;
+    padding: 0 30px;
+}
+
+.boutique ul a {
+    font-size: 16px;
+    color: #050505;
+    padding: 0 30px;
+    border-left: 1px solid #bfbfbf;
+}
+
+/* 修改兴趣 */
+.boutique .interest {
+    float: right;
+    font-size: 14px;
+    color: #00a4ff;
+    margin-right: 30px;
+}
+
+/* 精品推荐行栏结束 */
+
+/* 精品推荐开始 */
+.box {
+    margin-top: 30px;
+}
+
+.box .box-head {
+    height: 45px;
+    /* border: 1px solid red; */
+}
+
+.box .box-head h3 {
+    float: left;
+    font-size: 20px;
+    color: #494949;
+    line-height: 45px;
+}
+
+.box .box-head a {
+    float: right;
+    font-size: 12px;
+    color: #a5a5a5;
+    margin-right: 30px;
+    line-height: 45px;
+}
+
+.box .box-body ul {
+    width: 1225px;
+}
+
+.box .box-body ul li {
+    float: left;
+    width: 228px;
+    height: 270px;
+    background-color: white;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.box .box-body ul li img {
+    width: 100%;
+}
+
+.box .box-body ul li h4 {
+    margin: 20px 20px 20px 25px;
+    font-size: 14px;
+    color: #050505;
+    font-weight: 400;
+}
+
+.box .box-body ul li p {
+    margin: 0 20px 0 25px;
+    font-size: 12px;
+    color: #999;
+}
+
+.box .box-body ul li span {
+    color: #ff7c2d;
+}
+
+/* 精品推荐结束 */

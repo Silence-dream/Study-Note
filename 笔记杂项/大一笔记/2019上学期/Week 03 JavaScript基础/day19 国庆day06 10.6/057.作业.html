@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    // 57.根据条件确定公司是否已经为司机投保
+    //  如果司机满足下列条件之一，公司则为他们投保；
+    // 1)	司机已婚。
+    // 2)	司机为30岁以上的未婚男性
+    // 3)	司机为25岁以上的未婚女性。
+    //  如果以上条件一个也不满足，则公司不为司机投保。
+    // 请编写一个程序，根据用户输入司机的婚姻状况、性别和年龄，判定该司机是否已经投保。
+
+
+        var hun=prompt("请输入司机是否结婚（输入是或者否）")
+        var gender=prompt("请输入司机的性别(输入男或女)")
+        var age=prompt("请输入年龄")
+
+        if(hun=="是")
+        {
+            alert("我买了保险我无敌")
+        }
+        else if(gender=="男"&&age>30)
+        {
+            alert("我买了保险我无敌")
+        }
+        else if(gender="女"&&age>25)
+        {
+            alert("我买了保险我无敌")
+        }
+        else
+        {
+            alert("你没保险别浪了")
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
