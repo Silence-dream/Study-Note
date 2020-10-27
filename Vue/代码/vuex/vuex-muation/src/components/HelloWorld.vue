@@ -1,11 +1,12 @@
 <template>
   <div class="hello">
-    <h1 @click="handleClick">{{ getName }}</h1>
+    <h1 @click="changeName">{{ name }}</h1>
   </div>
 </template>
 
 <script>
 // import {mapMutations} from 'vuex';
+import { mapState, mapMutations } from "vuex";
 export default {
   name: "HelloWorld",
   data() {
@@ -19,12 +20,15 @@ export default {
       //   this.$store.commit("changeName");
       this.$store.commit("changeName");
       // ...mapMutations([])
-    }
+    },
+    ...mapMutations(["changeName"])
   },
-  computed:{
-    getName(){
-      return this.$store.state.name
-    }
+  computed: {
+    // getName() {
+    //   return this.$store.state.name;
+    // },
+    // 简写办法 可以直接在页面中使用state里面的数据
+    ...mapState(["name"])
   }
 };
 </script>
