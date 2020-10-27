@@ -1725,3 +1725,576 @@ export default {
 <style></style>
 
 ```
+
+## vuex
+
+### VueX概述
+
+#### 为什么要学习VueX
+
+父向子传值：父元素v-bind 属性绑定数据，子元素使用props接受父元素传递的数据
+子向父传值：父元素v-on事件绑定，子元素使用$emit触发，并通过回调函数把值传递给父元素
+兄弟组件之间共享数据：EventBus(mitt)
+emitter.on()  接收数据的那个组件
+emitter.emit() 发送数据的那个组件
+
+#### VueX简介
+
+![image-20201027154214547](images/image-20201027154214547.png).
+
+Vuex是实现组件全局状态（数据）管理的一种机制，可以方便的实现组件之间的数据共享
+
+使用Vuex管理数据的好处：
+A.能够在vuex中集中管理共享的数据，便于开发和后期进行维护
+B.能够高效的实现组件之间的数据共享，提高开发效率
+C.存储在vuex中的数据是响应式的，当数据发生改变时，页面中的数据也会同步更新
+
+`注意,不是任何数据都适合放在vuex中的，一般情况下，只有组件之间共享的数据，才有必要存储到vuex 中；对于组件中的私有数据，依旧存储在组件自身的data 中即可`
+
+### VueX的基本使用
+
+1.安装
+
+```shell
+# If using Vue 3.0 + Vuex 4.0:
+npm install vuex@next --save
+```
+
+2.配置(store/index.js)
+
+```js
+// 引入VueX
+import { createStore } from "vuex";
+
+export default createStore({
+  // state提供唯一的公共数据源，所有共享的数据都要统一放到Store的state中进行存储
+  state(){
+      return {
+      }
+  },
+  // mutations用于修改Store中的数据
+  mutations: {},
+  // actions用于处理异步任务
+  actions: {},
+  // getters 用于对Store中的数据进行加工处理形成新的数据。
+  getters: {}
+});
+
+```
+
+3.挂载(src/main.js)
+
+```js
+import { createApp } from "vue";
+import App from "./App.vue";
+import store from "./store";
+createApp(App)
+  .use(store)
+  .mount("#app");
+
+```
+
+### VueX的核心概念
+
+#### State(类似于Vue中的data选项)
+
+State提供唯一的公共数据源，所有共享的数据都要统一放到Store的State中进行存储
+
+定义语法:
+
+```js
+const store = createStore({
+  state () {
+    return {
+      属性名: 属性值
+    }
+  }
+})
+```
+
+访问:
+
+```js
+// 组件的script中访问(方法1)
+this.$store.state.全局数据属性名
+
+// 组件的script中访问(方法2)
+// 1.首先在store中定义数据(store/index.js)
+import { createStore } from "vuex";
+
+export default createStore({
+  state() {
+    return {
+      count: 0,
+      msg: "Welcome to Your Vue2"
+    };
+  },
+  mutations: {},
+  actions: {},
+  modules: {}
+});
+
+// 2.在需要用到这个数据的组件中
+<script>
+import { mapState } from "vuex";
+export default {
+  name: "HelloWorld",
+  computed: {
+    // count() {
+    //   return this.$store.state.count;
+    // },
+    // msg() {
+    //   return this.$store.state.msga;
+    // },
+    ...mapState(["count", "msg"])
+  }
+};
+</script>
+```
+
+#### mutation
+
+Mutation 用于修改Store中的数据。
+1.只能通过mutation 变更Store 数据，不可以直接操作Store 中的数据。
+2.通过这种方式虽然操作起来稍微繁琐一些，但是可以集中监控所有数据的变化。
+
+##### 方法1(未传参数)
+
+1.store/index.js
+
+```js
+// 定义Mutation
+import { createStore } from "vuex";
+
+export default createStore({
+  state(){
+    return {
+      aname: "张三"
+    }
+  },
+  mutations: {
+    // 1.获取state中的数据
+    // 2.传参问题
+    changeName(state){
+      state.aname = "李四"
+    }
+  }
+});
+
+```
+
+2.在某一个组件文件中
+
+```js
+// 触发mutation
+<template>
+  <div class="hello">
+    <h1 @click="changeName">{{ msg }}</h1>
+  </div>
+</template>
+
+<script>
+import {mapState,mapMutations} from "vuex"
+export default {
+  name: "HelloWorld",
+  props: {
+    msg: String
+  },
+  data(){
+    return {
+      name: "我最喜欢福原爱"
+    }
+  },
+  // created(){
+  //   this.handleChange();
+  // },
+  methods: {
+    // 这个方法是用来触发store中的mutations中的changeName方法的
+     handleChange(){
+       this.$store.commit("changeName");
+     },
+  },
+  computed: {
+    ...mapState(['aname'])
+  }
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+</style>
+
+```
+
+##### 方法2(传参数)
+
+1.store/index.js
+
+```js
+import { createStore } from "vuex";
+
+export default createStore({
+  state(){
+    return {
+      aname: "张三"
+    }
+  },
+  mutations: {
+    // 1.获取state中的数据
+    // 2.传参问题
+    changeOtherName(state,name1){
+      state.aname = name1;
+    }
+  }
+
+});
+
+
+  
+   
+    
+```
+
+2.在某一个组件文件中
+
+```js
+<template>
+  <div class="hello">
+    <h1 @click="changeName">{{ msg }}</h1>
+    <h2 @click="changeOtherName(name)">{{aname}}</h2>
+  </div>
+</template>
+
+<script>
+import {mapState,mapMutations} from "vuex"
+export default {
+  name: "HelloWorld",
+  props: {
+    msg: String
+  },
+  data(){
+    return {
+      name: "我最喜欢福原爱"
+    }
+  },
+  // created(){
+  //   this.handleChange();
+  // },
+  methods: {
+    // 这个方法是用来触发store中的mutations中的changeName方法的
+    handelOtherChange(){
+       let name = this.name;
+       this.$store.commit("changeOtherName",name);
+     }
+    ...mapMutations(['changeName','changeOtherName'])
+  },
+  computed: {
+    ...mapState(['aname'])
+  }
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+</style>
+
+```
+
+##### 方法3
+
+1.store/index.js
+
+```js
+import { createStore } from "vuex";
+
+export default createStore({
+  state(){
+    return {
+      aname: "张三"
+    }
+  },
+  mutations: {
+    // 1.获取state中的数据
+    // 2.传参问题
+    changeName(state){
+      state.aname = "李四"
+    },
+    changeOtherName(state,name1){
+      state.aname = name1;
+    }
+  }
+});
+```
+
+2.在某一个组件文件中
+
+```js
+<template>
+  <div class="hello">
+    <h1 @click="changeName">{{ msg }}</h1>
+    <h2 @click="changeOtherName(name)">{{aname}}</h2>
+  </div>
+</template>
+
+<script>
+import {mapState,mapMutations} from "vuex"
+export default {
+  name: "HelloWorld",
+  props: {
+    msg: String
+  },
+  data(){
+    return {
+      name: "我最喜欢福原爱"
+    }
+  },
+  // created(){
+  //   this.handleChange();
+  // },
+  methods: {
+    ...mapMutations(['changeName','changeOtherName'])
+  },
+  computed: {
+    ...mapState(['aname'])
+  }
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+</style>
+
+
+```
+
+#### action
+
+Action 用于处理异步任务。
+如果通过异步操作变更数据，必须通过Action，而不能使用Mutation，
+但是在Action 中还是要通过触发Mutation 的方式间接变更数据。
+
+##### 方法1
+
+1.store/index.js
+
+```js
+import { createStore } from "vuex";
+
+export default createStore({
+  // 让计数器 每秒加2
+  state() {
+    return {
+      count: 0
+    };
+  },
+  mutations: {
+    add(state, val) {
+      state.count += val;
+    }
+  },
+  actions: {
+    // context就是上下文
+    asyncAdd(context, val) {
+      console.log(context);
+      setInterval(function() {
+        // 用commit触发同步方法
+        context.commit("add", val);
+      }, 1000);
+    }
+  },
+  getters: {}
+});
+
+```
+
+2.在某一个组件中
+
+```js
+methods: {
+  handle() {
+    // 在调用dispatch 函数，
+    // 触发actions 时携带参数
+    this.$store.dispatch('addNAsync', 5)
+  }
+}  
+```
+
+##### 方法2
+
+2.在某一个组件中使用
+
+```js
+<template>
+  <div class="hello">
+    <h1 @click="asyncAdd(2)">{{ msg }}</h1>
+    <p>{{ count }}</p>
+  </div>
+</template>
+
+<script>
+import { mapState, mapActions } from "vuex";
+export default {
+  name: "HelloWorld",
+  props: {
+    msg: String
+  },
+  computed: {
+    ...mapState(["count"])
+  },
+  methods: {
+    ...mapActions(["asyncAdd"])
+  }
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+</style>
+
+```
+
+#### getter
+
+Getter 用于对Store 中的数据进行加工处理形成新的数据。
+1.Getter 可以对Store 中已有的数据加工处理之后形成新的数据，类似Vue 的计算属性。
+2.Store 中数据发生变化，Getter 的数据也会跟着变化
+
+##### 方法1
+
+1.store/index.js
+
+```js
+import { createStore } from "vuex";
+
+export default createStore({
+  // 第一步: 声明数据
+  // 第二步: 写按钮 让数据变化
+  // 第三步: 当数据变化的时候 把数据同步更新到页面上
+  state(){
+    return {
+      count: 0
+    }
+  },
+  mutations: {
+    add(state){
+      state.count ++;
+    }
+  },
+  actions: {},
+  getters: {
+    num(state){
+      return state.count
+    }
+  }
+});
+
+
+```
+
+2.在某一个组件中使用
+
+```js
+<template>
+  <div class="hello">
+    <h1>{{ msg }}</h1>
+    <button @click="add">点我让数字自增{{num}}</button>
+  </div>
+</template>
+
+<script>
+import {mapMutations,mapGetters} from "vuex"
+export default {
+  name: "HelloWorld",
+  props: {
+    msg: String
+  },
+  methods: {
+    ...mapMutations(['add'])
+  },
+  computed: {
+  
+    ...mapGetters(['num'])
+  }
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+</style>
+
+
+```
+
+> https://www.v2ex.com/t/347227
+> https://bigdata.bihell.com/language/javascript/vue/vuex.html#揭开-vuex-的神秘面纱
+> https://cn.vuejs.org/v2/guide/state-management.html#简单状态管理起步使用
