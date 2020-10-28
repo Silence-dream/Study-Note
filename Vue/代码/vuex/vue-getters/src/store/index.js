@@ -11,6 +11,7 @@ export default createStore({
       state.num++;
     }
   },
+  // 相当于computed计算属性
   getters: {
     computedNum(state) {
       return state.num;
