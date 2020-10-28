@@ -1686,7 +1686,7 @@ createApp(App)
   ]
 ```
 
-在组件中
+在对应组件中
 
 ```vue
 <template>
@@ -1719,7 +1719,7 @@ export default {
   ]
 ```
 
-在组件中
+在对应组件中
 
 ```vue
 <template>
@@ -1748,12 +1748,13 @@ export default {
      {
       path: "父组件路由规则/:占位符名称",
       component: "组件名",
+      // 通过回调函数的方式传值给组件,对应组件通过props获取传入的参数
       props: router=>({属性名: router.params.占位符名称,属性名:属性值,...})
     }
   ]
 ```
 
-在组件中
+在对应组件中
 
 ```vue
 <template>
@@ -1794,7 +1795,7 @@ export default {
   ]
 ```
 
-在组件中
+在对应组件中
 
 ```vue
 <template>
