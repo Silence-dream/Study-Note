@@ -1637,7 +1637,7 @@ createApp(App)
 
 
 
-### 路由重定向
+### 路由重定向 router-redirect
 
 ```js
   let routes = [
@@ -1650,7 +1650,7 @@ createApp(App)
   ]
 ```
 
-### 嵌套路由
+### 嵌套路由 router-nest
 
 ```js
   let routes = [
@@ -1670,7 +1670,7 @@ createApp(App)
   ]
 ```
 
-### 路由传参
+### 路由传参 router-dynamic
 
 #### 直接接收
 
@@ -1774,7 +1774,7 @@ export default {
 ```
 
 
-### 编程式导航
+### 编程式导航 router-program
 
 ```js
 //  如果在methods中 在created 在watch这样的方法中 使用this.$router.push() 跳转到另外的路由
@@ -1799,7 +1799,8 @@ export default {
 
 ```vue
 <template>
-  <router-link :to="{ name: '路由的名字'}">超链接</router-link>
+	<!-- 如果传入了参数记得去router/index.js里面开启props -->
+  <router-link :to="{ name: '路由的名字',params:{ 属性名: 属性值}}">超链接</router-link>
 </template>
 
 <script>
