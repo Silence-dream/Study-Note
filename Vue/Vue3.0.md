@@ -1553,6 +1553,90 @@ vue create 项目名称
 
 ## vue-router
 
+### 安装
+
+```powershell
+#下载 vue-router包
+npm install vue-router@next
+
+# 在src文件夹里面新建routes文件夹
+├─.browserslistrc
+├─.eslintrc.js
+├─.gitignore
+├─babel.config.js
+├─package.json
+├─README.md
+├─yarn.lock
+├─src #在这里新建
+|  ├─App.vue
+|  ├─main.js
+|  ├─routes # 新建我!!!
+|  |   └index.js #在这里面写vue-router的配置文件
+|  ├─components
+|  |     └HelloWorld.vue
+|  ├─assets
+|  |   └logo.png
+├─public
+|   ├─favicon.ico
+|   └index.html
+
+```
+
+#### 配置文件书写
+
+```js
+/*
+|  ├─routes # 新建我!!!
+|  |   └index.js 我是配置文件哦!!
+*/
+
+import { createRouter, createWebHashHistory } from "vue-router";
+
+// 导入组件
+import HelloWorld from "../components/HelloWorld";
+const routes = [
+  {
+    name: "home",
+    path: "/home",
+    component: HelloWorld
+  }
+];
+// 3.创建路由
+const router = createRouter({
+  history: createWebHashHistory(),
+  // 定义好的路由
+  routes
+});
+// 导出 router
+export default router;
+
+```
+
+#### main.js文件的书写
+
+
+
+```js
+/*
+├─src #在这里新建
+|  ├─App.vue
+|  ├─main.js
+*/
+
+import { createApp } from "vue";
+import App from "./App.vue";
+// 引入路由配置
+import routes from "./routes";
+createApp(App)
+  //使用路由
+  .use(routes)
+  .mount("#app");
+```
+
+
+
+
+
 ### 路由重定向
 
 ```js
