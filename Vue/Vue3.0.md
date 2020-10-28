@@ -1772,11 +1772,11 @@ export default createStore({
       return {
       }
   },
-  // mutations用于修改Store中的数据
+  // mutations用于修改Store中的数据 相当于methods
   mutations: {},
   // actions用于处理异步任务
   actions: {},
-  // getters 用于对Store中的数据进行加工处理形成新的数据。
+  // getters 用于对Store中的数据进行加工处理形成新的数据。 相当于computed计算属性
   getters: {}
 });
 
@@ -1962,11 +1962,6 @@ export default createStore({
   }
 
 });
-
-
-  
-   
-    
 ```
 
 2.在某一个组件文件中
