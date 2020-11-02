@@ -9,17 +9,14 @@
     </div>
     <!-- 列表 -->
     <ul class="todo-main">
-      <li>
-        <input type="checkbox" /> <span>标记静态内容，并区分动态内容</span>
-        <a href="">删除</a>
-      </li>
-      <li>
-        <input type="checkbox" /> <span>标记静态内容，并区分动态内容</span>
-        <a href="">删除</a>
-      </li>
-      <li>
-        <input type="checkbox" /> <span>标记静态内容，并区分动态内容</span>
-        <a href="">删除</a>
+      <li v-for="(item, index) in list" :key="item.id" :data-index="index">
+        <input
+          type="checkbox"
+          :checked="item.done"
+          @change="changeList({ e: $event, id: item.id })"
+        />
+        <span>{{ item.info }}</span>
+        <a href="" @click.prevent="deleteListItem(item.id)">删除</a>
       </li>
     </ul>
     <!-- 底部菜单 -->
@@ -36,7 +33,20 @@
 </template>
 
 <script>
-export default {};
+import { mapActions, mapMutations, mapState } from "vuex";
+export default {
+  name: "App",
+  methods: {
+    ...mapActions(["getList"]),
+    ...mapMutations(["deleteListItem", "changeList"])
+  },
+  created() {
+    this.getList();
+  },
+  computed: {
+    ...mapState(["list"])
+  }
+};
 </script>
 
 <style>

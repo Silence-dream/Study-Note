@@ -1938,7 +1938,7 @@ export default {
 </script>
 ```
 
-#### mutation
+#### mutation 相当于Vue中methods
 
 Mutation 用于修改Store中的数据。
 1.只能通过mutation 变更Store 数据，不可以直接操作Store 中的数据。
@@ -2190,7 +2190,7 @@ a {
 
 ```
 
-#### action
+#### action 用于异步处理数据
 
 Action 用于处理异步任务。
 如果通过异步操作变更数据，必须通过Action，而不能使用Mutation，
@@ -2290,7 +2290,7 @@ a {
 
 ```
 
-#### getter
+#### getter 相当于 Vue 中computed
 
 Getter 用于对Store 中的数据进行加工处理形成新的数据。
 1.Getter 可以对Store 中已有的数据加工处理之后形成新的数据，类似Vue 的计算属性。
