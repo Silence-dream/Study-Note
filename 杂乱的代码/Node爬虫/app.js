@@ -24,7 +24,7 @@ let localNews = []; // 本地新闻
 superagent.get("http://news.baidu.com/").then((res) => {
   hotNews = getHotNews(res);
 });
-// console.log(getNews()); 
+// console.log(getNews());
 // async function getNews() {
 //   let result = await axios.get("http://news.baidu.com/");
 //   // console.log(result);
@@ -43,7 +43,9 @@ let getHotNews = (res) => {
   /* 使用cheerio模块的cherrio.load()方法，将HTMLdocument作为参数传入函数
      以后就可以使用类似jQuery的$(selectior)的方式来获取页面元素
    */
-  let $ = cheerio.load(res.text);
+  let $ = cheerio.load(res.text, {
+    decodeEntities: false, //解决中文乱码
+  });
   // 找到目标数据所在的页面元素，获取数据
   $("div#pane-news ul li a").each((idx, ele) => {
     // cherrio中$('selector').each()用来遍历所有匹配到的DOM元素
