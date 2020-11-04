@@ -9,21 +9,21 @@
       <div class="result_tip">{{ scoreTips }}</div>
     </div>
 
-     <div class="share_button" @click="showCover"></div>
+    <div class="share_button" @click="showCover"></div>
 
-  <div class="share_code">
-    <header class="share_header">关注葡萄之家,获取答案.</header>
-    <img src="/images/4-4.png" height="212" class="code_img" alt="">
-  </div>
+    <div class="share_code">
+      <header class="share_header">关注葡萄之家,获取答案.</header>
+      <img src="/images/4-4.png" height="212" class="code_img" alt="" />
+    </div>
 
- <div class="share_cover" v-show="showHide" @click="showCover" >
-    <img class="share_img" src="/images/5-2.png" alt="">
-  </div>
+    <div class="share_cover" v-show="showHide" @click="showCover">
+      <img class="share_img" src="/images/5-2.png" alt="" />
+    </div>
   </div>
 </template>
 
 <script>
-import {mapState} from "vuex"
+import { mapState } from "vuex";
 export default {
   data() {
     return {
@@ -41,9 +41,9 @@ export default {
     };
   },
   computed: {
-    ...mapState(['anwserId'])
+    ...mapState(["anwserId"])
   },
-  created(){
+  created() {
     // 刚进入分数页面 显示分数
     this.calc();
     //  显示提示语
@@ -51,41 +51,41 @@ export default {
   },
   methods: {
     // 计算分数
-    calc(){
+    calc() {
       // 遍历anwserId数组 取出用户选择的答案
-      this.anwserId.forEach((item,index)=>{
+      this.anwserId.forEach((item, index) => {
         // 判断用户选择的答案是否和正确答案一致,如果一致,那么加20分
-        if (item ==  this.rightAnswer[index]){
-          this.score+=20;
-        } 
-      })
+        if (item == this.rightAnswer[index]) {
+          this.score += 20;
+        }
+      });
     },
     // 根据分数判断对应的提示语
-    getScoreTips(){
+    getScoreTips() {
       if (this.score <= 20) {
         this.scoreTips = this.scoreTipsArr[0];
         return;
       }
-       if (this.score <= 40) {
+      if (this.score <= 40) {
         this.scoreTips = this.scoreTipsArr[1];
         return;
       }
-       if (this.score <= 60) {
+      if (this.score <= 60) {
         this.scoreTips = this.scoreTipsArr[2];
         return;
       }
-       if (this.score <= 80) {
+      if (this.score <= 80) {
         this.scoreTips = this.scoreTipsArr[3];
         return;
       }
-       if (this.score <= 100) {
+      if (this.score <= 100) {
         this.scoreTips = this.scoreTipsArr[4];
         return;
       }
     },
     // 控制遮罩的显示和隐藏
-    showCover(){
-       this.showHide = !this.showHide;
+    showCover() {
+      this.showHide = !this.showHide;
     }
   }
 };
