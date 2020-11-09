@@ -1,0 +1,15 @@
+{
+  "name": "appleFarm",
+  "title": "appleFarmAPI",
+  "description": "API接口文档",
+  "url": "https://www.google.com",
+  "version": "0.1.0",
+  "header": {
+    "title": "My own header title",
+    "filename": "readme.md"
+  },
+  "footer": {
+    "title": "My own footer title",
+    "filename": "readme.md"
+  }
+}
