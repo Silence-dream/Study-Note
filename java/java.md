@@ -14,3 +14,11 @@
 | char(字符)     | 4-Byte    | Character | '\u0000'（对应数字0，输出为空） | 0~65535                                  |
 | boolean(布尔)  | 1-Byte    | Boolean   | flase                           | true或false                              |
 
+
+
+## 定义数据
+
+
+
+
+
