@@ -2349,7 +2349,7 @@ export default {
     ...mapMutations(['add'])
   },
   computed: {
-  
+  	// this.$srote.getters.num
     ...mapGetters(['num'])
   }
 };
@@ -2379,3 +2379,385 @@ a {
 > https://www.v2ex.com/t/347227
 > https://bigdata.bihell.com/language/javascript/vue/vuex.html#揭开-vuex-的神秘面纱
 > https://cn.vuejs.org/v2/guide/state-management.html#简单状态管理起步使用
+
+
+
+
+
+
+
+
+
+
+
+## vue-compositionAPI的使用
+
+-   setup()
+
+-   [介绍 | Vue3中文文档 - vuejs (vue3js.cn)](https://vue3js.cn/docs/zh/guide/composition-api-introduction.html#什么是组合式-api)
+
+### 定义变量 ref、reactive
+
+-   ref定义简单数据类型
+-   reactive定义复杂数据类型
+
+```vue
+<template>
+  <div class="box">
+    <h1>这里相当于 optionsAPI里面的data</h1>
+    <div>{{ hello }}</div>
+    <div>{{ obj }}</div>
+  </div>
+</template>
+
+<script>
+// 注意要引入vue里面的方法才可以使用
+import { reactive, ref } from "vue";
+export default {
+  name: "App",
+  // components: {}
+  setup() {
+    let hello = ref("hello");
+    let obj = reactive({
+      name: "罗老师",
+      age: 18
+    });
+    // 导出变量
+    return {
+      hello,
+      obj
+    };
+  }
+};
+</script>
+
+<style scoped>
+.box {
+  text-align: center;
+  background-color: skyblue;
+}
+</style>
+
+```
+
+### 方法的使用
+
+
+
+```vue
+<template>
+  <div class="box">
+    <h1>这里相当于 optionsAPI里面的 methods</h1>
+    <h2>
+      您将学习到修改 ref 和 reactive 里面的值和使用
+      在compositions里面使用optionsAPI里面的methods
+    </h2>
+    <div>{{ hello }}</div>
+    <div>{{ obj }}</div>
+    <button @click="changeName">点击我修改值</button>
+  </div>
+</template>
+
+<script>
+import { reactive, ref } from "vue";
+export default {
+  name: "App",
+  // components: {}
+  setup() {
+    let hello = ref("hello");
+    let obj = reactive({
+      name: "罗老师别这样",
+      age: 18
+    });
+
+    function changeName() {
+      hello.value = "不hello";
+      obj.name = "罗老师";
+    }
+    // 导出
+    return {
+      hello,
+      obj,
+      changeName
+    };
+  }
+};
+</script>
+
+<style scoped>
+.box {
+  text-align: center;
+  background-color: pink;
+}
+</style>
+
+```
+
+### watch监听值的变化
+
+```js
+<template>
+  <div class="box">
+    <h1>这里相当于 optionsAPI里面的 watch</h1>
+    <h2>
+      您将学习到在compositions里面使用optionsAPI里面的watch 注意看控制台
+    </h2>
+    <div>{{ num }}--{{ num2 }}</div>
+    <button @click="changeNum">点击我数字变化</button>
+  </div>
+</template>
+
+<script>
+import { ref, watch } from "vue";
+export default {
+  name: "App",
+  // components: {}
+  setup() {
+    let num = ref(100);
+    let num2 = ref(200);
+
+    function changeNum() {
+      setInterval(() => {
+        num.value++;
+        num2.value++;
+      }, 500);
+    }
+    // 监听单一的值;
+    watch(
+      () => num.value, //监听num
+      (count, prevCount) => {
+        console.log("num 变化后的值", count, "num 变化前的值", prevCount);
+      }
+    );
+    //监听多个值
+    watch(
+      [num, num2], //监听num
+      ([num, num2], [prevNum, prevNum2]) => {
+        console.log("num 变化后的值", num, "num 变化前的值", prevNum);
+        console.log("num2 变化后的值", num2, "num2 变化前的值", prevNum2);
+      }
+    );
+    // 导出
+    return {
+      num,
+      num2,
+      changeNum
+    };
+  }
+};
+</script>
+
+<style scoped>
+.box {
+  text-align: center;
+  background-color: skyblue;
+}
+</style>
+
+```
+
+
+
+### watchEffect
+
+```vue
+<template>
+  <div class="box">
+    <h1>这里相当于 optionsAPI里面的 watch</h1>
+    <h2>
+      您将学习到在compositions里面使用optionsAPI里面的watch 注意看控制台
+    </h2>
+    <div>{{ num }}--{{ num2 }}</div>
+    <button @click="changeNum">点击我数字变化</button>
+  </div>
+</template>
+
+<script>
+import { ref, watchEffect } from "vue";
+export default {
+  name: "App",
+  // components: {}
+  setup() {
+    let num = ref(100);
+    let num2 = ref(200);
+
+    function changeNum() {
+      setInterval(() => {
+        num.value++;
+        num2.value++;
+      }, 500);
+    }
+
+    //监听多个值
+    watchEffect(() => {
+      console.log(num.value);
+      console.log(num2.value);
+    });
+
+    // 导出
+    return {
+      num,
+      num2,
+      changeNum
+    };
+  }
+};
+</script>
+
+<style scoped>
+.box {
+  text-align: center;
+  background-color: pink;
+}
+</style>
+
+```
+
+
+
+### computed
+
+```vue
+<template>
+  <div class="box">
+    <h1>这里相当于 optionsAPI 里面的 computed</h1>
+    <h2>注意看控制台</h2>
+    <div>helloComputed={{ helloComputed }}</div>
+    <div>numComputed={{ numComputed }}</div>
+  </div>
+</template>
+
+<script>
+// 注意要引入vue里面的方法才可以使用
+import { computed, ref } from "vue";
+export default {
+  name: "App",
+  // components: {}
+  setup() {
+    let hello = ref("hello");
+    let helloComputed = computed(() => {
+      return hello.value + "World"; //计算完毕之后变成helloWorld
+    });
+    let num = ref(21);
+    let numComputed = computed({
+      get: () => num.value + 11, //直接调用执行这里
+      set: val => {
+        // 2.执行这里
+        console.log("numComputed.value=", val);
+      }
+    });
+    // 1.给 numComputed 赋值
+    numComputed.value = 20;
+    // 导出变量
+    return {
+      helloComputed,
+      numComputed
+    };
+  }
+};
+</script>
+
+<style scoped>
+.box {
+  text-align: center;
+  background-color: skyblue;
+}
+</style>
+
+```
+
+
+
+### 调用vuex
+
+-   App.vue
+
+
+
+```vue
+<template>
+  <div class="box">
+    <h2>
+      您将学习到修改 如何调用 vuex里面的值和方法
+    </h2>
+    <div>vuex里面的msg的值是---{{ msg }}</div>
+    <div>vuex里面的msg被计算属性之后的值----{{ msgComputed }}</div>
+    <button @click="changeMsg">点击修改vuex-msg</button>
+  </div>
+</template>
+
+<script>
+import { computed } from "vue";
+import { useStore } from "vuex";
+export default {
+  name: "vuex",
+  // components: {}
+  setup() {
+    let store = useStore();
+    //获取 state() 里面的属性
+    let msg = computed(() => store.state.msg);
+    //获取 getters()里面的属性
+    let msgComputed = computed(() => store.getters.msg);
+    function changeMsg() {
+      // 调用mutations的方法
+      store.commit("changeMsg");
+      // 调用actios里面的方法
+      store.dispatch("fn");
+    }
+    return {
+      msg,
+      changeMsg,
+      msgComputed
+    };
+  }
+};
+</script>
+
+<style scoped>
+.box {
+  text-align: center;
+  background-color: pink;
+}
+</style>
+
+```
+
+-   store/index.js
+
+
+
+```js
+import { createStore } from "vuex";
+
+export default createStore({
+  state() {
+    return {
+      msg: "here is vuex"
+    };
+  },
+  mutations: {
+    changeMsg(state) {
+      state.msg = "msg被修改了";
+    }
+  },
+  actions: {
+    async fn() {
+      let a;
+      setTimeout(() => {
+        a = 90;
+      }, 0);
+      a = 90;
+
+      console.log(a);
+    }
+  },
+  modules: {},
+  getters: {
+    msg(state) {
+      return state.msg + "计算属性";
+    }
+  }
+});
+
+```
+
