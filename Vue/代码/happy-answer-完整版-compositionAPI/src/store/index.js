@@ -19,7 +19,6 @@ export default createStore({
     // 初始化数据
     initData(state, payload) {
       state.questions = payload.data;
-      // console.log(state.questions);
     },
     remberId(state, payload) {
       state.anwserId.push(payload);

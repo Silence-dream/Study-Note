@@ -15,18 +15,21 @@
 </template>
 
 <script>
-import { computed } from "vue";
 import { useStore } from "vuex";
+import { computed } from "vue";
+
 export default {
   name: "Home",
   setup() {
     let store = useStore();
     let level = computed(() => store.state.level);
-
     return {
       level
     };
   }
+  // computed: {
+  //   ...mapState(["level"])
+  // }
 };
 </script>
 

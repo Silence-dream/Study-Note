@@ -44,59 +44,41 @@
 </template>
 
 <script>
-import { computed, ref } from 'vue';
-// import { mapState } from "vuex";
-// import {ref} from "vue";
+import { computed, ref } from "vue";
 import { useStore } from "vuex";
-import { useRouter} from "vue-router"
-
+import { useRouter } from "vue-router";
 export default {
-  name: "Item",
-  setup(){
-    //#region 初始化数据
+  data() {
+    return {
+      // // 答案的索引
+      // chooseNum: null,
+      // // topic_answer_id 答案id 在整套数据中是唯一的
+      // chooseId: null
+    };
+  },
+  setup() {
+    // console.log(1);
     let store = useStore();
+    // 替换created()
     store.dispatch("getData");
-    //#endregion
 
-    //#region 渲染题目页面头部
-    let itemNum = computed(()=>store.state.itemNum);
-
- 
-    // console.log(itemNum); // 普通数据
-
-    // let num = ref(1); // 响应式数据
-    // console.log(num);
-    //#endregion
-
-    //#region 渲染题目页面内容区域(题干)
-    // questions是被proxy包围的 也是响应式数据
-    // vue-router
-    let questions = computed(()=>store.state.questions);
-
-    let  itemTitle = computed(()=>{
-      // console.log(questions)
-      // console.log(questions.value);
-     return  questions.value[itemNum.value - 1].topic_name;
-   })
-    // console.log(questions)
-    //#endregion
-
-    //#region 点击选中
+    //#region 改写choose函数 让li选中
+    //答案的索引
     let chooseNum = ref(null);
+    // topic_answer_id 答案id 在整套数据中是唯一的
     let chooseId = ref(null);
-
-    function choosed(index, id) {
+    let choosed = function(index, id) {
       chooseNum.value = index;
       chooseId.value = id;
-    }
-
+      // console.log(index, id);
+    };
     //#endregion
 
-    //#region 下一题
-    function  nextItem() {
+    //#region  下一个题目
+    let nextItem = function() {
       // 判断用户是否选择 如果选择 那么就把选择的id传递到vuex
-      if (  chooseNum.value != null) {
-          chooseNum.value= null;
+      if (chooseNum.value != null) {
+        chooseNum.value = null;
         // 把chooseId传给addNum
         store.dispatch("addNum", chooseId.value);
       } else {
@@ -106,13 +88,12 @@ export default {
     };
     //#endregion
 
-
-    //#region 点击提交
+    //#region submitAnswer()改写提交答案
     let router = useRouter();
-     function submitAnswer() {
+    let submitAnswer = function() {
       // 判断用户是否选择 如果选择 那么就把选择的id传递到vuex
       if (chooseNum.value != null) {
-       chooseNum.value = null;
+        chooseNum.value = null;
         // 把chooseId传给addNum
         store.dispatch("addNum", chooseId.value);
         router.push("/score");
@@ -120,32 +101,36 @@ export default {
         // 如果没有选择 提示用户  你还没有选择答案
         alert("你还没有选择答案");
       }
-    }
+    };
     //#endregion
 
+    //#region    改写mapState(["itemNum", "questions"]),
+    let itemNum = computed(() => store.state.itemNum);
+    let questions = computed(() => store.state.questions);
+    //#endregion
+
+    //#region   渲染题干改写
+    let itemTitle = computed(() => {
+      return store.state.questions[store.state.itemNum - 1].topic_name;
+    });
+
+    //#endregion
     return {
-      itemNum,
-      questions,
-      itemTitle,
       choosed,
       chooseNum,
+      chooseId,
       nextItem,
-      submitAnswer
-    }
+      submitAnswer,
+      itemNum,
+      questions,
+      itemTitle
+    };
   },
-  // data() {
-  //   return {
-  //     // 答案的索引
-  //     chooseNum: null,
-  //     // topic_answer_id 答案id 在整套数据中是唯一的
-  //     chooseId: null
-  //   };
-  // },
-
   // created() {
   //   this.$store.dispatch("getData");
   // },
-  // methods: {
+
+  methods: {
     // 让li选中
     // choosed(index, id) {
     //   this.chooseNum = index;
@@ -176,14 +161,14 @@ export default {
     //     alert("你还没有选择答案");
     //   }
     // }
-  // },
-  // computed: {
-  //   // ...mapState(["itemNum", "questions"]),
-  //   // 渲染题干
-  //   // itemTitle() {
-  //   //   return this.questions[this.itemNum - 1].topic_name;
-  //   // }
-  // }
+  },
+  computed: {
+    // ...mapState(["itemNum", "questions"]),
+    // 渲染题干
+    // itemTitle() {
+    //   return this.questions[this.itemNum - 1].topic_name;
+    // }
+  }
 };
 </script>
 
