@@ -14,8 +14,7 @@ export default {
   }
 };
 </script>
-
-<style>
+<style scoped>
 html,
 body {
   padding: 100px;
