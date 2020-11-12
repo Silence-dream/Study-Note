@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "koa": "^2.13.0",
+    "koa-route": "^3.2.0",
+    "koa-static": "^5.0.0"
+  },
+  "scripts": {
+    "watch-server": "nodemon --watch .01-koa-ts.ts -e ts,tsx --exec ts-node ./01-koa-ts.ts"
+  }
+}
