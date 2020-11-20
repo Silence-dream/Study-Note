@@ -16,9 +16,26 @@
 
 
 
-## 定义数据
+## 数据类型转换
+
+-   自动（隐式）类型转换
+    -   小转大
+-   强制（显式）类型转换
+    -   大转小
+    -   转换格式 : 小类型 变量名 = (小类型) 大类型数据;
+
+
+
+-   数据类型从小到大
+
+![image-20201120202921723](images/image-20201120202921723.png)
 
 
 
 
 
+## 关于
+
+[Java Web基础入门 ](https://www.cnblogs.com/woshimrf/p/java-web-springboot.html)
+
+[哔哩哔哩大学](https://www.bilibili.com/video/BV1Wx411f7qN?p=21)

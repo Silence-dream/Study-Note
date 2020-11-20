@@ -1,8 +1,13 @@
 package com.baidu.www;
 
-public class scanner {
+import java.util.Scanner;
+
+public class ScannerDemo {
 
     public static void main(String[] args) {
-        scanner sc = new scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入数字");
+        int x = sc.nextInt();
+        System.out.println("x = " + x);
     }
 }
