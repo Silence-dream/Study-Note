@@ -91,7 +91,7 @@
       </a-form>
       <!-- 表格 -->
       <a-table
-        :row-key="record => record.id"
+        :row-key="(record) => record.id"
         :columns="tableColumns"
         :data-source="tableData"
         :pagination="false"
@@ -124,7 +124,7 @@
         style="margin-top: 25px"
         v-model:current="current"
         :total="total"
-        :show-total="total => `共 ${total} 条`"
+        :show-total="(total) => `共 ${total} 条`"
         show-size-changer
         @showSizeChange="onShowSizeChange"
         :page-size-options="pageSizeOptions"
@@ -147,7 +147,7 @@ import { user } from "@/api";
 import {
   EditOutlined,
   DeleteOutlined,
-  SettingOutlined
+  SettingOutlined,
 } from "@ant-design/icons-vue";
 
 export default {
@@ -168,8 +168,8 @@ export default {
         {
           title: "操作",
           key: "operation",
-          slots: { customRender: "operation" }
-        }
+          slots: { customRender: "operation" },
+        },
       ],
       // 表格数据
       tableData: [],
@@ -181,7 +181,7 @@ export default {
 
       // 添加用户弹出框
       visible: false,
-      confirmLoading: false
+      confirmLoading: false,
     };
   },
   methods: {
@@ -189,9 +189,9 @@ export default {
     getUsers(pagenum = 1, pagesize = 2) {
       httpGet(user.GetUsers, {
         pagenum: pagenum,
-        pagesize: pagesize
+        pagesize: pagesize,
       })
-        .then(response => {
+        .then((response) => {
           console.log(response);
           let { meta, data } = response;
           // 如果后台返回的状态码为200,则代表请求成
@@ -208,7 +208,7 @@ export default {
             });
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
@@ -224,13 +224,13 @@ export default {
     // 显示模态框
     addUserModal() {
       this.visible = true;
-    }
+    },
   },
   components: {
     EditOutlined,
     DeleteOutlined,
-    SettingOutlined
-  }
+    SettingOutlined,
+  },
 };
 </script>
 
