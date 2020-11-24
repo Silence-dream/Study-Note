@@ -1,0 +1,14 @@
+<!-- pages/label/label.wxml -->
+<text user-select>pages/label/label.wxml</text>
+<!-- swiper宽度 / swiper高度 = 原图的宽度 / 原图的高度 -->
+<swiper>
+    <swiper-item class="" item-id="">
+        <image class="" mode="widthFix" src="//gw.alicdn.com/imgextra/i3/165/O1CN01xVGE1H1D5bzLE8ONy_!!165-0-lubanu.jpg"></image>
+    </swiper-item>
+    <swiper-item class="" item-id="">
+        <image class="" mode="widthFix" src="https://aecpm.alicdn.com/simba/img/TB15tIjGVXXXXcoapXXSutbFXXX.jpg"></image>
+    </swiper-item>
+    <swiper-item class="" item-id="">
+        <image class="" mode="widthFix" src="//gw.alicdn.com/imgextra/i3/91/O1CN018v1rcU1CXigA9RCuB_!!91-0-lubanu.jpg"></image>
+     </swiper-item>
+</swiper>

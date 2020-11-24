@@ -1,0 +1,22 @@
+<!-- pages/img/img.wxml -->
+<text>pages/img/img.wxml</text>
+<view>我的图片</view>
+<view>{{msg}}</view>
+<view wx:for="{{ obj }}" wx:for-item="item" wx:for-index="index" wx:key="id">
+  <view>{{item.id}}</view>
+  <view>{{item.name}}</view>
+</view>
+<view>我的分割线</view>
+
+<view wx:for="{{ obj }}" wx:key="id">
+  <text>{{item.id}}</text>
+  <text>{{item.name}}</text>
+</view>
+
+
+<view>
+  <!-- 点击事件      传参数-->
+  <div bindtap="add" data-info="{{num}}" class="btn">点我\n点我</div>
+</view>
+  <!-- input -->
+<input type="text" placeholder="11" value="{{num}}"/>

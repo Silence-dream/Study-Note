@@ -1,0 +1,12 @@
+/* pages/label/label.wxss */
+
+/* swiper宽度 / swiper高度 = 原图的宽度 / 原图的高度 */
+/* swiper高度 = swiper宽度 * 原图的高度 / 原图的宽度 */
+/* 640*200 */
+swiper{
+    width: 100%;
+    height: calc(100vw * 200 / 640);
+}
+image{
+    width: 100%;
+}

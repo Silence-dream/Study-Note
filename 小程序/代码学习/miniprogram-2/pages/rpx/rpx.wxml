@@ -1,0 +1,6 @@
+<!--pages/rpx/rpx.wxml-->
+<text>pages/rpx/rpx.wxml</text>
+
+<view class="box-rpx" hover-class="none" hover-stop-propagation="false">
+    {{msg}}
+</view>

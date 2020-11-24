@@ -1,0 +1,5 @@
+<!--pages/navigator/navigator.wxml-->
+<text>pages/navigator/navigator.wxml</text>
+<navigator url="/pages/label/label">
+    跳转去轮播图
+</navigator>
