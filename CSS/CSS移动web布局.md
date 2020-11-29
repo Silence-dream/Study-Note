@@ -46,10 +46,16 @@ flexible box 弹性布局
 ### 伸缩项目(flex item)的属性
 
 - flex: 设置的伸缩项目在伸缩容器中所占的剩余空间的比例
+
 - order: 设置伸缩项目排序顺序 默认顺序是html标签的顺序 值越小 越靠前
+  
   - 用于单独给flex-item设置排序顺序
+  
 - align-self: 自我对齐 关于某一个伸缩项目的对齐方式 和 `align-items`的属性值完全一样
+  
   - 用于给flex-item单独设置align-items属性
+  
+- flex-basis: 50%; 用于给伸缩项目设置宽度
 
 ###　简写
 

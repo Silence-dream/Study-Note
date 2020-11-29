@@ -2,6 +2,7 @@ git commit emoji 使用指南
 ============================
 
 -    [原作者GitHub](https://github.com/liuchengxu/git-commit-emoji-cn)
+-    [变量起名网](https://unbug.github.io/codelf/)
 
 #### 目录
 

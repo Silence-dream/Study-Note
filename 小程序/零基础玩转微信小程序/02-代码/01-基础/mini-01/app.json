@@ -30,7 +30,7 @@
     "navigationBarTitleText": "我的应用",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true,
-    "backgroundColor": "yellow"
+    "backgroundColor": "#ffca28"
   },
   "tabBar": {
     "list": [
