@@ -1,7 +1,7 @@
 /**
  * promise 形式  getSetting
  */
-export const getSetting=()=>{
+  export const getSetting=()=>{
   return new Promise((resolve,reject)=>{
     wx.getSetting({
       success: (result) => {
