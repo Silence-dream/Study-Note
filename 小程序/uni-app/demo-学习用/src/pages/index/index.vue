@@ -1,7 +1,7 @@
 <template>
   <view class="content">
     <view>
-      <text class="title">{{ title }}12312</text>
+      <text class="title" @click="fn($event)">{{ title }}12312</text>
     </view>
   </view>
 </template>
@@ -13,12 +13,24 @@ export default {
       title: "Hello"
     };
   },
-  onLoad() {},
-  methods: {}
+  onLoad() {
+    wx.showLoading({
+      title: "加载中",
+      mask: true,
+      success: result => {
+        console.log(result);
+      }
+    });
+  },
+  methods: {
+    fn(e) {
+      console.log(e);
+    }
+  }
 };
 </script>
 
-<style lang="scss">
+<style>
 .title {
   color: red;
 }

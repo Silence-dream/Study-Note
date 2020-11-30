@@ -1,5 +1,5 @@
 # demo2
-
+ yarn add sass-loadder node-sass
 ## Project setup
 ```
 yarn install
