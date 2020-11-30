@@ -112,6 +112,6 @@ app.get("/admin", (req, res) => {
 
 ## 参加资料
 
-https://www.jianshu.com/p/7e1b057b047c/
-https://juejin.im/post/6844903990606446605
-https://juejin.im/post/6844903554210070541#heading-2
+[NodeJs - Express项目 自动生成API文档](https://www.jianshu.com/p/7e1b057b047c/)
+[Apidoc的安装配置及使用](https://juejin.im/post/6844903990606446605)
+[代码注释](https://juejin.im/post/6844903554210070541#heading-2)
