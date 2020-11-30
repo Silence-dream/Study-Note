@@ -3,6 +3,16 @@ module.exports = {
   env: {
     node: true
   },
+  globals: {
+    uni: true,
+    wx: true,
+    App: true,
+    getApp: true,
+    Page: true,
+    getCurrentPages: true,
+    Component: true,
+    Behavior: true
+  },
   extends: ["plugin:vue/essential", "eslint:recommended", "@vue/prettier"],
   parserOptions: {
     parser: "babel-eslint"
