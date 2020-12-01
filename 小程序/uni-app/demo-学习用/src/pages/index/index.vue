@@ -14,7 +14,17 @@ export default {
       title: "Hello"
     };
   },
-  onLoad() {},
+  onLoad() {
+    // #ifdef MP-TOUTIAO
+    console.log(51);
+    // #endif
+    uni.login({
+      provider: "weixin",
+      success: function(loginRes) {
+        console.log(loginRes);
+      }
+    });
+  },
   methods: {}
 };
 </script>
