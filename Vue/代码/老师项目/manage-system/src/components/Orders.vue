@@ -23,7 +23,7 @@
         </a-col>
       </a-row>
       <a-table
-        :row-key="(record) => record.order_id"
+        :row-key="record => record.order_id"
         :columns="table.Cols"
         :data-source="table.Data"
         :pagination="false"
@@ -63,7 +63,7 @@
         :total="pagination.total"
         :defaultPageSize="10"
         v-model:pageSize="pagination.pagesize"
-        :show-total="(total) => `共 ${pagination.total} 条`"
+        :show-total="total => `共 ${pagination.total} 条`"
         show-quick-jumper
         show-size-changer
         :page-size-options="pagination.pageSizeOptions"
@@ -72,9 +72,20 @@
       />
     </a-card>
     <!-- 分配角色弹出框 -->
-    <a-modal title="修改地址" v-model:visible="address.visible" okText="确定" cancelText="取消" @ok="handleUpdateAddress" :afterClose="handleResetAddress"  >
-      <a-form :model="address.FormModel" :rules="address.FormRules" ref="addressRef">
-        <a-form-item   label="省市区/县" name="province" required>
+    <a-modal
+      title="修改地址"
+      v-model:visible="address.visible"
+      okText="确定"
+      cancelText="取消"
+      @ok="handleUpdateAddress"
+      :afterClose="handleResetAddress"
+    >
+      <a-form
+        :model="address.FormModel"
+        :rules="address.FormRules"
+        ref="addressRef"
+      >
+        <a-form-item label="省市区/县" name="province" required>
           <a-cascader
             v-model:value="address.FormModel.province"
             :options="address.options"
@@ -107,7 +118,7 @@ export default {
         // 数据总数
         total: 0,
         //
-        pageSizeOptions: ["1", "2", "5", "10"],
+        pageSizeOptions: ["1", "2", "5", "10"]
       },
       // 表格数据
       table: {
@@ -115,37 +126,37 @@ export default {
           {
             title: "#",
             key: "index",
-            slots: { customRender: "index" },
+            slots: { customRender: "index" }
           },
           {
             title: "订单编号",
-            dataIndex: "order_number",
+            dataIndex: "order_number"
           },
           {
             title: "订单价格",
-            dataIndex: "order_price",
+            dataIndex: "order_price"
           },
           {
             title: "是否付款",
             key: "pay_status",
             // dataIndex: "pay_status",
-            slots: { customRender: "pay_status" },
+            slots: { customRender: "pay_status" }
           },
           {
             title: "是否发货",
-            dataIndex: "is_send",
+            dataIndex: "is_send"
           },
           {
             title: "下单时间",
-            dataIndex: "create_time",
+            dataIndex: "create_time"
           },
           {
             title: "操作",
             key: "operation",
-            slots: { customRender: "operation" },
-          },
+            slots: { customRender: "operation" }
+          }
         ],
-        Data: [],
+        Data: []
       },
       address: {
         visible: false,
@@ -153,12 +164,21 @@ export default {
           province: [],
           detail: ""
         },
-        FormRules:{
-          province: [{type: 'array', required: true, message: '请选择省市地址', trigger: 'blur' }],
-          detail: [{ required: true, message: '请填写详细地址', trigger: 'blur' }]
+        FormRules: {
+          province: [
+            {
+              type: "array",
+              required: true,
+              message: "请选择省市地址",
+              trigger: "blur"
+            }
+          ],
+          detail: [
+            { required: true, message: "请填写详细地址", trigger: "blur" }
+          ]
         },
         options: []
-      },
+      }
     };
   },
   created() {
@@ -171,9 +191,9 @@ export default {
       // catch方法获取的是失败时的数据
       httpGet(order.GetOrders, {
         pagenum: this.pagination.pagenum,
-        pagesize: this.pagination.pagesize,
+        pagesize: this.pagination.pagesize
       })
-        .then((response) => {
+        .then(response => {
           console.log(response);
           let { meta, data } = response;
           if (meta.status == 200) {
@@ -182,7 +202,7 @@ export default {
             this.table.Data = data.goods;
           }
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
         });
     },
@@ -206,22 +226,25 @@ export default {
     //   console.log(value);
     //   console.log(this.address.FormModel.province);
     // }
-    handleUpdateAddress(){
-      this.$refs.addressRef.validate().then(()=>{
-        console.log("成功");
-        this.address.visible = false;
-      }).catch((err)=>{
-        console.log(err);
-      })
+    handleUpdateAddress() {
+      this.$refs.addressRef
+        .validate()
+        .then(() => {
+          console.log("成功");
+          this.address.visible = false;
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
-    handleResetAddress(){
-       this.$refs.addressRef.resetFields();
+    handleResetAddress() {
+      this.$refs.addressRef.resetFields();
     }
   },
   components: {
     EnvironmentOutlined,
-    EditOutlined,
-  },
+    EditOutlined
+  }
 };
 </script>
 

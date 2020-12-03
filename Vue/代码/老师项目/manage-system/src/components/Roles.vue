@@ -25,7 +25,7 @@
         :data-source="rolesData"
         bordered
         :pagination="false"
-        :row-key="(record) => record.id"
+        :row-key="record => record.id"
         childrenColumnName="abc"
       >
         <template #index="{ index }">
@@ -137,7 +137,7 @@ import {
   DeleteOutlined,
   SettingOutlined,
   CaretRightOutlined,
-  ExclamationCircleOutlined,
+  ExclamationCircleOutlined
 } from "@ant-design/icons-vue";
 
 import { createVNode } from "vue";
@@ -153,31 +153,31 @@ export default {
           title: "#",
           key: "index",
           // customRender自定义渲染
-          slots: { customRender: "index" },
+          slots: { customRender: "index" }
         },
         {
           // 列的名称
           title: "角色名称",
-          dataIndex: "roleName",
+          dataIndex: "roleName"
         },
         {
           // 列的名称
           title: "角色描述",
-          dataIndex: "roleDesc",
+          dataIndex: "roleDesc"
         },
         {
           // 列的名称
           title: "操作",
           key: "operation",
           // customRender自定义渲染
-          slots: { customRender: "operation" },
-        },
+          slots: { customRender: "operation" }
+        }
       ],
       rolesData: [],
       treeVisible: false,
       treeData: [],
       defKeys: [],
-      roleId: "",
+      roleId: ""
     };
   },
   created() {
@@ -186,7 +186,7 @@ export default {
   methods: {
     handleReadRoles() {
       httpGet(role.GetRoles)
-        .then((response) => {
+        .then(response => {
           // console.log(response);
           let { data, meta } = response;
 
@@ -194,7 +194,7 @@ export default {
             this.rolesData = data;
           }
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
         });
     },
@@ -204,7 +204,6 @@ export default {
      * rightId 权限id
      */
     handleTagClose(e, roleId, rightId) {
-     
       // 阻止标签立即消失
       e.preventDefault();
       const _this = this;
@@ -223,7 +222,7 @@ export default {
         onOk() {
           // 准备接口参数 roleId角色id rightsId权限id
           httpDelete(`roles/${roleId}/rights/${rightId}`)
-            .then((response) => {
+            .then(response => {
               // console.log(response);
               let { meta } = response;
               if (meta.status == 200) {
@@ -233,16 +232,16 @@ export default {
                 _this.handleReadRoles();
               }
             })
-            .catch((err) => {
+            .catch(err => {
               console.log(err);
             });
-        },
+        }
       });
     },
     handleReadTreeRights(record) {
-       this.roleId = record.id;
+      this.roleId = record.id;
       httpGet(rights.GetTreeRights)
-        .then((response) => {
+        .then(response => {
           // console.log(response);
           let { meta, data } = response;
 
@@ -256,7 +255,7 @@ export default {
             this.treeVisible = true;
           }
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
         });
     },
@@ -268,34 +267,37 @@ export default {
         return arr.push(node.id);
       }
       // 如果是第一第二层并且有children就重新执行
-      node.children.forEach((ele) => this.handleLeafData(ele, arr));
+      node.children.forEach(ele => this.handleLeafData(ele, arr));
     },
     // 清空tree中的数据
     handleResetKey() {
       this.defKeys = [];
     },
-    handleUpdateTreeRights(){
-      httpPost(`roles/${this.roleId}/rights`, {rids: this.defKeys.join(",")}).then((response)=>{
-        // console.log(response);
-        let {meta} = response;
-        if (meta.status == 200) {
-          // 提示用户
-          message.success(meta.msg);
-          // 关闭模态框
-          this.treeVisible= false;
-          // 刷新
-          this.handleReadRoles();
-           
-        }
-      }).catch((error)=>{console.log(error)})
+    handleUpdateTreeRights() {
+      httpPost(`roles/${this.roleId}/rights`, { rids: this.defKeys.join(",") })
+        .then(response => {
+          // console.log(response);
+          let { meta } = response;
+          if (meta.status == 200) {
+            // 提示用户
+            message.success(meta.msg);
+            // 关闭模态框
+            this.treeVisible = false;
+            // 刷新
+            this.handleReadRoles();
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   },
   components: {
     EditOutlined,
     DeleteOutlined,
     SettingOutlined,
-    CaretRightOutlined,
-  },
+    CaretRightOutlined
+  }
 };
 </script>
 

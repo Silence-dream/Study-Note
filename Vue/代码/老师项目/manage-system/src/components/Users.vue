@@ -31,14 +31,18 @@
       </a-form>
       <!-- 表格 -->
       <a-table
-        :row-key="(record) => record.id"
+        :row-key="record => record.id"
         :columns="tableColumns"
         :data-source="tableData"
         :pagination="false"
         bordered
       >
         <template #mg_state="{ text }">
-          <a-switch v-model:checked="text.mg_state" :id="text.id" @change="handleUserState" />
+          <a-switch
+            v-model:checked="text.mg_state"
+            :id="text.id"
+            @change="handleUserState"
+          />
         </template>
 
         <template #operation="{ record }">
@@ -69,7 +73,7 @@
         style="margin-top: 25px"
         v-model:current="current"
         :total="total"
-        :show-total="(total) => `共 ${total} 条`"
+        :show-total="total => `共 ${total} 条`"
         show-size-changer
         @showSizeChange="onShowSizeChange"
         :page-size-options="pageSizeOptions"
@@ -206,31 +210,31 @@
       </a-form>
     </a-modal>
     <!-- 分配角色弹出框 -->
-     <a-modal
+    <a-modal
       title="分配角色"
       v-model:visible="roleVisible"
       @ok="handleEditRole"
     >
-      <p>
-        当前的用户: {{userInfo.username}}
-      </p>
+      <p>当前的用户: {{ userInfo.username }}</p>
 
-       <p>
-        当前的角色: {{userInfo.role_name}}
-      </p>
+      <p>当前的角色: {{ userInfo.role_name }}</p>
 
       <p>
-        分配新角色:  <a-select
-      
-        v-model:value="roleSelected"
-        @change="handleSelectValue"
-        placeholder="请选择"
-        style="width: 120px"
-    >
-      <a-select-option v-for="item in rolesList" :key="item.id" :value="item.id">
-        {{item.roleName}}
-      </a-select-option>
-    </a-select>
+        分配新角色:
+        <a-select
+          v-model:value="roleSelected"
+          @change="handleSelectValue"
+          placeholder="请选择"
+          style="width: 120px"
+        >
+          <a-select-option
+            v-for="item in rolesList"
+            :key="item.id"
+            :value="item.id"
+          >
+            {{ item.roleName }}
+          </a-select-option>
+        </a-select>
       </p>
     </a-modal>
   </a-layout>
@@ -248,7 +252,7 @@ import {
   EditOutlined,
   DeleteOutlined,
   SettingOutlined,
-  ExclamationCircleOutlined,
+  ExclamationCircleOutlined
 } from "@ant-design/icons-vue";
 
 // 引入全局提示框
@@ -298,8 +302,8 @@ export default {
         {
           title: "操作",
           key: "operation",
-          slots: { customRender: "operation" },
-        },
+          slots: { customRender: "operation" }
+        }
       ],
       // 表格数据
       tableData: [],
@@ -319,7 +323,7 @@ export default {
         username: "",
         password: "",
         email: "",
-        mobile: "",
+        mobile: ""
       },
 
       // 添加用户 校验对象
@@ -329,16 +333,16 @@ export default {
           // required 必须的
           // trigger 啥时候触发
           { required: true, message: "请输入用户名", trigger: "blur" },
-          { min: 4, max: 16, message: "长度在4-16个字符之间", trigger: "blur" },
+          { min: 4, max: 16, message: "长度在4-16个字符之间", trigger: "blur" }
         ],
         password: [
           // required 必须的
           // trigger 啥时候触发
           { required: true, message: "请输入密码", trigger: "blur" },
-          { min: 6, max: 16, message: "长度在6-16个字符之间", trigger: "blur" },
+          { min: 6, max: 16, message: "长度在6-16个字符之间", trigger: "blur" }
         ],
         email: [{ validator: checkEmail, trigger: "change" }],
-        mobile: [{ validator: checkMobile, trigger: "change" }],
+        mobile: [{ validator: checkMobile, trigger: "change" }]
       },
 
       // 编辑用户弹出框
@@ -346,7 +350,7 @@ export default {
       editFormModel: {},
       editFormRules: {
         email: [{ validator: checkEmail, trigger: "change" }],
-        mobile: [{ validator: checkMobile, trigger: "change" }],
+        mobile: [{ validator: checkMobile, trigger: "change" }]
       },
 
       // 分配角色弹出框
@@ -361,9 +365,9 @@ export default {
     getUsers() {
       httpGet(user.GetUsers, {
         pagenum: this.current,
-        pagesize: this.pagesize,
+        pagesize: this.pagesize
       })
-        .then((response) => {
+        .then(response => {
           // console.log(response);
           let { meta, data } = response;
           // 如果后台返回的状态码为200,则代表请求成
@@ -380,7 +384,7 @@ export default {
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
@@ -416,12 +420,12 @@ export default {
             username: this.addFormModel.username,
             password: this.addFormModel.password,
             email: this.addFormModel.email,
-            mobile: this.addFormModel.mobile,
+            mobile: this.addFormModel.mobile
           };
           // 2.获取请求地址
           // 3.使用post请求发起ajax
           httpPost(user.AddUser, params)
-            .then((response) => {
+            .then(response => {
               console.log(response);
               let { data, meta } = response;
 
@@ -435,11 +439,11 @@ export default {
                 this.getUsers();
               }
             })
-            .catch((err) => {
+            .catch(err => {
               console.log(err);
             });
         })
-        .catch((error) => {
+        .catch(error => {
           console.log("error", error);
         });
     },
@@ -463,7 +467,7 @@ export default {
         onOk() {
           // 使用Delete方法删除用户
           httpDelete(user.DeleteUser + `/${userId}`)
-            .then((response) => {
+            .then(response => {
               // console.log(response);
 
               let { meta } = response;
@@ -477,13 +481,13 @@ export default {
                 return message.success(meta.msg);
               }
             })
-            .catch((err) => {
+            .catch(err => {
               console.log(err);
             });
         },
         onCancel() {
           message.warning("已取消删除！！");
-        },
+        }
       });
     },
 
@@ -494,7 +498,7 @@ export default {
       // 发起ajax请求
       console.log(userId);
       httpGet(user.GetUser + `/${userId}`)
-        .then((response) => {
+        .then(response => {
           console.log(response);
           let { data, meta } = response;
 
@@ -502,7 +506,7 @@ export default {
             this.editFormModel = data;
           }
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
         });
     },
@@ -514,15 +518,15 @@ export default {
         .then(() => {
           // 发起ajax请求 更新数据
           httpPut(
-            // this.editFormModel在回显的时候 里面就有数据 
+            // this.editFormModel在回显的时候 里面就有数据
             // 字段是双向绑定的，因此输入框中数据发生了改变 这里也会改变
             // 因此可以直接发送
             user.UpdateUser + `/${this.editFormModel.id}`,
             this.editFormModel
           )
-            .then((response) => {
+            .then(response => {
               // console.log(response);
-              // 
+              //
               let { meta } = response;
               if (meta.status == 200) {
                 // 模态框消失
@@ -533,11 +537,11 @@ export default {
                 this.getUsers();
               }
             })
-            .catch((err) => {
+            .catch(err => {
               console.log(err);
             });
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
         });
     },
@@ -545,74 +549,83 @@ export default {
     cancelEditUser() {},
 
     // 回显角色信息
-    handleReadRole(user){
+    handleReadRole(user) {
       // 让分配角色弹出框显示
       this.roleVisible = true;
       this.userInfo = user;
       // console.log(user);
-      httpGet(role.GetRoles).then((response)=>{
-        // console.log(response);
-        let {data, meta} = response;
+      httpGet(role.GetRoles)
+        .then(response => {
+          // console.log(response);
+          let { data, meta } = response;
 
-        if (meta.status == 200){
-          this.rolesList = data;
-        } 
-
-      }).catch((err)=>{console.log(err)})
+          if (meta.status == 200) {
+            this.rolesList = data;
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
     // 获取下拉菜单的值
-    handleSelectValue(value){
+    handleSelectValue(value) {
       console.log(value);
     },
 
     // 修改用户角色
-    handleEditRole(){
+    handleEditRole() {
       // 获取选择到的角色id
-      let rid = this.roleSelected 
+      let rid = this.roleSelected;
       // 如果用户没有选择 给用户一个提示 不要发请求
       if (rid == null) {
         message.error("请您选择一个角色！！");
         return;
       }
       // 如果用户选择了 那么就发请求 修改角色
-      httpPut(`users/${this.userInfo.id}/role`, {rid: this.roleSelected}).then((response)=>{
-        // console.log(response)
-        let {meta} = response;
+      httpPut(`users/${this.userInfo.id}/role`, { rid: this.roleSelected })
+        .then(response => {
+          // console.log(response)
+          let { meta } = response;
 
-        if (meta.status == 400) {
-          message.error(meta.msg);
-        }
+          if (meta.status == 400) {
+            message.error(meta.msg);
+          }
 
-        if (meta.status == 200) {
-          // 提示用户成功
-          message.success(meta.msg);
-          // 重新渲染表格
-          this.getUsers();
-          // 重置选项
-          this.roleSelected = null;
-          // 模态框消失
-          this.roleVisible = false;
-        }
-      }).catch((err)=>{
-        console.log(err);
-      })
+          if (meta.status == 200) {
+            // 提示用户成功
+            message.success(meta.msg);
+            // 重新渲染表格
+            this.getUsers();
+            // 重置选项
+            this.roleSelected = null;
+            // 模态框消失
+            this.roleVisible = false;
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
 
     // 更改用户状态
-    handleUserState(checked,event){
+    handleUserState(checked, event) {
       // console.log(checked)
       // console.log(event.target.id);
 
-      httpPut(`users/${event.target.id}/state/${checked}`).then((response)=>{
-        console.log(response);
-      }).catch((err)=>{console.log(err)})
+      httpPut(`users/${event.target.id}/state/${checked}`)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
   components: {
     EditOutlined,
     DeleteOutlined,
-    SettingOutlined,
-  },
+    SettingOutlined
+  }
 };
 </script>
 

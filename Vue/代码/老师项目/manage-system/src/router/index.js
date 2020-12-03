@@ -31,7 +31,10 @@ const routes = [
       // goods组件
       { path: "/goods", component: () => import("@/components/Goods") },
       // categories
-      { path: "/categories", component: () => import("@/components/Categories") },
+      {
+        path: "/categories",
+        component: () => import("@/components/Categories")
+      }
     ]
   }
 ];

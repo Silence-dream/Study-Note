@@ -31,7 +31,7 @@
       </a-form>
       <!-- 表格 -->
       <a-table
-        :row-key="(record) => record.goods_id"
+        :row-key="record => record.goods_id"
         :columns="table.Cols"
         :data-source="table.Data"
         :pagination="false"
@@ -47,10 +47,7 @@
             <EditOutlined />
           </a-button>
           <!-- 删除 -->
-          <a-button
-            type="danger"
-            style="margin: 0 10px"
-          >
+          <a-button type="danger" style="margin: 0 10px">
             <DeleteOutlined
           /></a-button>
         </template>
@@ -61,7 +58,7 @@
         style="margin-top: 25px"
         v-model:current="pagination.pagenum"
         :total="pagination.total"
-        :show-total="(total) => `共 ${pagination.total} 条`"
+        :show-total="total => `共 ${pagination.total} 条`"
         show-size-changer
         @showSizeChange="onShowSizeChange"
         :page-size-options="pagination.pageSizeOptions"
@@ -70,7 +67,6 @@
         @change="handlePageChange"
         show-quick-jumper
       />
-
     </a-card>
   </a-layout>
 </template>
@@ -96,17 +92,17 @@ export default {
           {
             title: "操作",
             key: "operation",
-            slots: { customRender: "operation" },
-          },
+            slots: { customRender: "operation" }
+          }
         ],
-        Data: [],
+        Data: []
       },
       pagination: {
         pagenum: 1,
         pagesize: 10,
         pageSizeOptions: ["5", "10", "15", "20"],
         total: 0
-      },
+      }
     };
   },
   created() {
@@ -118,9 +114,9 @@ export default {
     getGoods() {
       httpGet(goods.GetGoods, {
         pagenum: this.pagination.pagenum,
-        pagesize: this.pagination.pagesize,
+        pagesize: this.pagination.pagesize
       })
-        .then((response) => {
+        .then(response => {
           console.log(response);
           let { meta, data } = response;
           // 如果后台返回的状态码为200,则代表请求成
@@ -130,7 +126,7 @@ export default {
             this.pagination.total = data.total;
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
@@ -140,17 +136,16 @@ export default {
       this.pagination.pagesize = pageSize;
       this.getGoods();
     },
-      // 页码改变的回调，参数是改变后的页码及每页条数
+    // 页码改变的回调，参数是改变后的页码及每页条数
     handlePageChange(page, pageSize) {
-     this.pagination.pagenum = page;
+      this.pagination.pagenum = page;
       this.pagination.pagesize = pageSize;
       this.getGoods();
-    },
+    }
   },
   components: {
     EditOutlined,
-    DeleteOutlined,
-  },
+    DeleteOutlined
+  }
 };
 </script>
-

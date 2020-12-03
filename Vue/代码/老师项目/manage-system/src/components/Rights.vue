@@ -15,7 +15,7 @@
     <a-table
       :columns="rightsColumns"
       :data-source="rightsData"
-      :row-key="(record) => record.id"
+      :row-key="record => record.id"
       bordered
       :pagination="false"
     >
@@ -48,27 +48,27 @@ export default {
           title: "#",
           key: "index",
           // customRender自定义渲染
-          slots: { customRender: "index" },
+          slots: { customRender: "index" }
         },
         {
           // 列的名称
           title: "权限名称",
-          dataIndex: "authName",
+          dataIndex: "authName"
         },
         {
           // 列的名称
           title: "路径",
-          dataIndex: "path",
+          dataIndex: "path"
         },
         {
           // 列的名称
           title: "权限等级",
           key: "level",
           // customRender自定义渲染
-          slots: { customRender: "level" },
-        },
+          slots: { customRender: "level" }
+        }
       ],
-      rightsData: [],
+      rightsData: []
     };
   },
   created() {
@@ -77,7 +77,7 @@ export default {
   methods: {
     handleReadRights() {
       httpGet(rights.GetListRights)
-        .then((response) => {
+        .then(response => {
           // console.log(response)
           let { data, meta } = response;
 
@@ -85,11 +85,11 @@ export default {
             this.rightsData = data;
           }
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
         });
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -21,7 +21,7 @@
 
       <!-- 表格 -->
       <a-table
-        :row-key="(record) => record.cat_id"
+        :row-key="record => record.cat_id"
         :columns="table.Cols"
         :data-source="table.Data"
         :pagination="false"
@@ -29,8 +29,8 @@
         bordered
       >
         <template #index="{record,index}">
-          <span v-if="record.cat_level == 0">{{index+1}}</span>
-        </template> 
+          <span v-if="record.cat_level == 0">{{ index + 1 }}</span>
+        </template>
 
         <template #isDeleted="{ record }">
           <CheckCircleTwoTone
@@ -70,7 +70,7 @@ import {
   CheckCircleTwoTone,
   CloseCircleTwoTone,
   EditOutlined,
-  DeleteOutlined,
+  DeleteOutlined
 } from "@ant-design/icons-vue";
 
 export default {
@@ -79,26 +79,26 @@ export default {
       pagenation: {
         pagesize: 5,
         pagenum: 1,
-        total: 0,
+        total: 0
       },
       table: {
         Cols: [
-          { title: "#", key: "index", slots: { customRender: "index" }  },
+          { title: "#", key: "index", slots: { customRender: "index" } },
           { title: "分类名称", dataIndex: "cat_name" },
           {
             title: "是否有效",
             key: "cat_deleted",
-            slots: { customRender: "isDeleted" },
+            slots: { customRender: "isDeleted" }
           },
           { title: "排序", key: "cat_level", slots: { customRender: "level" } },
           {
             title: "操作",
             key: "operation",
-            slots: { customRender: "operation" },
-          },
+            slots: { customRender: "operation" }
+          }
         ],
-        Data: [],
-      },
+        Data: []
+      }
     };
   },
   created() {
@@ -109,9 +109,9 @@ export default {
       httpGet(goods.GetCategories, {
         type: [1, 2, 3],
         pagenum: this.pagenation.pagenum,
-        pagesize: this.pagenation.pagesize,
+        pagesize: this.pagenation.pagesize
       })
-        .then((response) => {
+        .then(response => {
           console.log(response);
           let { meta, data } = response;
 
@@ -120,19 +120,18 @@ export default {
             this.table.Data = data.result;
           }
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
         });
-    },
+    }
   },
   components: {
     CheckCircleTwoTone,
     CloseCircleTwoTone,
     DeleteOutlined,
-    EditOutlined,
-  },
+    EditOutlined
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>
