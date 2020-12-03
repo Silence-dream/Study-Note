@@ -18,8 +18,20 @@ const routes = [
       { path: "/home", redirect: "/welcome" },
       // welcome组件
       { path: "/welcome", component: () => import("@/components/Welcome") },
-      // UserList组件
-      { path: "/users", component: () => import("@/components/Users") }
+      // Users组件
+      { path: "/users", component: () => import("@/components/Users") },
+      // rights组件
+      { path: "/rights", component: () => import("@/components/Rights") },
+      // roles组件
+      { path: "/roles", component: () => import("@/components/Roles") },
+      // orders组件
+      { path: "/orders", component: () => import("@/components/Orders") },
+      // reports组件
+      { path: "/reports", component: () => import("@/components/Reports") },
+      // goods组件
+      { path: "/goods", component: () => import("@/components/Goods") },
+      // categories
+      { path: "/categories", component: () => import("@/components/Categories") },
     ]
   }
 ];

@@ -146,6 +146,7 @@ export default {
       // 跳转页面到Login
       this.$router.push("/login");
     },
+    // 获取侧边栏数据
     getMenuList() {
       httpGet(rights.AsideMenus)
         .then(response => {
