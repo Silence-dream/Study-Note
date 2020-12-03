@@ -1,135 +1,185 @@
 <template>
   <a-layout>
-    <!-- 面包屑导航 -->
     <a-breadcrumb style="margin: 16px 0">
-      <a-breadcrumb-item
-        ><router-link to="/home" style="font-weight: bold; color: #000"
-          >首页</router-link
-        ></a-breadcrumb-item
+      <a-breadcrumb-item style="font-weight: bold; color: #000"
+        >首页</a-breadcrumb-item
       >
-      <a-breadcrumb-item>商品管理</a-breadcrumb-item>
-      <a-breadcrumb-item>商品分类</a-breadcrumb-item>
+      <a-breadcrumb-item><a href="">商品管理</a></a-breadcrumb-item>
+      <a-breadcrumb-item><a href="">商品分类</a></a-breadcrumb-item>
     </a-breadcrumb>
-
+    <!--  卡片组件  -->
     <a-card>
+      <!-- 添加分类-->
       <a-row style="margin-bottom: 24px">
         <a-col :span="24">
-          <!-- 添加角色 -->
           <a-button type="primary"> 添加分类 </a-button>
         </a-col>
       </a-row>
-
       <!-- 表格 -->
       <a-table
+        :columns="table.columns"
+        :data-source="table.data"
+        bordered
         :row-key="record => record.cat_id"
-        :columns="table.Cols"
-        :data-source="table.Data"
         :pagination="false"
         :expandIconColumnIndex="1"
-        bordered
       >
+        <!-- # index -->
         <template #index="{record,index}">
           <span v-if="record.cat_level == 0">{{ index + 1 }}</span>
         </template>
-
-        <template #isDeleted="{ record }">
+        <!-- 是否有效 -->
+        <template #cat_deleted="{record}">
+          <!-- 有效显示的图标 -->
           <CheckCircleTwoTone
-            v-if="record.cat_deleted == false"
+            v-if="!record.cat_deleted"
             twoToneColor="#52c41a"
           />
-          <CloseCircleTwoTone
-            v-if="record.cat_deleted == true"
-            twoToneColor="#c41a16"
+          <!-- 无效显示的图标 -->
+          <CheckCircleTwoTone
+            v-if="record.cat_deleted"
+            twoToneColor="#dc4b27"
           />
         </template>
-
-        <template #level="{ record }">
-          <a-tag color="orange" v-if="record.cat_level == 2"> 三级 </a-tag>
-          <a-tag color="green" v-if="record.cat_level == 1"> 二级 </a-tag>
-          <a-tag color="blue" v-if="record.cat_level == 0"> 一级</a-tag>
+        <!-- 排序等级 -->
+        <template #cat_pid="{ record  }">
+          <a-tag color="blue" v-if="record.cat_level === 0">一级</a-tag>
+          <a-tag color="green" v-if="record.cat_level === 1">二级</a-tag>
+          <a-tag color="orange" v-if="record.cat_level === 2">三级</a-tag>
         </template>
-        <template #operation>
-          <!-- 编辑 -->
-          <a-button size="small" type="primary">
-            <EditOutlined />编辑
+        <!-- 操作 -->
+        <template #action>
+          <a-button type="primary" shape="round" style="margin: 0 20px">
+            <template #icon><EditOutlined /></template>
+            编辑
           </a-button>
-          <!-- 删除 -->
-          <a-button size="small" type="danger" style="margin: 0 10px">
-            <DeleteOutlined />删除
+          <a-button type="danger" shape="round">
+            删除
+            <template #icon><DeleteOutlined /></template>
           </a-button>
         </template>
       </a-table>
+      <!-- 分页器 -->
+      <a-pagination
+        :total="pagination.total"
+        show-size-changer
+        show-quick-jumper
+        @change="paginationChange"
+        @showSizeChange="showSizeChange"
+        :defaultPageSize="5"
+        :pageSizeOptions="pagination.pageSizeOptions"
+      >
+        <template #buildOptionText="props">
+          <span v-if="props.value !== '50'">{{ props.value }}条/页</span>
+          <span v-else>全部</span>
+        </template>
+      </a-pagination>
     </a-card>
   </a-layout>
 </template>
 
 <script>
-import { httpGet } from "@/utils/http";
+// 引入请求路径
 import { goods } from "@/api";
+// 引入请求方法
+import { httpGet } from "@/utils/http.js";
+// 引入ant图标
 import {
-  CheckCircleTwoTone,
-  CloseCircleTwoTone,
   EditOutlined,
-  DeleteOutlined
+  DeleteOutlined,
+  CheckCircleTwoTone
 } from "@ant-design/icons-vue";
-
 export default {
+  name: "Categories",
   data() {
     return {
-      pagenation: {
-        pagesize: 5,
-        pagenum: 1,
-        total: 0
-      },
       table: {
-        Cols: [
-          { title: "#", key: "index", slots: { customRender: "index" } },
-          { title: "分类名称", dataIndex: "cat_name" },
+        columns: [
+          {
+            title: "#",
+            dataIndex: "index",
+            key: "index",
+            slots: { customRender: "index" }
+          },
+          { title: "分类名称", dataIndex: "cat_name", key: "cat_name" },
           {
             title: "是否有效",
+            dataIndex: "cat_deleted",
             key: "cat_deleted",
-            slots: { customRender: "isDeleted" }
+            slots: { customRender: "cat_deleted" }
           },
-          { title: "排序", key: "cat_level", slots: { customRender: "level" } },
+          {
+            title: "排序",
+            dataIndex: "cat_pid",
+            key: "cat_pid",
+            slots: { customRender: "cat_pid" }
+          },
           {
             title: "操作",
-            key: "operation",
-            slots: { customRender: "operation" }
+            dataIndex: "action",
+            key: "action",
+            slots: { customRender: "action" },
+            width: 400
           }
         ],
-        Data: []
+        data: []
+      },
+      pagination: {
+        current: 0,
+        total: 0,
+        // 页面载入的默认显示页码和大小
+        pageSize: 5,
+        pageNum: 1,
+        pageSizeOptions: ["5", "10", "30"]
       }
     };
   },
   created() {
-    this.handleReadCategories();
+    this.getTableData();
   },
   methods: {
-    handleReadCategories() {
-      httpGet(goods.GetCategories, {
+    /**
+     * 获取商品分类数据
+     * @returns {Promise<void>}
+     */
+    async getTableData() {
+      // 表格数据
+      let tableData = await httpGet(goods.GetCategories, {
         type: [1, 2, 3],
-        pagenum: this.pagenation.pagenum,
-        pagesize: this.pagenation.pagesize
-      })
-        .then(response => {
-          console.log(response);
-          let { meta, data } = response;
+        pagenum: this.pagination.pageNum,
+        pagesize: this.pagination.pageSize
+      });
 
-          if (meta.status == 200) {
-            this.pagenation.total = data.total;
-            this.table.Data = data.result;
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      this.table.data = tableData.data.result;
+      this.pagination.total = tableData.data.total;
+      // console.log(this.table.data);
+    },
+    /**
+     *  页码变动的回调
+     * @param page
+     * @param pageSize
+     */
+    paginationChange(page, pageSize) {
+      this.pagination.pageNum = page;
+      this.pagination.pageSize = pageSize;
+      this.getTableData();
+    },
+    /**
+     * 点击选择显示多少页的回调
+     * @param current
+     * @param size
+     */
+    showSizeChange(current, size) {
+      console.log(current, size);
+      this.pagination.pageSize = size;
+      this.getTableData();
     }
   },
   components: {
-    CheckCircleTwoTone,
-    CloseCircleTwoTone,
+    // 导入图标组件
+    EditOutlined,
     DeleteOutlined,
-    EditOutlined
+    CheckCircleTwoTone
   }
 };
 </script>

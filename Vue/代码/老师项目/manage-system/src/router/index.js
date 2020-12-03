@@ -7,6 +7,7 @@ import Login from "@/views/Login";
 const routes = [
   // 如果地址为根路径，直接跳转到登录页面
   { path: "/", redirect: "/login" },
+  { path: "/test", component: () => import("@/components/test") },
   // 登录页面
   { name: "Login", path: "/login", component: Login },
   // 首页

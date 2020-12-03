@@ -5,7 +5,6 @@ import router from "./router";
 // 使用Ant-Design-Vue
 import Antd from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
-
 //  使用axios
 import axios from "axios";
 // 本地地址(你在自己的电脑上配置了后台服务和mysql数据库)
