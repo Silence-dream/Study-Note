@@ -1,8 +1,0 @@
-console.log(Math.abs(546))
-console.log(Math.abs(-546))
-console.log(Math.abs(-1))
-console.log(Math.abs("-1"))
-console.log(Math.abs("544"))
-console.log(Math.abs("true"))
-console.log(Math.abs(true))
-console.log(Math.abs(false))

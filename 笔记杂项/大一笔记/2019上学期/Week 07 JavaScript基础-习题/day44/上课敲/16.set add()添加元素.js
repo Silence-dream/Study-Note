@@ -1,7 +1,0 @@
-let arr = new Set()
-arr.add(1)
-arr.add("a")
-arr.add(true)
-arr.add(undefined)
-arr.add(null)
-console.log(arr)

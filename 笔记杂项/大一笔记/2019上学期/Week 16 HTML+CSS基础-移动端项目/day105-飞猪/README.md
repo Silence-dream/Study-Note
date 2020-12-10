@@ -1,1 +1,0 @@
-[点我查看飞猪](https://github.com/Silence-dream/com.fliggy.www)
