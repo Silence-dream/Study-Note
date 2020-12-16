@@ -1551,6 +1551,29 @@ vue create 项目名称
 
 
 
+
+
+### 使用sass全局方法 @mixnin
+
+-   先运行 vue add style-resources-loader
+
+配置vue.config.js
+
+```
+const path = require("path");
+module.exports = {
+  pluginOptions: {
+    "style-resources-loader": {
+      preProcessor: "scss",
+      patterns: [path.resolve(__dirname, "./src/mixnin.scss")]
+    }
+  }
+};
+
+```
+
+
+
 ## vue-router
 
 ### 安装
