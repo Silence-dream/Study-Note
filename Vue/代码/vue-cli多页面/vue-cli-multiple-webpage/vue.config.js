@@ -11,7 +11,7 @@ module.exports = {
       entry: "src/pages/page1/main.js",
       template: "public/index.html",
       fileName: "page1.html",
-      title: "page1"
+      title: "我是page1"
     },
     page2: {
       entry: "src/pages/page2/main.js",
