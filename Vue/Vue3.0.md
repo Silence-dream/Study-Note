@@ -2784,3 +2784,10 @@ export default createStore({
 
 ```
 
+
+
+## vue获取元素
+
+https://blog.csdn.net/weixin_43233914/article/details/108776124
+
+https://vue3js.cn/docs/zh/guide/composition-api-template-refs.html#%E6%A8%A1%E6%9D%BF%E5%BC%95%E7%94%A8
