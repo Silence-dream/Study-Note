@@ -2,6 +2,7 @@
 
 .vscode/*
 /python/.vscode/*
+.idea
 # Logs
 logs
 *.log
