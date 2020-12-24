@@ -108,8 +108,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18f31b30-e6e3-42e4-a559-2f3211013193" name="默认的" comment="代码更新">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TypeScript/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/TypeScript/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Vue/代码/vue-cli学习/vue-cli/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/代码/vue-cli学习/vue-cli/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/代码/vue-cli学习/vue-cli/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/代码/vue-cli学习/vue-cli/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/代码/vue-cli学习/vue-cli/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop.ini" beforeDir="false" afterPath="$PROJECT_DIR$/desktop.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +138,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.13.0" />
-    <property name="javascript.nodejs.core.library.typings.version" value="12.19.4" />
+    <property name="javascript.nodejs.core.library.typings.version" value="12.19.11" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -147,7 +149,7 @@
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Node.js.01.测试.js">
+  <component name="RunManager">
     <configuration name="01.函数实现数组排序.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/JavaScript/自学/函数/01.函数实现数组排序.js" working-dir="$PROJECT_DIR$/JavaScript/自学/函数">
       <method v="2" />
     </configuration>
@@ -156,7 +158,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.01.测试.js" />
         <item itemvalue="Node.js.01.函数实现数组排序.js" />
       </list>
     </recent_temporary>
@@ -171,6 +172,7 @@
       <updated>1605010985019</updated>
       <workItem from="1605010986246" duration="730000" />
       <workItem from="1605012095667" duration="155000" />
+      <workItem from="1608779579191" duration="22000" />
     </task>
     <task id="LOCAL-00001" summary="代码更新">
       <created>1605011590437</created>
@@ -266,10 +268,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="339" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605012250804" />
-    <state x="461" y="164" key="SettingsEditor" timestamp="1605011020894">
+    <state x="461" y="164" key="SettingsEditor" timestamp="1608779623653">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605011020894" />
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1608779623653" />
     <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1605011604551">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
