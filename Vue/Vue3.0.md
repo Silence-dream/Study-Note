@@ -1574,6 +1574,12 @@ module.exports = {
 
 
 
+### 样式穿透
+
+https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md
+
+
+
 ## vue-router
 
 ### 安装
