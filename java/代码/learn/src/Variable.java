@@ -11,7 +11,6 @@ public class Variable {
         System.out.println("pi=" + pi);
         char x = 'd';
         System.out.println("x=" + x);
-
     }
 
 }
