@@ -24,6 +24,16 @@
     -   大转小
     -   转换格式 : 小类型 变量名 = (小类型) 大类型数据;
 
+```java
+        int a = 10;
+        byte b = 20;
+        System.out.println(a + b); // 在计算过程中变量 b 被隐式自动类型转换提升为 int 之后和变量 a进行了计算
+        // byte sum = a + b; //这里报错就是第 5 行的解释
+        // 可以如果我们就是想要用 byte 来接收 a+b 的和呢? 那么就需要用到强制类型转换
+        byte sum = (byte)(a + b);
+        System.out.println("sum = " + sum);
+```
+
 
 
 -   数据类型从小到大
@@ -32,6 +42,32 @@
 
 
 
+## Scanner的使用
+
+-   什么是Scanner
+    -   简单来说就是接收用户输入的值
+-   使用
+
+```java
+// 1.导入包
+
+import java.util.Scanner;
+
+public class Scanner的使用 {
+    public static void main(String[] args) {
+        // 2. new Scanner实例对象
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入一个整数");
+        // 3. 接收数据
+        int i = sc.nextInt();
+        System.out.println(i);
+    }
+}
+
+```
+
+## Random随机数
+
 
 
 ## 关于
@@ -39,3 +75,7 @@
 [Java Web基础入门 ](https://www.cnblogs.com/woshimrf/p/java-web-springboot.html)
 
 [哔哩哔哩大学](https://www.bilibili.com/video/BV1Wx411f7qN?p=21)
+
+## 进度
+
+https://www.bilibili.com/video/BV1Wx411f7qN?p=65
