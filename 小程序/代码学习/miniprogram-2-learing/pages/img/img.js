@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    msg: 'hello我的图片',
+    msg: "hello我的图片",
     obj: [
       {
         id: 1,
@@ -12,23 +12,23 @@ Page({
       },
       {
         id: 2,
-        name: '四是',
+        name: "四是",
       },
       {
         id: 3,
-        name: '王五',
+        name: "王五",
       },
     ],
-    num:0
+    num: 0,
   },
 
-  add(e){
+  add(e) {
     // 得到传过来的参数
     console.log(e);
-    let params=Number(e.currentTarget.dataset.info);
+    let params = Number(e.currentTarget.dataset.info);
     // console.log(typeof params);
     this.setData({
-      num:params+=1
+      num: (params += 1),
     });
     // console.log(params);
   },

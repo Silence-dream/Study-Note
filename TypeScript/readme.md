@@ -6,6 +6,7 @@
 npm install typescript -g 
 
 tsc xx.ts # 生成 js 文件
+tsc -d xx.ts #生成 xx.d.ts文件
 node xx.js # 运行 js 文件
 
 npm install ts-node -g 

@@ -4,11 +4,13 @@ module.exports = {
     es6: true,
     node: true
   },
-  extends: 'eslint:recommended',
+  extends:['eslint:recommended',"plugin:prettier/recommended"],
   parserOptions: {
     ecmaVersion: 2015
   },
+  "plugins": ["prettier"],
   rules: {
+    "prettier/prettier": "error",
     indent: ['error', 2], // 缩进
     // quotes: ['error', 'single'],
     semi: ['error', 'always'],

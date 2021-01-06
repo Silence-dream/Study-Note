@@ -1,6 +1,6 @@
 // pages/components/components.js
 Page({
-  data:{
+  data: {
     tabs: [
       {
         id: 0,
@@ -24,9 +24,9 @@ Page({
       },
     ],
   },
-  itemChange(e){
+  itemChange(e) {
     console.log(e);
-    let {index} = e.detail;
+    let { index } = e.detail;
     let { tabs } = this.data;
     tabs.forEach((v, i) => {
       if (i == index) {
@@ -38,5 +38,5 @@ Page({
     this.setData({
       tabs,
     });
-  }
+  },
 });

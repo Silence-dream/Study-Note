@@ -1,6 +1,8 @@
-### 数据类型
-#### 基本类型的存储
+## 什么是Java
+[百度百科](https://baike.baidu.com/item/Java/85979)
 
+## 数据类型
+### 基本类型的存储
 
 
 | 数据类型       | 大小/字节 | 封装类    | 默认值(零值)                    | 可表示数据范围                           |
@@ -38,7 +40,7 @@
 
 -   数据类型从小到大
 
-![image-20201120202921723](images/image-20201120202921723.png)
+![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6a68a07d029644d69bd63df34ec631a5~tplv-k3u1fbpfcp-watermark.image)
 
 
 
@@ -68,6 +70,61 @@ public class Scanner的使用 {
 
 ## Random随机数
 
+- 一个用于产生随机数的类
+- 使用
+```java
+// 1.导入包
+
+import java.util.Random;
+
+public class Random随机数 {
+    public static void main(String[] args) {
+        // 2. 使用包
+        Random r = new Random();
+        for (int i = 0; i < 10; i++) {
+            // 3. 生成 [0,10) 的随机数
+            int a = r.nextInt(10);
+            System.out.println(a);
+        }
+    }
+}
+```
+
+## 方法 || 函数
+- 完成特定功能的代码块
+- 语法
+```java
+/*
+修饰符 返回值类型 方法名（参数类型参数名1，参数类型参数名2..）{
+	//方法体语句;
+	return 返回值;
+}
+*/
+    // 定义了一个求和的函数
+    public static int sum(int a, int b) {
+        return a + b;
+    }
+```
+- 修饰符
+	- public static
+### 定义方法的注意事项
+- 方法必须定义在类中
+- 方法之间是平级关系，不能嵌套
+- return 语句后的数据类型必须和返回值类型匹配
+- return 之后不能放语句了,因为执行不到
+
+### 方法重载
+- 什么是方法重载?
+	- 在同一个类中的多个方法，它们的方法名相同，参数列表不同，这样的情况，称为方法重载。方法重载与返回值类型无关。
+	- 参数列表不同：
+		- 参数的个数不同
+		- 对应位置的参数类型不同
+	- 方法签名
+        	- 方法名+参数列表
+- 为什么需要方法重载?
+	- 当实现的功能相同，但具体的实现方式不同时，我们可以通过定义名称相同，参数（条件）不同的方法，来更好的识别和管理类中的方法。
+
+## 数组
 
 
 ## 关于
@@ -78,4 +135,4 @@ public class Scanner的使用 {
 
 ## 进度
 
-https://www.bilibili.com/video/BV1Wx411f7qN?p=65
+https://www.bilibili.com/video/BV1Wx411f7qN?p=76

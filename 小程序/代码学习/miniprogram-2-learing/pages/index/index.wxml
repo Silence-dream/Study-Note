@@ -10,5 +10,12 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
-  <text user-select="{false}">文字文字文字文字文字文字文字</text>
+
+
+
+
+
+
+  
+  <text user-select="{{true}}">文字文字文字文字文字文字文字</text>
 </view>
