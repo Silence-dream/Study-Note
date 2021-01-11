@@ -112,6 +112,8 @@ public class Random随机数 {
 - 方法之间是平级关系，不能嵌套
 - return 语句后的数据类型必须和返回值类型匹配
 - return 之后不能放语句了,因为执行不到
+- 基本类型的变量作为参数传递时传的是值
+- 引用类型的变量作为参教传递时，传的是地址值
 
 ### 方法重载
 - 什么是方法重载?
@@ -151,6 +153,65 @@ public class 数组 {
 
 
 
+## 面向对象
+
+-   语法
+
+```java
+package com.demo.类;
+
+/**
+ * 定义一个手机类
+ * 它有品牌、型号和名称
+ * 它可以打电话、发短信和玩游戏
+ */
+public class 手机 {
+    // 成员变量 : 定义在类中，方法wait的变量
+
+    String 品牌;
+    String 型号;
+    String 名称;
+
+    // 成员方法
+    public void 打电话(String name) {
+        System.out.println("给" + name + "打电话");
+    }
+
+    public void 发短信() {
+        System.out.println("发短信");
+    }
+
+    public void 玩游戏() {
+        System.out.println("玩游戏");
+    }
+}
+
+/*--------------------------------------------------------*/
+
+package com.demo.类;
+
+public class 测试手机类 {
+    public static void main(String[] args) {
+        手机 p = new 手机();
+
+        p.品牌 = "小米牛逼";
+
+        System.out.println(p.品牌);
+        System.out.println(p.型号);
+        System.out.println(p.名称);
+
+        p.打电话("雷军");
+        p.发短信();
+        p.玩游戏();
+    }
+}
+
+```
+
+
+
+
+
 ## 关于
 
 [Java Web基础入门 ](https://www.cnblogs.com/woshimrf/p/java-web-springboot.html)
@@ -159,4 +220,4 @@ public class 数组 {
 
 ## 进度
 
-https://www.bilibili.com/video/BV1Wx411f7qN?p=89
+https://www.bilibili.com/video/BV1Wx411f7qN?p=95
