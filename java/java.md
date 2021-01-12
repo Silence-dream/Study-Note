@@ -208,7 +208,289 @@ public class 测试手机类 {
 
 ```
 
+### 成员变量和局部变量的区别
 
+-   定义位置
+    
+    -   成员变量：类中，方法外局部变量：方法中，或形式参数
+    
+- 初始化值
+  
+    -    成员变量：有默认初始化值局部变量：无默认初始化值，必须先赋值再使用
+    
+- 作用范围
+    -    成员变量：在类中
+    -    局部变量：在方法中
+    
+-   内存中的位置
+
+    -   成员变量：堆内存局部变量：栈内存
+
+-   生命周期
+
+    -   成员变量：随着对象的创建而存在，随着对象的消失而消失
+
+    -   局部变量：随着方法的调用而存在，随着方法调用完毕而消失
+
+-   注意事项
+
+    -   局部变量和成员变量重名时，采用就近原则
+
+### private 关键字
+
+-   private 的基本概念私有的，一种访问权限修饰符，用来修饰类的成员
+
+-   特点
+    -   被修饰的成员只能在本类中访问用法
+-   语法
+    -   private 数据类型 变量名；
+    -   private 返回值类型 方法名（参数列表）{}
+
+-   扩展
+    -   public，公共的，访问权限修饰符，用来修饰类、成员变量、成员方法等，被修饰的内容可以在任意类中访问
+
+-   案例
+
+```java
+package com.demo.类;
+
+public class PrivateStudent {
+    private String name;
+    private int age;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+/*-----------------------------------------------------------*/
+
+package com.demo.类;
+
+public class TestPrivateStudent {
+    public static void main(String[] args) {
+        PrivateStudent student = new PrivateStudent();
+        student.setName("Hello");
+        System.out.println(student.getName());
+    }
+
+}
+```
+
+### this 关键字
+
+-   this的基本概念
+    这，这个，表示本类对象的引用，本质是一个对象特点
+-   每一个普通方法都有一个this，谁调用该方法，this就指向谁用法
+-   this.属性名；this.方法名（参数）；
+
+```java
+/*
+	为什么要使用 this? 
+	请看下面的代码
+*/
+
+package com.demo.类;
+
+public class PrivateStudent {
+    private String name;
+    private int age;
+
+    public void setName(String name) {
+        // 看这里 形参和成员变量重名了,要么修改形参但是这样就不能见名知意了,所以可以用this.属性名来表示成员变量
+        // 左边 name 报错 The value name assigned to 'name' is never used 
+        // 右边 name 报错 Variable 'name' is assigned to itself 
+        name = name;
+    }
+
+    public void setAge(int age) {
+        // 看这里 
+        age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+```
+
+
+
+## JavaBean
+
+### 构造方法
+
+-   构造方法的定义
+    格式
+    修饰符 构造方法名（参数列表）（
+    	// 方法体
+    }
+
+```java
+public class Test{
+   public Test(){
+       // 构造方法名也就是类名,在这里例子中类名是 Test 没错就是第一行代码那个
+   }
+}
+```
+
+
+
+-   要求
+    方法名必须与类名相同
+    没有返回值
+    没有返回值类型
+-   注意事项
+    若未提供任何构造方法，系统会给出默认无参构造若已提供任何构造方法，系统不再提供无参构造构造方法可以重载
+
+-   标准 JavaBean 类代码
+    -   Java语言编写类的标准规范。符合 JavaBean 标准的类，必须是具体的、公共的，并且具有无参数的构造方法，提供用来操作成员变量的 set 和 ge t方法
+
+```java
+package com.java.Bean;
+
+public class Student {
+    private String name;
+    private int age;
+
+    // 无参构造
+    public Student() {
+    }
+
+    // 有参构造
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+}
+/*------------------------------*/
+package com.java.Bean;
+
+public class TestStudent {
+    public static void main(String[] args) {
+        /*-------------------------------*/
+        //Student student = new Student();
+        //student.setName("123");
+        //System.out.println(student.getName());
+
+        /*--------------------------*/
+        Student student = new Student("李四", 19);
+        System.out.println(student.getName());
+    }
+}
+
+```
+
+
+
+## 继承
+
+-   让类与类之间产生父子关系
+
+    -   被继承的类叫做父类（基类、超类）
+
+    -   继承的类叫做子类（派生类）
+
+    -   格式（extends）
+
+        ```java
+        class 父类{
+        // ..	
+        	class 子类 extends 父类{
+        	// ..
+            }
+        }
+        ```
+
+-   例子
+
+    -   创建父类
+
+        ```java
+        package com.java.extendss;
+        
+        public class Father {
+            private String name;
+            private int age;
+        
+            public Father() {
+            }
+        
+            public Father(String name, int age) {
+                this.name = name;
+                this.age = age;
+            }
+        
+            public String getName() {
+                return name;
+            }
+        
+            public void setName(String name) {
+                this.name = name;
+            }
+        
+            public int getAge() {
+                return age;
+            }
+        
+            public void setAge(int age) {
+                this.age = age;
+            }
+        }
+        
+        ```
+
+    -   继承父类
+
+        ```java
+        package com.java.extendss;
+        
+        /**
+         * son 子类,派生类
+         * Father 父类,超类,基类
+         */
+        public class Son extends Father {
+            
+        }
+        
+        ```
+
+    -   使用子类
+
+        ```java
+        package com.java.extendss;
+        
+        public class TestExtends {
+            public static void main(String[] args) {
+                Son son = new Son();
+                son.setName("罗志祥");
+                System.out.println(son.getName());
+            }
+        }
+        ```
+
+        
+
+### 继承的使用场景
+
+![image-20210112205854989](https://gitee.com/qianshilei/test/raw/master/img//image-20210112205854989.png)
 
 
 

@@ -8,6 +8,6 @@ public class Scanner求和 {
         System.out.println("请输入第二个整数");
         int b = sc.nextInt();
         System.out.println("a+b=" + (a + b));
-
+        
     }
 }
