@@ -494,6 +494,90 @@ public class TestStudent {
 
 
 
+### super 关键字
+
+-   可以让子类访问父类中的重名变量（父类内存空间的标识）
+-   案例
+
+```java
+package 继承案例之super;
+
+public class Father {
+    boolean flag = true;
+}
+/*------------------------------*/
+package 继承案例之super;
+
+public class Son extends Father {
+    boolean flag = false;
+
+    public void hide() {
+        int flag = 100;
+        System.out.println(flag); // 100
+        System.out.println(this.flag); // false
+        System.out.println(super.flag); // super
+    }
+}
+/*---------------------------------*/
+package 继承案例之super;
+
+public class Test {
+    public static void main(String[] args) {
+        Son son = new Son();
+        int a = 100;
+        son.hide();
+    }
+}
+
+```
+
+### 子类调用父类中的方法
+
+-   子父类中定义了同名的成员方法，如何使用？
+
+```java
+package 继承案例之子类调用父类中的方法;
+
+public class Father {
+    public void hello() {
+        System.out.println("我是父类 hello");
+    }
+
+    public void hi() {
+        System.out.println("我是父类 hi");
+    }
+}
+/*---------------------------------*/
+package 继承案例之子类调用父类中的方法;
+
+public class Son extends Father {
+
+    @Override
+    public void hello() {
+        // 重写父类方法
+        //System.out.println("我是子类 hello");
+
+        // 如果我想要把父类的方法全部继承下来并且继续扩展那怎么写呢？
+        super.hello();
+        System.out.println("我是子类 hello\n--------");
+    }
+}
+
+/*---------------------------------*/
+package 继承案例之子类调用父类中的方法;
+
+public class Test {
+    public static void main(String[] args) {
+        Son son = new Son();
+        son.hello();
+        son.hi();
+    }
+}
+
+```
+
+
+
 ## 关于
 
 [Java Web基础入门 ](https://www.cnblogs.com/woshimrf/p/java-web-springboot.html)
@@ -502,4 +586,4 @@ public class TestStudent {
 
 ## 进度
 
-https://www.bilibili.com/video/BV1Wx411f7qN?p=95
+https://www.bilibili.com/video/BV1Wx411f7qN?p=109
