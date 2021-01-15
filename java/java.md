@@ -811,6 +811,76 @@ public class Son extends Father {
 
 ### 多态的好处和弊端
 
+-   多态的好处
+    -   可维护性：基于继承关系，只需要维护父类代码，提高了代码的复用性，大大降低了维护程序的工作量
+    -   可扩展性：把不同的子类对象都当作父类看待，屏蔽了不同子类对象间的差异，做出通用的代码，以适应不同的需求，实现了向后兼容
+-   多态的弊端
+    -   不能使用子类特有成员(方法)
+-   类型转换
+    -   当需要使用子类特有功能时，需要进行类型转换
+    -   向上转型（自动类型转换）子类型转换成父类型
+    -   Animal anima = new Dog（）；
+    -   向下转型（强制类型转换）父类型转换成子类型
+    -   Dog dog = (Dog) animal;
+-   示例
+
+```java
+package 多态的好处和弊端;
+
+public class Animal {
+
+    public void eat() {
+        System.out.println("吃东西");
+    }
+}
+/*-----------------------*/
+package 多态的好处和弊端;
+
+public class Dog extends Animal {
+    @Override
+    public void eat() {
+        System.out.println("狗吃骨头");
+    }
+
+    public void fn() {
+        System.out.println("fn");
+    }
+}
+
+/*-----------------------*/
+package 多态的好处和弊端;
+
+
+public class Test {
+    public static void main(String[] args) {
+
+        Animal dog = new Dog();
+        dog.eat();
+
+        //dog.fn(); // 弊端无法调用 Dog 类中的独有方法
+
+        // 如果想使用 Dog 类中的fn方法 那么就需要进行类型转换
+
+        if (dog instanceof Dog) {
+            Dog dog1 = (Dog) dog;
+            dog1.fn();
+        }
+
+        if (dog instanceof Cat) {
+            Cat cat = (Cat) dog;  // ClassCastException　报错
+        } else {
+            System.out.println("dododododo");
+        }
+        // 那么我为什么不直接声明一个 dog 类呢？
+        Dog dog2 = new Dog();
+        dog2.fn();
+    }
+}
+
+```
+
+
+
 ### 抽象类概述
 
 ### 抽象类的特点
