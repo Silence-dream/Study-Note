@@ -1,4 +1,4 @@
-package 多态的步骤;
+package 多态的实现步骤;
 
 public class Animal {
     private String name;

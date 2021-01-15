@@ -400,7 +400,7 @@ public class TestStudent {
 
 
 
-## 继承
+## 面向对象之继承
 
 -   让类与类之间产生父子关系
 
@@ -576,7 +576,252 @@ public class Test {
 
 ```
 
+### 子父类构造方法的使用
 
+```java
+package 继承案例之子父类构造方法的使用;
+
+public class Father {
+    public Father() {
+        System.out.println("father");
+    }
+}
+/*--------------------------------*/
+package 继承案例之子父类构造方法的使用;
+
+public class Son extends Father {
+    public Son() {
+        super(); // 如果不写 super 调用父类构造函数，java 也会自动帮你加上的
+        System.out.println("son");
+    }
+}
+
+/*--------------------------------*/
+package 继承案例之子父类构造方法的使用;
+
+public class Test {
+    public static void main(String[] args) {
+        Son son = new Son();
+    }
+}
+
+```
+
+
+
+### 方法重写
+
+-   定义：
+
+    -   子类中出现和父类方法定义相同的方法的现象
+
+-   解释：
+
+    -   方法重写也叫方法的复写、覆盖方法名、参数列表、返回值类型都相同
+
+-   注意事项：
+
+    -   父类私有方法无法重写
+
+    -   子类方法访问权限不能小于父类方法
+
+        -   权限从小到大分别是 : private、默认（啥也不写）、protected、public
+        -   具体代码实现就是
+
+        ```java
+        public class Father {
+            private void fn() {
+                System.out.println("fn");
+            }
+        }
+        /*------------------*/
+        public class Son extends Father{
+            // void 之前的修饰符不写即可重写父类中的方法
+            void fn() {
+                System.out.println("fn");
+            }
+            /* or */
+            //protected void fn() {
+            //    System.out.println("fn");
+            //}
+            
+            /* or */
+            //public void fn() {
+            //    System.out.println("fn");
+            //}
+        }
+        ```
+
+        
+
+    -   子类不能比父类方法抛出更大的异常（了解）
+
+-   使用场景：扩展父类功能
+
+    -   父类功能过时，重新实现父类功能
+
+
+
+### 继承的特点
+
+-   单继承
+    -   Java只支持类的单继承，但是支持多层（重）继承Java支持接口的多继承，语法为：
+        接口A extends接口B，接口C，接口D..
+-   私有成员不能继承
+    -   只能继承父类的非私有成员（成员变量、成员方法）
+-   构造方法不能继承
+    -   构造方法用于初始化本类对象。
+    -   创建子类对象时，需要调用父类构造初始化该对象的父类内容，若父类构造可以被继承，该操作会造成调用的混乱。
+-   继承体现了“is a”的关系子类符合"is a（是一个）“父类的情况下，才使用继承，其它情况不建议使用
+
+## 四大访问权限修饰符
+
+-   勾选表示为可以访问
+
+|                     | 本类 | 本包 | 不同包下的子类 | 不同包下的其他类 |
+| ------------------- | ---- | ---- | -------------- | ---------------- |
+| private(私有的)     | √    |      |                |                  |
+| 默认                | √    | √    |                |                  |
+| protected(受保护的) | √    | √    | √              |                  |
+| public(公共的)      | √    | √    | √              | √                |
+
+-   总结
+    -   private：强调的是给自己来使用。
+    -   默认：强调的是给同包下的来来使用。
+    -   protected：强调的是给子类使用。
+    -   public：强调的是给大家使用。
+
+### 方法重载(Overload)和方法重写(Override)的区别
+
+![image-20210114172651522](https://gitee.com/qianshilei/test/raw/master/img//image-20210114172651522.png)
+
+
+
+## 面向对象之多态
+
+### 多态概述
+
+-   多种状态，同一对象在不同情况下表现出不同的状态或行为
+
+-   Java中实现多态的步骤
+    -   要有继承（或实现）关系
+    -   要有方法重写
+    -   父类引用指向子类对象（is a关系）
+    
+#### 多态中调用成员方法
+
+-   结论 : 多态中调用成员方法是编译看左（左边的类型有没有这个成员），运行看右（运行时具体用的是右边类中的该成员）
+
+```java
+    package 多态的实现步骤;
+    
+    public class Animal {
+        private String name;
+    
+        public Animal() {
+        }
+    
+        public Animal(String name) {
+            this.name = name;
+        }
+    
+        public String getName() {
+            return name;
+        }
+    
+        public void setName(String name) {
+            this.name = name;
+        }
+    
+        public void eat() {
+            System.out.println("吃东西");
+        }
+    }
+    
+    /*-----------------------------*/
+    package 多态的实现步骤;
+    
+    public class Dog extends Animal {
+        //要有继承（或实现）关系
+        @Override //要有方法重写
+        public void eat() {
+            setName("狗");
+            System.out.println(getName() + "吃骨头");
+        }
+    }
+    
+    /*-----------------------------*/
+    package 多态的实现步骤;
+    
+    public class Test {
+        public static void main(String[] args) {
+            /*
+             *  Java中实现多态的步骤
+             *
+             *  要有继承（或实现）关系
+             *  要有方法重写
+             *  父类引用指向子类对象（is a关系）
+             */
+            // 多态
+            // 结论 : 多态中调用成员方法是编译看左（左边的类型有没有这个成员），运行看右（运行时具体用的是右边类中的该成员）
+            Animal dog = new Dog(); // 父类引用指向子类对象（is a关系）
+            dog.eat();
+            // 运行看右，虽然 dog 类中有 fn 方法 但是 父类 Animal 没有，所以无法调用
+            //dog.fn();
+        }
+    }
+    
+```
+
+#### 多态中调用成员变量
+
+- 结论 : 使用成员变量，遵循编译看左，运行看左
+    - 编泽看左：意思是在编译期间会看左边的类型有没有这个成员，没有就报错，有就不报。
+    *  运行看左：意思是在运行期间使用的是左边的类型中的这个成员。
+
+```java
+package 多态中调用成员变量;
+
+public class Father {
+    String name = "Father";
+}
+
+/*--------------------------*/
+
+package 多态中调用成员变量;
+
+public class Son extends Father {
+    String name = "Son";
+
+    public static void main(String[] args) {
+        /*
+         *
+         * 多态关系中，使用成员变量，遵循编译看左，运行看左。
+         *  编泽看左：意思是在编译期间会看左边的类型有没有这个成员，没有就报错，有就不报。
+         *  运行看左：意思是在运行期间使用的是左边的类型中的这个成员。
+         */
+        Father father = new Son();
+        System.out.println(father.name); // Father
+    }
+}
+
+```
+
+
+
+### 多态的好处和弊端
+
+### 抽象类概述
+
+### 抽象类的特点
+
+### final关键字
+
+### static关键字
+
+### 接口概述
+
+### 接口成员的特点
 
 ## 关于
 
@@ -586,4 +831,4 @@ public class Test {
 
 ## 进度
 
-https://www.bilibili.com/video/BV1Wx411f7qN?p=109
+https://www.bilibili.com/video/BV1Wx411f7qN?p=125
