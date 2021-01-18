@@ -16,7 +16,7 @@
 | char(字符)     | 4-Byte    | Character | '\u0000'（对应数字0，输出为空） | 0~65535                                  |
 | boolean(布尔)  | 1-Byte    | Boolean   | flase                           | true或false                              |
 
-
+-   String不是基本数据类型，而是一个类（class），是Java编程语言中的字符串。String对象是char的有序集合，并且该值是不可变的。因为java.lang.String类是final类型的，因此不可以继承这个类、不能修改这个类。为了提高效率节省空间，我们应该用StringBuffer类。
 
 ## 数据类型转换
 
