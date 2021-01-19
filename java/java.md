@@ -883,11 +883,198 @@ public class Test {
 
 ### 抽象类概述
 
+-   抽象类的概念
+    包含抽象方法的类。用abstract修饰
+-   抽象方法的概念
+    -   只有方法声明，没有方法体的方法。用abstract修饰
+-   抽象方法的由来
+    -   当需要定义一个方法，却不明确方法的具体实现时，可以将方法定义为 abstract ，具体实现延迟到子类
+-   案例
+
+```java
+package 抽象类;
+
+// 父类 abstract 抽象 需要在 class 前声明
+public abstract class Animal {
+    // 抽象方法  让子类必需重写 eat 方法
+    public abstract void eat();
+}
+/*-----------------------------------------*/
+package 抽象类;
+
+public class Dog extends Animal {
+
+    @Override
+    public void eat() {
+        System.out.println("狗吃骨头");
+    }
+}
+
+/*-----------------------------------------*/
+package 抽象类;
+
+public class Test {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat();
+
+        Animal animal = new Dog();
+        animal.eat();
+    }
+}
+
+```
+
+
+
 ### 抽象类的特点
+
+-   修饰符：必须用 abstract 关键字修饰
+    -   修饰符 abstract class 类名 { } 
+    -   修饰符 abstract 返回类型 方法名 { }
+
+-   抽象类不能被实例化，只能创建子类对象
+-   抽象类子类的两个选择
+    -   重写父类所有抽象方法
+    -   定义成抽象类
+-   抽象类成员的特点
+    -   成员变量：
+        -   可以有普通的成员变量也可以有成员常量（final）
+    -   成员方法：
+        -   可以有普通方法，也可以有抽象方法抽象类不一定有抽象方法，有抽象方法的类一定是抽象类（或接口）
+    -   构造方法：
+        -   像普通类一样有构造方法，且可以重载
 
 ### final关键字
 
+-   final的概念
+    -   最终的、最后的
+-   final的作用
+    -   用于修饰类、方法和变量
+-   final的作用
+    -   修饰类：该类不能被继承 如（String，System）
+    -   修饰方法：该方法不能被重写，不能与 abstract 共存
+-   修饰变量：最终变量，即常量，只能赋值一次不建议修饰引用类型数据，因为仍然可以通过引用修改对象的内部数据，意义不大
+
+-   例子
+
+```java
+package final关键字;
+
+public class Animal {
+    public final void eat() {
+        System.out.println("干饭了干饭了");
+    }
+}
+/*-----------------------------------------*/
+package final关键字;
+
+public final class Cat extends Animal {
+    /*@Override
+    public final void eat() {  // 无法重写 final 关键字修饰的方法
+        System.out.println("干饭了干饭了");
+    }*/
+}
+
+/*-----------------------------------------*/
+package final关键字;
+
+public class Dog /*extends Cat*/ { //Cannot inherit from final
+}
+
+/*-----------------------------------------*/
+package final关键字;
+
+public class Test {
+    public static void main(String[] args) {
+        Cat cat = new Cat();
+        cat.eat();
+    }
+}
+
+```
+
+
+
+
+
 ### static关键字
+
+-   static的概念
+    -   静态的
+-   static的作用
+    -   被它修饰的内容就不属于对象了而是属于类
+    -   用于修饰类的成员：
+        -   成员变量：类变量
+        -   成员方法：类方法
+-   调用方式
+    -   类名.成员变量名；
+    -   类名.成员方法名（参数）；
+-   static修饰成员变量
+    -   特点：被本类所有对象共享
+-   static修饰成员方法
+    -   静态方法：
+        -   静态方法中没有对象this，所以不能访问非静态成员
+    -   静态方法的使用场景
+        -   只需要访问静态成员
+        -   不需要访问对象状态，所需参数都由参数列表显示提供
+    -   需求：定义静态方法，反转数组中的元素
+-   案例
+
+```java
+package static关键字;
+
+public class Developer {
+    String name;
+    String work;
+
+    //static String developer = "研发部";
+    final static String developer = "研发部";
+
+    public void info() {
+        System.out.println("我是" + developer + "的" + name + ",我是干" + work + "的");
+    }
+
+    public static void reverse(int[] arr) {
+        for (int i = 0; i < arr.length / 2; i++) {
+            int temp = arr[i];
+            arr[i] = arr[arr.length - 1 - i];
+            arr[arr.length - 1 - i] = temp;
+        }
+    }
+
+}
+
+/*-----------------------------------------*/
+package static关键字;
+
+import java.util.Arrays;
+
+public class Test {
+    public static void main(String[] args) {
+        Developer developer = new Developer();
+
+        //Developer.developer;
+        developer.name = "小铪";
+        developer.work = "写代码";
+        developer.info();
+
+        Developer developer2 = new Developer();
+        developer2.name = "小链";
+        developer2.work = "996";
+        developer2.info();
+
+        // 反转数组
+        int[] arr = {1, 2, 3, 4, 5};
+        Developer.reverse(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+}
+
+
+```
+
+
 
 ### 接口概述
 
@@ -901,4 +1088,4 @@ public class Test {
 
 ## 进度
 
-https://www.bilibili.com/video/BV1Wx411f7qN?p=125
+https://www.bilibili.com/video/BV1Wx411f7qN?p=128
