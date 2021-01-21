@@ -1078,7 +1078,57 @@ public class Test {
 
 ### 接口概述
 
+-   接口的概念
+    -   接口技术用于描述类具有什么功能，但并不给出具体实现，类要遵从接口描述的统一规则进行定义，所以，接口是对外提供的一组规则、标准。
+-   接口的定义
+    -   定义接口使用关键字 
+        -   interface 接口名 { }
+    -   类和接口是实现关系，用 implements 表示 
+        -   class 类名implements 接口名
+-   案例
+
+```java
+package interface接口;
+
+public interface Animal {
+    public abstract void eat();
+}
+/*--------------------------------*/
+package interface接口;
+
+public class Dog implements Animal {
+    @Override
+    public void eat() {
+        System.out.println("狗吃骨头");
+    }
+}
+/*------------------------------------*/
+package interface接口;
+
+public class Test {
+    public static void main(String[] args) {
+        Animal animal = new Dog();
+        animal.eat();
+    }
+}
+
+```
+
+
+
 ### 接口成员的特点
+
+-   接口不能实例化通过多态的方式实例化子类对象
+
+-   接口的子类（实现类）可以是抽象类，也可以是普通类
+
+-   接口继承关系的特点
+    -   接口与接口之间的关系
+        -   继承关系，可以多继承，格式：
+            接口 extends 接口1，接口2，接口3..
+    -   继承和实现的区别
+        -   继承体现的是“is a”的关系，父类中定义共性内容
+        -   实现体现的是“like a"的关系，接口中定义扩展功能
 
 ## 关于
 
@@ -1088,4 +1138,4 @@ public class Test {
 
 ## 进度
 
-https://www.bilibili.com/video/BV1Wx411f7qN?p=128
+https://www.bilibili.com/video/BV1Wx411f7qN?p=133
