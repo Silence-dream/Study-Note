@@ -1,4 +1,4 @@
-# Study-note 
+# Study-note  
 
 HTML+CSS+JavaStript
 这是一个学习笔记。里面记录了一些基本概念和案例
