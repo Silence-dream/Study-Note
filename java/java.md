@@ -68,6 +68,16 @@ public class Scanner的使用 {
 
 ```
 
+- 简介
+- 扫描器。能够解析字符串（String）和基本数据类型的数据构造方法 ( 下面的xxx代表数据类型 )
+  - Scanner（inputStream）：构造一个扫描器对象，从指定输入流中获取数据参数System.in，对应键盘录入成员方法
+  - hasNextXxx () ：判断是否还有下一个输入项，其中Xxx可能是任意基本数据类型，返回结果为布尔类型
+  - nextXxx () ：获取下一个输入项，其中Xxx可能是任意基本数据类型，返回对应类型的数据
+  - String nextLine () ：获取下一行数据。以换行符作为分隔符。
+  - String next () 获取下一个输入项，以空白字符作为分隔符空白字符：空格、tab、回车等
+
+
+
 ## Random随机数
 
 - 一个用于产生随机数的类
@@ -1084,7 +1094,7 @@ public class Test {
     -   定义接口使用关键字 
         -   interface 接口名 { }
     -   类和接口是实现关系，用 implements 表示 
-        -   class 类名implements 接口名
+        -   class 类名 implements 接口名
 -   案例
 
 ```java
@@ -1129,6 +1139,38 @@ public class Test {
     -   继承和实现的区别
         -   继承体现的是“is a”的关系，父类中定义共性内容
         -   实现体现的是“like a"的关系，接口中定义扩展功能
+
+- 接口成员变量的特点
+  - 接口没有成员变量，只有公有的、静态的常量：
+    public static final 常量名 = 常量值；
+  - 成员方法
+  - JDK7及以前，公有的、抽象方法：
+    - 原因是所有方法都有默认修饰符：public abstract
+  - JDK8以后，可以有带方法体的方法了。
+    - 静态方法直接写，非静态方法要用 default 修饰
+  - JDK9以后，可以有私有方法：
+    - private 返回值类型 方法名() { }
+- 接口构造方法的特点
+  - 构造方法
+    接口不能够实例化，也没有需要初始化的成员，所以接口没有构造方法
+
+## Object 类
+
+- 类层次结构最顶层的基类，所有类都直接或间接的继承自 Object 类，所以，所有的类都是一个 Object（对象）。
+
+![image-20210308154310078](D:\02 OneDrive\OneDrive\01 My Code\01 CZXY\01 My Code\11 学习笔记\Study-Note\java\img\image-20210308154310078.png)
+
+
+
+- 构造方法
+  Object（）：构造一个对象。所有子类对象初始化时都会优先调用该方法
+- 成员方法
+  - int hashCode（）：返回对象的哈希码值，该方法通过对象的地址值进行计算，不同对象的返回值一般不同
+  - Class<?> getClass）：返回调用此方法对象的运行时类对象（调用者的字节码文件对象）
+  - String toString()：返回该对象的字符串表示
+  - boolean equals()返回其它某个对象是否与此对象“相等"。默认情况下比较两个对象的引用，建议重写
+
+
 
 ## 关于
 
