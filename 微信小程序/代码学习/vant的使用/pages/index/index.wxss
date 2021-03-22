@@ -1,0 +1,7 @@
+/* https://github.com/youzan/vant-weapp/blob/dev/packages/common/style/var.less */
+.test {
+  --button-border-radius: 10px;
+
+  --button-default-background-color: red;
+}
+
