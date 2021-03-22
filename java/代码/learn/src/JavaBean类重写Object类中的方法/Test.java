@@ -11,5 +11,6 @@ public class Test {
         System.out.println(sc.toString());
         // equals 原版方法比较的是对象的地址值重写之后根据 key 和 value 来比较
         System.out.println(sc.equals(sc2));
+        System.out.println(sc.getClass());
     }
 }
