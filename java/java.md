@@ -76,6 +76,30 @@ public class Scanner的使用 {
   - String nextLine () ：获取下一行数据。以换行符作为分隔符。
   - String next () 获取下一个输入项，以空白字符作为分隔符空白字符：空格、tab、回车等
 
+```java
+public class Test {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("请输入一个整数");
+        if (scanner.hasNextInt()) {
+            int a = scanner.nextInt();
+            scanner.nextLine();
+            System.out.println(a);
+        } else {
+            System.out.println("请输入一个整数");
+        }
+
+        System.out.println("请输入一个字符串");
+        String b = scanner.nextLine();
+        System.out.println(b);
+        scanner.close();
+
+
+    }
+}
+```
+
 
 
 ## Random随机数
@@ -1172,6 +1196,19 @@ public class Test {
 
 
 
+## String 类
+
+- 简介
+  字符串。每一个字符串对象都是常量。
+- 构造方法
+  - String（byte [ ]）：构造一个 String对象，将指定字节数组中的数据转化成字符串
+  - String（char [ ]）：构造一个 String对象，将指定字符数组中的数据转化成字符串
+- 成员方法
+  - boolean equals（String判断当前字符串与给定字符串是否相同，区分大小写
+  - boolean equalslgnoreCase（String）：判断当前字符串与给定字符串是否相同，不区分大小写
+  - boolean startsWith（String）：判断是否以给定字符串开头
+  - boolean isEmpty() 判断字符串是否为空
+
 ## 关于
 
 [Java Web基础入门 ](https://www.cnblogs.com/woshimrf/p/java-web-springboot.html)
@@ -1180,4 +1217,4 @@ public class Test {
 
 ## 进度
 
-https://www.bilibili.com/video/BV1Wx411f7qN?p=138
+https://www.bilibili.com/video/BV1Wx411f7qN?p=141
