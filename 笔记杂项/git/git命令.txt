@@ -56,3 +56,12 @@ $ git reset --hard commit_id     退到/进到 指定commit的sha码
 合并
 git rebase
 git merge
+
+
+远程仓库
+
+添加远程版本库
+git remote add [shortname] [url]
+
+拉去仓库
+git fetch [alias]
