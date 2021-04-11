@@ -1,9 +1,11 @@
-# Study-note  
+# Study-note
 
 HTML+CSS+JavaStript
 这是一个学习笔记。里面记录了一些基本概念和案例
 
-2020.10.30这已经不单单是H5C3JS的学习笔记了
+2020.10.30 这已经不单单是 H5C3JS 的学习笔记了
+
+博客 https://silence-dream.github.io/blog/
 
 ## HTML
 
