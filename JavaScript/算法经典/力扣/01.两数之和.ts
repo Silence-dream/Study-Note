@@ -29,7 +29,7 @@
  */
 var twoSum = function (nums: number[], target: number): number[] | undefined {
   // 1.循环数组找到符合 target 值要求的元素之和
-  // 2.返回他们的索引也就是 i 
+  // 2.返回他们的索引也就是 i
   // 3.分别是 索引0与之后的索引一一相加看是否符合 target 的值
   /* 4.给定义个假定的数组 [0,1,2,3,5] 发现两两比较的次数是 10,分别呈现 4 3 2 1 的比较顺序,
    * 由于数组的长度刚好是 4 只需要双 for 循环就可以达到 4 3 2 1 的比较次数,所以使用此方法
@@ -47,4 +47,4 @@ var twoSum = function (nums: number[], target: number): number[] | undefined {
 let result = twoSum([0, 1, 2, 3, 5], 5);
 console.log(result);
 
-
+export {};
