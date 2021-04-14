@@ -1,19 +1,11 @@
-// console.log(1);
+interface Person {
+  name: string;
+  age: number; // Property 'age' of type 'number' is not assignable to string index type 'string'.ts(2411)
+  gender?: string; // Property 'gender' of type 'string | undefined' is not assignable to string index type 'string'.ts(2411)
+  // propName 不是固定的写法,可以随便写 比如你写个 aaa 什么的
+  [propName: string]: string;
+}
 
-let flag: unknown = false;
+let obj: Person = { name: "张安", age: 18 }; //Type '{ name: string; age: number; }' is not assignable to type 'Person'.Property 'age' is incompatible with index signature.Type 'number' is not assignable to type 'string'.ts(2322)
 
-// as 的作用就是告诉编译器 我比你更懂 flag 现在是什么类型
-console.log((flag as string).length);
-
-// 确定赋值断言
-// let aa: number;
-// jisuan();
-// console.log(2 * aa);
-
-// function jisuan() {
-//   aa = 10;
-// }
-
-let a: any = 5;
-let b: number = a;
-let c: unknown = 6;
+export {};
