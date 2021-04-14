@@ -78,7 +78,7 @@
   "uni-app": {
     "scripts": {}
   },
-  "gitHooks": {
+  "1gitHooks": {
     "pre-commit": "lint-staged"
   },
   "lint-staged": {

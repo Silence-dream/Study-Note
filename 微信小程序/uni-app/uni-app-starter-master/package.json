@@ -101,12 +101,12 @@
     "Android >= 4",
     "ios >= 8"
   ],
-  "husky": {
+  "1husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
-  "lint-staged": {
+  "1lint-staged": {
     "src/**/*.{js,vue}": [
       "prettier --write",
       "eslint --ext"
