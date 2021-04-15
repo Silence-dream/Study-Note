@@ -3,7 +3,7 @@ interface Person {
   age: number;
   gender?: string;
   // propName 不是固定的写法,可以随便写 比如你写个 aaa 什么的
-  [propName: string]: string;
+  [propName: string]: any;
 }
 
 let obj: Person = { name: "张安", age: 18 };

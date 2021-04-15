@@ -1,11 +1,32 @@
-interface Person {
-  name: string;
-  age: number; // Property 'age' of type 'number' is not assignable to string index type 'string'.ts(2411)
-  gender?: string; // Property 'gender' of type 'string | undefined' is not assignable to string index type 'string'.ts(2411)
-  // propName 不是固定的写法,可以随便写 比如你写个 aaa 什么的
-  [propName: string]: string;
+class Person {
+  protected name: string;
+  private age: number = 1;
+  constructor(name: string) {
+    this.name = name;
+  }
+  fn() {
+    console.log(this.age);
+  }
+  set setage(value: number) {
+    this.age = value;
+  }
+
+  set setname(value: string) {
+    this.name = value;
+  }
 }
 
-let obj: Person = { name: "张安", age: 18 }; //Type '{ name: string; age: number; }' is not assignable to type 'Person'.Property 'age' is incompatible with index signature.Type 'number' is not assignable to type 'string'.ts(2322)
+class Son extends Person {
+  constructor() {
+    super("李四");
+  }
+  fn() {
+    console.log(this.name);
+  }
+}
 
+let person = new Person("李四");
+person.setage = 123;
+person.setname = "刘德华";
+console.log(person);
 export {};
