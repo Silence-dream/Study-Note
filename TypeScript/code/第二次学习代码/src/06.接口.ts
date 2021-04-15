@@ -1,4 +1,5 @@
 interface Person {
+  readonly id: number;
   name: string;
   age: number;
   gender?: string;
@@ -6,7 +7,8 @@ interface Person {
   [propName: string]: any;
 }
 
-let obj: Person = { name: "张安", age: 18 };
+let obj: Person = { id: 1, name: "张安", age: 18 };
+obj.id = 2; // Cannot assign to 'id' because it is a constant or a read-only property.
 
 let arr: Person[] = [
   { name: "张安", age: 18 },
