@@ -725,7 +725,7 @@ public class Test {
     -   protected：强调的是给子类使用。
     -   public：强调的是给大家使用。
 
-### 方法重载(Overload)和方法重写(Override)的区别
+## 方法重载(Overload)和方法重写(Override)的区别
 
 ![image-20210114172651522](https://gitee.com/qianshilei/test/raw/master/img//image-20210114172651522.png)
 
