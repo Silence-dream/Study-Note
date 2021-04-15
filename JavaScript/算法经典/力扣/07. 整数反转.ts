@@ -41,3 +41,19 @@ var reverse = function (x: number): number {
   if (result > MAX_INT || result < MIN_INT) return 0;
   return result;
 };
+
+function reverse2(x: number): number {
+  // 转字符串
+  let str = x.toString();
+  // 转数组
+  let arr = str.split("");
+  arr.reverse();
+  if (arr[arr.length - 1] === "-") {
+    arr.pop();
+    arr.unshift("-");
+  }
+  let num = arr.join("");
+  console.log(num);
+  return 0;
+}
+reverse2(-123);
