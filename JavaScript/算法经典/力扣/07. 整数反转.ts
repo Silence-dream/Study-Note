@@ -52,8 +52,9 @@ function reverse2(x: number): number {
     arr.pop();
     arr.unshift("-");
   }
-  let num = arr.join("");
+  let num = Number(arr.join(""));
   console.log(num);
-  return 0;
+  if (num > MAX_INT || num < MIN_INT) return 0;
+  return num;
 }
 reverse2(-123);
