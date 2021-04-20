@@ -1,11 +1,11 @@
 "use strict";
-class GenericNumber {
-    constructor() {
-        this.zeroValue = 0;
+function add(x1, x2) {
+    if (typeof x1 == "number" && typeof x2 == "number") {
+        return x1 + x2;
+    }
+    else if (typeof x1 == "string" && typeof x2 == "string") {
+        return x1 + x2;
     }
 }
-let myGenericNumber = new GenericNumber();
-myGenericNumber.zeroValue = 0;
-myGenericNumber.add = function (x, y) {
-    return x + y;
-};
+let result = add(1, 2);
+console.log(result);
