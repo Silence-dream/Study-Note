@@ -1,6 +1,11 @@
 "use strict";
-function getLength(str) {
-    return str.length; // 此时报错 str 上不存在 length 属性
+class GenericNumber {
+    constructor() {
+        this.zeroValue = 0;
+    }
 }
-let result = getLength("123");
-console.log(result);
+let myGenericNumber = new GenericNumber();
+myGenericNumber.zeroValue = 0;
+myGenericNumber.add = function (x, y) {
+    return x + y;
+};

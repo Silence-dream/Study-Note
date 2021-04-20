@@ -1,10 +1,13 @@
-// 用泛型创建一个函数返回传入字符串的 length
-interface LengthI {
-  length: number;
-}
-function getLength<T>(str: T extends LengthI): T {
-  return str.length; // 此时报错 str 上不存在 length 属性
+class GenericNumber<T> {
+  zeroValue: T;
+  add: (x: T, y: T) => T;
+  constructor() {
+    this.zeroValue = 0;
+  }
 }
 
-let result = getLength("123");
-console.log(result);
+let myGenericNumber = new GenericNumber<number>();
+myGenericNumber.zeroValue = 0;
+myGenericNumber.add = function (x, y) {
+  return x + y;
+};
