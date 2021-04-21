@@ -90,7 +90,43 @@ public class Array {
         }
         return false;
     }
-    
+
+    //修改：给索引，给新值，修改位置的值
+    public void set(int index, int element) {
+        //index一定要在0  到  size-1的返回以内
+        if (index < 0 || index >= size) {
+            throw new RuntimeException("索引非法");
+        }
+        data[index] = element;
+    }
+
+    //删除:给定索引，删除指定位置的值
+    public int remove(int index) {
+        //1 index必须在0-size范围以内
+        if (index < 0 || index >= size) {
+            throw new RuntimeException("索引非法");
+        }
+        int oldValue = data[index];
+
+        // 挪动元素
+        for (int i = index + 1; i < size; i++) {
+            data[i - 1] = data[i];
+        }
+        data[size - 1] = 0;
+        size--;
+        return oldValue;
+    }
+
+    //删除头部元素
+    public int removeFirst() {
+        return remove(0);
+    }
+
+    //删除尾部元素
+    public int removeLast() {
+        return remove(size - 1);
+    }
+
     public static void main(String[] args) {
         Array array = new Array(10);
         array.add(0, 1);
@@ -106,6 +142,12 @@ public class Array {
 
         System.out.println(array.contains(100));
         System.out.println(array.contains(109));
+
+        array.set(0, 90);
+        System.out.println(array);
+
+        array.remove(0);
+        System.out.println(array);
 
     }
 }
