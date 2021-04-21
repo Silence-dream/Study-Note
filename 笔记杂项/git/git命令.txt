@@ -3,6 +3,9 @@ windows快速删除文件命令
 del /f/s/q 文件夹名字 > null
 rmdir /s/q 文件夹名字
 
+yarn 命令
+yarn cache clean 清理缓存
+
 git配置用户名和邮箱
 git config --global user.name "Silence-dream"
 git config --global user.email 1428482231@qq.com
