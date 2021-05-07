@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let obj2 = { name: "李四", age: 20 };
+      let value = "张三";
+      Object.defineProperty(obj2, "name", {
+        get() {
+          console.log("get 我被执行了");
+          return value; // 设置了 name 的值
+        },
+        set(newvalue) {
+          console.log("set 我被执行了");
+        },
+      });
+      console.log(obj2.name); // 张三
+      obj2.name = "王五"; // 设置值调用 19 行
+    </script>
+  </body>
+</html>
