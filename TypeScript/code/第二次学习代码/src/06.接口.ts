@@ -11,8 +11,9 @@ let obj: Person = { id: 1, name: "张安", age: 18 };
 obj.id = 2; // Cannot assign to 'id' because it is a constant or a read-only property.
 
 let arr: Person[] = [
-  { name: "张安", age: 18 },
+  { id: 1, name: "张安", age: 18 },
   {
+    id: 1,
     name: "荒芜",
     age: 20,
     gender: "男",
@@ -22,4 +23,4 @@ let arr: Person[] = [
   },
 ];
 
-export {};
+export { };
