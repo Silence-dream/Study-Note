@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <!-- 注意引用顺序 -->
+    <script src="lib/react.development.js"></script>
+    <script src="lib/react-dom.development.js"></script>
+
+    <script type="text/javascript">
+      // 创建虚拟 DOM
+      let VDOM = React.createElement("h1", { id: "title" }, "hello,React");
+      // 渲染虚拟 DOM
+      ReactDOM.render(VDOM, document.getElementById("root"));
+    </script>
+  </body>
+</html>

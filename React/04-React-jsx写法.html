@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <!-- 注意引用顺序 -->
+    <script src="lib/react.development.js"></script>
+    <script src="lib/react-dom.development.js"></script>
+    <script src="lib/babel.min.js"></script>
+    <script type="text/babel">
+      // 创建虚拟 DOM
+      let VDOM = ( // 这样就避免了难看的无限套娃,方便理解
+        <h1>
+          <span>
+            <a>hello,React</a>
+          </span>
+        </h1>
+      );
+
+      // 渲染虚拟 DOM
+      ReactDOM.render(VDOM, document.getElementById("root"));
+    </script>
+  </body>
+</html>

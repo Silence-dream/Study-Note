@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <!-- 注意引用顺序 -->
+    <script src="lib/react.development.js"></script>
+    <script src="lib/react-dom.development.js"></script>
+
+    <script type="text/javascript">
+      // 创建虚拟 DOM
+      // let VDOM = React.createElement(
+      //   "h1",
+      //   { id: "title" },
+      //   "<span><a>hello,React</a></span>" // 我们发现直接写span是无效的
+      // );
+      let VDOM = React.createElement(
+        "h1",
+        { id: "title" },
+        React.createElement(
+          "span",
+          null,
+          React.createElement("a", null, "hello,React") // 如果还需要写更多的子标签那么就会启动无限套娃技术相当不友好
+        )
+      );
+      // 渲染虚拟 DOM
+      ReactDOM.render(VDOM, document.getElementById("root"));
+    </script>
+  </body>
+</html>
