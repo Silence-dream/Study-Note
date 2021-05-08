@@ -14,7 +14,8 @@
     <script type="text/babel">
       function VDOM() {
         const numbers = [1, 2, 3, 4, 5];
-
+        // {} 中只能写表达式所以 for 循环用不了
+        // 什么是表达式? 表达式简单来说就是可以用变量接收值的,如果接收不到那么就不是表达式了
         const listItems = numbers.map((number) => (
           <li key={number}>{number}</li>
         ));

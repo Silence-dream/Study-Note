@@ -70,6 +70,7 @@ git merge
 
 添加远程版本库
 git remote add [shortname] [url]
+git remote remove [shortname] #删除远程仓库地址
 
 拉去仓库
 git fetch [alias]
