@@ -1,0 +1,12 @@
+.son {
+  float: left;
+  width: 200px;
+  height: 200px;
+  background-color: pink;
+}
+.son2 {
+  float: right;
+  width: 200px;
+  height: 200px;
+  background-color: hotpink;
+}
