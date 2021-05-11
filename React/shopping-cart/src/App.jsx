@@ -51,12 +51,31 @@ class App extends React.Component {
     
   }
 
+  updateNum=(obj) => {
+    let {id,name}=obj
+    console.log(obj);
+    let list = this.state.list.map((item)=>{
+      if(item.id === id){
+        if(name === "add"){
+          item.num++
+        }else if(name === "reduce"){
+          if(item.num<=0) return item
+          item.num--
+        }
+      }
+      return item
+    })
+    this.setState({
+      list:list
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <div className="container">
           <CartTitle name={this.state.name} ></CartTitle>
-          <CartList  list={this.state.list} deleteItem={this.delete}></CartList>
+          <CartList  list={this.state.list} deleteItem={this.delete} updateNum={this.updateNum}></CartList>
           <CartTotal list={this.state.list}></CartTotal>
         </div>
       </div>

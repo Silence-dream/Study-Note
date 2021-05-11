@@ -18,7 +18,7 @@ class CartTotal extends React.Component {
     return (
       <div className="total">
         <span>总价：</span>
-        <button>结算：{this.computedTotal()} </button>
+        <button>{this.computedTotal()} </button>
       </div>
     )
   }
