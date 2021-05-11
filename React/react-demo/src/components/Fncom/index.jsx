@@ -1,5 +1,4 @@
 function Fncom() {
-
   let count=0;
   function handleClick() {
     count++
