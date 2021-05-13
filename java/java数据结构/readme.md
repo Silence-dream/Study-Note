@@ -102,7 +102,8 @@ Algorithm + Data Structures = Programs
 
 - 顺序存储结构：使用数组
   - 顺序存储结构表示的线性表称为顺序表
-
+- 线性表的线性存储结构：物理空间上采用连续的区域存储
+  
 - 链式存储结构：链表
   - 链式存储结构表示的线性表称为链表，链表又分为单链表、双向链表、循环链表
 
@@ -127,5 +128,122 @@ Algorithm + Data Structures = Programs
 9. 输出操作：toString()
 
 ```java
+
+```
+
+## 时间复杂度
+
+- 抛开算法运行的软硬件环境，只考虑算法与问题规模之间的关系。
+
+- 算法的时间复杂度反映了程序执行时间随输入规模增长而增长的量级，在很大程度上能很好反映出算法的优劣与否。
+
+- 算法执行时间需通过依据该算法编制的程序在计算机上运行时所消耗的时间来度量。
+
+- 一般使用O 表示时间复杂度，O(1)、O(n)、O(n^2)、O(n^3)、O(log2n)
+
+```
+T = 2*n + 2                          O(n)
+T = 2000*n + 10000            		 O(n)
+T = 1*n*n  + 0                       O(n^2)
+T = 2*n*n + 300*n + 10     			 O(N^2)
+```
+
+### 分析动态数组的时间复杂度
+
+```
+addLast(e)		O(1)
+add First(e)	O(n)
+add (index, e)	O(n/2)=0(n)
+
+removeLast(e)	O(1)
+remove First(e)	O(n)
+remove(index,e) O(n/2)=o(n)
+
+set(index, e) O(1)
+
+get(index)	O(1)
+contains(e) O(n)
+find(e)		O(n)
+```
+
+### 时间复杂度分析
+
+- O(1)的时间复杂度只能代表算法的执行，不受任何变量的影响，他的复杂度是常量级别的
+
+```java
+public void show(){   
+    sout("name");    
+    sout("age");    
+    sout("sex"); 
+}
+```
+
+- O(n):算法的执行效率跟n的大小呈线性关系
+
+```java
+public  void  sum(int[]  arr1){ 
+    int  sum  =  0;
+	for(int  i=0;i<arr1.length;i++){ 
+        sum  +=  arr1[i];
+	}
+	sout(sum);
+}//O(n)
+
+public  void  sum(int[]  arr1,int[]  arr2){ 
+    int  sum  =  0;
+	for(int  i=0;i<arr1.length;i++){ 
+        sum  +=  arr1[i];
+	}
+	sout(sum);
+
+	int  sum2  =  0;
+	for(int  j=0;j<arr1.length;j++){ 
+        sum  +=  arr1[j];
+	}
+	sout(sum);
+```
+
+- ![img](img/clip_image001.gif)O(n^2)：嵌套for循环
+
+### 空间复杂度分析
+
+- O(1)
+
+```java
+void  print(int  n)  { 
+    int  i  =  0;
+	int[]  a  =  {1,2,3,34,5,6,7};
+	for  (i;  i  <n;  ++i)  { 
+        a[i]  =  i  *  i;
+	for  (i  =  n-1;  i  >=  0;  --i) 					System.out.println(a[i]);
+}
+
+```
+
+- O(n)
+
+```java
+void  print(int  n)  { 
+    int  i  =  0;
+	int[]  a  =  new  int[n]; 
+    for  (i;  i  <n;  ++i)  {
+		a[i]  =  i  *  i;
+	for  (i  =  n-1;  i  >=  0;  --i) 					System.out.println(a[i]);
+}
+```
+
+- O(n^2)
+
+```java
+void  print(int  n)  { 
+    int  i  =  0;
+	int  z  =  0;
+	int[]  a  =  new  int[n]; 
+    for  (i;  i  <n;  ++i)  {
+		for  (j  =  n-1;  j  >=  0;  --j){ 
+       	 z = i * j; System.out.println(z);
+		}
+	}
+}
 ```
 
