@@ -17,11 +17,18 @@ const WidthMouse = (Params) => {
       });
     };
 
+    
     render() {
       // return <Params x={this.state.x} y={this.state.y}></Params>
       return <Params {...this.state}></Params>;
     }
   }
+  
+  function getDisplayName(WrappedComponent) {
+    return WrappedComponent.displayName || WrappedComponent.name || 'Component'
+  }
+  Mouse.displayName = `WithMouse${getDisplayName(Params)}`
+
   // Mouse.displayName=Params.name
   // console.dir(Mouse);
   return Mouse;
