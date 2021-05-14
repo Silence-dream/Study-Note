@@ -44,3 +44,12 @@ HTML+CSS+JavaStript
 [Web APIs DOM BOM](./JavaScript/WebAPIs.md)
 
 [思维导图](./JavaScript/思维导图)
+
+
+
+# Thanks
+
+特别感谢 [JetBrains](https://www.jetbrains.com/?from=My-Actions) 为开源项目提供免费的 [IDEA](https://www.jetbrains.com/idea/) 等 IDE 的授权
+
+Special thanks to [JetBrains](https://www.jetbrains.com/?from=My-Actions)  for licensing [IDEA](https://www.jetbrains.com/idea/) and other IDEs for free for open source projects
+[<img src="https://cdn.jsdelivr.net/gh/BlueskyClouds/BlueskyClouds.github.io/2020/12/1/img/idea/jetbrains.png" width="200"/>](https://www.jetbrains.com/?from=My-Actions)
