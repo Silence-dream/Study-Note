@@ -9,6 +9,7 @@ export default class liftCycle extends Component {
     };
   }
   componentDidMount() {
+    // 方法会在组件已经被渲染到 DOM 中后运行
     console.log("3.组件挂载--componentDidMount 发送网络请求 操作 DOM");
   }
   componentDidUpdate() {

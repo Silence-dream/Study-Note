@@ -1,4 +1,4 @@
-function Fncom() {
+function Fncom(props) {
   let count=0;
   function handleClick() {
     count++
@@ -7,7 +7,9 @@ function Fncom() {
     // 移步 Class 组件查看解决办法
   }
 
-  return <h1 onClick={handleClick} style={{background:"pink"}}>函数组件{count}</h1>;
+  return <h1 onClick={handleClick} style={{background:"pink"}}>
+    函数组件{count}---{props.name}
+  </h1>;
 }
 
 export default Fncom;

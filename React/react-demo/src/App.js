@@ -8,7 +8,7 @@ import LifeCycle from "./components/life-cycle/index.jsx";
 function App() {
   return (
     <div id="box">
-      <Fncom></Fncom>
+      <Fncom name='hello'></Fncom>
       <Classcom></Classcom>
       <Refcom></Refcom>
       <Father></Father>
