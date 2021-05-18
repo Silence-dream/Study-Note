@@ -1,0 +1,53 @@
+/* xxx-enter 进入动画执行之前绑定的类名 */
+/* xxx-enter-active 进入动画执行中绑定的类名 */
+/* xxx-enter-done 进入动画执行完绑定的类名 */
+
+.box-enter {
+  /* xxx-enter 进入动画执行之前绑定的类名 */
+  width: 0px;
+  height: 0px;
+  opacity: 0;
+  background-color: burlywood;
+}
+
+.box-enter-active {
+  /* xxx-enter-active 进入动画执行中绑定的类名 */
+  width: 100px;
+  height: 100px;
+  opacity: 1;
+  background-color: burlywood;
+  transition: all 3s;
+}
+
+.box-enter-done {
+  /* xxx-enter-active 进入动画执行中绑定的类名 */
+  width: 100px;
+  height: 100px;
+  opacity: 1;
+  background-color: burlywood;
+}
+
+/* 动画退出执行的动画 */
+.box-exit {
+  /* xxx-exit 退出动画执行之前绑定的类名 */
+  width: 100px;
+  height: 100px;
+  opacity: 1;
+  background-color: skyblue;
+}
+
+.box-exit-active {
+  /* xxx-exit-active 退出动画执行中绑定的类名 */
+  width: 10px;
+  height: 10px;
+  opacity: 0.5;
+  background-color: red;
+  transition: all 3s;
+}
+
+.box-exit-done {
+  /* xxx-exit-active 退出动画执行完绑定的类名 */
+  width: 0px;
+  height: 0px;
+  opacity: 0;
+}
