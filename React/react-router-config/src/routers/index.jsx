@@ -29,7 +29,7 @@ function About(props) {
   return (
     <div>
       <h1>about 路由</h1>
-      {/* <Link to="/about/abc">去 about </Link> */}
+      <Link to="/about/abc">去 about </Link>
       {renderRoutes(props.route.routes)}
       {console.log(props)}
     </div>
