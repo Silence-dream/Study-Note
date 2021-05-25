@@ -8,6 +8,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <h1>首页</h1>
+        <Link to="/">去首页</Link>
         <Link to="/about">去 about</Link>
         {/* renderRoutes(routes)会把routers作为props传入到Home组件中 */}
         {renderRoutes(routes)}
