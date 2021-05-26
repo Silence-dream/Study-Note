@@ -1,5 +1,7 @@
 ## php 
 
+[PHP: PHP 手册 - Manual](https://www.php.net/manual/zh/)
+
 ## 运行环境
 
 ### 命令行运行
