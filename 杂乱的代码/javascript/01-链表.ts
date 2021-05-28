@@ -20,7 +20,7 @@ class LinkedList<T> {
     let node = new Node(item);
     if (this.head == null) {
       this.head = node;
-    }e
+    }
   }
 }
 
