@@ -1,0 +1,21 @@
+array(1) {
+  [
+    "file"
+  ]=> array(5) {
+    [
+      "name"
+    ]=> string(9) "icon2.png" 
+    [
+      "type"
+    ]=> string(9) "image/png" 
+    [
+      "tmp_name"
+    ]=> string(23) "D:\wamp\tmp\phpD411.tmp" 
+    [
+      "error"
+    ]=> int(0) 
+    [
+      "size"
+    ]=> int(1825)
+  }
+}
