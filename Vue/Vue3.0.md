@@ -2800,3 +2800,6 @@ https://vue3js.cn/docs/zh/guide/composition-api-template-refs.html#%E6%A8%A1%E6%
 
 
 
+## vue3语法糖
+
+[rfcs/0000-script-setup.md at script-setup-2 · vuejs/rfcs (github.com)](https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md#summary)

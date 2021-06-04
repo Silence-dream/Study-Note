@@ -52,6 +52,8 @@ vue add style-resources-loader
 
 vue.config.js
 
+[CSS 相关 | Vue CLI (vuejs.org)](https://cli.vuejs.org/zh/guide/css.html#向预处理器-loader-传递选项)
+
 ```js
 const path = require("path");
 module.exports = {
@@ -66,4 +68,28 @@ module.exports = {
   }
 };
 ```
+
+vite 方案
+
+```js
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "src/assets/styles/variables.scss";`,
+      },
+    },
+  },
+});
+
+```
+
+
+
+[基于Vite2+Vue3的项目复盘总结 (juejin.cn)](https://juejin.cn/post/6969758357288648718#heading-9)
 
