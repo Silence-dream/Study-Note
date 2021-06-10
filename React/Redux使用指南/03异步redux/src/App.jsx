@@ -2,7 +2,7 @@ import "./App.css";
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { asyncAction } from "./store";
+import { asyncAction, promiseAction } from "./store";
 
 class App extends Component {
   render() {
@@ -33,9 +33,11 @@ let mapDispatch = (dispatch) => {
         msg: "你好",
       });
     },
+    // redux-thunk
     msgAsync() {
       dispatch(asyncAction);
     },
+    // 不使用 redux-thunk
     msgAsync2() {
       fetch("http://localhost:8000/hello")
         .then((res) => res.json())
@@ -45,6 +47,10 @@ let mapDispatch = (dispatch) => {
             async: res.msg,
           });
         });
+    },
+    // promise redux-thunk
+    msgAsync3() {
+      dispatch(promiseAction);
     },
   };
 };

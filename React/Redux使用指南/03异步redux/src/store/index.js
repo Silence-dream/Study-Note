@@ -34,7 +34,15 @@ export const asyncAction = function (dispatch) {
       });
     });
 }
+export const promiseAction = async function (dispatch) {
+  let data = await (await fetch("http://localhost:8000/hello")).json()
+  dispatch({
+    type: "ASYNC",
+    async: data.msg,
+  });
+}
 
+// let store = createStore(reducer)
 let store = createStore(reducer, applyMiddleware(thunk))
 
 export default store
