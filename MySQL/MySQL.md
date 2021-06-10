@@ -188,12 +188,12 @@
 
 
     创建触发器语法
-  	create trigger tgName
-  	after/before insert/delete/update 
-  	on tableName
-  	for each row
-  	sql; -- 触发语句
-
+    create trigger tgName
+    after/before insert/delete/update 
+    on tableName
+    for each row
+    sql; -- 触发语句
+    
     删除触发器:drop trigger tgName;
 
 
