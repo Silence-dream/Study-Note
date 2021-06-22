@@ -27,6 +27,7 @@
 |          |                                                              |
 
 
-
+## nginx
+https://next.router.vuejs.org/zh/guide/essentials/history-mode.html#apache
 
 
