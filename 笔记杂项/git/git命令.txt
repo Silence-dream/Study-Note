@@ -87,3 +87,11 @@ git remote remove [shortname] #删除远程仓库地址
 
 拉去仓库
 git fetch [alias]
+
+增加上传大小
+git config http.postBuffer 524288000
+git config -l可以看到配置项的最下面多出了一行我们刚刚配置的内容. (52428000=500×1024×1024,即500M)
+
+git lfs 解决大文件的问题
+git lfs install
+git lfs track "*.png"
