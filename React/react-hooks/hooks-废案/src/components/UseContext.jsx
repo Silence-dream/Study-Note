@@ -1,4 +1,4 @@
-import { useContext, createContext } from "react";
+import { createContext, useContext } from "react";
 const themes = {
   light: {
     foreground: "#000000",
@@ -22,7 +22,9 @@ function UseContext() {
 }
 
 function Son(props) {
-  console.log(props);
+  console.log("son", props);
+  let theme = useContext(ThemeContext);
+  console.log(theme);
   return <div>son</div>;
 }
 
