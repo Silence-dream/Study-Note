@@ -1,4 +1,13 @@
-#box {
-  width: 500px;
-  margin: 100px auto;
+* {
+  padding: 0;
+  margin: 0;
+}
+.App {
+  text-align: center;
+}
+.App > div:nth-of-type(2n + 1) {
+  background-color: skyblue;
+}
+.App > div:nth-of-type(2n) {
+  background-color: pink;
 }

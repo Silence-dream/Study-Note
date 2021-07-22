@@ -1,19 +1,24 @@
+import React, { useRef } from "react";
+import ForwardRef from "./components/ForwardRef";
 import "./App.css";
-import Fncom from "./components/Fncom/index.jsx";
-import Classcom from "./components/Classcom/index.jsx";
-import Refcom from "./components/Refcom/index.jsx";
-import Father from "./components/Fathercom/index.jsx";
-import ContextFatherToSon from "./components/Context/index.jsx";
-import LifeCycle from "./components/life-cycle/index.jsx";
+import Class from "./components/Class";
+import Function from "./components/Function";
+import State from "./components/State";
+import AsyncState from "./components/AsyncState";
+import HandlingEvents from "./components/HandlingEvents";
+import Context from "./components/Context";
+// 实现的功能 在子组件中点击按钮选中 input ,在父组件中点击按钮选中子组件的input
 function App() {
   return (
-    <div id="box">
-      <Fncom name='hello'></Fncom>
-      <Classcom></Classcom>
-      <Refcom></Refcom>
-      <Father></Father>
-      <ContextFatherToSon></ContextFatherToSon>
-      <LifeCycle></LifeCycle>
+    <div className="App">
+      {/* 如果直接获取 ref 会获取不到,那么就需要使用 forwarfRef 获取组件内部的 ref 了 */}
+      <ForwardRef></ForwardRef>
+      <Class></Class>
+      <Function></Function>
+      <State></State>
+      <AsyncState></AsyncState>
+      <HandlingEvents></HandlingEvents>
+      <Context></Context>
     </div>
   );
 }
