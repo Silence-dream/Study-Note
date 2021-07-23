@@ -7,6 +7,8 @@ import State from "./components/State";
 import AsyncState from "./components/AsyncState";
 import HandlingEvents from "./components/HandlingEvents";
 import Context from "./components/Context";
+import ShouldComponentUpdate from "./components/ShouldComponentUpdate";
+import PureComponent from "./components/PureComponent";
 // 实现的功能 在子组件中点击按钮选中 input ,在父组件中点击按钮选中子组件的input
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
       <AsyncState></AsyncState>
       <HandlingEvents></HandlingEvents>
       <Context></Context>
+      <ShouldComponentUpdate></ShouldComponentUpdate>
+      <PureComponent></PureComponent>
     </div>
   );
 }
