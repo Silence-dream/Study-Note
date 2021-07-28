@@ -9,6 +9,10 @@ import HandlingEvents from "./components/HandlingEvents";
 import Context from "./components/Context";
 import ShouldComponentUpdate from "./components/ShouldComponentUpdate";
 import PureComponent from "./components/PureComponent";
+import UseState from "./components/UseState";
+import UseReducer from "./components/UseReducer";
+import UseContext from "./components/UseContext";
+import Demo from "./components/Demo";
 // 实现的功能 在子组件中点击按钮选中 input ,在父组件中点击按钮选中子组件的input
 function App() {
   return (
@@ -23,6 +27,10 @@ function App() {
       <Context></Context>
       <ShouldComponentUpdate></ShouldComponentUpdate>
       <PureComponent></PureComponent>
+      <UseState></UseState>
+      <UseReducer></UseReducer>
+      <UseContext></UseContext>
+      <Demo></Demo>
     </div>
   );
 }
