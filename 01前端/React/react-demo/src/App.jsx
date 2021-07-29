@@ -12,6 +12,8 @@ import PureComponent from "./components/PureComponent";
 import UseState from "./components/UseState";
 import UseReducer from "./components/UseReducer";
 import UseContext from "./components/UseContext";
+import UseEffect from "./components/UseEffect";
+import UseRef from "./components/UseRef";
 import Demo from "./components/Demo";
 // 实现的功能 在子组件中点击按钮选中 input ,在父组件中点击按钮选中子组件的input
 function App() {
@@ -30,6 +32,8 @@ function App() {
       <UseState></UseState>
       <UseReducer></UseReducer>
       <UseContext></UseContext>
+      <UseEffect></UseEffect>
+      <UseRef></UseRef>
       <Demo></Demo>
     </div>
   );

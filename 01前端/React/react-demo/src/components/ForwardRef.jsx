@@ -2,6 +2,7 @@ import React, { forwardRef, useRef } from "react";
 const ForwardRef = () => {
   return (
     <div>
+      <h1>ForwardRef</h1>
       <Father></Father>
     </div>
   );
