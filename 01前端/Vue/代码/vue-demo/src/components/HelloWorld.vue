@@ -1,35 +1,32 @@
 <template>
   <h1>{{ msg }}</h1>
-
-  <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">
-      Vite Documentation
-    </a>
-    |
-    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Documentation</a>
-  </p>
-
-  <button type="button" @click="state.count++">
-    count is: {{ state.count }}
-  </button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
+  <h2 v-text="123"></h2>
+  <h3 v-html="`${element}`"></h3>
+  <input type="text" :value="'message'" /><br />
+  <input type="text" v-model="aaa" /> <br />
+  <span>{{ aaa }}</span>
+  <button @click="fn">点击</button>
 </template>
 
-<script setup>
-import { defineProps, reactive } from 'vue'
-
-defineProps({
-  msg: String
-})
-
-const state = reactive({ count: 0 })
+<script>
+import { ref } from "@vue/reactivity";
+export default {
+  setup() {
+    let msg = "HelloWorld";
+    let element = "<span>456</span>";
+    let aaa = ref("123");
+    const fn = () => {
+      console.log(1);
+    };
+    return {
+      msg,
+      element,
+      aaa,
+      fn,
+    };
+  },
+  components: {},
+};
 </script>
 
-<style scoped>
-a {
-  color: #42b983;
-}
-</style>
+<style scoped></style>
