@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <h1>index首页</h1>
-  </div>
+  <div><h1>child2</h1></div>
 </template>
 
 <script>

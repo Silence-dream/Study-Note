@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>index首页</h1>
+    <h1>错误</h1>
   </div>
 </template>
 
