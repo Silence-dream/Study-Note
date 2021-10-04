@@ -461,7 +461,7 @@ function 函数名() {
 保存一个值时，可以使用变量，保存多个值（一组值）时，可以使用数组。
 
   	如果要保存一个人的完整信息呢？
-
+  	
   	例如，将“张三疯”的个人的信息保存在数组中的方式为：
 
 ```js
@@ -696,8 +696,6 @@ var  fn = function() {
 - 简单数据类型的存储方式
 
     ​		值类型变量的数据直接存放在变量（栈空间）中
-
-![](D:/02 OneDrive/OneDrive/01 My Code/01 CZXY/01 My Code/Study-note/JavaScript/JavaScript.assets/图片12-1578367605032.png)
 
 - 复杂数据类型的存储方式
 
