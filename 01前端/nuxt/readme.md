@@ -25,6 +25,62 @@ Nuxt.js 会依据 pages 目录中的所有 *.vue 文件生成应用的[路由](#
 ### 资源(assets)目录
 资源目录 assets 用于组织未编译的静态资源如 LESS、SASS 或 JavaScript。
 
+1. assets目录，会被webpack打包
+2. 访问路径，~/assets/路径
+3. 最终是使用require(路径)
+
+```vue
+<template>
+  <div>
+    <img src="~assets/img/芭芭拉.gif" alt="" />
+    <img src="~/assets/img/芭芭拉.gif" alt="" />
+    <div class="box">
+      <div class="box1"></div>
+      <div class="box2"></div>
+    </div>
+    <div class="inline" :style="keli"></div>
+  </div>
+</template>
+
+<script>
+const keli = require(`~/assets/img/可莉.gif`)
+export default {
+  data() {
+    return {
+      keli:`background: url(${keli}) no-repeat;`
+    }
+  },
+}
+</script>
+
+<style>
+img {
+  width: 200px;
+}
+.box1 {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background: url(~assets/img/甘雨.gif) no-repeat;
+  background-size: contain;
+}
+.box2 {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background: url(~/assets/img/甘雨.gif) no-repeat;
+  background-size: contain;
+}
+.inline {
+  width: 200px;
+  height: 200px;
+  background-size: contain !important;
+}
+</style>
+```
+
+
+
 ### 组件(components)目录
 组件目录 components 用于组织应用的 Vue.js 组件。Nuxt.js 不会扩展增强该目录下 Vue.js 组件，即这些组件不会像页面组件那样有 asyncData 方法的特性。
 
@@ -49,6 +105,64 @@ middleware 目录用于存放应用的中间件。
 静态文件目录 static 用于存放应用的静态文件，此类文件不会被 Nuxt.js 调用 Webpack 进行构建编译处理。服务器启动的时候，该目录下的文件会映射至应用的根路径 / 下。
 
 举个例子: /static/robots.txt 映射至 /robots.txt
+
+1. 该目录下的文件，不会被webpack打包
+2. 访问时直接写static目录下的文件路径， (譬如) /imgs/xxx 
+3. 无论是assets还是static 使用行内样式加载图片资源时，全部统一写法： require(~/静态资源目录/路径)
+
+```vue
+<template>
+  <div>
+    <img src="/img/芭芭拉.gif" alt="" />
+    <img src="/img/芭芭拉.gif" alt="" />
+    <div class="box">
+      <div class="box1"></div>
+      <div class="box2"></div>
+    </div>
+    <div class="inline" :style="keli"></div>
+  </div>
+</template>
+
+<script>
+// const keli = require(`~img/可莉.gif`)
+// 尽量使用英文文件名
+const keli = require('~/static/img/1.gif')
+export default {
+  data() {
+    return {
+      keli: `background: url(${keli}) no-repeat;`,
+    }
+  },
+}
+</script>
+
+<style>
+img {
+  width: 200px;
+}
+.box1 {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background: url(/img/甘雨.gif) no-repeat;
+  background-size: contain;
+}
+.box2 {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background: url(/img/甘雨.gif) no-repeat;
+  background-size: contain;
+}
+.inline {
+  width: 200px;
+  height: 200px;
+  background-size: contain !important;
+}
+</style>
+```
+
+
 
 ### Store 目录
 store 目录用于组织应用的 Vuex 状态树 文件。 Nuxt.js 框架集成了 Vuex 状态树 的相关功能配置，在 store 目录下创建一个 index.js 文件可激活这些配置。
@@ -365,11 +479,77 @@ nuxt.config.js
   components:true   // 自动在页面组件中导入components目录下的组件
 ```
 
+### 预处理器配置
+
+[Nuxt - Configuration (nuxtjs.org)](https://nuxtjs.org/docs/features/configuration#pre-processors)
+
+### 全局 css 变量
+
+```shell
+yarn add @nuxtjs/style-resources
+```
+
+```js
+
+buildModules: [
+    '@nuxtjs/style-resources',
+  ],
+
+  styleResources: {
+     less:['~/assets/less/xxx.less']   // 全局变量
+  }
+```
+
+
+
 ## 配置404页面
 
 在 layouts 目录下创建 error.vue 文件即可匹配不存在的路由
 
+## asyncData 处理异步数据
 
+此方法会在服务端获取并渲染数据
+
+**asyncData** 方法会在组件(pages组件)每次加载之前被调用
+
+在这个方法被调用的时候，第一个参数被设定为当前页面的**上下文对象**，你可以利用 `asyncData`方法来获取数据并返回给当前组件。
+
+```vue
+<template>
+  <div>
+    <h1>{{ip}}</h1>
+    <ul>
+      <li v-for="item in data" :key="item.id">{{item.title}}</li>
+    </ul>
+  </div>
+  </ul>
+</template>
+
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
+  async asyncData(context) {
+    const ip = await context.$axios.$get('http://icanhazip.com')
+    const { data } = await context.$axios.$get('https://cnodejs.org/api/v1/topics', {
+      params: {
+        page: 1,
+        tab: 'ask',
+      },
+    })
+    console.log(context)
+    // console.log(data)
+    return { ip,data }
+  },
+})
+</script>
+
+<style lang="scss">
+$red: red;
+div {
+  color: $red;
+}
+</style>
+```
 
 
 
@@ -378,3 +558,4 @@ nuxt.config.js
 [Nuxt.js - Vue.js 通用应用框架 | Nuxt.js 中文网 (nuxtjs.cn)](https://www.nuxtjs.cn/)
 
 [Nuxt.js 中文教程_w3cschool](https://www.w3cschool.cn/nuxtjs/)
+
