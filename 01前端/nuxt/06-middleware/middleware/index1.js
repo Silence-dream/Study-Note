@@ -1,3 +1,3 @@
 export default () => {
-  console.log("这里是中间件")
+  console.log("这里是全局中间件")
 }
