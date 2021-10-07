@@ -1,11 +1,12 @@
 <template>
-  <h1>hi user</h1>
+  <div>
+    <h1>this is home</h1>
+  </div>
 </template>
 
 <script>
 export default {
-  // 使用动画
-  transition: "bounce"
+
 }
 </script>
 

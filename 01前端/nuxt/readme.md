@@ -551,6 +551,333 @@ div {
 </style>
 ```
 
+## 动画 transition
+
+Nuxt.js 使用 Vue.js 的 [transition](http://vuejs.org/v2/guide/transitions.html#Transitioning-Single-Elements-Components)组件来实现路由切换时的过渡动效。默认类目是.page开通
+
+### 过渡类名
+
+```css
+.page-enter, .page-leave-to {   }
+.page-enter-active, .page-leave-active {   }
+```
+
+layouts/default.vue
+```vue
+<<template>
+  <div class="box">
+    <nuxt-link to="/">home</nuxt-link>
+    <nuxt-link to="/about">about</nuxt-link>
+    <nuxt-link to="/user">user</nuxt-link>
+    <Nuxt></Nuxt>
+  </div>
+</template>
+
+<style>
+html,body{
+  text-align: center;
+}
+a{
+  padding: 0 20px;
+}
+.page-enter, .page-leave-to {
+  opacity: 0;
+}
+
+.page-enter-active, .page-leave-active {
+  transition: opacity 0.8s;
+}
+</style>
+```
+
+### 动画类名
+
+1.   使用transtion属性在页面组件指定自定义动画名称
+2.   在布局文件
+
+```css
+xxx-enter-active,xxx-leave-active  {    }
+```
+
+layouts/default.vue
+
+```vue
+<<template>
+  <div class="box">
+    <nuxt-link to="/">home</nuxt-link>
+    <nuxt-link to="/about">about</nuxt-link>
+    <nuxt-link to="/user">user</nuxt-link>
+    <Nuxt></Nuxt>
+  </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+html,body{
+  text-align: center;
+}
+a{
+  padding: 0 20px;
+}
+.page-enter, .page-leave-to {
+  opacity: 0;
+}
+
+.page-enter-active, .page-leave-active {
+  transition: opacity 0.8s;
+}
+
+.bounce-enter-active {
+  animation: bounce-in 0.8s;
+}
+
+.bounce-leave-active {
+  animation: bounce-out 0.5s;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce-out {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+</style>
+```
+
+pages/user.vue
+
+```vue
+<template>
+  <h1>hi user</h1>
+</template>
+
+<script>
+export default {
+  // 使用动画
+  transition: "bounce"
+}
+</script>
+```
+
+[API: transition 属性 - NuxtJS | Nuxt.js 中文网](https://www.nuxtjs.cn/api/pages-transition)
+
+## 中间件 middleware
+
+1.   中间件就是一个函数， 运行在客户端或者服务端
+2.   项目启动或者刷新页面，运行在服务端
+3.   切换路由，运行在客户端
+4.   process.server / process.static  判断执行环境
+
+​    执行顺序：
+
+1. nuxt.config.js
+
+2. 布局文件(layouts)
+
+3. 页面文件(pages)
+
+4. 全局中间件, 整个项目都可以使用
+
+   1. middleware目录下xxx.js
+
+   2. nuxt.config.js 全局注册  
+
+      ```javascript
+      router :{
+          middleware:'全局中间件名称'
+      }
+      ```
+
+   3. 整个项目路由切换时或者刷新页面时，全局中间件都会执行
+
+nuxt.config.js
+
+```js
+export default {
+  router:{
+    middleware:"index1"
+  }
+}
+```
+
+middleware/index1.js
+
+```js
+export default () => {
+  console.log("这里是中间件")
+}
+```
+
+
+
+2.布局中的中间件
+
+1. middleware目录下xxx.js
+2. 在布局文件中使用middleware:'中间件名称'
+
+
+
+3.页面中的中间件
+
+1. middleware目录下xxx.js
+2. 在页面文件中使用middleware:'中间件名称'
+
+
+
+[中间件](https://www.nuxtjs.cn/guide/routing#中间件)
+
+
+
+## 插件 plugins
+
+### 插件的注册
+
+插件需要在 nuxt.config.js 内的 plugins 内进行注册才可以调用
+
+nuxt.config.js
+
+```js
+export default {
+    plugins:[
+        "插件的目录/xxx.js",
+        { src:"插件的路径/xx.js"}
+    ]
+}
+```
+
+
+
+###  默认插件
+
+1. 就是一个plugins/js文件
+2. 项目启动时/根目录刷新， 会在客户端和服务端都执行一次，此时要注意区分环境
+3. 路由切换时，该插件不执行
+
+###  客户端/服务端插件
+
+nuxt.config.js
+
+```js
+plugins:[
+    '~/plugins/xxx.js'  // 两端都会执行
+    {src:'~/plugins/xxx.js', mode:'client'} // 客户端
+    {src:'~/plugins/xx.js', mode:'server'} // 服务端
+    {src:'~/plugins/xx.js', mode:'both'} // 两端
+]
+```
+
+### 插件注入 
+
+#### 注入 vue 实例
+
+plugins/test.js
+
+```js
+import vue from "vue";
+
+export default function () {
+  // 注入 vue 原型
+  vue.prototype.$test = "这里是test"
+  console.log("插件执行了")
+}
+```
+
+pages/index.vue
+
+```vue
+<script>
+export default {
+ created() {
+   console.log(this.$test) // "这里是test"
+ }
+}
+</script>
+```
+
+#### 注入 context 实例
+
+在`asyncData`和`fetch`中可以获取到 context
+
+plugins/client.js
+
+```js
+export default (context) => {
+  context.app.myClient = "这里是客户端"
+  console.log("指定在客户端运行")
+}
+```
+
+pages/index.vue
+
+```vue
+<script>
+export default {
+  asyncData(context){
+   console.log(context.app.myClient)
+  }
+}
+</script>
+```
+
+#### 同时注入
+
+如果您需要同时在`context`，`Vue`实例，甚至`Vuex`中同时注入，您可以使用`inject`方法,它是 plugin 导出函数的第二个参数。将内容注入 Vue 实例的方式与在 Vue 应用程序中进行注入类似。系统会自动将`$`添加到方法名的前面。
+
+
+
+plugins/test.js
+
+```js
+export default function (context,inject) {
+  inject('myServer',() => {
+    return "这里是 server"
+  })
+  console.log("插件执行了")
+}
+```
+
+pages/index.vue
+
+```vue
+<script>
+export default {
+ created(context) {
+   let str=this.$myServer()
+   console.log(str) //这里是 server
+ },
+  asyncData(context){
+   console.log(context.app.$myServer()) //这里是 server
+  }
+}
+</script>
+```
+
 
 
 ## 参考

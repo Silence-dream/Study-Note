@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/01-ArrayList/01-Array-Basics/01-Array-Basics.iml" filepath="$PROJECT_DIR$/01-ArrayList/01-Array-Basics/01-Array-Basics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-ArrayList/01-ArrayList.iml" filepath="$PROJECT_DIR$/01-ArrayList/01-ArrayList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-ArrayList/02-Create-Array-List/02-Create-Array-List.iml" filepath="$PROJECT_DIR$/01-ArrayList/02-Create-Array-List/02-Create-Array-List.iml" />
+      <module fileurl="file://$PROJECT_DIR$/02-Create-Array_List/02-Create-Array_List.iml" filepath="$PROJECT_DIR$/02-Create-Array_List/02-Create-Array_List.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-ArrayList/03-Add-Element-in-Array-List/03-Add-Element-in-Array-List.iml" filepath="$PROJECT_DIR$/01-ArrayList/03-Add-Element-in-Array-List/03-Add-Element-in-Array-List.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-ArrayList/04-Query-and-Update-in-Array-List/04-Query-and-Update-in-Array-List.iml" filepath="$PROJECT_DIR$/01-ArrayList/04-Query-and-Update-in-Array-List/04-Query-and-Update-in-Array-List.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-ArrayList/05-Contains-and-Remove/05-Contains-and-Remove.iml" filepath="$PROJECT_DIR$/01-ArrayList/05-Contains-and-Remove/05-Contains-and-Remove.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-ArrayList/06-Generic-Array-List/06-Generic-Array-List.iml" filepath="$PROJECT_DIR$/01-ArrayList/06-Generic-Array-List/06-Generic-Array-List.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-ArrayList/07-Dynamic-Array-List/07-Dynamic-Array-List.iml" filepath="$PROJECT_DIR$/01-ArrayList/07-Dynamic-Array-List/07-Dynamic-Array-List.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java数据结构.iml" filepath="$PROJECT_DIR$/java数据结构.iml" />
+    </modules>
+  </component>
+</project>

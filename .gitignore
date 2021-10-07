@@ -3,7 +3,7 @@
 .gradle/
 .vscode/*
 /python/.vscode/*
-.idea
+.idea/*
 miniprogram_npm/
 # Logs
 logs
