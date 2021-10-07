@@ -1,6 +1,7 @@
 <template>
   <div id="box">
     <h1>index首页</h1>
+    <nuxt-link to="/about">go to about</nuxt-link>
     <h2>{{ $store.state.count }}</h2>
     <button @click="add">同步增加</button>
     <button @click="asyncAdd">异步增加</button>
