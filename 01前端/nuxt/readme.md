@@ -716,6 +716,8 @@ export default {
 
    3. 整个项目路由切换时或者刷新页面时，全局中间件都会执行
 
+### 全局中间件
+
 nuxt.config.js
 
 ```js
@@ -734,12 +736,41 @@ export default () => {
 }
 ```
 
-
+### 局部中间件
 
 2.布局中的中间件
 
 1. middleware目录下xxx.js
-2. 在布局文件中使用middleware:'中间件名称'
+
+middleware/pagesMiddleware.js
+
+```js
+export default () => {
+  console.log("pages 中间件")
+}
+```
+
+1. 在布局文件中使用middleware:'中间件名称'
+
+layouts/default.vue
+
+```vue
+<template>
+  <div>
+    <h1>这里是 layouts</h1>
+    <Nuxt></Nuxt>
+  </div>
+</template>
+
+<script>
+export default {
+  // 使用中间件
+  middleware:"layoutsMiddleware"
+}
+</script>
+```
+
+
 
 
 
@@ -748,7 +779,7 @@ export default () => {
 1. middleware目录下xxx.js
 2. 在页面文件中使用middleware:'中间件名称'
 
-
+使用方法同上面
 
 [中间件](https://www.nuxtjs.cn/guide/routing#中间件)
 
@@ -877,6 +908,159 @@ export default {
 }
 </script>
 ```
+
+## vuex 的使用
+
+nuxt 内置了 vuex 所以使用的时候不需要再次安装 vuex
+
+Nuxt.js 会尝试找到 src 目录（默认是应用根目录）下的 `store` 目录，如果该目录存在，它将做以下的事情：
+
+1. 引用 `vuex` 模块
+2. 将 `vuex` 模块 加到 vendors 构建配置中去
+3. 设置 `Vue` 根实例的 `store` 配置项
+
+Nuxt.js 支持两种使用 `store` 的方式，你可以择一使用：
+
+- **模块方式：** `store` 目录下的每个 `.js` 文件会被转换成为状态树[指定命名的子模块](http://vuex.vuejs.org/en/modules.html) （当然，`index` 是根模块）
+- **Classic(不建议使用)：** `store/index.js`返回创建 Vuex.Store 实例的方法。
+
+
+
+一个案例体验在 nuxt 中使用 vuex
+
+![vuex](https://gitee.com/qianshilei/test/raw/master/img/vuex.gif)
+
+pages/index.vue
+
+```vue
+<template>
+  <div id="box">
+    <h1>index首页</h1>
+    <h2>{{ $store.state.count }}</h2>
+    <button @click="add">同步增加</button>
+    <button @click="asyncAdd">异步增加</button>
+  </div>
+</template>
+
+<script>
+export default {
+  methods: {
+    add() {
+      this.$store.commit("add", 100)
+    },
+    asyncAdd() {
+      this.$store.dispatch("asyncAdd", 200)
+    }
+  }
+};
+</script>
+
+<style>
+html, body {
+  height: 100%;
+}
+
+#box {
+  width: 800px;
+  height: 500px;
+  margin: 0 auto;
+  border: 1px solid;
+  text-align: center;
+}
+</style>
+```
+
+store/index.js
+
+```js
+export const state = function () {
+  return {
+    count: 0
+  }
+}
+
+export const mutations = {
+  add(state, params) {
+    state.count += params
+  }
+}
+
+export const actions = {
+  asyncAdd({commit}, payload) {
+    commit("add", payload)
+  }
+}
+```
+
+### 模块的使用 module
+
+您可以将模块文件分解为单独的文件：`state.js`,`actions.js`,`mutations.js`和`getters.js`。如果您使用`index.js`来维护`state`,`getters`,`actions`和`mutations`，同时具有单个单独的操作文件，那么仍然可以正确识别该文件。
+
+如果在 store 里面写 xxx.js 那么记住导出 state 等以便外部调用,多个导出的 xxx.js 文件会被识别成为模块
+
+
+
+案例
+
+![vuex2](https://gitee.com/qianshilei/test/raw/master/img/vuex2.gif)
+
+pages/about.vue
+
+```vue
+<template>
+  <div class="about">
+    <h1>随机数: {{ random }}</h1>
+    <h2>把随机数添加到数组内</h2>
+    <div>{{ $store.state.modulesList.list }}</div>
+    <!-- 调用 moduleA 里面的数据 -->
+    <div>{{ $store.state.moduleA.str }}</div>
+    <button type="submit" @click="addList">把随机数添加到 modulesList 模块的 list 内</button>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      random: 0
+    }
+  },
+  methods: {
+    getRandom() {
+      let random = Math.floor(Math.random() * 10 - 0 + 0);
+      return random;
+    },
+    addList() {
+      let random = this.getRandom();
+      this.random = random;
+      // 调用 modulesList 模块里面的 addList 方法
+      this.$store.commit("modulesList/addList",random)
+    }
+  }
+}
+</script>
+```
+
+
+
+store/modulesList.js
+
+```js
+// 直接导出 nuxt 会识别 modulesLIst 为模块
+export const state = function () {
+  return {
+    list: [1, 2, 3, 4]
+  }
+}
+
+export const mutations = {
+  addList(state, payload) {
+    state.list.push(payload)
+  }
+}
+```
+
+
 
 
 
