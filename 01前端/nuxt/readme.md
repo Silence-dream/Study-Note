@@ -502,9 +502,104 @@ buildModules: [
 
 
 
-## 配置404页面
+### 配置404页面
 
 在 layouts 目录下创建 error.vue 文件即可匹配不存在的路由
+
+### 配置 Loading 组件
+
+components/LoadingBar.vue
+
+```vue
+<template lang="html">
+  <div class="loading-page" v-if="loading">
+    <p>Loading...</p>
+  </div>
+</template>
+
+<script>
+  export default {
+    data: () => ({
+      loading: false
+    }),
+    methods: {
+      start() {
+        this.loading = true
+      },
+      finish() {
+        this.loading = false
+      }
+    }
+  }
+</script>
+
+<style scoped>
+  .loading-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding-top: 200px;
+    font-size: 30px;
+    font-family: sans-serif;
+  }
+</style>
+```
+
+nuxt.config.js
+
+```js
+export default {
+  loading: '~/components/LoadingBar.vue'
+}
+```
+
+pages/index.js 使用
+
+```vue
+<template>
+  <div id="box">
+    <h1>index首页</h1>
+  </div>
+</template>
+
+<script>
+export default {
+  mounted() {
+    // DOM 更新完毕之后调用 loading
+    this.$nextTick(() => {
+      // 调用 loading 中的方法,记得在 nux.config.js 里面配置
+      this.$nuxt.$loading.start();
+      setTimeout(() => this.$nuxt.$loading.finish(), 3000);
+    });
+  },
+};
+</script>
+
+<style>
+html,
+body {
+  height: 100%;
+}
+
+#box {
+  width: 800px;
+  height: 500px;
+  margin: 0 auto;
+  border: 1px solid;
+  text-align: center;
+}
+</style>
+```
+
+
+
+
+
+
 
 ## asyncData 处理异步数据
 
@@ -550,6 +645,74 @@ div {
 }
 </style>
 ```
+
+
+
+## fetch 处理数据
+
+fetch 方法用于在渲染页面前填充应用的状态树（store）数据， 与 asyncData 方法类似，不同的是它不会设置组件的数据。
+
+如果页面组件设置了 `fetch` 方法，它会在组件每次加载前被调用（在服务端或切换至目标路由之前）。
+
+开发中会经常调用接口，返回的数据需要公共使用，需要把数据存到vuex上，可以在fetch中完成
+
+:::warning
+
+您无法在内部使用`this`获取**组件实例**，`fetch`是在**组件初始化之前**被调用
+
+:::
+
+pages/index.vue
+
+```vue
+<template>
+  <div class="box">
+    <h1>index</h1>
+    <nuxt-link to="/about">about</nuxt-link>
+    <ul v-for="item in list">
+      <li>{{ item.title }}</li>
+    </ul>
+  </div>
+</template>
+
+<script>
+import { mapState } from "vuex";
+export default {
+  async fetch({ $axios, store }) {
+    let {
+      data: { data: list }
+    } = await $axios.get("https://cnodejs.org/api/v1/topics");
+    store.commit("update", list);
+  },
+  computed: {
+    ...mapState(["list"])
+  }
+};
+</script>
+```
+
+store/index.js
+
+```js
+export const state = function() {
+  return {
+    list: [],
+    test: "123"
+  };
+};
+
+export const mutations = {
+  update(state, payload) {
+    state.list = payload;
+  }
+};
+```
+
+
+
+
+
+
 
 ## 动画 transition
 
@@ -1059,6 +1222,8 @@ export const mutations = {
   }
 }
 ```
+
+
 
 
 
