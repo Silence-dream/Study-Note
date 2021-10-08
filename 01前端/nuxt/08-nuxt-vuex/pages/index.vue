@@ -3,26 +3,33 @@
     <h1>index首页</h1>
     <nuxt-link to="/about">go to about</nuxt-link>
     <h2>{{ $store.state.count }}</h2>
+    
+    <h3>{{count}}</h3>
     <button @click="add">同步增加</button>
     <button @click="asyncAdd">异步增加</button>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   methods: {
     add() {
-      this.$store.commit("add", 100)
+      this.$store.commit("add", 100);
     },
     asyncAdd() {
-      this.$store.dispatch("asyncAdd", 200)
-    }
-  }
+      this.$store.dispatch("asyncAdd", 200);
+    },
+  },
+  computed: {
+    ...mapState(["count"]),
+  },
 };
 </script>
 
 <style>
-html, body {
+html,
+body {
   height: 100%;
 }
 
