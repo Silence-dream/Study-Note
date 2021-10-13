@@ -1,10 +1,25 @@
-export const state = function() {
+
+const cookieparser =  require('cookieparser');
+export const state = () => {
   return {
-    msg: '123213'
+    auth:null
   }
 }
-export const actions = {
-  nuxtServerInit(context,payload) {
 
+export const mutations = {
+  setAuth (state, payload) {
+    state.auth = payload;
+  }
+}
+
+export const actions = {
+  nuxtServerInit ({commit}, { req }) {
+    console.log('nuxtServerInit执行了');
+    let auth = null;
+    if (req.headers.cookie) {
+      console.log(req.headers.cookie,'req.headers.cookie');
+      auth = cookieparser.parse(req.headers.cookie);
+    }
+    commit('setAuth',auth);
   }
 }

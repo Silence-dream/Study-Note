@@ -1,11 +1,3 @@
-/*
- * @Author: ℳ๓₯㎕白月初
- * @Date: 2020-11-12 18:02:05
- * @LastEditors: OBKoro1
- * @LastEditTime: 2020-11-12 18:06:26
- * @FilePath: \Koa\03-HTTP Response .js
- */
-
 // Koa 默认的返回类型是text/plain，如果想返回其他类型的内容，可以先用ctx.request.accepts判断一下，客户端希望接受什么数据（根据 HTTP Request 的Accept字段），然后使用ctx.response.type指定返回类型。请看下面的例子（完整代码看这里）。
 
 /*

@@ -1,16 +1,23 @@
 <template>
-  <div class='box'>
-    <h1>{{ $store.state.msg }}</h1>
-    <button type='submit' @click='fn'>按钮</button>
+  <div class="home">
+    <div v-if="$store.state.auth">
+      <p>您已登录，可以访问<nuxt-link to="/my">我的页面</nuxt-link></p>
+      <p><button @click="logOut">退出登录</button></p>
+    </div>
+    <div v-else>请<nuxt-link to="/login">登录</nuxt-link></div>
   </div>
 </template>
 
 <script>
+const Cookie = require('js-cookie');
 export default {
   methods: {
-    fn() {
-      // console.log(this.$store.state.msg)
-    }
-  }
-}
+    logOut() {
+      setTimeout(() => {
+        this.$store.commit("setAuth", null);
+        Cookie.remove('token');
+      }, 2000);
+    },
+  },
+};
 </script>
