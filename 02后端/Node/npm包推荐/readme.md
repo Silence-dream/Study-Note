@@ -16,14 +16,6 @@
 
 `cz-conventional-changelog`：适配器。提供`conventional-changelog`标准（约定式提交标准）。基于不同需求，也可以使用不同适配器（比如: `cz-customizable`）。
 
-
-
-
-
-
-
-
-
 ## 代码规范
 
 
@@ -41,6 +33,22 @@
 
 ## 后端的JQuery
 cheerio : 一款后端获取dom的包,语法类似JQuery
+
+## 开发和生产环境的切换 
+
+[cross-env - npm (npmjs.com)](https://www.npmjs.com/package/cross-env)
+
+用法:
+
+```json
+{
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.js"
+  }
+}
+// 获取环境变量
+process.env.NODE_ENV
+```
 
 
 

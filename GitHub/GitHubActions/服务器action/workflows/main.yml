@@ -1,0 +1,36 @@
+name: GitHub Actions deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 切换分支
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
+      # npm install
+      - name: npm install and build 🔧
+        run: |
+          npm install
+          npm run build
+        env:
+          CI: true
+
+      # Deploy
+      - name: Deploy🚀
+        uses: easingthemes/ssh-deploy@v2.0.7
+        env:
+          # 你的私钥
+          SSH_PRIVATE_KEY: ${{ secrets.ACCESS_TOKEN }}
+          ARGS: "-rltgoDzvO"
+          SOURCE: "dist/"
+          # 服务器 ip
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          # 服务器 用户名
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          # 你要把文件放到服务器的哪个位置
+          TARGET: ${{ secrets.TARGET }}
