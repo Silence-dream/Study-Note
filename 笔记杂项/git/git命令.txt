@@ -95,3 +95,6 @@ git config -l可以看到配置项的最下面多出了一行我们刚刚配置�
 git lfs 解决大文件的问题
 git lfs install
 git lfs track "*.png"
+
+升级依赖包
+yarn upgrade-interactive --latest
