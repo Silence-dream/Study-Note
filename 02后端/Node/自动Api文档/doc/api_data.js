@@ -59,6 +59,17 @@ define({ "api": [
       ]
     },
     "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Number",
+            "optional": false,
+            "field": "status",
+            "description": "<p>状态码（1：登录成功，2：密码或账号错误，3：参数验证失败）</p>"
+          }
+        ]
+      },
       "examples": [
         {
           "title": "错误时返回:",

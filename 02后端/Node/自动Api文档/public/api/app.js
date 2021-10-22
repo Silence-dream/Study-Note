@@ -17,6 +17,7 @@ const app = express();
  * "is_admin": 2
  * }
  * }
+ * @apiError {Number} status 状态码（1：登录成功，2：密码或账号错误，3：参数验证失败）
  * @apiErrorExample {json} 错误时返回:
  * {
  *  code:500,
@@ -26,11 +27,9 @@ const app = express();
  * @throws \think\db\exception\DataNotFoundException
  * @throws \think\db\exception\ModelNotFoundException
  * @throws \think\exception\DbException
- * 
+ *
  */
 
 app.get("/admin", (req, res) => {
   res.send("接口文档");
 });
-
-
