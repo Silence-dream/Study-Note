@@ -93,3 +93,16 @@ export default defineConfig({
 
 [基于Vite2+Vue3的项目复盘总结 (juejin.cn)](https://juejin.cn/post/6969758357288648718#heading-9)
 
+### 在浏览器中展示源代码
+
+如果你使用的是 `Vue CLI 3` 及以上，请设置并更新 vue.config.js 内的 devtool property：
+
+```js
+// vue.config.js
+module.exports = {
+  configureWebpack: {
+    devtool: 'source-map'
+  }
+}
+```
+
