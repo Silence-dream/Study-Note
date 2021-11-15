@@ -96,7 +96,15 @@ const token =  await jwt.sign({"加密信息"}, secret, { expiresIn: "1h" });
 // Authorization: Bearer <token> 设置请求头
 ```
 
+## VueUse
 
+VueUse不是Vue.use，它是为Vue 2和3服务的一套Vue Composition API的常用工具集，是目前世界上Star最高的同类型库之一。它的初衷就是将一切原本并不支持响应式的JS API变得支持响应式，省去程序员自己写相关代码。
+
+```bash
+yarn add @vueuse/core
+```
+
+[vueuse.org/guide.html](https://link.juejin.cn/?target=https%3A%2F%2Flinks.jianshu.com%2Fgo%3Fto%3Dhttps%3A%2F%2Fvueuse.org%2Fguide.html)
 
 ## 参考文章
 
