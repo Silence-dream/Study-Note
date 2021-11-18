@@ -14,9 +14,9 @@ DISM /Online /Cleanup-image /RestoreHealth
 完成后重启，再键入以下命令：sfc /SCANNOW
 
 压缩 C盘
-　compact /compactos:always
+compact /compactos:always
 解除压缩
-　compact /compactos:never
+compact /compactos:never
 
 yarn 命令
 yarn cache clean 清理缓存
