@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>sumC------{{ sumC }}</div>
 </template>
 
 <script>
@@ -9,6 +9,7 @@ export default {
   setup() {
     // 定义变量
     const count = ref(23);
+    const sum = ref(0);
     const plusOne = computed({
       // 定义函数get 让count加1
       get: () => {
@@ -28,6 +29,12 @@ export default {
     // 使用plusOne.value = 某些值 会调用plusOne里面的 set 方法进行处理
     plusOne.value = 1;
     console.log("count : ", count.value); // 0
+    let sumC = computed(() => {
+      return sum.value + 100;
+    });
+    return {
+      sumC
+    };
   }
 };
 </script>
