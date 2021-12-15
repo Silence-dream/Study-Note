@@ -160,11 +160,428 @@ export * from "e"; // ExportAllDeclaration
 
 Expression 是表达式的意思，特点是执行完以后有返回值，这是和语句 (statement) 的区别。
 
+```js
+[1,2,3]         // ArrayExpression 数组表达式
+a = 1           // AssignmentExpression 赋值表达式
+1 + 2;          // BinaryExpression 二元表达式
+-1;             // UnaryExpression 一元表达式
+function(){};   // FunctionExpression 函数表达式
+() => {};       // ArrowFunctionExpression 箭头函数表达式
+class{};        // ClassExpression class 表达式
+a;              // Identifier 表达式
+this;           // ThisExpression this 表达式
+super;          // Super super
+a::b;           // BindExpression 绑定表达式
+```
+
+为什么 identifier 和 super 怎么也是表达式呢？
+
+其实有的节点可能会是多种类型，identifier、super 有返回值，符合表达式的特点，所以也是 expression。
+
+我们判断 AST 节点是不是某种类型要看它是不是符合该种类型的特点，比如`语句的特点是能够单独执行`，`表达式的特点是有返回值`。
+
+有的表达式可以单独执行，符合语句的特点，所以也是语句，比如赋值表达式、数组表达式等，但有的表达式不能单独执行，需要和其他类型的节点组合在一起构成语句。比如匿名函数表达式和匿名 class 表达式单独执行会报错。
+
+```js
+function(){};
+class{}
+```
+
+需要和其他部分一起构成一条语句，比如组成赋值语句
+
+```js
+a = function() {}
+b = class{}
+```
+
+表达式语句解析成 AST 的时候会包裹一层 ExpressionStatement 节点，代表这个表达式是被当成语句执行的。
+
+**小结**：表达式的特点是有返回值，有的表达式可以独立作为语句执行，会包裹一层 ExpressionStatement。
+
+##### Class
+
+class 的语法也有专门的 AST 节点来表示。
+
+整个 class 的内容是 ClassBody，属性是 ClassProperty，方法是ClassMethod（通过 kind 属性来区分是 constructor 还是 method）。
+
+比如下面的代码
+
+```js
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  sayName() {
+    console.log(this.name);
+  }
+}
+```
+
+对应的 AST
+
+::: details 点击展开
+
+```json
+  "body": [
+    {
+      "type": "ClassDeclaration",
+      "start": 0,
+      "end": 110,
+      "range": [
+        0,
+        110
+      ],
+      "id": {
+        "type": "Identifier",
+        "start": 6,
+        "end": 12,
+        "range": [
+          6,
+          12
+        ],
+        "name": "Person"
+      },
+      "superClass": null,
+      "body": {
+        "type": "ClassBody",
+        "start": 13,
+        "end": 110,
+        "range": [
+          13,
+          110
+        ],
+        "body": [
+          {
+            "type": "MethodDefinition",
+            "start": 17,
+            "end": 62,
+            "range": [
+              17,
+              62
+            ],
+            "kind": "constructor",
+            "static": false,
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 17,
+              "end": 28,
+              "range": [
+                17,
+                28
+              ],
+              "name": "constructor"
+            },
+            "value": {
+              "type": "FunctionExpression",
+              "start": 28,
+              "end": 62,
+              "range": [
+                28,
+                62
+              ],
+              "id": null,
+              "expression": false,
+              "generator": false,
+              "async": false,
+              "params": [
+                {
+                  "type": "Identifier",
+                  "start": 29,
+                  "end": 33,
+                  "range": [
+                    29,
+                    33
+                  ],
+                  "name": "name"
+                }
+              ],
+              "body": {
+                "type": "BlockStatement",
+                "start": 35,
+                "end": 62,
+                "range": [
+                  35,
+                  62
+                ],
+                "body": [
+                  {
+                    "type": "ExpressionStatement",
+                    "start": 41,
+                    "end": 58,
+                    "range": [
+                      41,
+                      58
+                    ],
+                    "expression": {
+                      "type": "AssignmentExpression",
+                      "start": 41,
+                      "end": 57,
+                      "range": [
+                        41,
+                        57
+                      ],
+                      "operator": "=",
+                      "left": {
+                        "type": "MemberExpression",
+                        "start": 41,
+                        "end": 50,
+                        "range": [
+                          41,
+                          50
+                        ],
+                        "object": {
+                          "type": "ThisExpression",
+                          "start": 41,
+                          "end": 45,
+                          "range": [
+                            41,
+                            45
+                          ]
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "start": 46,
+                          "end": 50,
+                          "range": [
+                            46,
+                            50
+                          ],
+                          "name": "name"
+                        },
+                        "computed": false
+                      },
+                      "right": {
+                        "type": "Identifier",
+                        "start": 53,
+                        "end": 57,
+                        "range": [
+                          53,
+                          57
+                        ],
+                        "name": "name"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "MethodDefinition",
+            "start": 65,
+            "end": 108,
+            "range": [
+              65,
+              108
+            ],
+            "kind": "method",
+            "static": false,
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 65,
+              "end": 72,
+              "range": [
+                65,
+                72
+              ],
+              "name": "sayName"
+            },
+            "value": {
+              "type": "FunctionExpression",
+              "start": 72,
+              "end": 108,
+              "range": [
+                72,
+                108
+              ],
+              "id": null,
+              "expression": false,
+              "generator": false,
+              "async": false,
+              "params": [],
+              "body": {
+                "type": "BlockStatement",
+                "start": 75,
+                "end": 108,
+                "range": [
+                  75,
+                  108
+                ],
+                "body": [
+                  {
+                    "type": "ExpressionStatement",
+                    "start": 81,
+                    "end": 104,
+                    "range": [
+                      81,
+                      104
+                    ],
+                    "expression": {
+                      "type": "CallExpression",
+                      "start": 81,
+                      "end": 103,
+                      "range": [
+                        81,
+                        103
+                      ],
+                      "callee": {
+                        "type": "MemberExpression",
+                        "start": 81,
+                        "end": 92,
+                        "range": [
+                          81,
+                          92
+                        ],
+                        "object": {
+                          "type": "Identifier",
+                          "start": 81,
+                          "end": 88,
+                          "range": [
+                            81,
+                            88
+                          ],
+                          "name": "console"
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "start": 89,
+                          "end": 92,
+                          "range": [
+                            89,
+                            92
+                          ],
+                          "name": "log"
+                        },
+                        "computed": false
+                      },
+                      "arguments": [
+                        {
+                          "type": "MemberExpression",
+                          "start": 93,
+                          "end": 102,
+                          "range": [
+                            93,
+                            102
+                          ],
+                          "object": {
+                            "type": "ThisExpression",
+                            "start": 93,
+                            "end": 97,
+                            "range": [
+                              93,
+                              97
+                            ]
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "start": 98,
+                            "end": 102,
+                            "range": [
+                              98,
+                              102
+                            ],
+                            "name": "name"
+                          },
+                          "computed": false
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+```
+
+:::
 
 
 
+##### Modules
+
+es module 是语法级别的模块规范，所以也有专门的 AST 节点。
+
+##### import
+
+import 有 3 种语法：
+
+named import：
+
+```javascript
+import {c, d} from 'c';
+```
+
+default import：
+
+```javascript
+import a from 'a';
+```
+
+namespaced import:
+
+```javascript
+import * as b from 'b';
+```
+
+这 3 种语法都对应 ImportDeclaration 节点，但是 specifiers 属性不同，分别对应 ImportSpicifier、ImportDefaultSpecifier、ImportNamespaceSpcifier。
+
+##### export
+
+export 也有3种语法：
+
+named export：
+
+```javascript
+export { b, d};
+```
+
+default export：
+
+```javascript
+export default a;
+```
+
+all export：
+
+```javascript
+export * from 'c';
+```
+
+分别对应 ExportNamedDeclaration、ExportDefaultDeclaration、ExportAllDeclaration 的节点
+
+其中 ExportNamedDeclaration 才有 specifiers 属性，其余两种都没有这部分（也比较好理解，export 不像 import 那样结构类似，这三种 export 语法结构是不一样的，所以不是都包含 specifier）。
+
+比如这三种 export
+
+```javascript
+export { b, d};
+export default a;
+export * from 'c';
+```
+
+##### Program & Directive
+
+program 是代表整个程序的节点，它有 body 属性代表程序体，存放 statement 数组，就是具体执行的语句的集合。还有 directives 属性，存放Directive 节点，比如`"use strict"` 这种指令会使用 Directive 节点表示。
+
+![img](img/154a6b04020047a0aa8eec9a29ae2d7f~tplv-k3u1fbpfcp-watermark.awebp)
+
+##### File & Comment
+
+babel 的 AST 最外层节点是 File，它有 program、comments、tokens 等属性，分别存放 Program 程序体、注释、token 等，是最外层节点。
+
+注释分为块注释和行内注释，对应 CommentBlock 和 CommentLine 节点。
+
+![img](img/54eb07649db14476a27d61b4265fe547~tplv-k3u1fbpfcp-watermark.awebp)
 
 ## 参考
+
+[Babel 通关秘籍]](https://juejin.cn/book/6946117847848321055)
 
 [QuarkGluonPlasma (github.com)](https://github.com/QuarkGluonPlasma)
 
