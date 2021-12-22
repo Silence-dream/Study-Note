@@ -12,7 +12,13 @@
 yarn add husky@4.3.8 -D
 ```
 
+新版本 
 
+[手摸手教你使用最新版husky(v7.0.1)让代码更优雅规范 - 掘金 (juejin.cn)](https://juejin.cn/post/6982192362583752741)
+
+[husky7.0.1 + commitlint 配置提交代码检查和规范踩坑指南 - 掘金 (juejin.cn)](https://juejin.cn/post/6988116616923840549#heading-2)
+
+[husky 无效？ 新版本 husky 怎么配置？ - 蒋大忙 - 博客园 (cnblogs.com)](https://www.cnblogs.com/ly0612/p/15545803.html)
 
 `lint-staged`：检测文件，只对暂存区中**有改动的文件**进行检测，可以在提交前进行Lint操作
 
