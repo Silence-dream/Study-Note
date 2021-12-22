@@ -78,6 +78,9 @@ $ git reset --hard HEAD^         回退到上个版本
 $ git reset --hard HEAD~3        回退到前3次提交之前，以此类推，回退到n次提交之前
 $ git reset --hard commit_id     退到/进到 指定commit的sha码
 
+删除分支
+git push origin --delete 分支名 
+git branch -D 分支名
 
 合并
 git rebase
@@ -103,3 +106,13 @@ git lfs track "*.png"
 
 升级依赖包
 yarn upgrade-interactive --latest
+
+git 换行符
+# 提交时转换为LF，检出时转换为CRLF
+git config --global core.autocrlf true
+
+# 提交时转换为LF，检出时不转换
+git config --global core.autocrlf input
+
+# 提交检出均不转换
+git config --global core.autocrlf false
