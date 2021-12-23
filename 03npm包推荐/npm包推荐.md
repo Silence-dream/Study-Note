@@ -1,9 +1,3 @@
-
-
-
-
-
-
 ## Git Hooks
 
 `husky`：触发Git Hooks,执行脚本
@@ -12,7 +6,21 @@
 yarn add husky@4.3.8 -D
 ```
 
-新版本 
+新版本 使用方法
+```
+npm install husky --save-dev
+
+# package.json
+"scripts": {
+    "prepare": "husky install"
+}
+# .git/hooks/pre-commit
+yarn husky add .husky/pre-commit 'npm run lint"
+
+# .git/hooks/commit-msg
+yarn husky add .husky/commit-msg 'npx --no-install commitlint --edit $1"
+
+```
 
 [手摸手教你使用最新版husky(v7.0.1)让代码更优雅规范 - 掘金 (juejin.cn)](https://juejin.cn/post/6982192362583752741)
 
@@ -47,6 +55,21 @@ yarn add lint-staged -D
 `commitlint`: 检查`message`是否符合规范
 
 `cz-conventional-changelog`：适配器。提供`conventional-changelog`标准（约定式提交标准）。基于不同需求，也可以使用不同适配器（比如: `cz-customizable`）。
+
+
+```
+# https://github.com/commitizen/cz-cli
+npm i commitizen cz-conventional-changelog
+
+
+# package.json
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+```
+
 
 ## 代码规范
 
