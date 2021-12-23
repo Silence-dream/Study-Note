@@ -7,6 +7,6 @@
     "url": "http://localhost:3000" 
   },
   "scripts": {
-    "aipdoc":"aipdoc -i public"
+    "apidoc":"apidoc -i public"
   }
 }

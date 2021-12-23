@@ -23,7 +23,7 @@ apidoc -i 输入路径 -o 输出路径(默认为doc) # 剩下两个 -f和-t不�
 
 ## 配置apidoc.json
 
--   在根目录下面新建apidoc.json
+- 在根目录下面新建apidoc.json
 
 ```json
 {
