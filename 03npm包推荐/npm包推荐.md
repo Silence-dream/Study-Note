@@ -8,7 +8,7 @@ yarn add husky@4.3.8 -D
 
 新版本 使用方法
 
-```
+```bash
 npm install husky --save-dev
 
 # package.json
@@ -55,9 +55,9 @@ yarn add lint-staged -D
 
 `cz-conventional-changelog`：适配器。提供`conventional-changelog`标准（约定式提交标准）。基于不同需求，也可以使用不同适配器（比如: `cz-customizable`）。
 
-```
+```bash
 # https://github.com/commitizen/cz-cli
-npm i commitizen cz-conventional-changelog
+npm i @commitlint/cli @commitlint/config-conventional -D commitizen cz-conventional-changelog
 
 
 # package.json
@@ -67,7 +67,11 @@ npm i commitizen cz-conventional-changelog
     }
   }
 
-echo "module.exports = {extends: ['@commitlint/config-conventional']};" > commitlint.config.js
+# .commitlintrc.js
+module.exports = {
+  extends: ["@commitlint/config-conventional"],
+  rules: {},
+};
 ```
 
 ## 代码规范
