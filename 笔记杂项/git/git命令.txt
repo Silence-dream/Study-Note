@@ -116,3 +116,10 @@ git config --global core.autocrlf input
 
 # 提交检出均不转换
 git config --global core.autocrlf false
+
+# 分支
+git remote update origin --prune 拉全部分支
+git checkout -b dev 创建并切换分支
+git branch -D dev 删分支
+git push --delete origin branchName 删远程分支
+git checkout -t origin/dev 拉去并创建分支
