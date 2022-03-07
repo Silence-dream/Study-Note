@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{msg}}</h1>
+    <h2>{{arr}}</h2>
+  </div>
+  <script src="./vue2.6.14.js"></script>
+  <script>
+    let vm = new Vue({
+      el: "#app",
+      data: {
+        msg: '你好vue2',
+        arr: [1, 2, 3, 4, 5, 6],
+      },
+      created() {
+        this.arr[0] = 55
+      },
+    })
+  </script>
+</body>
+
+</html>
