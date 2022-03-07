@@ -1,3 +1,6 @@
+windows 端口占用
+net stop winnat
+net start winnat
 windows快速删除文件命令
 
 del /f/s/q 文件夹名字 > null
