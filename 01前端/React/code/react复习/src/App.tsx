@@ -11,6 +11,11 @@ import {Demo1, Demo2} from "./components/Demo";
 import FormShouKong from "./components/FormShouKong";
 import FormFeiShouKong from "./components/FormFeiShouKong";
 import PotalM from "./components/PotalM";
+import Reducer from "./components/Reducer";
+import LayoutEffect from "./components/LayoutEffect";
+import UseRef from "./components/UseRef";
+import Memo from "./components/Memo";
+import UseMemoUse from "./components/UseMemo";
 
 function App () {
   const [person, setPerson] = useState ({
@@ -49,6 +54,11 @@ function App () {
       <Demo2/>
       <FormShouKong></FormShouKong>
       <FormFeiShouKong></FormFeiShouKong>
+      <Reducer/>
+      <LayoutEffect/>
+      <UseRef/>
+      <Memo/>
+      <UseMemoUse/>
       {/*  传送门 */}
       <PotalM/>
     </div>

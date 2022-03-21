@@ -1,8 +1,9 @@
 body{
-  height: 5000px;
+  height: 6000px;
 }
 .App {
   text-align: center;
+  height: 6000px;
 }
 
 .App-logo {
