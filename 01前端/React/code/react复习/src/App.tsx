@@ -16,6 +16,10 @@ import LayoutEffect from "./components/LayoutEffect";
 import UseRef from "./components/UseRef";
 import Memo from "./components/Memo";
 import UseMemoUse from "./components/UseMemo";
+import RChildren from "./components/RChildren";
+import ReduxStore from "./components/ReduxStore";
+import UseCallBack from "./components/UseCallBack";
+import UseImperativeHandle from "./components/UseImperativeHandle";
 
 function App () {
   const [person, setPerson] = useState ({
@@ -59,6 +63,13 @@ function App () {
       <UseRef/>
       <Memo/>
       <UseMemoUse/>
+      <UseCallBack/>
+      <RChildren>
+        <h1>传入的</h1>
+        传入的
+      </RChildren>
+      <ReduxStore/>
+      <UseImperativeHandle/>
       {/*  传送门 */}
       <PotalM/>
     </div>

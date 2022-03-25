@@ -12,7 +12,7 @@
 
 React 是一个开源的 JavaScript 库，用于构建 web 应用中的视图层，实际上就是 web 应用中的前端用户界面。
 
-<img src="./assets/images/01.png" align="left" width="70%"/>
+<img src="./assets/images/01.jpeg" align="left" width="70%"/>
 
 使用 React 构建的客户端 web 应用可以快速响应用户操作，使 web 应用的使用体验近乎于移动 App。
 
@@ -23,8 +23,10 @@ React 是一个开源的 JavaScript 库，用于构建 web 应用中的视图层
 React 允许开发人员将用户界面代码和逻辑代码进行完美融合，以更加灵活的方式创建用户界面。
 
 ```react
+import React from "react"
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
+  return React.createELement('h1', null , 'hello')
 }
 ```
 
@@ -320,9 +322,7 @@ const text = <p>{getValue()}</p>
 
 ```react
 // 插入对象
-const obj = {name: "张三"};
-const text = <p>{obj}</p>
-const other = <p>{{name: "李四"}}</p>
+const other = <p style={{width: 200}}>{{name: "李四"}}</p>
 ```
 
 ### 1.4 create-react-app
@@ -331,7 +331,9 @@ const other = <p>{{name: "李四"}}</p>
 
 ```bash
 npm install create-react-app -g
+create-react-app react-demo
 npm init react-app react-demo
+npx create-react-app react-demo
 ```
 
 ## 2. 组件化开发基础
@@ -412,12 +414,12 @@ function Paragraph() {
 
 在调用组件时，可以通过为组件标签添加属性的方式向组件内部传递数据，实现差异化组件复用。
 
+<img src="./assets/images/07.png" />
+
 ```react
 <Paragraph msg="I am first" />
 <Paragraph msg="I am second" />
 ```
-
-<img src="./assets/images/07.png" />
 
 在组件内部，通过组件函数参数接收组件外部传递进来的数据，组件函数的第一个参数是对象类型，存储了所有外部通过属性的方式传递进来的数据。
 
@@ -526,9 +528,9 @@ function Footer() {
 function Layout(props) {
   return (
     <>
-    <Header />
-    <div>{props.children}</div>
-    <Footer />
+      <Header />
+      <div>{props.children}</div>
+      <Footer />
     </>
   );
 }
@@ -555,6 +557,7 @@ function AboutPage() {
 function App () {
   const onClickHandler = () => {
     console.log('Hello, Event')
+    r
   }
   return <button onClick={onClickHandler}>按钮</button>
 }
@@ -577,15 +580,6 @@ function App () {
 function App () {
   const onClickHandler = (event) => {}
   return <button onClick={onClickHandler}>按钮</button>
-}
-```
-
-事件处理函数在传递了参数的情况下，最后一个参数就是事件对象。
-
-```react
-function App () {
-  const onClickHandler = (arg1, arg2, event) => {}
-  return <button onClick={() => onClickHandler('a', 'b')}>按钮</button>
 }
 ```
 
@@ -707,7 +701,7 @@ const data = [
 
 ##### 2. 列表渲染(map)
 
-map 方法用于对列表中的数据进行转换，转换后的结果被存放在一个新的数组中。
+map 方法用于对列表中的每一项数据进行转换，转换后的结果被存放在一个新的数组中。
 
 ```javascript
 let array = [1, 2, 3, 4]
@@ -858,7 +852,7 @@ React 使用函数作为组件，但是函数自身有重大限制，就是不�
 function App() {
   // initialState 参数是初始渲染期间使用的状态，在随后的渲染中，它被忽略。
   // 返回值是一个数组，从数组中结构出来的第一个值是状态变量，第二个值是更改状态的方法。
-  const [value, setValue] = React.useState("initialState");
+  const [value, setValue] = React.useState("initialState");  
   return (
     <>
       <p>{value}</p>
@@ -890,31 +884,21 @@ function App() {
 }
 ```
 
-组件状态数据发生变化后会触发视图更新，视图更新意味着组件函数被重新执行，虽然组件函数重新执行了，但是状态变量并没有被释放，组件状态在每次组件函数重新执行后被保留了下来。
-
-组件中的普通变量就不具备此功能，普通变量被更改后不会触发视图更新，而且当真正的组件状态变化后组件函数重新执行，普通变量也被重置为初始值。
+修改状态的方法可以接收回调函数作为参数，在参数回调函数中返回最新状态，好处是可以将修改状态的逻辑包裹在一起。
 
 ```react
 function App() {
   const [count, setCount] = React.useState(0);
-  let number = 0;
-  console.log("rerender", number);
-  return (
-    <>
-      <p>{count}</p>
-      <button onClick={() => setCount(count + 1)}>+1</button>
-      <button
-        onClick={() => {
-          number = number + 1;
-          console.log("onClick", number);
-        }}
-        >
-        {number}
-      </button>
-    </>
-  );
+  const onClickHandler = () => {
+    setCount((currentCount) => {
+      return currentCount + 1;
+    });
+  }
+  return <button onClick={onClickHandler}>{value}</button>;
 }
 ```
+
+钩子函数只能在组件内部第一层作用域中调用，不能组件内部的方法中调用，也不能在 if 条件判断中调用。
 
 <img src="./assets/images/33.png"/>
 
@@ -1122,12 +1106,12 @@ function Machine(props) {
 ```react
 // 以下两种写法是等价的
 function App() {
-  const values = { sayHello: "Hello", sayHi: "hi" };
-  return <Message sayHello={values.sayHello} sayHi={values.sayHi} />;
+  const greeting = { sayHello: "Hello", sayHi: "hi" };
+  return <Message sayHello={greeting.sayHello} sayHi={greeting.sayHi} />;
 }
 function App() {
-  const values = { sayHello: "Hello", sayHi: "hi" };
-  return <Message {...values} />;
+  const greeting = { sayHello: "Hello", sayHi: "hi" };
+  return <Message {...greeting} />;
 }
 ```
 
@@ -1412,9 +1396,9 @@ function App() {
   };
   return (
     <>
-    	<input type="radio" name="size" value="m"  onChange={onChangeHandler} checked={formState.size === "m"} />
+    	<input type="radio" name="size" value="m"  onChange={onChangeHandler} />
     	<span>M</span>
-    	<input type="radio" name="size" value="s" onChange={onChangeHandler} checked={formState.size === "s"} />
+    	<input type="radio" name="size" value="s" onChange={onChangeHandler} />
     	<span>S</span>
 		</>
 	);
@@ -1590,7 +1574,7 @@ function App () {
 
 ##### 2. forwardRef
 
-通过 forwardRef 方法可以实现子组件中 DOM 对象的获取。
+通过 forwardRef 方法可以实现获取子组件中的 DOM 元素 。
 
 ```react
 // src/App.js
@@ -1615,10 +1599,9 @@ import { forwardRef } from "react";
 function Message(props, ref) {
   return <span ref={ref}>I am span</span>;
 }
+
 export default forwardRef(Message);
 ```
-
-
 
 ##### 3. 非受控表单组件
 
@@ -1669,7 +1652,7 @@ import "./styles.css";
 ```react
 // src/App.js
 function App() {
-  return <button class="button">button</button>;
+  return <button className="button">button</button>;
 }
 ```
 
@@ -1829,7 +1812,7 @@ export default Modal;
 }
 ```
 
-#### 2.8.2 传送门组件
+#### 2.8.2 传送门
 
 通过 `ReactDOM.createPortal` 方法可以将指定组件渲染到指定位置。
 
@@ -1883,16 +1866,14 @@ function App() {
 
 ```react
 function App() {
-  const [obj, setObj] = useState({});
+  const [count, setCount] = useState(0);
   const onClickHandler = () => {
-    setObj({ a: 1 });
-    setObj({ b: 1 });
-    setObj({ c: 1 });
-    setObj({ d: 1 });
-    // 最终的状态结果就是 { d: 1 }
-    // 注意这里是状态对象整体覆盖，而不是属性合并
+    setCount(count + 1);
+    setCount(count + 1);
+    setCount(count + 1);
+    setCount(count + 1);
   };
-  return <button onClick={onClickHandler}>{JSON.stringify(obj)}</button>;
+  return <button onClick={onClickHandler}>{count}</button>;
 }
 ```
 
@@ -1902,16 +1883,14 @@ function App() {
 
 ```react
 function App() {
-  const [obj, setObj] = useState({});
+  const [count, setCount] = useState(0);
   const onClickHandler = () => {
-    setObj((prev) => ({ ...prev, a: 1 }));
-    setObj((prev) => ({ ...prev, b: 1 }));
-    setObj((prev) => ({ ...prev, c: 1 }));
-    setObj((prev) => ({ ...prev, d: 1 }));
-    // 最终的状态结果就是 { a: 1, d: 1, c: 1, d: 1 }
-    // 每一个 prev 参数都是上一次合并的结果
+    setCount((count) => count + 1);
+    setCount((count) => count + 1);
+    setCount((count) => count + 1);
+    setCount((count) => count + 1);
   };
-  return <button onClick={onClickHandler}>{JSON.stringify(obj)}</button>;
+  return <button onClick={onClickHandler}>{count}</button>;
 }
 ```
 
@@ -1957,8 +1936,6 @@ function App() {
 export default App;
 ```
 
-
-
 ### 3.2 useReducer
 
 #### 3.2.1 概述
@@ -1973,7 +1950,7 @@ export default App;
 
 要使用 useReducer 方法就必须遵循它的使用规则、了解它的工作流程。
 
-action 对象：用于描述对组件状态进行怎样的操作。
+action 对象：用于描述对组件状态进行怎样的操作。 
 
 dispatch 方法：用于触发对状态的操作，接收 action 对象作为参数。
 
@@ -2132,7 +2109,6 @@ import ShowName from "./ShowName";
 
 function App() {
   const [index, setIndex] = useState(0);
-  const [name] = useState("张三");
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => prev + 1);
@@ -2142,7 +2118,7 @@ function App() {
   return (
     <>
       <p>{index}</p>
-      <ShowName name={name} />
+      <ShowName name="张三" />
     </>
   );
 }
@@ -2181,7 +2157,7 @@ memo 方法内部采用的是浅层比较，比较基本数据类型的值是否
 以下代码在父组件每次重新渲染时都会生成新的 person 对象，memo 方法在内部比较时每次得到的都是不同的对象，所以每次子组件也会跟着重新渲染。
 
 ```react
-<ShowName person={{ name: "张三" }} />
+<ShowPerson person={{ name: "张三" }} />
 ```
 
 memo 方法的第二个参数即为比较函数，可以通过它解决以上问题。比较函数的第一个参数为 prevProps，比较函数的第二个参数为 nextProps, 比较函数返回 true 不进行渲染，比较函数返回 false 组件重新渲染。
@@ -2196,8 +2172,6 @@ function compareFunction(prevProps, nextProps) {
   return false;
 }
 ```
-
-
 
 ### 3.6 useMemo
 
@@ -2246,7 +2220,7 @@ export default App;
 
 通过 `useMemo` 方法可以对组件中的值进行缓存，就是说在每次组件重新渲染时都返回相同的值，也可以指定哪些状态发生改变时重新计算该值。
 
-`useMemo` 有助于避免在每个渲染上进行昂贵的计算，提示组件性能。
+`useMemo` 有助于避免在每个渲染上进行昂贵的计算，提升组件性能。
 
 ```react
 import { useEffect, useMemo, useState } from "react";
@@ -2375,6 +2349,7 @@ function App() {
   const messageRef = useRef();
   const onClickHandler = () => {
     console.log(messageRef.current.getText());
+    console.log(messageRef.current.input);
   };
   return (
     <>
@@ -2389,19 +2364,22 @@ export default App;
 
 ```react
 // src/Message.js
-import { forwardRef, useImperativeHandle, useState } from "react";
+import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 
 function Message(props, ref) {
   const [text, setText] = useState("");
+  const inputRef = useRef();
   useImperativeHandle(ref, () => {
     return {
       getText() {
         return text;
       },
+      input: inputRef.current,
     };
   });
   return (
     <input
+      ref={inputRef}
       type="text"
       value={text}
       onChange={(event) => setText(event.target.value)}
@@ -2420,7 +2398,7 @@ React 允许开发者创建自定义钩子函数用于向组件中添加功能�
 
 自定义钩子函数其实就是应用逻辑和内置钩子函数的组合。
 
-#### 3.9.2 useStorage
+#### 3.9.2 useLocalStorage
 
 用于将组件状态实时同步到本地存储 localStorage。
 
@@ -2454,6 +2432,7 @@ export function useLocalStorage(key, initialValue) {
 ```react
 function App() {
   const [name, setName] = useLocalStorage("name", "Bob");
+  
   return (
     <div>
       <input
@@ -2502,6 +2481,7 @@ function App() {
 import { useCallback, useEffect, useState } from "react";
 
 export default function useAsync(asyncFunction, immediate = false) {
+  // idle: 空闲 pending: 等待 success: 成功 error: 失败
   const [status, setStatus] = useState("idle");
   const [value, setValue] = useState(null);
   const [error, setError] = useState(null);
@@ -2563,7 +2543,7 @@ export default App;
 
 #### 3.9.5 useHover
 
-用于检测元素的鼠标移入移除操作。
+用于检测元素的鼠标移入移出操作。
 
 ```react
 import { useEffect, useRef, useState } from "react";
@@ -2571,12 +2551,12 @@ import { useEffect, useRef, useState } from "react";
 export default function useHover() {
   const [value, setValue] = useState(false);
   const elementRef = useRef();
-  const handleMouseEnter = () => setValue(true);
-  const handleMouseLeave = () => setValue(false);
 
   useEffect(() => {
     const node = elementRef.current;
     if (!node) return;
+    const handleMouseEnter = () => setValue(true);
+  	const handleMouseLeave = () => setValue(false);
     node.addEventListener("mouseenter", handleMouseEnter);
     node.addEventListener("mouseleave", handleMouseLeave);
     return () => {
@@ -2644,7 +2624,7 @@ export default App;
 
 #### 3.9.7 useReducerAsync
 
-通过 useReducerAsync 自定义钩子函数可以实现在 useReducer 的工作流程中融入副作用代码。
+通过 useReducerAsync 自定义钩子函数可以实现在 useReducer 的工作流程中加入副作用代码。
 
 首先看一段没有该钩子函数的代码，需求是在点击按钮时获取id值为1的任务对象。
 
@@ -2715,16 +2695,10 @@ const asyncHandlers = {
 };
 
 function App() {
-  const [state, dispatch] = useReducerAsync(
-    reducer,
-    initialState,
-    asyncHandlers
-  );
+  const [state, dispatch] = useReducerAsync(reducer, initialState, asyncHandlers);
   return (
     <div>
-      <button onClick={() => dispatch({ type: "loadTodo", payload: 1 })}>
-        button
-      </button>
+      <button onClick={() => dispatch({ type: "loadTodo", payload: 1 })}>button</button>
       <div>{JSON.stringify(state, null, 2)}</div>
     </div>
   );
@@ -2826,7 +2800,7 @@ function Message(props) {
 
 #### 3.10.4 toArray
 
-`props.children` 内存储多个值时是数组类型，存储一个值时为对象类型。
+`props.children` 存储多个值时是数组类型，存储一个值时为对象类型。
 
 通过 `Children.toArray` 方法可以将 `props.children` 转换为数组类型，以保证 `Children.map` 方法永远有用。
 
@@ -2868,7 +2842,9 @@ import { useEffect, useState, Children } from "react";
 
 function ImageToggle(props) {
   const [state, setState] = useState({
+    // 当前要显示的图片的索引
     current: 0,
+    // 总共有多少张图片, 用于索引的溢出判断
     total: 0,
   });
   useEffect(() => {
@@ -2922,8 +2898,8 @@ export function AppProvider({ children }) {
 ```react
 // src/App.js
 import Bar from "./Bar";
-import { AppProvider } from "./Context";
 import Foo from "./Foo";
+import { AppProvider } from "./Context";
 
 function App() {
   return (
@@ -3075,17 +3051,17 @@ export default Bar;
 import { memo, useContext, useEffect } from "react";
 import { AppContenxt } from "./Context";
 
-function Bar() {
-  const [appContext] = useContext(AppContenxt);
-  return <BarContext bar={appContext.bar} />;
-}
-
 const BarContext = memo((props) => {
   useEffect(() => {
     console.log("BarContext render");
   });
   return <div>{props.bar}</div>;
 });
+
+function Bar() {
+  const [appContext] = useContext(AppContenxt);
+  return <BarContext bar={appContext.bar} />;
+}
 
 export default Bar;
 ```
@@ -3433,6 +3409,9 @@ function messageReducer(state = messageInitialState, action) {
 // 所以现在用于存储状态的 store 对象长成这样: {counter: {count: 0}, message: {value: ""}}
 // combineReducers 方法的返回值就是合并好的 reducer 函数, 我们可以将它传递给 createStore 方法
 // reducer 函数状态拆分是为了方便代码维护，reducer 函数合并是为了将 reducer 函数作为参数传递给 createStore 方法
+
+// {count: 0, message: ''}
+// {counter: {count: 0}, message: {value: ''}}
 const reducers = combineReducers({
   counter: counterReducer,
   message: messageReducer,
@@ -3623,8 +3602,9 @@ export const useActions = () => {
 };
 
 /**
- * actionCreators => {searchPackages: (){}}
- * bindActionCreators => {searchPackages: dispatch(searchPackages)}
+ * actionCreators 是一个对象，对象中存储了所有的 action creator 函数
+ * actionCreators => {increment: (){}, save_message: () {}}
+ * bindActionCreators => {increment: dispatch(increment)}
  */
 ```
 
@@ -3700,6 +3680,10 @@ export const store = createStore(rootReducer, applyMiddleware(speak, logger));
 
 2. 在应用中安装 `redux-devtools-extension` 
 
+   ```bash
+   npm install redux-devtools-extension
+   ```
+
 3. 在应用中进行配置以开启调试工具
 
    ```javascript
@@ -3707,7 +3691,9 @@ export const store = createStore(rootReducer, applyMiddleware(speak, logger));
    const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)))
    ```
 
-##### 5. redux-thunk
+#### 4.1.9 redux-thunk
+
+##### 1. 基本使用
 
 redux-thunk 是 Redux 官方提供的用于在 Redux 工作流程中加入异步代码的中间件。
 
@@ -3780,7 +3766,17 @@ export default function packagesReducer(state = initialState, action) {
 }
 ```
 
-第五步：创建 Action Creator 函数并在其中完成异步逻辑
+第五步：将 packagesReducer 合并到根 reducer
+
+```react
+import packagesReducer from "./packages"
+
+export const reducers = combineReducers({
+  packages: packagesReducer,
+});
+```
+
+第六步：创建 Action Creator 函数并在其中完成异步逻辑
 
 在使用了 Redux Thunk 中间件以后，dispatch 方法可以接收一个函数作为参数，也就是说在 Action Creator 函数中可以再返回一个函数，我们需要在这个函数中完成异步操作，在该函数中根据异步流程更改 Store 中对应的状态。
 
@@ -3811,7 +3807,7 @@ export const searchPackages = (key) => async (dispatch) => {
 };
 ```
 
-第六步：在组件中实现对 npm 包的搜索
+第七步：在组件中实现对 npm 包的搜索
 
 ```react
 import { useRef } from "react";
@@ -3849,7 +3845,7 @@ export default function App() {
 }
 ```
 
-##### 6. redux-thunk 原理
+##### 2. 实现原理
 
 ```react
 // createThunkMiddleware 方法用于返回中间件函数
@@ -3873,6 +3869,172 @@ thunk.withExtraArgument = createThunkMiddleware;
 
 // 导出默认创建好的 thunk 中间件函数
 export default thunk;
+```
+
+#### 4.1.10 redux-saga
+
+[redux-saga](https://redux-saga.js.org/) 可以将异步操作从 Action Creator 文件中抽离出来，放在一个单独的文件中。
+
+```bash
+npm install redux-saga
+```
+
+```react
+export const SEARCH_PACKAGES = "search_packages";
+export const SEARCH_PACKAGES_SUCCESS = "search_packages_success";
+export const SEARCH_PACKAGES_ERROR = "search_packages_error";
+```
+
+```react
+import { SEARCH_PACKAGES, SEARCH_PACKAGES_ERROR, SEARCH_PACKAGES_SUCCESS } from "../action-types/packages";
+
+export const search_packages = (payload) => ({type: SEARCH_PACKAGES,payload});
+export const search_packages_success = (payload) => ({type: SEARCH_PACKAGES_SUCCESS, payload});
+export const search_packages_error = (error) => ({type: SEARCH_PACKAGES_ERROR, error});
+```
+
+```react
+import axios from "axios";
+import { put, takeEvery } from "redux-saga/effects";
+import { search_packages_error, search_packages_success } from "../action-creators/packages";
+import { SEARCH_PACKAGES } from "../action-types/packages";
+
+function* searchPackages(action) {
+  try {
+    const { data } = yield axios.get(`https://registry.npmjs.org/-/v1/search`, {
+      params: {
+        text: action.payload,
+      },
+    });
+    yield put(
+      search_packages_success(data.objects.map((item) => item.package.name))
+    );
+  } catch (error) {
+    yield put(search_packages_error(error));
+  }
+}
+// reducer 和 saga 可以同时匹配同一个 action, reducer 先接收, saga 后接收
+export default function* packageSaga() {
+  yield takeEvery(SEARCH_PACKAGES, searchPackages);
+}
+```
+
+```react
+import { SEARCH_PACKAGES, SEARCH_PACKAGES_ERROR, SEARCH_PACKAGES_SUCCESS } from "../action-types/packages";
+
+const initialState = {
+  list: [],
+  loading: false,
+  error: null,
+};
+
+export default function packagesReducer(state = initialState, action) {
+  switch (action.type) {
+    case SEARCH_PACKAGES:
+      return {
+        loading: true,
+        error: null,
+        list: [],
+      };
+    case SEARCH_PACKAGES_SUCCESS:
+      return {
+        loading: false,
+        error: null,
+        list: action.payload,
+      };
+    case SEARCH_PACKAGES_ERROR:
+      return {
+        loading: false,
+        error: action.error,
+        list: [],
+      };
+    default:
+      return state;
+  }
+}
+```
+
+```react
+import { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { search_packages } from "../state/action-creators/packages";
+
+function Packages() {
+  const inputRef = useRef();
+  const dispatch = useDispatch();
+  const packages = useSelector((state) => state.packages.list);
+  const onClickHandler = () => {
+    dispatch(search_packages(inputRef.current.value));
+  };
+  return (
+    <>
+      <input type="text" ref={inputRef} />
+      <button onClick={onClickHandler}>search</button>
+      <pre>{JSON.stringify(packages, null, 2)}</pre>
+    </>
+  );
+}
+
+export default Packages;
+```
+
+```react
+// 合并 saga
+import { all } from "redux-saga/effects";
+import packageSaga from "./packages";
+
+export default function* sagas() {
+  yield all([packageSaga()]);
+}
+```
+
+```react
+import createSagaMiddleware from "redux-saga";
+import sagas from "./sagas";
+
+const sagaMiddleware = createSagaMiddleware();
+export const store = createStore(reducers, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(sagas);
+```
+
+#### 4.1.11 redux-actions
+
+Redux流程中大量的样板代码读写很痛苦，使用[redux-actions](https://redux-actions.js.org/)可以简化Action和Reducer的处理。
+
+```bash
+npm install --save redux-actions
+```
+
+```react
+import { createAction } from "redux-actions";
+
+// createAction 方法用于创建 Action Creator 函数
+// 它在 reducer 函数中也用于 action 对象类型的匹配
+export const increment = createAction("increment");
+
+// increment() -> {type: "increment"}
+// increment(1) -> {type: "increment", payload: 1}
+```
+
+```react
+import { handleActions as createReducer } from "redux-actions";
+import { increment } from "../action-creators/counter";
+
+const initialState = { count: 0 };
+
+// createReducer 函数用于创建 reducer 函数
+// 它的理念是对原有的 reducer 函数中的 switch case 进行拆分, 拆分为多个小的函数
+const counterReducer = createReducer(
+  {
+    [increment]: (state, action) => ({
+      ...state,
+      count: state.count + action.payload,
+    }),
+  },
+  initialState
+);
+
+export default counterReducer;
 ```
 
 ### 4.2 ReduxToolkit
@@ -3913,8 +4075,11 @@ createAction 方法用于创建 action creator 函数。
 import { createAction } from "@reduxjs/toolkit";
 
 export const increment = createAction("counter/increment");
+// increment() => {type: "counter/increment"}
 export const decrement = createAction("counter/decrement");
+// decrement() => {type: "counter/decrement"}
 export const incrementByCount = createAction("counter/incrementByCount");
+// incrementByCount(5) => {type: "counter/incrementByCount", payload: 5}
 ```
 
 #### 4.2.4 creatReducer
@@ -4572,27 +4737,1362 @@ export default function Todo() {
 }
 ```
 
+### 4.3 MobX
+
+#### 4.3.1. 概述
+
+MobX 是一个简单的可扩展的状态管理库，无样板代码风格简约。
+
+目前最新版本为 6，版本 4 和版本 5 已不再支持。
+
+在 MobX 6 中不推荐使用装饰器语法，因为它不是 ES 标准，并且标准化过程要花费很长时间，但是通过配置仍然可以启用装饰器语法。
+
+MobX 可以运行在任何支持 ES5 的环境中，包含浏览器和 Node。
+
+[MobX](https://mobx.js.org/README.html) 通常和 React 配合使用，但是在 [Angular](https://github.com/mobxjs/mobx-angular) 和 [Vue](https://github.com/mobxjs/mobx-vue) 中也可以使用 MobX。
+
+#### 4.3.2 核心概念
+
+1. observable：被 MobX 跟踪的状态。
+2. action：允许修改状态的方法，在严格模式下只有 action 方法被允许修改状态。
+3. computed：根据现有状态衍生出来的状态。
+4. flow：执行副作用，它是 generator 函数。可以更改状态值。
+
+#### 4.3.3 工作流程
+
+<img src="./assets/images/54.png"/>
+
+#### 4.3.4 下载
+
+```bash
+npm install yarn add mobx@6.3.1 mobx-react-lite@3.2.0
+```
+
+- mobx：MobX 核心库
+- mobx-react-lite：仅支持函数组件
+- mobx-react：既支持函数组件也支持类组件
+
+#### 4.3.5 案例驱动之计数器
+
+在组件中显示数值状态，单击[+1]按钮使数值加一，单击[-1]按钮使数值减一。
+
+1. 创建用于存储状态的 Store
+
+   ```react
+   export default class CounterStore {
+     constructor() {
+       this.count = 0
+     }
+   }
+   ```
+
+2. 创建用于修改状态的方法
+
+   ```react
+   export default class CounterStore {
+     constructor() {
+       this.count = 0
+     }
+     increment() {
+       this.count += 1
+     }
+     decrement() {
+       this.count -= 1
+     }
+   }
+   ```
+
+3. 让 MobX 可以追踪状态的变化
+
+   1. 通过 observable 标识状态，使状态可观察
+   2. 通过 action 标识修改状态的方法，状态只有通过 action 方法修改后才会通知视图更新
+
+   ```react
+   import { action, makeObservable, observable } from "mobx"
+   
+   export default class CounterStore {
+     constructor() {
+       this.count = 0
+       makeObservable(this, {
+         count: observable,
+         increment: action,
+         decrement: action
+       })
+     }
+     increment() {
+       this.count += 1
+     }
+     decrement() {
+       this.count -= 1
+     }
+   }
+   ```
+
+4. 创建 Store 类的实例对象并将实例对象传递给组件
+
+   ```react
+   // App.js
+   import Counter from "./Counter"
+   import CounterStore from "../store/Counter"
+   
+   const counterStore = new CounterStore()
+   
+   function App() {
+     return <Counter counterStore={counterStore} />
+   }
+   
+   export default App
+   ```
+
+5. 在组件中通过 Store 实例对象获取状态以及操作状态的方法
+
+   ```react
+   function Counter({ counterStore }) {
+     return (
+       <Container>
+         <Button onClick={() => counterStore.increment()}>
+           INCREMENT
+         </Button>
+         <Button>{counterStore.count}</Button>
+         <Button onClick={() => counterStore.decrement()}>
+           DECREMENT
+         </Button>
+       </Container>
+     )
+   }
+   
+   export default Counter
+   ```
+
+6. 当组件中使用到的 MobX 管理的状态发生变化后，使视图更新。通过 observer 方法包裹组件实现目的
+
+   ```react
+   import { observer } from "mobx-react-lite"
+   
+   function Counter() { }
+   
+   export default observer(Counter)
+   ```
+
+7. 简化组件代码
+
+   ```react
+   function Counter({ counterStore }) {
+     const { count, increment, decrement } = counterStore
+     return (
+       <Container>
+         <Button border="left" onClick={increment}>
+           INCREMENT
+         </Button>
+         <Button>{count}</Button>
+         <Button border="right" onClick={decrement}>
+           DECREMENT
+         </Button>
+       </Container>
+     )
+   }
+   ```
+
+8. 当代码简化后，修改状态的方法中的 this 指向出现了问题，通过 action.bound 强制绑定 this，使 this 指向 Store 实例对象
+
+   ```react
+   import { action, makeObservable, observable } from "mobx"
+   
+   export default class CounterStore {
+     constructor() {
+       this.count = 0
+       makeObservable(this, {
+         count: observable,
+         increment: action.bound,
+         decrement: action.bound
+       })
+     }
+     increment() {
+       this.count += 1
+     }
+     decrement() {
+       this.count -= 1
+     }
+   }
+   ```
+
+9. 总结：状态变化更新视图的必要条件
+
+   1. 状态必须被标记为 `observable`
+   2. 更改状态的方法必须被标记为 `action`
+   3. 组件必须通过 `observer` 方法包裹
+
+10. 创建 RootStore
+
+    在应用中可存在多个 Store，多个 Store 最终要通过 RootStore 管理，在每个组件都需要获取到 RootStore。
+
+    ```react
+    // store/index.js
+    import { createContext, useContext } from "react"
+    import CounterStore from "./Counter"
+    
+    class RootStore {
+      constructor() {
+        this.counterStore = new CounterStore()
+      }
+    }
+    const rootStore = new RootStore()
+    const RootStoreContext = createContext()
+    
+    export const RootStoreProvider = ({ children }) => {
+      return (
+        <RootStoreContext.Provider value={rootStore}>
+          {children}
+        </RootStoreContext.Provider>
+      )
+    }
+    
+    export const useRootStore = () => {
+      return useContext(RootStoreContext)
+    }
+    ```
+
+    ```react
+    // App.js
+    import { RootStoreProvider } from "../store"
+    import Counter from "./Counter"
+    
+    function App() {
+      return (
+        <RootStoreProvider>
+          <Counter />
+        </RootStoreProvider>
+      )
+    }
+    
+    export default App
+    ```
+
+    ```react
+    import { observer } from "mobx-react-lite"
+    import { useRootStore } from "../store"
+    
+    function Counter() {
+      const { counterStore } = useRootStore()
+      const { count, increment, decrement } = counterStore
+      return (
+        <Container>
+          <Button onClick={increment}>
+            INCREMENT
+          </Button>
+          <Button>{count}</Button>
+          <Button onClick={decrement}>
+            DECREMENT
+          </Button>
+        </Container>
+      )
+    }
+    
+    export default observer(Counter)
+    ```
+
+#### 4.3.6 案例驱动之 Todo
+
+##### 1. 创建 Store
+
+1. 创建用于管理 Todo 任务的 Store
+
+   ```react
+   import { makeObservable, observable } from "mobx"
+   
+   export default class Todo {
+     constructor(todo) {
+       this.id = todo.id
+       this.title = todo.title
+       this.isCompleted = todo.isCompleted || false
+       this.isEditing = false
+       makeObservable(this, {
+         title: observable,
+         isCompleted: observable,
+         isEditing: observable
+       })
+     }
+   }
+   ```
+
+2. 创建用于管理 Todo 任务列表的 Store
+
+   ```react
+   import { makeObservable, observable } from "mobx"
+   
+   export default class TodoStore {
+     constructor() {
+       this.todos = []
+       makeObservable(this, {
+         todos: observable
+       })
+     }
+   }
+   ```
+
+##### 2. 添加任务
+
+1. 创建向 todo 任务列表中添加 todo 任务的方法
+
+   ```react
+   import { action, makeObservable, observable } from "mobx"
+   import Todo from "./Todo"
+   
+   export default class TodoStore {
+     constructor() {
+       this.todos = []
+       makeObservable(this, {
+         todos: observable,
+         addTodo: action.bound
+       })
+     }
+     addTodo(title) {
+       this.todos.push(new Todo({ title, id: this.generateTodoId() }))
+     }
+     generateTodoId() {
+       if (!this.todos.length) return 1
+       return this.todos.reduce((id, todo) => (id < todo.id ? todo.id : id), 0) + 1
+     }
+   }
+   ```
+
+2. 在组件中实现添加任务的逻辑
+
+   ```react
+   import { useState } from "react"
+   import { useRootStore } from "../../store"
+   
+   function Header() {
+     const [title, setTitle] = useState("")
+     const { todoStore } = useRootStore()
+     const { addTodo } = todoStore
+     return (
+       <header className="header">
+         <input
+           value={title}
+           onChange={e => setTitle(e.target.value)}
+           onKeyUp={e => {
+             if (e.key !== "Enter") return
+             addTodo(title)
+             setTitle("")
+           }}
+         />
+       </header>
+     )
+   }
+   
+   export default Header
+   ```
+
+##### 3. 显示任务列表
+
+```react
+import { observer } from "mobx-react-lite"
+import { useRootStore } from "../../store"
+import Todo from "./Todo"
+
+function Main() {
+  const { todoStore } = useRootStore()
+  const { todos } = todoStore
+  return (
+    <section className="main">
+      <ul className="todo-list">
+        {todos.map(todo => (
+          <Todo key={todo.id} todo={todo} />
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+export default observer(Main)
+```
+
+```react
+function Todo({ todo }) {
+  return (
+    <li>
+      <div className="view">
+        <input className="toggle" type="checkbox" />
+        <label>{todo.title}</label>
+        <button className="destroy" />
+      </div>
+      <input className="edit" />
+    </li>
+  )
+}
+
+export default Todo
+```
+
+##### 4 加载远端任务
+
+1. 下载 json-server：`yarn add json-server@0.16.3`
+
+2. 创建 db.json
+
+   ```json
+   {
+     "todos": [
+       {
+         "id": 1,
+         "title": "吃饭",
+         "isCompleted": false
+       },
+       {
+         "id": 2,
+         "title": "睡觉",
+         "isCompleted": false
+       },
+       {
+         "id": 3,
+         "title": "打豆豆",
+         "isCompleted": false
+       }
+     ]
+   }
+   ```
+
+3. 在 package.json 文件中添加启动命令
+
+   ```json
+   "scripts": {
+       "json-server": "json-server --watch ./db.json --port 3001"
+     }
+   ```
+
+4. 启动 json-server：`npm run json-server`
+
+5. 在 todoStore 中添加加载任务列表的方法
+
+   ```react
+   import axios from "axios"
+   import { flow, makeObservable, observable } from "mobx"
+   import Todo from "./Todo"
+   
+   export default class TodoStore {
+     constructor() {
+       this.todos = []
+       makeObservable(this, {
+         todos: observable,
+         loadTodos: flow
+       })
+       this.loadTodos()
+     }
+     *loadTodos() {
+       let response = yield axios.get("http://localhost:3001/todos")
+       response.data.forEach(todo => this.todos.push(new Todo(todo)))
+     }
+   }
+   ```
+
+##### 5. 更改任务状态
+
+1. 在 Todo 类中添加修改任务是否已经完成的方法
+
+   ```react
+   export default class Todo {
+     constructor() {
+       makeObservable(this, {
+         modifyTodoIsCompleted: action.bound
+       })
+     }
+     modifyTodoIsCompleted() {
+       this.isCompleted = !this.isCompleted
+     }
+   }
+   ```
+
+2. 创建 `TodoCompleted` 组件实现逻辑
+
+   ```react
+   import { observer } from "mobx-react-lite"
+   
+   function TodoCompleted({ todo }) {
+     const { isCompleted, modifyTodoIsCompleted } = todo
+     return (
+       <input
+         className="toggle"
+         type="checkbox"
+         checked={isCompleted}
+         onChange={modifyTodoIsCompleted}
+       />
+     )
+   }
+   
+   export default observer(TodoCompleted)
+   ```
+
+3. 在 `Todo` 组件中引用`TodoCompleted` 组件并根据条件决定是否为 `li` 添加 `completed` 类名
+
+   ```react
+   import { observer } from "mobx-react-lite"
+   import TodoCompleted from "./TodoCompleted"
+   
+   function Todo({ todo }) {
+     return (
+       <li className={todo.isCompleted ? "completed" : ""}>
+         <div className="view">
+           <TodoCompleted todo={todo} />
+         </div>
+       </li>
+     )
+   }
+   
+   export default observer(Todo)
+   ```
+
+##### 6. 删除任务
+
+1. 在 `todoStore` 中添加实现删除任务的方法
+
+   ```react
+   import axios from "axios"
+   import { action, makeObservable,  } from "mobx"
+   
+   export default class TodoStore {
+     constructor() {
+       makeObservable(this, {
+         removeTodo: action.bound
+       })
+     }
+     removeTodo(id) {
+       this.todos = this.todos.filter(todo => todo.id !== id)
+     }
+   }
+   ```
+
+2. 创建 `TodoDelete` 组件实现删除 todo 任务逻辑
+
+   ```react
+   import { useRootStore } from "../../store"
+   
+   function TodoDelete({ id }) {
+     const { todoStore } = useRootStore()
+     const { removeTodo } = todoStore
+     return <button className="destroy" onClick={removeTodo.bind(null, id)} />
+   }
+   
+   export default TodoDelete
+   ```
+
+3. 在 `Todo` 组件调用 `TodoDelete` 组件并传入 todo ID
+
+   ```react
+   import { observer } from "mobx-react-lite"
+   import TodoDelete from "./TodoDelete"
+   
+   function Todo({ todo }) {
+     return (
+       <li>
+         <div className="view">
+           <TodoDelete id={todo.id} />
+         </div>
+       </li>
+     )
+   }
+   
+   export default observer(Todo)
+   ```
+
+##### 7. 编辑任务
+
+1. 在 todoStore 中添加更改任务是否处于编辑状态的方法
+
+   ```react
+   import { action, makeObservable } from "mobx"
+   
+   export default class Todo {
+     constructor(todo) {
+       makeObservable(this, {
+         modifyTodoIsEditing: action.bound,
+       })
+     }
+     modifyTodoIsEditing() {
+       this.isEditing = !this.isEditing
+     }
+   }
+   ```
+
+2. 添加 `TodoTitle` 组件展示任务标题并为其添加双击事件，当事件发生时将任务更改为可编辑状态
+
+   ```react
+   function TodoTitle({ todo }) {
+     const { title, modifyTodoIsEditing } = todo
+     return <label onDoubleClick={modifyTodoIsEditing}>{title}</label>
+   }
+   
+   export default TodoTitle
+   ```
+
+3. 在 `Todo` 组件中调用 `TodoTitle` 组件，并为 `li` 添加 `editing` 类名
+
+   ```react
+   import { observer } from "mobx-react-lite"
+   import TodoTitle from "./TodoTitle"
+   import classnames from "classnames"
+   
+   function Todo({ todo }) {
+     return (
+       <li className={classnames({ completed: todo.isCompleted, editing: todo.isEditing })} >
+         <div className="view">
+           <TodoTitle todo={todo} />
+         </div>
+       </li>
+     )
+   }
+   
+   export default observer(Todo)
+   ```
+
+4. 创建 `TodoEditing` 组件实现编辑 todo 任务标题
+
+   ```react
+   import { useRef, useEffect } from "react"
+   
+   function TodoEditing({ todo }) {
+     const { title, modifyTodoTitle, isEditing } = todo
+     const ref = useRef(null)
+     useEffect(() => {
+       if (isEditing) ref.current.focus()
+     }, [isEditing])
+     return (
+       <input
+         ref={ref}
+         className="edit"
+         defaultValue={title}
+         onBlur={e => modifyTodoTitle(e.target.value)}
+       />
+     )
+   }
+   
+   export default TodoEditing
+   ```
+
+5. 在 `Todo` 组件中调用 `TodoEditing` 组件并传递 todo 任务
+
+   ```react
+   import { observer } from "mobx-react-lite"
+   import TodoTitle from "./TodoTitle"
+   import classnames from "classnames"
+   import TodoEditing from "./TodoEditing"
+   
+   function Todo({ todo }) {
+     return (
+       <li className={classnames({ completed: todo.isCompleted, editing: todo.isEditing })} >
+         <div className="view">
+           <TodoTitle todo={todo} />
+         </div>
+         <TodoEditing todo={todo} />
+       </li>
+     )
+   }
+   
+   export default observer(Todo)
+   ```
+
+##### 8. 计算未完成任务数量
+
+1. 在 todoStore 中添加获取未完成任务数量的派生状态
+
+   ```react
+   import axios from "axios"
+   import { makeObservable, computed } from "mobx"
+   
+   export default class TodoStore {
+     constructor() {
+       makeObservable(this, {
+         unCompletedTodoCount: computed
+       })
+     }
+     get unCompletedTodoCount() {
+       return this.todos.filter(todo => !todo.isCompleted).length
+     }
+   }
+   ```
+
+2. 创建 `UnCompletedTodoCount` 组件实现逻辑
+
+   ```react
+   import { observer } from "mobx-react-lite"
+   import { useRootStore } from "../../store"
+   
+   function UnCompletedTodoCount() {
+     const { todoStore } = useRootStore()
+     const { unCompletedTodoCount } = todoStore
+     return (
+       <span className="todo-count">
+         <strong>{unCompletedTodoCount}</strong> item left
+       </span>
+     )
+   }
+   
+   export default observer(UnCompletedTodoCount)
+   ```
+
+3. 在 `Footer` 组件中调用 `UnCompletedTodoCount` 组件
+
+   ```react
+   import UnCompletedTodoCount from "./UnCompletedTodoCount"
+   
+   function Footer() {
+     return (
+       <footer className="footer">
+         <UnCompletedTodoCount />
+       </footer>
+     )
+   }
+   
+   export default Footer
+   ```
+
+##### 9. 任务过滤
+
+1. 在 `todoStore` 中添加存储过滤条件的属性以及更改过滤条件的方法
+
+   ```react
+   import axios from "axios"
+   import { action, makeObservable, observable, } from "mobx"
+   
+   export default class TodoStore {
+     constructor() {
+       this.filterCondition = "All"
+       makeObservable(this, {
+         modifyFilterCondition: action.bound,
+         filterCondition: observable,
+       })
+     }
+     modifyFilterCondition(filterCondition) {
+       this.filterCondition = filterCondition
+     }
+   }
+   ```
+
+2. 创建 `TodoFilter` 组件，为过滤按钮添加事件以更改过滤条件，根据过滤条件为按钮添加 `selected` 类名
+
+   ```react
+   import classNames from "classnames"
+   import { observer } from "mobx-react-lite"
+   import { useRootStore } from "../../store"
+   
+   function TodoFilter() {
+     const { todoStore } = useRootStore()
+     const { filterCondition, modifyFilterCondition } = todoStore
+     return (
+       <ul className="filters">
+         <li>
+           <button
+             onClick={() => modifyFilterCondition("All")}
+             className={classNames({ selected: filterCondition === "All" })}
+           >
+             All
+           </button>
+         </li>
+         <li>
+           <button
+             onClick={() => modifyFilterCondition("Active")}
+             className={classNames({ selected: filterCondition === "Active" })}
+           >
+             Active
+           </button>
+         </li>
+         <li>
+           <button
+             onClick={() => modifyFilterCondition("Completed")}
+             className={classNames({ selected: filterCondition === "Completed" })}
+           >
+             Completed
+           </button>
+         </li>
+       </ul>
+     )
+   }
+   
+   export default observer(TodoFilter)
+   ```
+
+3. 在 `Footer` 组件中调用 `TodoFilter` 组件
+
+   ```react
+   import TodoFilter from "./TodoFilter"
+   
+   function Footer() {
+     return (
+       <footer className="footer">
+         <TodoFilter />
+       </footer>
+     )
+   }
+   
+   export default Footer
+   ```
+
+4. 在 `TodoStore` 中添加派生状态，根据条件获取过滤后的 todo 列表
+
+   ```react
+   import axios from "axios"
+   import { action, flow, makeObservable, observable, computed } from "mobx"
+   import Todo from "./Todo"
+   
+   export default class TodoStore {
+     constructor() {
+       makeObservable(this, {
+         filterTodos: computed
+       })
+     }
+     get filterTodos() {
+       switch (this.filterCondition) {
+         case "Active":
+           return this.todos.filter(todo => !todo.isCompleted)
+         case "Completed":
+           return this.todos.filter(todo => todo.isCompleted)
+         default:
+           return this.todos
+       }
+     }
+   }
+   ```
+
+5. 在 Main 组件获取 `filterTodos` 派生状态
+
+   ```react
+   import { observer } from "mobx-react-lite"
+   import { useRootStore } from "../../store"
+   import Todo from "./Todo"
+   
+   function Main() {
+     const { todoStore } = useRootStore()
+     const { filterTodos } = todoStore
+     return (
+       <section className="main">
+         <ul className="todo-list">
+           {filterTodos.map(todo => (
+             <Todo key={todo.id} todo={todo} />
+           ))}
+         </ul>
+       </section>
+     )
+   }
+   
+   export default observer(Main)
+   ```
+
+##### 10. 清除已完成任务
+
+1. 在 `TodoStore` 中添加清除已完成任务的方法
+
+   ```react
+   import axios from "axios"
+   import { action, makeObservable, } from "mobx"
+   
+   export default class TodoStore {
+     constructor() {
+       makeObservable(this, {
+         clearCompleted: action.bound
+       })
+     }
+     clearCompleted() {
+       this.todos = this.todos.filter(todo => !todo.isCompleted)
+     }
+   }
+   ```
+
+2. 创建 `ClearCompleted` 组件实现清除已完成任务功能
+
+   ```react
+   import { useRootStore } from "../../store"
+   
+   function ClearCompleted() {
+     const { todoStore } = useRootStore()
+     const { clearCompleted } = todoStore
+     return (
+       <button className="clear-completed" onClick={clearCompleted}>
+         Clear completed
+       </button>
+     )
+   }
+   
+   export default ClearCompleted
+   ```
+
+3. 在 `Footer` 组件中调用 `ClearCompleted` 组件
+
+   ```react
+   import ClearCompleted from "./ClearCompleted"
+   
+   function Footer() {
+     return (
+       <footer className="footer">
+         <ClearCompleted />
+       </footer>
+     )
+   }
+   
+   export default Footer
+   ```
 
 
+### 4.4 Recoil
 
+#### 4.4.1 概述
 
+Recoil 是 Facebook 提供的在 React 中实现全局状态管理的扩展库，目前仍然在实验阶段。
 
+```bash
+npm install recoil
+```
 
+#### 4.4.2 RecoilRoot
 
+RecoilRoot 用于为组件提供获取状态的上下文对象。
 
+```react
+import ReactDOM from "react-dom";
+import App from "./App";
+import { RecoilRoot } from "recoil";
 
+ReactDOM.render(
+  <RecoilRoot>
+    <App />
+  </RecoilRoot>,
+  document.getElementById("root")
+);
+```
 
+#### 4.4.3 atom
 
+atom 方法用于创建全局状态。
 
+##### 1. 未使用全局状态
 
+```react
+import { useState } from "react";
 
+function DarkModeSwitch({ dark, setDark }) {
+  return (
+    <input
+      type="checkbox"
+      checked={dark}
+      onChange={(event) => setDark(event.target.checked)}
+    />
+  );
+}
 
+function Paragraph({ dark }) {
+  const styles = {
+    background: dark ? "black" : "white",
+    color: dark ? "white" : "black",
+  };
+  return <p style={styles}>Paragraph ...</p>;
+}
 
+function App() {
+  const [dark, setDark] = useState(false);
+  return (
+    <>
+      <DarkModeSwitch dark={dark} setDark={setDark} />
+      <Paragraph dark={dark} />
+    </>
+  );
+}
 
+export default App;
+```
 
+##### 2. 使用了全局状态
 
+```react
+import { atom, useRecoilState, useRecoilValue } from "recoil";
 
+const darkModeState = atom({
+  key: "darkModeState",
+  default: false,
+});
 
+function DarkModeSwitch() {
+  const [dark, setDark] = useRecoilState(darkModeState);
+  return (
+    <input
+      type="checkbox"
+      checked={dark}
+      onChange={(event) => setDark(event.target.checked)}
+    />
+  );
+}
+
+function Paragraph() {
+  const dark = useRecoilValue(darkModeState);
+  const styles = {
+    background: dark ? "black" : "white",
+    color: dark ? "white" : "black",
+  };
+  return <p style={styles}>Paragraph ...</p>;
+}
+
+function App() {
+  return (
+    <>
+      <DarkModeSwitch />
+      <Paragraph />
+    </>
+  );
+}
+
+export default App;
+```
+
+##### 3. 代码拆分
+
+```react
+// src/atoms/darkMode.js
+import { atom, useRecoilState, useRecoilValue } from "recoil";
+
+const darkModeState = atom({
+  key: "darkModeState",
+  default: false,
+});
+
+export function useDarkModeState() {
+  return useRecoilState(darkModeState);
+}
+
+export function useDarkModeValue() {
+  return useRecoilValue(darkModeState);
+}
+```
+
+```react
+import { useDarkModeState, useDarkModeValue } from "./atoms/darkMode";
+
+function DarkModeSwitch() {
+  const [dark, setDark] = useDarkModeState();
+  return (
+    <input
+      type="checkbox"
+      checked={dark}
+      onChange={(event) => setDark(event.target.checked)}
+    />
+  );
+}
+
+function Paragraph() {
+  const dark = useDarkModeValue();
+  const styles = {
+    background: dark ? "black" : "white",
+    color: dark ? "white" : "black",
+  };
+  return <p style={styles}>Paragraph ...</p>;
+}
+
+function App() {
+  return (
+    <>
+      <DarkModeSwitch />
+      <Paragraph />
+    </>
+  );
+}
+
+export default App;
+```
+
+#### 4.4.4 selector
+
+selector 表示派生状态，基于现有状态计算新的状态。
+
+```react
+import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
+// 汇率
+const exChangeRate = 0.1572;
+// 人民币
+const CNYState = atom({
+  key: "CNY",
+  default: 1,
+});
+// 根据汇率将人民币转换为美元
+const USDSelector = selector({
+  key: "USD",
+  get: ({ get }) => {
+    const CNY = get(CNYState);
+    return CNY * exChangeRate;
+  },
+  // 设置新的美元时重新计算人民币
+  set({ set }, newValue) {
+    const newCNY = newValue / exChangeRate;
+    set(CNYState, newCNY);
+  },
+});
+
+function App() {
+  const [CNY, setCNY] = useRecoilState(CNYState);
+  const [USD, setUSD] = useRecoilState(USDSelector);
+  return (
+    <>
+      <input
+        type="text"
+        value={CNY}
+        onChange={(event) => setCNY(event.target.value)}
+      />
+      <input
+        type="text"
+        value={USD}
+        onChange={(event) => setUSD(event.target.value)}
+      />
+    </>
+  );
+}
+
+export default App;
+```
+
+#### 4.4.5 data fetching
+
+```react
+import axios from "axios";
+import { Suspense } from "react";
+import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
+
+const userIdState = atom({
+  key: "userId",
+  default: "",
+});
+
+const userState = selector({
+  key: "userState",
+  get: async ({ get }) => {
+    const userId = get(userIdState);
+    if (userId) {
+      let response = await axios.get(
+        `https://jsonplaceholder.typicode.com/users/${userId}`
+      );
+      return response.data;
+    }
+  },
+});
+
+function User() {
+  const user = useRecoilValue(userState);
+  return (
+    <ul>
+      <li>{user.name}</li>
+      <li>{user.email}</li>
+    </ul>
+  );
+}
+
+function App() {
+  const [userId, setUserId] = useRecoilState(userIdState);
+  return (
+    <>
+      <select
+        value={userId}
+        onChange={(event) => setUserId(event.target.value)}
+      >
+        <option value="">请选择用户</option>
+        <option value="1">用户一</option>
+        <option value="2">用户二</option>
+        <option value="3">用户三</option>
+      </select>
+      {userId && (
+        <Suspense fallback={<div>loading...</div>}>
+          <User />
+        </Suspense>
+      )}
+    </>
+  );
+}
+
+export default App;
+```
+
+#### 4.4.6 selectorFamily
+
+selectorFamily 允许开发者在调用查询时传递参数。
+
+```react
+import axios from "axios";
+import { Suspense, useState } from "react";
+import { selectorFamily, useRecoilValue } from "recoil";
+
+const userState = selectorFamily({
+  key: "userState",
+  get: (userId) => async () => {
+    if (userId) {
+      let response = await axios.get(
+        `https://jsonplaceholder.typicode.com/users/${userId}`
+      );
+      return response.data;
+    }
+  },
+});
+
+function User({ userId }) {
+  const user = useRecoilValue(userState(userId));
+  return (
+    <ul>
+      <li>{user.name}</li>
+      <li>{user.email}</li>
+    </ul>
+  );
+}
+
+function App() {
+  const [userId, setUserId] = useState("");
+  return (
+    <>
+      <select
+        value={userId}
+        onChange={(event) => setUserId(event.target.value)}
+      >
+        <option value="">请选择用户</option>
+        <option value="1">用户一</option>
+        <option value="2">用户二</option>
+        <option value="3">用户三</option>
+      </select>
+      {userId && (
+        <Suspense fallback={<div>loading...</div>}>
+          <User userId={userId} />
+        </Suspense>
+      )}
+    </>
+  );
+}
+
+export default App;
+```
+
+#### 4.4.7 catch errors
+
+使用错误边界组件捕获程序执行过程中出现的错误。
+
+```bash
+npm i react-error-boundary@3.1.4
+```
+
+```react
+import axios from "axios";
+import { Suspense, useState } from "react";
+import { selectorFamily, useRecoilValue } from "recoil";
+import { ErrorBoundary } from "react-error-boundary";
+
+const userState = selectorFamily({
+  key: "userState",
+  get: (userId) => async () => {
+    if (userId) {
+      let response = await axios.get(
+        `https://jsonplaceholder.typicode.com/users/${userId}`
+      );
+      // 模拟程序出现错误
+      if (userId === "4") throw new Error("用户不存在");
+      return response.data;
+    }
+  },
+});
+
+function User({ userId }) {
+  const user = useRecoilValue(userState(userId));
+  return (
+    <ul>
+      <li>{user.name}</li>
+      <li>{user.email}</li>
+    </ul>
+  );
+}
+
+// resetErrorBoundary: 用于重置错误边界
+function ErrorFallback({ error, resetErrorBoundary }) {
+  return (
+    <>
+      <p>发生了错误:</p>
+      <pre>{error.message}</pre>
+      <button onClick={resetErrorBoundary}>重试</button>
+    </>
+  );
+}
+
+function App() {
+  const [userId, setUserId] = useState("");
+  return (
+    <>
+      <select
+        value={userId}
+        onChange={(event) => setUserId(event.target.value)}
+      >
+        <option value="">请选择用户</option>
+        <option value="1">用户一</option>
+        <option value="2">用户二</option>
+        <option value="3">用户三</option>
+        <option value="4">用户四</option>
+      </select>
+      {/*
+          FallbackComponent: 指定发生错误时显示的用户界面
+          onReset: 错误边界被重置时执行的回调函数
+          resetKeys: 当指定的状态发生更改时重置错误边界
+        */}
+      <ErrorBoundary FallbackComponent={ErrorFallback} resetKeys={[userId]}>
+        {userId && (
+          <Suspense fallback={<div>loading...</div>}>
+            <User userId={userId} />
+          </Suspense>
+        )}
+      </ErrorBoundary>
+    </>
+  );
+}
+
+export default App;
+```
+
+#### 4.4.8 effects
+
+effects 用于执行副作用。
+
+```react
+import { useState } from "react";
+import { atom, useRecoilState } from "recoil";
+
+const todoListState = atom({
+  key: "todoList",
+  default: [],
+  effects: [
+    ({ setSelf, onSet }) => {
+      const storedTodo = localStorage.getItem("todos");
+      if (storedTodo) setSelf(JSON.parse(storedTodo));
+      onSet((value) => {
+        localStorage.setItem("todos", JSON.stringify(value));
+      });
+    },
+  ],
+});
+
+function App() {
+  const [title, setTitle] = useState("");
+  const [todos, setTodos] = useRecoilState(todoListState);
+  const addTodo = (event) => {
+    if (event.key === "Enter") {
+      setTodos([...todos, { title }]);
+      setTitle("");
+    }
+  };
+  return (
+    <div>
+      <input
+        type="text"
+        value={title}
+        onChange={(event) => setTitle(event.target.value)}
+        onKeyUp={addTodo}
+      />
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>{todo.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+```
 
 ## 5. React 路由 V6
 
@@ -5212,18 +6712,20 @@ import InnerNews from "./pages/InnerNews";
 import News from "./pages/News";
 import OuterNews from "./pages/OuterNews";
 
+const routes = [
+  { path: "/", element: <Home /> },
+  {
+    path: "/news",
+    element: <News />,
+    children: [
+      { path: "inner", element: <InnerNews /> },
+      { path: "outer", element: <OuterNews /> },
+    ],
+  },
+]
+
 function AppRoute() {
-  let element = useRoutes([
-    { path: "/", element: <Home /> },
-    {
-      path: "/news",
-      element: <News />,
-      children: [
-        { path: "inner", element: <InnerNews /> },
-        { path: "outer", element: <OuterNews /> },
-      ],
-    },
-  ]);
+  let element = useRoutes(routes);
   return element;
 }
 
@@ -5246,6 +6748,52 @@ function App() {
 
 export default App;
 ```
+
+### 5.15 嵌套路由与布局组件
+
+```react
+// src/App.js
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AdminHome from "./admin/AdminHome";
+import AdminLayout from "./admin/AdminLayout";
+import Layout from "./components/Layout";
+import About from "./pages/About";
+import Home from "./pages/Home";
+
+export default  function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Route>
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="" element={<AdminHome />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+```
+
+```react
+import Header from "./Header";
+import Footer from "./Footer";
+import { Outlet } from "react-router-dom";
+
+export default function Layout() {
+  return (
+    <>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
+  );
+}
+```
+
+
 
 ## 6. 服务端渲染
 
@@ -6338,26 +7886,32 @@ export default function List() {
 import Home from "./pages/Home";
 import List from "./pages/List";
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
+
+export const routes = [
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/list",
+    element: <List />,
+  },
+];
 
 export default function AppRoutes() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/list" element={<List />} />
-    </Routes>
-  );
+  return useRoutes(routes);
 }
 ```
 
 ```react
 import { StaticRouter } from "react-router-dom/server";
-import AppRoute from "../shared/AppRoutes";
+import AppRoutes from "../shared/AppRoutes";
 
 export default (req) => {
   const content = renderToString(
-    <StaticRouter location={req.url}>
-      <AppRoute />
+    <StaticRouter location={req.path}>
+      <AppRoutes />
     </StaticRouter>
   );
 };
@@ -6416,9 +7970,258 @@ export default function List() {
 }
 ```
 
+#### 14. 实现客户端 Redux
 
+客户端与服务端共用除创建 Store 对象的代码。
 
+```react
+// src/shared/state/todo.slice.js
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
+export const loadTodos = createAsyncThunk("todos/loadTodos", () => {
+  return axios
+    .get("https://jsonplaceholder.typicode.com/todos")
+    .then((response) => response.data);
+});
+
+const { actions, reducer: TodosReducer } = createSlice({
+  name: "todos",
+  initialState: [],
+  extraReducers: {
+    [loadTodos.fulfilled](state, action) {
+      action.payload.forEach((todo) => state.push(todo));
+    },
+  },
+});
+
+export default TodosReducer;
+```
+
+```react
+// src/client/store.js
+import { configureStore } from "@reduxjs/toolkit";
+import TodosReducer from "../shared/state/todo.slice";
+
+export default configureStore({
+  reducer: {
+    todos: TodosReducer,
+  }
+});
+```
+
+```react
+// src/client/index.js
+import { Provider } from "react-redux";
+import store from "./store";
+
+ReactDOM.hydrate(
+  <Provider store={store}>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById("root")
+);
+```
+
+```react
+// src/shared/pages/List.js
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadTodos } from "../state/todo.slice";
+
+export default function List() {
+  const dispatch = useDispatch();
+  const todos = useSelector((state) => state.todos);
+  useEffect(() => {
+    dispatch(loadTodos());
+  }, []);
+  return (
+    <ul>
+      {todos.map((todo) => (
+        <li key={todo.id}>{todo.title}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+#### 15. 实现服务端 Redux
+
+第一步：在组件文件中导出 loadStateFromStore 方法，该方法在服务端调用，用于获取组件需要的状态。
+
+当组件状态获取完成以后，服务端再渲染组件，组件渲染完成之后再发送到客户端。
+
+```react
+// src/shared/pages/List.js
+import { loadTodos } from "../state/todo.slice";
+
+function loadStateFromStore(store) {
+  return store.dispatch(loadTodos());
+}
+
+export default {
+  element: <List />,
+  loadStateFromStore,
+};
+```
+
+第二步：重新配置组件路由规则，将 loadStateFromStore 方法挂载到组件配置对象中
+
+```react
+import List from "./pages/List";
+
+export const routes = [
+  {
+    path: "/list",
+    ...List,
+  },
+];
+```
+
+第三步：创建服务端 Store 对象，由于服务端是在接收到请求以后动态创建 Store，所以服务端创建 Store 的代码要写在一个方法中。
+
+```react
+// src/server/store.js
+import { configureStore } from "@reduxjs/toolkit";
+import TodosReducer from "../shared/state/todo.slice";
+
+export default function createStore() {
+  return configureStore({
+    reducer: {
+      todos: TodosReducer,
+    },
+  });
+}
+```
+
+第四步：服务端在接收到请求以后动态创建 store，调用组件中的 loadStateFromStore 方法获取组件状态，组件状态获取完成后再渲染组件
+
+```react
+import createStore from "./store";
+import { matchRoutes } from "react-router-dom";
+import { routes } from "../shared/AppRoutes";
+
+app.get("*", (req, res) => {
+  // 创建 store 对象
+  const store = createStore();
+  // matchRoutes 方法用于在路由规则数组中匹配出当前要使用的规则
+  // matchRoutes 方法的返回值是数组类型, 即使匹配到一个路由, 如果匹配不到返回 null
+  const matchedRoutes = matchRoutes(routes, req.path);
+  // 如果匹配到了路由规则
+  if (matchedRoutes) {
+    // 从路由规则中获取 loadStateFromStore 方法, 使用该方法获取组件需要的状态
+    // 由于获取组件状态可能涉及异步操作, 所以该方法要求返回 Promise
+    // 在 loadStateFromStore 方法中调用的 dispatch 方法正好返回 Promise, 所以在该方法中只需要返回 dispatch 方法的返回值即可
+    // 此处我们将返回的所有 Promsie 放到一个数组中, 方便监听所有异步操作完成
+    const loadDataArray = matchedRoutes.map(
+      ({ route }) => route.loadStateFromStore && route.loadStateFromStore(store)
+    );
+    // 监听所有异步操作完成的状态
+    // 所以异步操作完成就代表 Store 中已经存储了我们需要的数据了
+    Promise.all(loadDataArray).then(() => {
+      // 当 store 中有需要的数据以后再渲染组件
+      res.send(render(req, store));
+    });
+  } else {
+    res.send(`<div>404 not found</div>`);
+  }
+});
+```
+
+第五步：在服务端配置 Provider 组件
+
+```react
+import { renderToString } from "react-dom/server";
+import { StaticRouter } from "react-router-dom/server";
+import React from "react";
+import { Provider } from "react-redux";
+import AppRoutes from "../shared/AppRoutes";
+
+export default (req, store) => {
+  const content = renderToString(
+    <Provider store={store}>
+      <StaticRouter location={req.url}>
+        <AppRoutes />
+      </StaticRouter>
+    </Provider>
+  );
+};
+```
+
+#### 16. 服务端数据回填客户端
+
+警告原因：客户端 Store 在初始状态下是没有数据的，在渲染组件的时候生成的是空 ul，但是服务器端是先获取数据再进行的组件渲染，所以生成的是有子元素的ul，hydrate 方法在对比的时候发现两者不一致所以报了个警告。
+
+<img src="./assets/images/52.png" align="left" width="60%"/>
+
+解决思路：将服务器端获取到的数据回填给客户端, 让客户端拥有初始数据。服务端已经获取了一次数据，客户端没有必要再次获取。
+
+第一步：将组件状态挂载到 window 对象中
+
+```react
+// src/server/render.js
+export default (req, store) => {
+  // 获取初始状态
+  const initialState = JSON.stringify(store.getState());
+  return `
+    <html>
+        <script>window.initialState = ${initialState}</script>
+        <script src="/bundle.js"></script>
+    </html>
+  `;
+};
+```
+
+第二步：客户端设置初始状态
+
+```react
+export default configureStore({
+  preloadedState: {
+    todos: window.initialState.todos || [],
+  },
+});
+```
+
+第三步：在组件中判断如果初始数据不存在再进行初始数据的获取
+
+```react
+function List() {
+  useEffect(() => {
+    todos.length === 0 && dispatch(loadTodos());
+  }, []);
+}
+```
+
+#### 17. 防止XSS攻击
+
+第一步：服务端模拟返回恶意XSS代码
+
+```react
+// src/shared/state/todo.slice.js
+createSlice({
+  extraReducers: {
+    [loadTodos.fulfilled](state, action) {
+      state.push({
+        id: 1,
+        title: "</script><script>alert(1)</script>",
+      });
+    },
+  },
+});
+```
+
+第二步：通过 serializeJavascript 方法对数据进行转换
+
+```javascript
+import serializeJavascript from "serialize-javascript";
+
+export default (req, store) => {
+  // 获取初始状态
+  const initialState = serializeJavascript(store.getState());
+};
+```
 
 ## 7. React 与 TypeScript
 
@@ -7654,7 +9457,553 @@ function App() {
 export default App
 ```
 
-### 8.4 React Modal
+### 8.4 [React Query](https://react-query.tanstack.com/)
+
+#### 8.4.1  概述
+
+React Query 使 React 应用获取，缓存，同步和更新服务端状态变得轻而易举。
+
+1. 请求管理
+
+   在适当时机自动向服务端发送请求以同步状态。适当时机是指当请求出错时，网络重新连接时，浏览器窗口重新获取焦点时。
+
+   它是基于请求库上层的封装，实现了和请求相关的逻辑， 比如无限加载，失败重试，轮询，请求状态查询等。
+
+   它不生产请求，它只是请求的搬运工。
+
+2. 状态管理
+
+   将服务端状态同步到客户端的内存中进行缓存，任何组件都可以从缓存中获取状态，从而实现全局状态共享。
+
+下载：`yarn add react-query@3.16.0`
+
+#### 8.4.2 状态模拟
+
+1. 本地安装状态模拟工具 `yarn add json-server`
+
+2. 创建 db.json 本地状态库
+
+   ```json
+   {
+     "todos": [
+       {
+         "id": 1,
+         "title": "吃饭",
+         "isCompleted": true,
+         "isEditing": false
+       },
+       {
+         "id": 2,
+         "title": "睡觉",
+         "isCompleted": true,
+         "isEditing": false
+       },
+       {
+         "title": "打豆豆",
+         "isCompleted": false,
+         "isEditing": false,
+         "id": 3
+       }
+     ],
+      "posts": [
+       {
+         "id": 1,
+         "title": "Hello React Query"
+       },
+       {
+         "id": 2,
+         "title": "React Query is Great"
+       }
+     ]
+   }
+   ```
+
+3. 在 `package.json` 文件中添加命令
+
+   ```json
+   "scripts": {
+       "json-server": "json-server --watch db.json --port 3001"
+     }
+   ```
+
+4. 启动程序 `npm run json-server`
+
+#### 8.4.3 全局配置
+
+1. React Query 会在客户端的内存中缓存状态，任何组件都可以从缓存中获取状态
+2. 组件可以通过 `queryClient` 对象操作内存中的缓存状态
+3. 开发者需要在应用的入口文件中通过 `QueryClient` 类创建 `queryClient` 对象
+4. 开发者需要通过 `QueryClientProvider` 组件将 `queryClient` 对象传递到下层组件
+5. 组件通过 `useQueryClient` 钩子函数获取 `queryClient` 对象
+
+```react
+import ReactDOM from "react-dom"
+import App from "./App"
+import axios from "axios"
+import { QueryClient, QueryClientProvider } from "react-query"
+
+// 响应拦截器, 让开发者直接获取到服务器端返回的数据
+axios.interceptors.response.use(response => response.data)
+axios.defaults.baseURL = "http://localhost:3001"
+
+// 创建 queryClient 对象
+const queryClient = new QueryClient()
+
+ReactDOM.render(
+  {/* 将 queryClient 对象传递到下层组件 */}
+  <QueryClientProvider client={queryClient}>
+    <App />
+  </QueryClientProvider>,
+  document.getElementById("root")
+)
+```
+
+#### 8.4.4 useQuery 同步服务端状态
+
+##### 1. 基本使用
+
+在组件挂载完成后发送请求获取状态，缓存状态。
+
+获取服务端默认待办事项列表。
+
+```react
+// TodosMain.js 同步服务端状态待办事项列表
+import axios from "axios"
+import { useQuery } from "react-query"
+import TodoItem from "./TodoItem"
+
+async function fetchTodos() {
+  try {
+    return axios.get("/todos")
+  } catch (err) {
+    throw new Error("服务端默认待办事项加载失败")
+  }
+}
+
+function TodosMain() {
+  // useQuery(queryKey, queryFn)
+  const { isLoading, isError, error, data } = useQuery("todos", fetchTodos)
+  if (isLoading) return <div>正在加载服务端默认待办事项</div>
+  if (isError) return <div>{error.message}</div>
+  return (
+    <section className="main">
+      <ul className="todo-list">
+        {data.map(todo => <TodoItem key={todo.id} todo={todo} />)}
+      </ul>
+    </section>
+  )
+}
+
+export default TodosMain
+```
+
+##### 4. 配置选项
+
+###### 1. retry
+
+在请求发生错误时，默认会重试 3 次，如果请求还是不成功 `isError` 为真。
+
+可以通过 retry 配置项更改重试次数或者禁用重试 ( false )。
+
+```react
+useQuery("todos", fetchTodos, { retry: 2 })
+```
+
+###### 2. refetchOnWindowFocus
+
+当浏览器窗口重新获取焦点时，重新向服务器端发送请求同步最新状态。
+
+在状态未更新之前，组件中显示缓存状态。
+
+可以通过 `refetchOnWindowFocus` 配置项禁用此行为。
+
+```react
+useQuery("todos", fetchTodos, { refetchOnWindowFocus: false })
+```
+
+###### 3. enabled
+
+默认值为 true，即组件挂载完成后发送请求同步服务端状态。当值为 false 的时候此行为被禁止，当值被改为 true 时，发送请求同步服务端状态。
+
+```react
+const [isLoad, setIsLoad] = useState(false)
+useQuery("todos", fetchTodos, { enabled: isLoad })
+<button onClick={() => setIsLoad(true)}>同步状态</button>
+data && data.map
+```
+
+###### 4. staleTime
+
+状态的保质期。在同步状态时，如果状态仍然在保质期内，直接从缓存中获取状态，不会在后台发送真实的请求来更新状态缓存。
+
+```react
+useQuery("todos", fetchTodos, { staleTime: 5000 }) 
+// 每次状态同步完成后都会有5秒的保质期
+```
+
+###### 5. placeholderData
+
+在服务端状态没有加载完成前，可以使用占位符状态填充客户端缓存以提升用户体验。
+
+```react
+useQuery("todos", fetchTodos, { placeholderData: [ { id: 1, title: "吃饭" } ] })
+```
+
+###### 6 refetchInterval
+
+指定轮询的间隔时间，false 为不轮询。
+
+```react
+useQuery("todos", fetchTodos, { refetchInterval: 1000 })
+```
+
+##### 5. queryKey
+
+useQuery 方法的第一个参数，除可以使用字符串以外，还可以使用数组，实现查询时传递参数。
+
+实现查询 ID 为 1 的待办事项列表。
+
+```react
+import axios from "axios"
+import { useQuery } from "react-query"
+
+function getTodoById({ queryKey }) {
+  try {
+    return axios.get(`/todos/${queryKey[1]}`)
+  } catch (err) {
+    throw new Error("待办事项获取失败")
+  }
+}
+
+function FetchTodoById() {
+  const { data } = useQuery(["todo", 2], getTodoById)
+  return (
+    <div>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  )
+}
+
+export default FetchTodoById
+```
+
+```react
+useQuery({ queryKey: ["todo", 2], queryFn: getTodoById })
+```
+
+#### 8.4.5 useMutation
+
+修改状态，使用 useMutation 钩子函数，修改包括，删除，更新，添加。
+
+实现添加待办事项。
+
+```react
+// TodosHeader.js 添加待办事项
+import axios from "axios"
+import { useState } from "react"
+import { useMutation } from "react-query"
+
+async function addTodo(todo) {
+  try {
+    return axios.post("/todos", todo)
+  } catch (err) {
+    throw new Error("任务添加失败")
+  }
+}
+
+function TodosHeader() {
+  const [title, setTitle] = useState("")
+  const { mutate } = useMutation(addTodo, {
+    onSuccess() {
+      setTitle("")
+    }
+  })
+  return (
+    <header className="header">
+      <input
+        value={title}
+        onChange={event => setTitle(event.target.value)}
+        onKeyUp={event => {
+          if (event.code === "Enter") {
+            mutate({ title, isCompleted: false, isEditing: false })
+          }
+        }}
+      />
+    </header>
+  )
+}
+
+export default TodosHeader
+```
+
+#### 8.4.6 QueryClient
+
+##### 1. 同步服务端缓存
+
+实现在待办事项添加成功后更新客户端缓存以使组件展示出最新的待办事项列表。
+
+```react
+import { useQueryClient } from "react-query"
+const queryClient = useQueryClient()
+
+useMutation(addTodo, {
+    onSuccess() {
+      // 使本地缓存中的 todos 状态无效, 重新发送请求同步状态。
+      queryClient.invalidateQueries("todos")
+    }
+})
+```
+
+##### 2. 操作客户端缓存
+
+实现更改待办事项的是否已完成状态。
+
+通过 setQueryData 方法可以手动设置客户端缓存数据。
+
+```react
+import axios from "axios"
+import { useMutation, useQueryClient } from "react-query"
+
+async function modifyTodoCompleted({ id, isCompleted }) {
+  try {
+    return axios.patch(`/todos/${id}`, { isCompleted })
+  } catch (err) {
+    throw new Error("任务状态更改失败")
+  }
+}
+
+function TodoCompleted({ todo }) {
+  const queryClient = useQueryClient()
+  const { mutate } = useMutation(modifyTodoCompleted, {
+    onSuccess(response) {
+      queryClient.setQueryData("todos", data =>
+        data.map(todo => (todo.id !== response.id ? todo : response))
+      )
+    }
+  })
+  return (
+    <input
+      className="toggle"
+      type="checkbox"
+      checked={todo.isCompleted}
+      onChange={event => {
+        mutate({ id: todo.id, isCompleted: event.target.checked })
+      }}
+    />
+  )
+}
+
+export default TodoCompleted
+```
+
+#### 8.4.7 useQuery 同步客户端状态
+
+实现计算未完成待办事项的数量。
+
+当客户端内存中的状态发生变化后，所有使用 useQuery 同步该状态的组件都会得到更新。
+
+```react
+// hooks/todos.js
+// 1. 将同步服务端待办事项抽象成自定义钩子函数 useTodos
+// 2. 分别在不同组件中调用钩子函数以获取待办事项列表
+import { useQuery } from "react-query"
+import axios from "axios"
+
+async function fetchTodos() {
+  try {
+    return axios.get("/todos")
+  } catch (err) {
+    throw new Error("服务端默认待办事项加载失败")
+  }
+}
+
+export function useTodos() {
+  return useQuery("todos", fetchTodos)
+}
+```
+
+```react
+import { useTodos } from "../hooks/todos"
+
+function UnCompletedTodoCount() {
+  const { data } = useTodos()
+  return (
+    <span className="todo-count">
+      <strong>{data && data.filter(todo => !todo.isCompleted).length}</strong>
+      item left
+    </span>
+  )
+}
+
+export default UnCompletedTodoCount
+```
+
+#### 8.4.8 QueryObserver 状态订阅
+
+通过 QueryObserver 可实现在任意组件中订阅状态，实现全局状态共享。
+
+```react
+import { useQueryClient, QueryObserver } from "react-query"
+import { useEffect, useState } from "react"
+
+function UnCompletedTodoCount() {
+  const queryClient = useQueryClient()
+  const [todos, setTodos] = useState([])
+  useEffect(() => {
+    const todosObserver = new QueryObserver(queryClient, { queryKey: "todos" })
+    const unsubscribe = todosObserver.subscribe(result => setTodos(result.data))
+    return () => unsubscribe()
+  }, [])
+  return (
+    <span className="todo-count">
+      <strong>{todos && todos.filter(todo => !todo.isCompleted).length}</strong>{" "}
+      item left
+    </span>
+  )
+}
+
+export default UnCompletedTodoCount
+```
+
+#### 8.4.9 useQueries 并发同步状态
+
+使用 useQueries 可以并行发送请求，所有结果得到以后返回给开发者。
+
+实现并发加载待办事项列表和文章列表。
+
+```react
+import { useQueries } from "react-query"
+import axios from "axios"
+
+async function fetchTodos() {
+  try {
+    return axios.get("/todos")
+  } catch (err) {
+    throw new Error("服务端默认待办事项加载失败")
+  }
+}
+
+async function fetchPosts() {
+  try {
+    return axios.get("/posts")
+  } catch (err) {
+    throw new Error("文章列表加载失败")
+  }
+}
+
+function Parallel() {
+  const results = useQueries([
+    {
+      queryKey: "anotherTodos",
+      queryFn: fetchTodos
+    },
+    {
+      queryKey: "posts",
+      queryFn: fetchPosts
+    }
+  ])
+  return (
+    <div>
+      <pre>{JSON.stringify(results, null, 2)}</pre>
+    </div>
+  )
+}
+
+export default Parallel
+```
+
+#### 8.4.10 useInfiniteQuery 分页
+
+使用它可以实现和分页相关的逻辑。
+
+```react
+import axios from "axios"
+import { useInfiniteQuery } from "react-query"
+
+async function fetchUser({ pageParam = 1 }) {
+  try {
+    return axios.get(`https://reqres.in/api/users?page=${pageParam}`)
+  } catch (err) {
+    throw new Error("用户状态同步失败")
+  }
+}
+
+function LoadMore() {
+  const {
+    data,
+    isLoading,
+    isFetching,
+    hasNextPage,
+    fetchNextPage
+  } = useInfiniteQuery("users", fetchUser, {
+    getNextPageParam(current) {
+      if (current.page < current.total_pages) {
+        return current.page + 1
+      }
+    }
+  })
+  if (isLoading) return <div>用户状态正在加载中...</div>
+  return (
+    <div>
+      <ul>
+        {data.pages.map(page =>
+          page.data.map(user => <li key={user.id}>{user.first_name}</li>)
+        )}
+      </ul>
+      {hasNextPage && <button onClick={() => fetchNextPage()}>加载更多</button>}
+      {isFetching && <div>更多状态加载中...</div>}
+    </div>
+  )
+}
+
+export default LoadMore
+```
+
+`isLoading` 只有初次加载时才会变为 true，通常用作首次加载数据时的加载状态。
+
+`isFetching` 是只要发生加载行为就会变为 true，通过用作加载更多时的加载状态。
+
+#### 8.4.11 useIsFetching 全局加载状态
+
+只要程序中有状态在同步，useIsFetching 钩子函数获取的结果就为 true，可以通过它实现全局加载状态的提示。
+
+`yarn add react-spinners@0.10.6 @emotion/react@11.1.5`
+
+```react
+import { PacmanLoader } from "react-spinners"
+import { useIsFetching } from "react-query"
+import { css } from "@emotion/react"
+
+const loaderCss = css`
+  position: absolute;
+  left: 100%;
+  top: 0;
+  transform: translateX(-400%);
+  z-index: 1;
+`
+
+function GlobalLoading() {
+  const isFetching = useIsFetching()
+  return (
+    <PacmanLoader
+      loading={isFetching}
+      color={"rgba(175, 47, 47, 0.25)"}
+      size={15}
+      css={loaderCss}
+    />
+  )
+}
+
+export default GlobalLoading
+```
+
+
+
+
+
+
+
+### 8.5 React Modal
 
 [React Modal 文档](http://reactcommunity.org/react-modal/)
 
@@ -7701,7 +10050,7 @@ function App() {
 export default App;
 ```
 
-### 8.5 React Player
+### 8.6 React Player
 
 [React Player 文档](https://www.npmjs.com/package/react-player)
 
@@ -7731,13 +10080,1300 @@ function App() {
 export default App
 ```
 
+### 8.7 React Datepicker
 
+<img src="./assets/images/53.png" align="left" width="23%"/>
 
+[react-datepicker](https://reactdatepicker.com/) [date-fns](https://date-fns.org/)
 
+```bash
+npm install react-datepicker date-fns
+```
+
+```react
+import DatePicker, { registerLocale, setDefaultLocale } from "react-datepicker"
+import { useState } from "react"
+import { addDays, subDays } from "date-fns"
+import zhCN from "date-fns/locale/zh-CN"
+import "react-datepicker/dist/react-datepicker.css"
+
+// 注册语言
+registerLocale("zh-CN", zhCN)
+// 全局设置日期选择框语言
+setDefaultLocale("zh-CN")
+
+// subDays: 基于给定的日期减去指定的天数
+// addDays: 基于给定的日期添加指定的天数
+
+export default function App() {
+  const [selectedDate, setSelectedDate] = useState(new Date())
+  // minDate 能够选择的最早的日期
+  // maxDate 能够选择的最晚的日期
+  // dateFormat 日期格式化
+  // onChange 当用户选择日期后执行的回调函数, 回调函数的参数就是用户选择的日期
+  // selected 默认选中的日期
+  // filterDate 日期过滤
+  // showTimeSelect  显示时间选择
+  return (
+    <DatePicker
+      selected={selectedDate}
+      onChange={date => setSelectedDate(date)}
+      dateFormat="yyyy-MM-dd hh:mm:ss"
+      filterDate={date => date.getDay() !== 6 && date.getDay() !== 0}
+      minDate={subDays(new Date(), 2)}
+      maxDate={addDays(new Date(), 2)}
+      showTimeSelect
+    />
+  )
+}
+```
+
+### 8.8 [React Table](https://react-table.tanstack.com/)
+
+#### 8.8.1 概述
+
+##### 1. 为什么学习 React Table
+
+1. 使用表格进行数据可视化是不可避免的。
+2. 构建自己的表格组件可能会充满挑战。
+
+##### 2. React Table
+
+React Table 用于构建强大的可扩展的数据表格，是一组钩子函数的集合，使用什么功能就调用什么钩子函数。
+
+1. React Table 采用无头设计，即不提供 UI 样式，开发者可以完全控制表格如何呈现，所以它不是表格组件，而是表格的实用工具集。
+2. 功能强大，提供了过滤，排序，分组，分页和列固定等等功能。
+3. React Table 是可扩展的，因为它拥有自己的插件系统，使开发者可以覆盖或扩展React Table 内部的逻辑步骤，阶段或过程。
+
+```bash
+npm install react-table@7.6.3 dateformat@4.5.1 react-table-sticky@1.1.3 styled-components@5.2.3
+```
+
+#### 8.8.2 Basic Table
+
+<img src="../../../../Downloads/ReactTable/讲义/assets/react-table-images/03.png"/>
+
+1. 获取要展示的数据。 生成模拟数据：[mockaroo](https://mockaroo.com/)
+
+   <img src="../../../../Downloads/ReactTable/讲义/assets/react-table-images/01.png"/>
+
+2. 定义表格的列。
+
+3. 使用 react-table 创建表格实例对象并传入要展示的数据和列信息。
+
+4. 使用 HTML 定义一个基本的表格结构。
+
+5. 将表格实例对象信息赋值给 HTML，展示数据。
+
+6. 引入 CSS 文件为表格添加样式 [样式来源](https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy)。
+
+```react
+// columns.js
+// Header: 定义页头列名称
+// accessor: 定义列关联的数据属性
+export const COLUMNS = [
+  {
+    Header: "ID",
+    accessor: "id"
+  },
+  {
+    Header: "名",
+    accessor: "first_name"
+  },
+  {
+    Header: "姓",
+    accessor: "last_name"
+  },
+  {
+    Header: "出生日期",
+    accessor: "date_of_birth"
+  },
+  {
+    Header: "国家",
+    accessor: "country"
+  },
+  {
+    Header: "电话",
+    accessor: "phone"
+  }
+]
+```
+
+```react
+// BasicTable.js
+import { COLUMNS } from "./columns"
+import MOCK_DATA from "./MOCK_DATA.json"
+import { useMemo } from "react"
+import { useTable } from "react-table"
+import "./table.css"
+
+const BasicTable = () => {
+  // 缓存列信息
+  const columns = useMemo(() => COLUMNS, [])
+  // 缓存表格数据
+  const data = useMemo(() => MOCK_DATA, [])
+  // 创建表格实例对象
+  const {
+    // 获取 table 标记属性
+    getTableProps,
+    // 获取 tbody 标记属性
+    getTableBodyProps,
+    // 获取表格页头信息
+    headerGroups,
+    // 获取表格中要展示的数据
+    rows,
+    // 计算要显示的行信息 (比如分页, 当前页要显示哪些行)
+    prepareRow
+  } = useTable({
+    columns,
+    data
+  })
+  return (
+    <>
+      <table {...getTableProps()}>
+        <thead>
+          {headerGroups.map(headerGroup => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map(column => (
+                <th {...column.getHeaderProps()}>
+                  {column.render("Header")}
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map(row => {
+            prepareRow(row)
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map(cell => (
+                  <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                ))}
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+    </>
+  )
+}
+
+export default BasicTable
+```
+
+```css
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td,
+table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+table th, tfoot td {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #4caf50;
+  color: white;
+}
+```
+
+#### 8.8.3 创建表格页脚
+
+<img src="../../../../Downloads/ReactTable/讲义/assets/react-table-images/04.png" />
+
+```json
+// columns.js
+// Footer: 定义页脚列名称
+export const COLUMNS = [
+  {
+    Footer: "ID",
+  },
+  {
+    Footer: "名",
+  },
+  {
+    Footer: "姓",
+  },
+  {
+    Footer: "出生日期",
+  },
+  {
+    Footer: "国家",
+  },
+  {
+    Footer: "电话",
+  }
+]
+```
+
+```react
+const BasicTable = () => {
+  // 获取表格页脚信息
+  const { footerGroups } = useTable({})
+  return (
+    <table>
+      <tfoot>
+        {footerGroups.map(footerGroup => (
+          <tr {...footerGroup.getFooterGroupProps()}>
+            {footerGroup.headers.map(column => (
+              <th {...column.getFooterProps()}>{column.render("Footer")}</th>
+            ))}
+          </tr>
+        ))}
+      </tfoot>
+    </table>
+  )
+}
+```
+
+#### 8.8.4 创建表格分组
+
+<img src="../../../../Downloads/ReactTable/讲义/assets/react-table-images/05.png" />
+
+```json
+// columns.js
+export const COLUMNS_GROUP = [
+  {
+    Header: "ID",
+    Footer: "ID",
+    accessor: "id"
+  },
+  {
+    Header: "Name",
+    Footer: "Name",
+    columns: [
+      {
+        Header: "First Name",
+        Footer: "First Name",
+        accessor: "first_name"
+      },
+      {
+        Header: "Last Name",
+        Footer: "Last Name",
+        accessor: "last_name"
+      }
+    ]
+  },
+  {
+    Header: "Info",
+    Footer: "Info",
+    columns: [
+      {
+        Header: "Date Of Birth",
+        Footer: "Date Of Birth",
+        accessor: "date_of_birth"
+      },
+      {
+        Header: "Country",
+        Footer: "Country",
+        accessor: "country"
+      },
+      {
+        Header: "Phone",
+        Footer: "Phone",
+        accessor: "phone"
+      }
+    ]
+  }
+]
+```
+
+```react
+// BasicTabel.js
+import { COLUMNS_GROUP } from "./columns"
+
+const BasicTable = () => {
+  const columns = useMemo(() => COLUMNS_GROUP, [])
+}
+```
+
+#### 8.8.5 实现表格排序
+
+<img src="../../../../Downloads/ReactTable/讲义/assets/react-table-images/06.png"/>
+
+```react
+// SortingTable.js
+import { useTable, useSortBy } from "react-table"
+
+const SortingTable = () => {
+  useTable({}, useSortBy)
+  // column.getSortByToggleProps()
+  // 将标记的鼠标移入样式改为手势, 表示该列是可以点击的
+  // 实现点击列后, 对列数据进行排序 (升序, 降序, 默认排序交替)
+  return (
+    <thead>
+      <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+        {column.render("Header")}
+        <span>
+          {column.isSorted ? (column.isSortedDesc ? "↓" : "↑") : ""}
+        </span>
+      </th>
+    </thead>
+  )
+}
+```
+
+#### 8.8.6 单元格内容格式化
+
+<img src="../../../../Downloads/ReactTable/讲义/assets/react-table-images/07.png"/>
+
+日期格式化：`yarn add dateformat`
+
+```javascript
+import dateformat from "dateformat"
+
+export const COLUMNS = [
+  {
+    Header: "Date Of Birth",
+    Footer: "Date Of Birth",
+    accessor: "date_of_birth",
+    Cell: ({ value }) => dateformat(value, "yyyy-mm-dd")
+  }
+]
+```
+
+#### 8.8.7 实现全局过滤
+
+<img src="../../../../Downloads/ReactTable/讲义/assets/react-table-images/08.png" />
+
+```react
+// GlobalFilter.js
+// 进行全局搜索的搜索框组件
+const GlobalFilter = ({ filter, setFilter }) => {
+  return (
+    <div>
+      搜索:{" "}
+      <input
+        value={filter}
+        onChange={event => setFilter(event.target.value)}
+      />
+    </div>
+  )
+}
+
+export default GlobalFilter
+```
+
+```react
+import { useGlobalFilter } from "react-table"
+import GlobalFilter from "./GlobalFilter"
+
+const FilterTable = () => {
+  const { state, setGlobalFilter } = useTable({}, useGlobalFilter)
+  const { globalFilter } = state
+  return (
+    <>
+      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      <table></table>
+    </>
+  )
+}
+export default FilterTable
+```
+
+#### 8.8.8 实现列过滤
+
+<img src="../../../../Downloads/ReactTable/讲义/assets/react-table-images/09.png"/>
+
+```react
+// ColumnFilter.js
+// 进行列搜索的搜索框组件
+const ColumnFilter = ({ column }) => {
+  const { filterValue, setFilter } = column
+  return (
+    <div>
+      搜索:{" "}
+      <input
+        value={filterValue}
+        onChange={event => setFilter(event.target.value)}
+      />
+    </div>
+  )
+}
+export default ColumnFilter
+```
+
+```react
+// FilterTable.js
+import { useFilters } from "react-table"
+
+const FilterTable = () => {
+  const { } = useTable({}, useFilters, useGlobalFilter)
+  return (
+    <thead>
+      <th>
+        <div>
+          {column.canFilter ? column.render("Filter") : null}
+        </div>
+      </th>
+    </thead>
+  )
+}
+export default FilterTable
+```
+
+```javascript
+// columns.js
+import ColumnFilter from "./ColumnFilter"
+
+export const COLUMNS = [
+  {
+    Header: "ID",
+    Footer: "ID",
+    accessor: "id",
+    Filter: ColumnFilter
+  }
+]
+```
+
+#### 8.8.9 禁用过滤
+
+<img src="../../../../Downloads/ReactTable/讲义/assets/react-table-images/10.png"/>
+
+在表格中的某一列不想使用过滤，需要显式进行声明，否则报错，声明如下：
+
+```javascript
+// columns.js
+export const COLUMNS = [
+  {
+    Header: "ID",
+    Footer: "ID",
+    accessor: "id",
+    disableFilters: true
+  }
+]
+```
+
+#### 8.8.10 设置默认列属性
+
+在每一列中 Filter 配置选项的值都是一样的，通过配置默认列可以去除重复配置。
+
+```react
+// FilterTable.js
+import ColumnFilter from "./ColumnFilter"
+
+const FilterTable = () => {
+  const defaultColumn = useMemo(() => ({ Filter: ColumnFilter }), [])
+  const {} = useTable({ defaultColumn })
+}
+export default FilterTable
+```
+
+然后删除 columns.js 文件中的 Filter 配置选项。
+
+#### 8.8.11 实现过滤防抖
+
+<img src="../../../../Downloads/ReactTable/讲义/assets/react-table-images/12.gif"/>
+
+```react
+// GlobalFilter.js
+import { useAsyncDebounce } from "react-table"
+import { useState } from "react"
+
+const GlobalFilter = ({ filter, setFilter }) => {
+  const [value, setValue] = useState(filter)
+  const onChange = useAsyncDebounce(() => {
+    setFilter(value)
+  }, 1000)
+  return (
+    <div>
+      搜索:{" "}
+      <input
+        value={value || ""}
+        onChange={event => {
+          setValue(event.target.value)
+          onChange()
+        }}
+      />
+    </div>
+  )
+}
+export default GlobalFilter
+```
+
+#### 8.8.12 实现基本分页
+
+<img src="../../../../Downloads/ReactTable/讲义/assets/react-table-images/11.png"/>
+
+```react
+// PaginationTable.js
+import { usePagination } from "react-table"
+
+const PaginationTable = () => {
+  const {
+    // 分页数据
+    page,
+    // 跳转到下一页
+    nextPage,
+    // 跳转到上一页
+    previousPage,
+    // 是否存在下一页
+    canNextPage,
+    // 是否存在上一页
+    canPreviousPage,
+    // 一共有多少页
+    pageCount,
+    state,
+  } = useTable({}, usePagination)
+  // 页码
+  const { pageIndex } = state
+
+  return (
+    <>
+      <table>
+        <tbody>
+          {page.map(row => {})}
+        </tbody>
+      </table>
+      <div>
+        <span>
+          {pageIndex + 1} / {pageCount}
+        </span>
+        <button disabled={!canPreviousPage} onClick={() => previousPage()}>
+          上一页
+        </button>
+        <button disabled={!canNextPage} onClick={() => nextPage()}>
+          下一页
+        </button>
+      </div>
+    </>
+  )
+}
+export default PaginationTable
+```
+
+#### 8.8.13 实现页码跳转
+
+<img src="../../../../Downloads/ReactTable/讲义/assets/react-table-images/13.png" />
+
+```react
+import { usePagination } from "react-table"
+
+const PaginationTable = () => {
+  const { gotoPage } = useTable({ initialState: { pageIndex: 3 } }, usePagination)
+  return (
+    <div>
+      <span>
+        跳转到:{" "}
+        <input
+          type="number"
+          style={{ width: 50 }}
+          value={pageIndex + 1}
+          onChange={event => gotoPage(Number(event.target.value) - 1)}
+         />
+      </span>
+      <button disabled={!canPreviousPage} onClick={() => gotoPage(0)}>
+        第一页
+      </button>
+      <button disabled={!canNextPage} onClick={() => gotoPage(pageCount - 1)}>
+        最后一页
+      </button>
+    </div>
+  )
+}
+
+export default PaginationTable
+```
+
+#### 8.8.14 设置数据显示条数
+
+<img src="../../../../Downloads/ReactTable/讲义/assets/react-table-images/14.png"/>
+
+```react
+import { usePagination } from "react-table"
+
+const PaginationTable = () => {
+  const { setPageSize } = useTable({initialState: {pageSize: 25}})
+  const { pageSize } = state
+
+  return (
+    <select value={pageSize} onChange={event => setPageSize(Number(event.target.value))}>
+      {[10, 25, 50].map(pagesize => (
+        <option key={pagesize} value={pagesize}>
+          显示 {pagesize} 条数据
+        </option>
+      ))}
+    </select>
+  )
+}
+
+export default PaginationTable
+```
+
+#### 8.8.15 实现选择行数据
+
+<img src="../../../../Downloads/ReactTable/讲义/assets/react-table-images/15.png"/>
+
+```react
+// Checkbox.js
+import { forwardRef } from "react"
+// 将 indeterminate 从 props 单独解构出来, 它不能直接被添加到 input 身上
+// ref: 因为 react-table 要为复选添加功能, 要对其进行操作, 所以通过 Ref 的方式获取该复选
+// rest: 通过 props 的方式向复选框中添加属性以实现复选框的单选和全选功能
+const Checkbox = forwardRef(({ indeterminate, ...rest }, ref) => {
+  return <input type="checkbox" ref={ref} {...rest} />
+})
+
+export default Checkbox
+```
+
+```react
+// RowSelection.js
+// 实现选择行数据功能
+import { useRowSelect } from "react-table"
+// 通过此复选框选择行数据
+import Checkbox from "./Checkbox"
+
+const RowSelection = () => {
+  const {
+    // 选择的结果数组
+    selectedFlatRows
+  } = useTable({ columns, data }, useRowSelect, hooks => {
+    // 在初始化表格实例对象时调用
+    // hooks: 对象, 钩子函数集合
+    // 以编程方式向表格中添加列
+    hooks.visibleColumns.push(columns => {
+      // columns 现有的列数据
+      return [
+        {
+          id: "selection",
+          Header: ({ getToggleAllRowsSelectedProps }) => (
+            // 实现全选功能
+            <Checkbox {...getToggleAllRowsSelectedProps()} />
+          ),
+          // 实现单选功能
+          Cell: ({ row }) => <Checkbox {...row.getToggleRowSelectedProps()} />
+        },
+        ...columns
+      ]
+    })
+  })
+
+  // 只显示前 10 条数据
+  const firstPageRows = rows.slice(0, 10)
+
+  return (
+    <div>
+      {JSON.stringify(
+        { selectedRows: selectedFlatRows.map(row => row.original) },
+        null,
+        2
+      )}
+    </div>
+  )
+}
+
+export default RowSelection
+```
+
+#### 8.8.16 更改列顺序
+
+<img src="../../../../Downloads/ReactTable/讲义/assets/react-table-images/16.gif"/>
+
+在更改列顺序时，需要使用到列 id，对列 id 排序就是对列进行排序 。在没有为列添加 id 属性时， accessor 默认为列的 id。
+
+```react
+// ColumnOrder.js
+import { useColumnOrder } from "react-table"
+
+const ColumnOrder = () => {
+  const { setColumnOrder } = useTable({}, useColumnOrder)
+  return (
+    <button
+      onClick={() =>
+        setColumnOrder([
+          "id",
+          "first_name",
+          "last_name",
+          "phone",
+          "country",
+          "date_of_birth"
+        ])
+       }
+      >
+      更改列书序
+    </button>
+  )
+}
+
+export default ColumnOrder
+```
+
+#### 8.8.17 显示隐藏列
+
+<img src="../../../../Downloads/ReactTable/讲义/assets/react-table-images/17.png"/>
+
+```react
+// ColumnHiding.js
+import Checkbox from "./Checkbox"
+
+const ColumnHiding = () => {
+  const {
+    // 列信息数组
+    allColumns,
+    // 显示和隐藏所有列
+    getToggleHideAllColumnsProps
+  } = useTable()
+  return (
+    <div>
+      <div>
+        <Checkbox {...getToggleHideAllColumnsProps()} /> 显示/隐藏所有列
+      </div>
+      {allColumns.map(column => (
+        <div key={column.id}>
+          <Checkbox {...column.getToggleHiddenProps()} /> {column.Header }
+        </div>
+      ))}
+    </div>
+  )
+}
+export default ColumnHiding
+```
+
+#### 8.8.18 实现列固定
+
+<img src="../../../../Downloads/ReactTable/讲义/assets/react-table-images/02.gif" />
+
+创建样式化组件，为表格设置样式 [simple-example](https://github.com/GuillaumeJasmin/react-table-sticky#simple-example)
+
+```react
+// TableStyles.js
+import styled from "styled-components"
+
+export const Styles = styled.div`
+  .table {
+    border: 1px solid #ddd;
+
+    .tr {
+      :last-child {
+        .td {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    .th,
+    .td {
+      padding: 5px;
+      border-bottom: 1px solid #ddd;
+      border-right: 1px solid #ddd;
+      background-color: #fff;
+      overflow: hidden;
+
+      :last-child {
+        border-right: 0;
+      }
+    }
+
+    &.sticky {
+      overflow: scroll;
+      .header,
+      .footer {
+        position: sticky;
+        z-index: 1;
+        width: fit-content;
+      }
+
+      .header {
+        top: 0;
+        box-shadow: 0px 3px 3px #ccc;
+      }
+
+      .footer {
+        bottom: 0;
+        box-shadow: 0px -3px 3px #ccc;
+      }
+
+      .body {
+        position: relative;
+        z-index: 0;
+      }
+
+      [data-sticky-td] {
+        position: sticky;
+      }
+
+      [data-sticky-last-left-td] {
+        box-shadow: 2px 0px 3px #ccc;
+      }
+
+      [data-sticky-first-right-td] {
+        box-shadow: -2px 0px 3px #ccc;
+      }
+    }
+  }
+`
+```
+
+1. 创建 StickyTable 组件
+
+   先拷贝 BasicTable 组件，在此基础上进行修改。
+
+   在  [react-table-sticky](https://github.com/GuillaumeJasmin/react-table-sticky) 此处拷贝 JSX 。
+
+   ```react
+   // StickyTable.js
+   // useBlockLayout
+   // 为 row, cell 添加固定宽度
+   // 将 row 的 display 设置为 flex
+   // 将 cell 的 display 设置为 inline-block
+   // 将 cell 的 box-sizing 设置 border-box
+   import { useBlockLayout } from "react-table"
+   import { useSticky } from "react-table-sticky"
+   import { Styles } from "./TableStyles"
+   
+   const StickyTable = () => {
+     const {} = useTable({}, useBlockLayout, useSticky)
+     return (
+       <Styles>
+         <div
+           {...getTableProps()}
+           className="table sticky"
+           style={{ width: 1000, height: 500 }}
+         >
+           <div className="header">
+             {headerGroups.map(headerGroup => (
+               <div {...headerGroup.getHeaderGroupProps()} className="tr">
+                 {headerGroup.headers.map(column => (
+                   <div {...column.getHeaderProps()} className="th">
+                     {column.render("Header")}
+                   </div>
+                 ))}
+               </div>
+             ))}
+           </div>
+           <div {...getTableBodyProps()} className="body">
+             {rows.map(row => {
+               prepareRow(row)
+               return (
+                 <div {...row.getRowProps()} className="tr">
+                   {row.cells.map(cell => (
+                     <div {...cell.getCellProps()} className="td">
+                       {cell.render("Cell")}
+                     </div>
+                   ))}
+                 </div>
+               )
+             })}
+           </div>
+         </div>
+       </Styles>
+     )
+   }
+   
+   export default StickyTable
+   ```
+
+2. 指定固定列，添加 Email，Age 列。
+
+   ```javascript
+   // columns.js
+   export const COLUMNS = [
+     {
+       Header: "ID",
+       Footer: "ID",
+       accessor: "id",
+       disableFilters: true,
+       sticky: "left"
+     },
+     {
+       Header: "First Name",
+       Footer: "First Name",
+       accessor: "first_name",
+       sticky: "left"
+     },
+     {
+       Header: "Last Name",
+       Footer: "Last Name",
+       accessor: "last_name",
+       sticky: "left"
+     },
+     {
+       Header: "Date Of Birth",
+       Footer: "Date Of Birth",
+       accessor: "date_of_birth",
+       Cell: ({ value }) => dateformat(value, "yyyy-MM-dd")
+     },
+     {
+       Header: "Country",
+       Footer: "Country",
+       accessor: "country"
+     },
+     {
+       Header: "Phone",
+       Footer: "Phone",
+       accessor: "phone"
+     },
+     {
+       Header: "Email",
+       Footer: "Email",
+       accessor: "email"
+     },
+     {
+       Header: "Age",
+       Footer: "Age",
+       accessor: "age"
+     }
+   ]
+   ```
 
 ## 附录
 
-### 1. 配置路径别名
+### 1. 类组件
+
+#### 1.1 创建类组件
+
+```react
+import React, { Component } from 'react';
+
+class Person extends Component {
+  render () {
+    return <div>Hello I am a class component</div>
+  }
+}
+
+export default Person;
+```
+
+#### 1.2 向类组件内部传递属性
+
+```react
+<Person name="张三" age={20}/>
+```
+
+```react
+class Person extends Component {
+  render() {
+    const { name, age } = this.props
+    return (
+      <div>
+        <span>{name}</span>
+        <span>{age}</span>
+      </div>
+    )
+  }
+}
+```
+
+#### 1.3 Props 默认值
+
+```react
+class Person extends Component {
+  static defaultProps = {}
+}
+```
+
+#### 1.4 组件状态
+
+```react
+class Person extends Component {
+  constructor(){
+    super();
+    this.state = {
+      name: "张三",
+      age: 20
+    }
+    this.onClickHandler = this.onClickHandler.bind(this);
+  }
+  
+ 	onClickHandler() {
+    this.setState({ ...this.state, name: "李四" });
+  }
+
+  render() {
+    return (
+      <>
+        <span>{this.state.name}</span>
+        <span>{this.state.age}</span>
+      	<button onClick={this.onClickHandler}>更改数据</button>
+      </>
+    )
+  }
+}
+```
+
+#### 1.5 类组件生命周期函数
+
+##### 1.5.1 概述
+
+生命周期如同四季更替，一个人的生、老、病、死，在每个特殊的年龄阶段，做着不同的事情。
+
+组件也有生命周期，从组件被创建、被挂载到DOM中、直到从 DOM 中移除，这就是组件的生命周期。在组件生命周期的不同阶段，React 提供了对应的生命周期函数，让我们在不同阶段做不同的事情。这些函数将会被 React 自动调用执行。
+
+生命周期大致分为三个部分：挂载、更新和卸载。
+
+##### 1.5.2 组件挂载
+
+当组件被创建并且被整体插入到 DOM 中叫做是挂载组件，在组件被创建和挂载的过程中以下方法被调用：
+
+```javascript
+constructor()         // 设置组件的初始配置
+render()              // 解析 JSX, 渲染DOM, 呈递用户界面
+componentDidMount()   // 组件挂载完成后执行, 放置所有和DOM相关的操作，比如发送Ajax请求、设置定时器、添加事件监听、获取DOM元素
+```
+
+##### 1.5.3 组件更新
+
+当组件状态发生变化时，组件重新渲染。
+
+```javascript
+shouldComponentUpdate(nextProps, nextState)
+render
+componentDidUpdate
+```
+
+##### 1.5.3 组件卸载
+
+组件卸载是指将组件从 DOM 中删除。
+
+```react
+componentWillUnmount   // 这个方法在组件从 DOM 中移除之前调用. 方法中可以执行清理工作. 例如删除事件监听, 清除定时器
+```
+
+#### 1.6 上下文
+
+1. 创建 Context 上下文对象, 导出 Provider 组件
+
+   ```react
+   // TestContext.js
+   import { createContext } from "react"
+   
+   export const TestContext = createContext()
+   
+   export function TestProvider({ children, value }) {
+     return <TestContext.Provider value={value}>{children}</TestContext.Provider>
+   }
+   ```
+
+2. 将状态存储到上下文对象中
+
+   ```react
+   import ReactDOM from "react-dom"
+   import App from "./App"
+   import { TestProvider } from "./TestContext"
+   
+   ReactDOM.render(
+     <TestProvider value={{ test: "test" }}>
+       <App />
+     </TestProvider>,
+     document.getElementById("root")
+   )
+   ```
+
+3. 在组件中获取上下文对象中的状态
+
+   ```react
+   import { Component } from "react"
+   import { TestContext } from "./TestContext"
+   
+   class App extends Component {
+     render() {
+       return (
+         <div>
+           <TestContext.Consumer>
+             {context => <div>{context.test}</div>}
+           </TestContext.Consumer>
+         </div>
+       )
+     }
+   }
+   
+   export default App
+   ```
+
+4. 在组件中获取上下文的另一种方式
+
+   ```react
+   import { Component } from "react"
+   import { TestContext } from "./TestContext"
+   
+   class App extends Component {
+     static contextType = TestContext
+     render() {
+       return <div>{this.context.test}</div>
+     }
+   }
+   
+   export default App
+   ```
+
+#### 1.7 错误边界
+
+默认情况下，组件渲染错误会导致整个应用程序中断，创建错误边界可确保在特定组件发生错误时应用程序不会中断。
+
+错误边界是一个 React 组件，可以捕获子级组件在渲染时发生的错误，当错误发生时可以将错误记录下来，可以显示备用 UI 界面。
+
+错误边界涉及到两个生命周期函数，分别为 getDerivedStateFromError 和 componentDidCatch。
+
+getDerivedStateFromError 为静态方法，方法中需要返回一个对象，该对象会和state对象进行合并，用于更改应用程序状态。
+
+componentDidCatch 方法用于记录应用程序错误信息，该方法的参数就是错误对象。 
+
+```react
+// ErrorBoundaries.js
+import React from "react"
+import App from "./App"
+
+export default class ErrorBoundaries extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      hasError: false
+    }
+  }
+  componentDidCatch(error) {
+    console.log("componentDidCatch")
+  }
+  static getDerivedStateFromError() {
+    console.log("getDerivedStateFromError")
+    return {
+      hasError: true
+    }
+  }
+  render() {
+    if (this.state.hasError) {
+      return <div>发生了错误</div>
+    }
+    return <App />
+  }
+}
+```
+
+```react
+// App.js
+import React from "react"
+
+export default class App extends React.Component {
+  render() {
+    // throw new Error("lalala")
+    return <div>App works</div>
+  }
+}
+```
+
+```react
+// index.js
+import React from "react"
+import ReactDOM from "react-dom"
+import ErrorBoundaries from "./ErrorBoundaries"
+
+ReactDOM.render(<ErrorBoundaries />, document.getElementById("root"))
+```
+
+#### 1.8 渲染属性
+
+渲染属性是 React 中实现逻辑复用的一种高级技巧。
+
+```react
+// Resizeable.js
+import React, { useEffect, useState } from "react"
+
+function Resizeable({ render }) {
+  const [sizes, setSizes] = useState([window.innerWidth, window.innerHeight])
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setSizes([window.innerWidth, window.innerHeight])
+    })
+  }, [])
+  return render(sizes)
+}
+
+export default Resizeable
+```
+
+```react
+// index.js
+import React from "react"
+import ReactDOM from "react-dom"
+import Resizeable from "Resizeable"
+import App from "./App"
+
+ReactDOM.render(
+  <Resizeable render={sizes => <App sizes={sizes} />} />,
+  document.getElementById("root")
+)
+```
+
+```react
+// App.js
+import React from "react"
+
+function App({ sizes }) {
+  return <div>{JSON.stringify(sizes)}</div>
+}
+
+export default App
+```
+
+#### 1.9  高阶组件
+
+高阶组件用于共享代码，增加逻辑复用。
+
+高阶组件是一种模式，一个函数接收组件作为参数，返回一个新的组件。
+
+函数名称通常以with开头，接收的组件形参名称为 WrappedComponent，返回的组件名称和函数名称一样，只不过with中的w要大写。
+
+```react
+function withResizable(WrappedComponent, number) {
+  class WithResizable extends Component {
+    constructor() {
+      this.state = {
+        size: [window.innerWidth, window.innerHeight],
+      };
+    }
+    onResize = () => {
+      this.setState({
+        size: [window.innerWidth * number, window.innerHeight],
+      });
+    };
+    componentDidMount() {
+      window.addEventListener("resize", this.onResize);
+    }
+    componentWillUnMount() {
+      window.removeEventListener("resize", this.onResize);
+    }
+    render() {
+      return <WrappedComponent size={this.state.size} {...this.props} />;
+    }
+  }
+  return WithResizable;
+}
+```
+
+```react
+class Foo extends Component {
+  render () {
+    const size = this.props.size;
+    return <div>{size[0]} --- {size[1]}</div>
+  }
+}
+
+const WrapperedFoo = withResizable(Foo, 10);
+export default WrapperedFoo;
+```
+
+```react
+<WrapperedFoo hello="world"/>
+```
+
+
+
+### 2. 配置路径别名
 
 1. 下载 `@craco/craco` 用于覆盖 `create-react-app` 脚手架工具自动生成的配置
 
@@ -7833,7 +11469,11 @@ export default App
 
 
 
-props.children 的类型已经在 FC 中事先被定义好，类型为 ReactNode
+
+
+
+
+
 
 
 
