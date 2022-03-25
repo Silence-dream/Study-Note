@@ -24,6 +24,7 @@
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
   <p>{{usename}}</p>
+  <button @click="fn">点击</button>
 </template>
 
 <script setup lang="ts">
@@ -37,6 +38,9 @@ const {usename} = storeToRefs(use);
 defineProps<{ msg: number }>()
 
 const count = ref(0)
+function fn(){
+  use.updateUsername()
+}
 </script>
 
 

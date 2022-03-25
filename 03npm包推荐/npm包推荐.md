@@ -76,6 +76,8 @@ module.exports = {
 
 ## 代码规范
 
+https://juejin.cn/post/7038143752036155428#heading-1
+
 `eslint`：代码质量检测（用`var`还是`let`，用`==`还是`===`...）
 
 `prettier`：代码风格检测（加不加尾逗号，单引号还是双引号...）
