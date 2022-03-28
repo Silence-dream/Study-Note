@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 export default function ReduxActionCreator () {
   // let [count,setCount] = useState(0);
-  let {count}: any = useSelector (state => state);
+  let count: any = useSelector (state => state.counter.count);
   const dispatch = useDispatch ();
 
   // 简化一

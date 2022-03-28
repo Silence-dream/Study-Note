@@ -21,6 +21,7 @@ import ReduxStore from "./components/ReduxStore";
 import UseCallBack from "./components/UseCallBack";
 import UseImperativeHandle from "./components/UseImperativeHandle";
 import ReduxActionCreator from "./components/ReduxActionCreator";
+import CombineReducers from "./components/CombineReducers";
 
 function App () {
   const [person, setPerson] = useState ({
@@ -72,6 +73,7 @@ function App () {
       <ReduxStore/>
       <ReduxActionCreator/>
       <UseImperativeHandle/>
+      <CombineReducers/>
       {/*  传送门 */}
       <PotalM/>
     </div>
