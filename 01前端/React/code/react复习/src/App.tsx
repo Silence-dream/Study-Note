@@ -20,6 +20,7 @@ import RChildren from "./components/RChildren";
 import ReduxStore from "./components/ReduxStore";
 import UseCallBack from "./components/UseCallBack";
 import UseImperativeHandle from "./components/UseImperativeHandle";
+import ReduxActionCreator from "./components/ReduxActionCreator";
 
 function App () {
   const [person, setPerson] = useState ({
@@ -69,6 +70,7 @@ function App () {
         传入的
       </RChildren>
       <ReduxStore/>
+      <ReduxActionCreator/>
       <UseImperativeHandle/>
       {/*  传送门 */}
       <PotalM/>
