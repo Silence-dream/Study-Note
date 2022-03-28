@@ -1,10 +1,15 @@
-import { useState } from "react";
 import "./App.css";
-
+import TContext from "./components/TContext";
+import THeader from "./components/THeader";
+import Tfooter from "./components/Tfooter";
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <THeader />
+      <TContext />
+      <Tfooter />
+    </div>
+  );
 }
 
 export default App;
