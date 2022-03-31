@@ -27,11 +27,18 @@ const reducer = (state = initialState, action) => {
         })
       }
     case "SHOW_ALL":
-      return state
+      // console.log(state)
+      return {
+        ...state
+      }
     case "SHOW_COMPLETED":
       return {
-        ...state,
+        ...state.todos,
         todos: state.todos.filter(todo => todo.isActive)
+      }
+    case "SHOW_UNCOMPLETED":
+      return {
+        todos: state.todos.filter(todo => !todo.isActive)
       }
     default:
       return state

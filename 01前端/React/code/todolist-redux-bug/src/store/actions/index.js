@@ -27,3 +27,9 @@ export const showCompleted = () => {
     type: 'SHOW_COMPLETED',
   }
 }
+// 显示未完成代办事件
+export const showUncompleted = () => {
+  return {
+    type: "SHOW_UNCOMPLETED"
+  }
+}

@@ -4,6 +4,7 @@ import {updateTodo} from "../store/actions/index.js";
 
 export default function TContext() {
   let todoArray = useSelector((state) => state.todos);
+  console.log(todoArray)
   const dispatch = useDispatch()
 
   // console.log(todoArray);

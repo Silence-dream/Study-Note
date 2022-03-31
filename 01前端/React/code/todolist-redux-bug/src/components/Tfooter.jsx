@@ -1,6 +1,6 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import {showAll, showCompleted} from "../store/actions/index.js";
+import {showAll, showCompleted,showUncompleted} from "../store/actions/index.js";
 
 export default function Tfooter() {
     const dispatch = useDispatch();
@@ -12,7 +12,7 @@ export default function Tfooter() {
       选择:
       <button onClick={handleAll}>all</button>
       <button onClick={()=>dispatch(showCompleted())}>已完成</button>
-      <button>未完成</button>
+      <button onClick={()=>dispatch(showUncompleted())}>未完成</button>
     </>
   );
 }
