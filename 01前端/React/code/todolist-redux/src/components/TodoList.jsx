@@ -1,8 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Todo from './Todo.jsx'
+import { useSelector } from 'react-redux'
 
-const TodoList = ({ todos, toggleTodo }) => (
+const TodoList = ({ todos, toggleTodo }) =>{
+  let state = useSelector(state => state)
+  return (
     <ul>
       {todos.map(todo =>
           <Todo
@@ -13,6 +16,7 @@ const TodoList = ({ todos, toggleTodo }) => (
       )}
     </ul>
 )
+}
 
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({
