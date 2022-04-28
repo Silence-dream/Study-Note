@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "dev":"nodemon index.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "@nx-js/observer-util": "^4.2.2"
+  }
+}
