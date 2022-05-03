@@ -1,6 +1,7 @@
 import {
   defineConfig
 } from 'vitepress'
+import sidbar from './sidbar'
 
 export default defineConfig({
   title: '数据结构与算法',
@@ -15,18 +16,7 @@ export default defineConfig({
     }],
 
     // sidebar
-    sidebar: {
-      '/guide/': [
-        {
-          text: "什么是数据结构",
-          link: "/guide/01-什么是数据结构"
-        },
-        {
-          text: "什么是算法",
-          link: "/guide/02-什么是算法"
-        }
-      ]
-    },
+    sidebar: sidbar,
     editLinks:true,
     editLinkText: '在 GitHub 上编辑此页',
     lastUpdated: '上次更新',
@@ -37,5 +27,5 @@ export default defineConfig({
   },
   markdown: {
     lineNumbers: true
-  }
+  },
 })

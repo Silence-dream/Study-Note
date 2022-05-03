@@ -8,12 +8,12 @@ altActionText: 了解更多
 altActionLink: /guide/
 
 features:
-  - title: 💡 Instant Server Start
-    details: On demand file serving over native ESM, no bundling required!
-  # - title: ⚡️ Lightning Fast HMR
-  #   details: Hot Module Replacement (HMR) that stays fast regardless of app size.
-  # - title: 🛠️ Rich Features
-  #   details: Out-of-the-box support for TypeScript, JSX, CSS and more.
+  - title: 💡 介绍
+    details: 阅读本指南你至少需要知道 JavaScript 的基本语法和使用和一些计算机基础知识。
+  - title: ⚡️ 开发
+    details: 下载本项目,执行 yarn 安装依赖,然后在项目根目录执行 yarn dev 启动服务器。
+  - title: 🛠️ 致谢
+    details: 感谢广大的互联网使得本项目能够出现。
   # - title: 📦 Optimized Build
   #   details: Pre-configured Rollup build with multi-page and library mode support.
   # - title: 🔩 Universal Plugins
