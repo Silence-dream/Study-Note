@@ -1,0 +1,4 @@
+node_modules
+.idae
+.vscode
+.parcel-cache

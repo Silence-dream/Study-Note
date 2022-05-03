@@ -1,0 +1,22 @@
+{
+  "name": "maps",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "2.5.0",
+    "@types/google.maps": "3.48.3"
+  },
+  "dependencies": {
+    "@faker-js/faker": "6.1.1",
+    "parcel": "^2.5.0"
+  },
+  "targets": {
+    "main": false
+  },
+  "isLibrary": false,
+  "browserslist": "> 0.5%, last 2 versions, not dead"
+}
