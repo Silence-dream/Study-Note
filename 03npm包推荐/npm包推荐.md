@@ -138,6 +138,14 @@ yarn add @vueuse/core
 
 [vueuse.org/guide.html](https://link.juejin.cn/?target=https%3A%2F%2Flinks.jianshu.com%2Fgo%3Fto%3Dhttps%3A%2F%2Fvueuse.org%2Fguide.html)
 
+## 可视化 JavaScript 流程
+
+[介绍](https://www.5axxw.com/wiki/content/384o08)
+
+[事例](https://bogdan-lyashenko.github.io/js-code-to-svg-flowchart/docs/live-editor/index.html)
+
+[GitHub地址](https://github.com/Bogdan-Lyashenko/js-code-to-svg-flowchart)
+
 ## 参考文章
 
 [基于 Vite2+Vue3 的项目复盘总结 (juejin.cn)](https://juejin.cn/post/6969758357288648718)
