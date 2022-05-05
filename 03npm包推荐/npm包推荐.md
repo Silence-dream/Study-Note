@@ -1,3 +1,9 @@
+## 暂停更新
+
+移动去了博客中
+
+https://silence-dream.github.io/docs/bi-ji-za-xiang/01-yi-xie-npmku.html#git-hooks
+
 ## Git Hooks
 
 `husky`：触发 Git Hooks,执行脚本
