@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button class="add">点击</button>
+  <button class="ce">设置cookie</button>
+
+  <script>
+    const add = document.querySelector('.add');
+    const ce = document.querySelector('.ce');
+    ce.addEventListener("click", function () {
+      document.cookie = 'jack=123'
+    })
+
+    add.addEventListener("click", function () {
+      fetch("http://localhost:3000/hello", {
+        method: "post"
+      })
+      fetch("http://localhost:3000/hello", {
+        method: "get"
+      })
+    })
+  </script>
+</body>
+
+
+</html>
