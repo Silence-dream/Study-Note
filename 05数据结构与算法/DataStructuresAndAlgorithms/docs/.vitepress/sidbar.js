@@ -11,6 +11,14 @@ export default {
     {
       text: "数组",
       link: "/guide/03-数组"
+    },
+    {
+      text: "栈(Stack)",
+      link: "/guide/04-栈"
+    },
+    {
+      text: "队列(Queue)",
+      link: "/guide/05-队列"
     }
   ]
 }
