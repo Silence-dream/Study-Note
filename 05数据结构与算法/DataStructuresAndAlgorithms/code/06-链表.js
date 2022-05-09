@@ -69,15 +69,51 @@ function LinkedList() {
 
   };
   // 从链表的特定位置移除
-  LinkedList.prototype.removeAt = function (position) {};
+  LinkedList.prototype.removeAt = function (position) {
+    if (position < 0 || position >= length) return false
+
+    let current = head
+
+    if (position === 0) {
+      head = head.next
+    } else {
+      let index = 0
+      let previous = null
+      while (index++ < position) {
+        previous = current
+        current = current.next
+      }
+      previous.next = current.next
+    }
+    length--
+    return current.element;
+
+  };
   // 从链表中移除一项
-  LinkedList.prototype.remove = function (element) {};
+  LinkedList.prototype.remove = function (element) {
+    let index = this.indexOf(element)
+    return this.removeAt(index)
+  };
   // 返回元素在列表的索引,如果没有就返回 -1
-  LinkedList.prototype.indexOf = function (element) {};
+  LinkedList.prototype.indexOf = function (element) {
+    let current = head
+    let index = 0
+    while (index++ < length) {
+      if (current.element === element) {
+        return index - 1
+      }
+      current = current.next
+    }
+    return -1
+  };
   // 如果链表为空 返回 true
-  LinkedList.prototype.isEmpty = function () {};
+  LinkedList.prototype.isEmpty = function () {
+    return length === 0
+  };
   // 返回链表的元素个数
-  LinkedList.prototype.size = function () {};
+  LinkedList.prototype.size = function () {
+    return length
+  };
   // 输出链表
   LinkedList.prototype.toString = function () {
     let current = head;
@@ -111,7 +147,11 @@ linkedList.append(2)
 linkedList.append(3)
 linkedList.insert(0, 4)
 linkedList.insert(1, 55)
-console.log(linkedList.toString())
+console.log("结果", linkedList.toString()) // 4-55-1-2-3
+console.log("求值 55 的索引", linkedList.indexOf(55)) // 1
+console.log("移除下标 1", linkedList.removeAt(1)) // 1
+console.log("移除元素 2", linkedList.remove(2))
+console.log("结果", linkedList.toString()) // 4-55-1-2-3
 
 let reverse = linkedList.reverse()
 console.log(reverse) // 3 2 1 55 4
