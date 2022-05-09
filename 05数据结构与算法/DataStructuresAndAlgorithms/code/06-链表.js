@@ -82,7 +82,6 @@ function LinkedList() {
   LinkedList.prototype.toString = function () {
     let current = head;
     let result = ''
-
     // 如果链表里面有元素
     while (current) {
       result += current.element + "-"
@@ -91,6 +90,18 @@ function LinkedList() {
     return result.slice(0, result.length - 1)
   };
 
+  // 翻转链表
+  LinkedList.prototype.reverse = function () {
+    let pre = null;
+    let current = head
+    while (current) {
+      const next = current.next
+      current.next = pre
+      pre = current
+      current = next
+    }
+    return pre
+  }
 }
 
 let linkedList = new LinkedList();
@@ -101,3 +112,6 @@ linkedList.append(3)
 linkedList.insert(0, 4)
 linkedList.insert(1, 55)
 console.log(linkedList.toString())
+
+let reverse = linkedList.reverse()
+console.log(reverse) // 3 2 1 55 4
