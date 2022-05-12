@@ -53,8 +53,8 @@ let output = {
 }
 
 /**
- * 
- * @param {Array} arr 
+ *
+ * @param {Array} arr
  */
 function arrToTree(arr) {
   let root = arr[0]
@@ -67,10 +67,11 @@ function arrToTree(arr) {
   }
   return tree;
 }
+
 /**
- * 
- * @param {Number} id 
- * @param {Array} arr 
+ *
+ * @param {Number} id
+ * @param {Array} arr
  */
 function toTree(id, arr) {
   let children = [];
@@ -87,6 +88,49 @@ function toTree(id, arr) {
   return children;
 }
 
+/** 转成数组
+ *
+ * @param {Array} arr
+ */
+function arr2Tree(arr, pid = null) {
+
+  return arr.reduce((prev, cur) => {
+    if (cur.parentId === pid) {
+      const children = arr2Tree(arr, cur.id)
+      if (children.length) {
+        cur.children = children
+      }
+      prev.push(cur)
+    }
+    return prev
+  }, [])
+
+}
+
+// let arrTo = arrToTree(input)
+// console.log("1",arrTo)
+
+// let arr2=arr2Tree(input)
+// console.log("2",arr2)
 
 
-console.log(arrToTree(input))
+
+// 再转回来
+
+function getItem(tree, result) {
+  for (let i = 0; i < tree.length; i++) {
+    if (tree[i].children) {
+      getItem(tree[i].children, result)
+      delete tree[i].children;
+    }
+    result.unshift(tree[i])
+  }
+  return result;
+}
+
+function treeToList(tree) {
+  const result = [];
+  getItem(tree, result);
+  return result;
+}
+console.log(treeToList([output]))
