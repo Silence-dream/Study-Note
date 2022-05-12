@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button class="btn">按钮</button>
+  
+  
+  <script>
+    const btn = document.querySelector('.btn');
+    btn.addEventListener('click', function () {  
+      Promise.resolve().then(()=>console.log("MicorTask 1"))
+      console.log("1")
+    })
+
+    btn.addEventListener('click', function () { 
+      Promise.resolve().then(()=>console.log("MicorTask 2"))
+      console.log("2")
+    })
+
+    // btn.click();  // 看看代码调用和手动调用去区别吧
+  </script>
+</body>
+</html>
