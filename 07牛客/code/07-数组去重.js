@@ -83,4 +83,48 @@ function objArr(array) {
   return newArr
 }
 
-console.log("5. 利用对象的属性不能相同的特点进行去重", objArr(arr))
+// console.log("5. 利用对象的属性不能相同的特点进行去重", objArr(arr))  //两个true直接去掉了，NaN和{}去重
+
+
+/**6. 利用includes
+ * 
+ * @param {Array} arr 
+ */
+function includesArr(arr) {
+  let brr = []
+  for (let i = 0; i < array.length; i++) {
+    if (!brr.includes(arr[i])) {
+      brr.push(arr[i])
+    }
+  }
+  return brr;
+}
+
+// console.log("6. 利用includes",indexOfArr(arr))
+
+/**7.利用 hasOwnProperty
+ * 
+ * @param {Array} arr 
+ */
+function hasOwnPropertyArr(arr) {
+  let obj = {}
+  return arr.filter(function (item, index, arr) {
+    return obj.hasOwnProperty(typeof item + item) ? false : (obj[typeof item + item] = true)
+  })
+
+}
+
+// console.log("7.利用 hasOwnProperty", hasOwnPropertyArr(arr))  // //所有的都去重了
+
+/**8.利用filter
+ * 
+ * @param {Array} arr 
+ */
+function filterArr(arr) {
+  return arr.filter(function(item, index) {
+    //当前元素，在原始数组中的第一个索引==当前索引值，否则返回当前元素
+    return arr.indexOf(item, 0) === index;
+  });
+}
+
+console.log(filterArr(arr))
