@@ -16,4 +16,5 @@ function test2() {
 
 
 let result = test2.bind(test1, 1, 2, 3)
+
 result()

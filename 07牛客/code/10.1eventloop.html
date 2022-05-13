@@ -12,15 +12,18 @@
   
   <script>
     const btn = document.querySelector('.btn');
-    btn.addEventListener('click', function () {  
+
+    function fn1(){
       Promise.resolve().then(()=>console.log("MicorTask 1"))
       console.log("1")
-    })
-
-    btn.addEventListener('click', function () { 
+    }
+    function fn2(){
       Promise.resolve().then(()=>console.log("MicorTask 2"))
       console.log("2")
-    })
+    }
+    btn.addEventListener('click', fn1)
+
+    btn.addEventListener('click', fn2)
 
     // btn.click();  // 看看代码调用和手动调用去区别吧
   </script>
