@@ -7,5 +7,6 @@
   "obsidian-show-file-path",
   "quickadd",
   "templater-obsidian",
-  "calendar"
+  "calendar",
+  "obsidian-linter"
 ]
