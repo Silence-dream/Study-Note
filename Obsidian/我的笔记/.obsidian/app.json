@@ -6,5 +6,7 @@
   "spellcheck": true,
   "newFileLocation": "current",
   "attachmentFolderPath": "附件",
-  "showUnsupportedFiles": false
+  "showUnsupportedFiles": false,
+  "showLineNumber": false,
+  "newLinkFormat": "relative"
 }

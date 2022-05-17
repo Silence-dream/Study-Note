@@ -8,5 +8,6 @@
   "quickadd",
   "templater-obsidian",
   "calendar",
-  "obsidian-linter"
+  "obsidian-linter",
+  "code-block-copy"
 ]

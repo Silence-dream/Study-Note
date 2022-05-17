@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "日志/2022-05-16.md",
+            "file": "编程/前端/JavaScript/数组去重.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -54,7 +54,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 251
   },
   "right": {
     "id": "99e3e5d312b45ea3",
@@ -70,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "日志/2022-05-16.md",
+                "file": "编程/前端/JavaScript/数组去重.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -87,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "日志/2022-05-16.md"
+                "file": "编程/前端/JavaScript/数组去重.md"
               }
             }
           },
@@ -97,7 +97,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "日志/2022-05-16.md",
+                "file": "编程/前端/JavaScript/数组去重.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,19 +124,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 272
   },
   "active": "17f95e7bdb1abee0",
   "lastOpenFiles": [
+    "编程/前端/JavaScript/数组去重.md",
+    "日志/2022-05-17.md",
+    "编程/前端/JavaScript/数组转树.md",
+    "编程/前端/JavaScript/null 和 undefined 的区别，如何让一个属性变为 null.md",
+    "模板/笔记模板.md",
     "日志/2022-05-16.md",
     "日志/2022-05-13.md",
     "日志/2022-05-06.md",
     "编程/算法/力扣/1.两数之和.md",
-    "模板/日志模板.md",
-    "模板/笔记模板.md",
-    "编程/前端/JavaScript/测试用例.md",
-    "编程/前端/JavaScript/test.md",
-    "编程/前端/JavaScript/demo1.md",
-    "日志/123.md"
+    "模板/日志模板.md"
   ]
 }
