@@ -129,14 +129,14 @@
   "active": "17f95e7bdb1abee0",
   "lastOpenFiles": [
     "编程/前端/JavaScript/数组去重.md",
-    "日志/2022-05-17.md",
+    "编程/前端/Typescript/key of.md",
     "编程/前端/JavaScript/数组转树.md",
-    "编程/前端/JavaScript/null 和 undefined 的区别，如何让一个属性变为 null.md",
-    "模板/笔记模板.md",
-    "日志/2022-05-16.md",
-    "日志/2022-05-13.md",
-    "日志/2022-05-06.md",
-    "编程/算法/力扣/1.两数之和.md",
-    "模板/日志模板.md"
+    "编程/前端/Typescript/unknown.md",
+    "编程/前端/Typescript/索引签名.md",
+    "编程/前端/Typescript/Never.md",
+    "编程/前端/Typescript/Readonly.md",
+    "模板/日志模板.md",
+    "日志/2022-05-18.md",
+    "日志/2022-05-17.md"
   ]
 }

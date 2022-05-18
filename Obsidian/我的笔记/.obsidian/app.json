@@ -8,5 +8,6 @@
   "attachmentFolderPath": "附件",
   "showUnsupportedFiles": false,
   "showLineNumber": false,
-  "newLinkFormat": "relative"
+  "newLinkFormat": "shortest",
+  "tabSize": 2
 }
