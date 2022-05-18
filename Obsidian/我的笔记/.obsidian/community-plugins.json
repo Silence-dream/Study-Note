@@ -9,5 +9,6 @@
   "templater-obsidian",
   "calendar",
   "obsidian-linter",
-  "code-block-copy"
+  "code-block-copy",
+  "obsidian-auto-link-title"
 ]

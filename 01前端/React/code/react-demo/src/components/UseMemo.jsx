@@ -10,6 +10,11 @@ export default function UseMemo() {
     console.log("treatCount");
     return count + 10;
   },[count]);
+
+  // const treatCount = () => {
+  //   console.log("treatCount");
+  //   return count + 10;
+  // };
   return (
     <div>
       <h1>UseMemo</h1>
@@ -26,6 +31,3 @@ export default function UseMemo() {
     </div>
   );
 }
-
-
-
