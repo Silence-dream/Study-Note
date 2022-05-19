@@ -7,8 +7,13 @@
         "id": "01adf05a8767ce59",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "编程/前端/CSS/BFC.md",
+            "mode": "source",
+            "backlinks": false,
+            "source": false
+          }
         }
       }
     ],
@@ -65,6 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "编程/前端/CSS/BFC.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -80,7 +86,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "编程/前端/CSS/BFC.md"
+              }
             }
           },
           {
@@ -89,6 +97,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "编程/前端/CSS/BFC.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -111,7 +120,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -119,15 +128,15 @@
   },
   "active": "01adf05a8767ce59",
   "lastOpenFiles": [
-    "日志/2022-05-18.md",
-    "日志/2022-05-16.md",
-    "日志/2022-05-17.md",
-    "日志/2022-05-13.md",
-    "编程/前端/浏览器/浏览器缓存.md",
-    "编程/网络/http cache-control.md",
-    "编程/网络/http header.md",
-    "编程/前端/浏览器/浏览器架构.md",
-    "编程/前端/浏览器/hash 和 history 路由的区别.md",
-    "编程/前端/React/监听路由变化.md"
+    "编程/前端/CSS/BFC.md",
+    "日志/2022-05-19.md",
+    "编程/前端/React/React 生命周期.md",
+    "E/构词法.md",
+    "编程/前端/CSS/盒模型.md",
+    "编程/前端/React/监听 React 状态更新.md",
+    "编程/前端/React/如何更新组件状态.md",
+    "编程/前端/React/useMemo.md",
+    "编程/前端/React/监听路由变化.md",
+    "编程/前端/浏览器/跨域通信类.md"
   ]
 }
