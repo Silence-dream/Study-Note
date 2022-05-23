@@ -1,4 +1,5 @@
 ---
+alias : 永远不存在的值
 tags : 
 - TypeScript
 - 类型
