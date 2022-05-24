@@ -180,7 +180,31 @@ function LinkedList() {
     }
     length++ // 记得最后维护 length 的长度
   };
-  LinkedList.prototype.insert = function (position, element) {};
+  LinkedList.prototype.insert = function (position, element) {
+    let current = head;
+    let index = 0;
+    let prev = null;
+    let node = new Node(element)
+    // 判断传入的索引位置是否非法  切记索引从 0 开始
+    if (position < 0 || position > length - 1) {
+      throw "请传入合法的索引值"
+    } else {
+      // 1. 插入在头部直接将新节点的 next 指向第一个节点，然后将 head 指向 node，这样就完成了元素的添加
+      // 2. 插入在其他位置，找到要插入的位置，将插入位置的前一个节点指向新节点，将新节点指向原位置的节点
+      if (position === 0) {
+        node.next = current
+        head = node
+      } else {
+        while (index++ < position) {
+          prev = current
+          current = current.next
+        }
+        node.next = current
+        prev.next = node
+      }
+      length++;
+    }
+  };
   LinkedList.prototype.removeAt = function (position) {
     let current = head;
     let index = 0;
@@ -205,14 +229,46 @@ function LinkedList() {
       return current.element
     }
   };
-  LinkedList.prototype.remove = function (element) {};
-  LinkedList.prototype.indexOf = function (element) {};
-  LinkedList.prototype.isEmpty = function () {};
-  LinkedList.prototype.size = function () {};
-  LinkedList.prototype.toString = function () {
-    console.log(head, length)
+  LinkedList.prototype.remove = function (element) {
+    let current = head;
+    let index = 0;
+    while (current) {
+      if (current.element === element) {
+        this.removeAt(index)
+      }
+      current = current.next
+      index++
+    }
   };
-  LinkedList.prototype.print = function () {};
+  LinkedList.prototype.indexOf = function (element) {
+    let current = head;
+    let index = 0
+    while (current) {
+      if (current.element === element) {
+        return index; // 找到了就返回索引
+      }
+      // 直到 current
+      current = current.next
+      index++;
+    }
+    return -1; // 不存在返回 -1
+  };
+  LinkedList.prototype.isEmpty = function () {
+    return length === 0
+  };
+  LinkedList.prototype.size = function () {
+    return length
+  };
+  LinkedList.prototype.toString = function () {
+    console.log(head, "长度", length)
+    let str = "" //用来拼接字符串
+    let current = head // 保存第一个元素
+    while (current) { // 如果存在元素那么就开始拼接
+      str += current.element + " "
+      current = current.next
+    }
+    return str
+  };
 }
 
 let linkedList = new LinkedList();
@@ -220,6 +276,11 @@ linkedList.append(10)
 linkedList.append(20)
 linkedList.append(30)
 linkedList.append(40)
-linkedList.toString()
 linkedList.removeAt(0)
-linkedList.toString()
+linkedList.insert(0, 666)
+linkedList.insert(1, 777)
+let a = linkedList.indexOf(30)
+console.log(a)
+linkedList.remove(666)
+let result = linkedList.toString()
+console.log(result)

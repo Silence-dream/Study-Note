@@ -7,8 +7,13 @@
         "id": "da593e63c590d920",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "日志/2022-05-24.md",
+            "mode": "source",
+            "backlinks": false,
+            "source": false
+          }
         }
       }
     ],
@@ -65,6 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "日志/2022-05-24.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -80,7 +86,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "日志/2022-05-24.md"
+              }
             }
           },
           {
@@ -89,6 +97,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "日志/2022-05-24.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -119,15 +128,15 @@
   },
   "active": "da593e63c590d920",
   "lastOpenFiles": [
+    "日志/2022-05-24.md",
+    "编程/前端/Typescript/Never.md",
     "日志/2022-05-23.md",
     "日志/2022-05-20.md",
     "编程/前端/JavaScript/call apply 和 bind 的作用和区别.md",
     "编程/前端/JavaScript/JavaScript 数据类型.md",
     "编程/前端/JavaScript/this 指向.md",
     "编程/前端/Typescript/Readonly.md",
-    "编程/前端/Typescript/Never.md",
     "编程/前端/Typescript/key of.md",
-    "编程/前端/Typescript/unknown.md",
-    "编程/前端/JavaScript/Object.defineProperty.md"
+    "编程/前端/Typescript/unknown.md"
   ]
 }
