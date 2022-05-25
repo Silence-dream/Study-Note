@@ -260,7 +260,7 @@ function LinkedList() {
     return length
   };
   LinkedList.prototype.toString = function () {
-    console.log(head, "长度", length)
+    // console.log("当前链表", head, "长度", length)
     let str = "" //用来拼接字符串
     let current = head // 保存第一个元素
     while (current) { // 如果存在元素那么就开始拼接
@@ -269,6 +269,21 @@ function LinkedList() {
     }
     return str
   };
+  // 翻转链表
+  LinkedList.prototype.reverse = function () {
+    let pre = null;
+    let current = head
+    let next = null
+    let count = 0;
+    while (current) {
+      next = current.next
+      current.next = pre
+      pre = current
+      current = next
+      count++
+    }
+    return pre
+  }
 }
 
 let linkedList = new LinkedList();
@@ -280,7 +295,10 @@ linkedList.removeAt(0)
 linkedList.insert(0, 666)
 linkedList.insert(1, 777)
 let a = linkedList.indexOf(30)
-console.log(a)
+// console.log(a)
 linkedList.remove(666)
 let result = linkedList.toString()
 console.log(result)
+
+let reverse = linkedList.reverse()
+console.log(reverse)

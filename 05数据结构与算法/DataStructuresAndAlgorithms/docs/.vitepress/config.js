@@ -7,6 +7,7 @@ export default defineConfig({
   title: '数据结构与算法',
   description: '数据结构与算法',
   lang: "zh-CN",
+  outDir:"../dist",
   themeConfig: {
     repo:"/",
     docsDir: 'docs',

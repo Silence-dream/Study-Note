@@ -19,6 +19,10 @@ export default {
     {
       text: "队列(Queue)",
       link: "/guide/05-队列"
+    },
+    {
+      text: "链表(LinkedList)",
+      link: "/guide/06-链表"
     }
   ]
 }
