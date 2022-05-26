@@ -3,6 +3,8 @@ tags :
 - JavaScript
 ---
 
+[[Object.defineProperty]]
+
 1. Proxy 的优势如下: Proxy 可以直接监听对象而非属性； Proxy 可以直接监听数组的变化；
 Proxy 有多达 13 种拦截方法,不限于 apply、ownKeys、deleteProperty、has等等是Object.defineProperty 不具备的；
 Proxy返回的是一个新对象,我们可以只操作新的对象达到目的,而Object.defineProperty 只能遍历对象属性直接修改；
