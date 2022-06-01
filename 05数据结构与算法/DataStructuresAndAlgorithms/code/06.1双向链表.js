@@ -9,4 +9,6 @@ function DoublyLinkedList() {
   let head = null
   // 尾指针
   let tail = null //相比于链表新增的
+  // 
+  DoublyLinkedList.prototype.inset = function () {}
 }
