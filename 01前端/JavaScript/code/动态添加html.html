@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="cont"></div>
+  <script type="text/javascript">
+    // https://developer.aliyun.com/article/370309
+    window.onload = function () {
+      fetch("https://server.adkits.com/landing_page_front/config/tiktok/YZCYIdHgFY").then(res => res.json()).then(
+        res => {
+
+          let str = res.data.info_landing_page.contents[13].html
+          console.log(str)
+          // console.log(str.substring(str.indexOf(`<script`)))
+
+          var html = str;
+          var cont = document.getElementById('cont');
+          cont.innerHTML = html;
+          var oldScript = cont.getElementsByTagName('script')[0];
+          cont.removeChild(oldScript);
+          var newScript = document.createElement('script');
+          newScript.type = 'text/javascript';
+          newScript.innerHTML = oldScript.innerHTML;
+          cont.appendChild(newScript);
+        })
+    }
+  </script>
+</body>
+
+</html>
