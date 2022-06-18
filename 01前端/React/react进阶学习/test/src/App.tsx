@@ -2,6 +2,7 @@ import { useState } from "react";
 import React from 'react';
 import "./App.css"
 import Index from './components/Index'
+import IndexTwo from './components/IndexTwo'
 const TextComponent = ()=> <div> hello , i am function component </div> 
 function App() {
   const [count, setCount] = useState(0);
@@ -26,6 +27,7 @@ function App() {
       {/* 函数 */}
       <button type="submit" onClick={()=>setCount(count+1)}>count</button>
       <Index></Index>
+      <IndexTwo></IndexTwo>
     </div>
   );
 }

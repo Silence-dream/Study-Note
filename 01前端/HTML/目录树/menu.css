@@ -1,0 +1,44 @@
+/* https://www.bilibili.com/video/BV1mA4y1Z7cy */
+/* https://m.php.cn/article/473454.html  画三角形文章 */
+
+details {
+  position: relative;
+  width: 300px;
+  padding-left: 20px;
+}
+
+summary {
+  list-style: none;
+  padding: 10px;
+}
+
+summary:hover{
+  background-color: aliceblue;
+  cursor: pointer;
+}
+
+summary:not(:only-child):before{
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 15px;
+  left: 20px;
+  border: 6px solid #ccc;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+
+details[open] > summary:not(:only-child):before{
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 18px;
+  left: 15px;
+  border: 6px solid #ccc;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
