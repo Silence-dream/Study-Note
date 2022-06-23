@@ -3,8 +3,7 @@
 HTML+CSS+JavaStript
 这是一个学习笔记。里面记录了一些基本概念和案例
 
-
-博客 https://silence-dream.github.io/blog/
+博客 <https://silence-dream.github.io/blog/>
 
 ## HTML
 
@@ -44,8 +43,6 @@ HTML+CSS+JavaStript
 
 [思维导图](./JavaScript/思维导图)
 
-
-
 # Thanks
 
 特别感谢 [JetBrains](https://www.jetbrains.com/?from=My-Actions) 为开源项目提供免费的 [IDEA](https://www.jetbrains.com/idea/) 等 IDE 的授权
@@ -53,4 +50,3 @@ HTML+CSS+JavaStript
 Special thanks to [JetBrains](https://www.jetbrains.com/?from=My-Actions)  for licensing [IDEA](https://www.jetbrains.com/idea/) and other IDEs for free for open source projects
 
 ![jetbrains](https://img.shields.io/badge/IDEA-black?style=plastic&logo=jetbrains)
-
