@@ -50,3 +50,4 @@ HTML+CSS+JavaStript
 Special thanks to [JetBrains](https://www.jetbrains.com/?from=My-Actions)  for licensing [IDEA](https://www.jetbrains.com/idea/) and other IDEs for free for open source projects
 
 ![jetbrains](https://img.shields.io/badge/IDEA-black?style=plastic&logo=jetbrains)
+
