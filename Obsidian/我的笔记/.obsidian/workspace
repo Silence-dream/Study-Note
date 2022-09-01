@@ -4,15 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "ca7bdd44d778d99d",
+        "id": "e53de411f58910a1",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "编程/前端/HTML and CSS/知识体系.md",
+            "file": "编程/前端/JavaScript/JavaScript 数据类型.md",
             "mode": "source",
-            "backlinks": false,
-            "source": false
+            "backlinks": true,
+            "source": true
           }
         }
       }
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "数据类型",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -70,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "编程/前端/HTML and CSS/知识体系.md",
+                "file": "编程/前端/JavaScript/JavaScript 数据类型.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -87,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "编程/前端/HTML and CSS/知识体系.md"
+                "file": "编程/前端/JavaScript/JavaScript 数据类型.md"
               }
             }
           },
@@ -97,7 +97,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "编程/前端/HTML and CSS/知识体系.md",
+                "file": "编程/前端/JavaScript/JavaScript 数据类型.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,17 +126,17 @@
     "direction": "horizontal",
     "width": 272
   },
-  "active": "ca7bdd44d778d99d",
+  "active": "e53de411f58910a1",
   "lastOpenFiles": [
+    "编程/前端/JavaScript/call apply 和 bind 的作用和区别.md",
+    "编程/前端/JavaScript/JavaScript 数据类型.md",
+    "编程/前端/HTML and CSS/知识体系.md",
     "编程/前端/HTML and CSS/BFC.md",
     "编程/前端/HTML and CSS/盒模型.md",
-    "编程/前端/HTML and CSS/知识体系.md",
     "编程/前端/Vue/Vue首屏加载白屏问题及解决方案.md",
     "编程/前端/Vue/Vue 响应式原理.md",
     "编程/前端/Vue/Vue 线上环境和开发环境如何切换.md",
     "编程/前端/React/Real DOM和Virtual DOM.md",
-    "编程/前端/React/useMemo.md",
-    "编程/前端/React/受控组件和非受控组件.md",
-    "编程/前端/React/如何更新组件状态.md"
+    "编程/前端/React/useMemo.md"
   ]
 }
