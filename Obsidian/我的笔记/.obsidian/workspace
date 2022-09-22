@@ -4,15 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "e53de411f58910a1",
+        "id": "36b4c4c576734918",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "编程/前端/JavaScript/JavaScript 数据类型.md",
+            "file": "编程/网络/http cache-control.md",
             "mode": "source",
             "backlinks": true,
-            "source": true
+            "source": false
           }
         }
       }
@@ -70,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "编程/前端/JavaScript/JavaScript 数据类型.md",
+                "file": "编程/网络/http cache-control.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -87,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "编程/前端/JavaScript/JavaScript 数据类型.md"
+                "file": "编程/网络/http cache-control.md"
               }
             }
           },
@@ -97,7 +97,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "编程/前端/JavaScript/JavaScript 数据类型.md",
+                "file": "编程/网络/http cache-control.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -120,23 +120,23 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
     "width": 272
   },
-  "active": "e53de411f58910a1",
+  "active": "36b4c4c576734918",
   "lastOpenFiles": [
-    "编程/前端/JavaScript/call apply 和 bind 的作用和区别.md",
-    "编程/前端/JavaScript/JavaScript 数据类型.md",
-    "编程/前端/HTML and CSS/知识体系.md",
-    "编程/前端/HTML and CSS/BFC.md",
-    "编程/前端/HTML and CSS/盒模型.md",
-    "编程/前端/Vue/Vue首屏加载白屏问题及解决方案.md",
+    "编程/网络/http header.md",
+    "编程/前端/HTML and CSS/img/qd.webp",
+    "日志/2022-09-22.md",
+    "日志/2022-08-30.md",
+    "日志/2022-07-01.md",
+    "日志/2022-05-13.md",
+    "模板/日志模板.md",
     "编程/前端/Vue/Vue 响应式原理.md",
-    "编程/前端/Vue/Vue 线上环境和开发环境如何切换.md",
-    "编程/前端/React/Real DOM和Virtual DOM.md",
-    "编程/前端/React/useMemo.md"
+    "模板/笔记模板.md",
+    "日志/2022-06-23.md"
   ]
 }

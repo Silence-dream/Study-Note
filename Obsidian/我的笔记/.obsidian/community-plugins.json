@@ -2,7 +2,6 @@
   "obsidian-tasks-plugin",
   "table-editor-obsidian",
   "obsidian-admonition",
-  "dataview",
   "obsidian-image-auto-upload-plugin",
   "obsidian-show-file-path",
   "quickadd",
@@ -11,5 +10,6 @@
   "obsidian-linter",
   "code-block-copy",
   "obsidian-auto-link-title",
-  "open-vscode"
+  "open-vscode",
+  "dataview"
 ]
