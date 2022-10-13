@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "编程/前端/测试/Cypress/Cypress.md",
+            "file": "编程/前端/JavaScript/事件循环.md",
             "mode": "source",
             "backlinks": true,
             "source": false
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "event loop",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -50,7 +50,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -70,7 +71,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "编程/前端/测试/Cypress/Cypress.md",
+                "file": "编程/前端/JavaScript/事件循环.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -87,7 +88,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "编程/前端/测试/Cypress/Cypress.md"
+                "file": "编程/前端/JavaScript/事件循环.md"
               }
             }
           },
@@ -97,7 +98,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "编程/前端/测试/Cypress/Cypress.md",
+                "file": "编程/前端/JavaScript/事件循环.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,8 +127,10 @@
     "direction": "horizontal",
     "width": 272
   },
-  "active": "2e35a23679637cf4",
+  "active": "201c09d2ffc16fa6",
   "lastOpenFiles": [
+    "日志/2022-10-13.md",
+    "编程/前端/测试/Cypress/Cypress.md",
     "人文社科/韭菜 韭菜.md",
     "日志/2022-10-10.md",
     "编程/获取系统信息.md",
@@ -135,8 +138,6 @@
     "编程/前端/Nest/a.md",
     "编程/前端/Vue/Safari-module 协议缺少斜杠.md",
     "编程/常用工具方法.md",
-    "日志/2022-09-22.md",
-    "模板/日志模板.md",
-    "编程/前端/Vue/移动端CSS适配.md"
+    "日志/2022-09-22.md"
   ]
 }
