@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "2e35a23679637cf4",
+        "id": "7917924c5f84d5da",
         "type": "leaf",
         "state": {
           "type": "markdown",
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "promise",
+                "query": "event loop",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -120,23 +120,23 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
     "width": 272
   },
-  "active": "2e35a23679637cf4",
+  "active": "9682698329ae7f4a",
   "lastOpenFiles": [
-    "编程/前端/JavaScript/数组转树.md",
-    "编程/前端/JavaScript/axios拦截器.md",
-    "编程/前端/JavaScript/this 指向.md",
-    "编程/前端/JavaScript/Object.defineProperty 和 Proxy 的区别.md",
-    "编程/前端/JavaScript/Object.defineProperty.md",
-    "编程/前端/JavaScript/Object.defineproperies.md",
-    "编程/前端/JavaScript/null 和 undefined 的区别，如何让一个属性变为 null.md",
-    "编程/前端/JavaScript/JavaScript 数据类型.md",
-    "编程/前端/JavaScript/call apply 和 bind 的作用和区别.md",
-    "编程/网络/http status code.md"
+    "日志/2022-10-13.md",
+    "模板/笔记模板.md",
+    "模板/日志模板.md",
+    "人文社科/韭菜 韭菜.md",
+    "编程/前端/JavaScript/事件循环.md",
+    "编程/前端/测试/Cypress/Cypress.md",
+    "日志/2022-10-10.md",
+    "编程/获取系统信息.md",
+    "编程/前端/HTML and CSS/盒模型.md",
+    "编程/前端/Nest/a.md"
   ]
 }
