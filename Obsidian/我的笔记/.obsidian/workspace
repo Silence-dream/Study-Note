@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "人文社科/韭菜 韭菜.md",
+            "file": "编程/前端/JavaScript/事件循环.md",
             "mode": "source",
             "backlinks": true,
             "source": false
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "promise",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -70,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "人文社科/韭菜 韭菜.md",
+                "file": "编程/前端/JavaScript/事件循环.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -87,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "人文社科/韭菜 韭菜.md"
+                "file": "编程/前端/JavaScript/事件循环.md"
               }
             }
           },
@@ -97,7 +97,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "人文社科/韭菜 韭菜.md",
+                "file": "编程/前端/JavaScript/事件循环.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,15 +128,15 @@
   },
   "active": "2e35a23679637cf4",
   "lastOpenFiles": [
-    "编程/获取系统信息.md",
-    "编程/前端/HTML and CSS/盒模型.md",
-    "编程/前端/Nest/a.md",
-    "编程/前端/Vue/Safari-module 协议缺少斜杠.md",
-    "编程/常用工具方法.md",
-    "日志/2022-09-22.md",
-    "模板/日志模板.md",
-    "编程/前端/Vue/移动端CSS适配.md",
-    "编程/前端/Vue/Vue 线上环境和开发环境如何切换.md",
-    "编程/前端/JavaScript/事件循环.md"
+    "编程/前端/JavaScript/数组转树.md",
+    "编程/前端/JavaScript/axios拦截器.md",
+    "编程/前端/JavaScript/this 指向.md",
+    "编程/前端/JavaScript/Object.defineProperty 和 Proxy 的区别.md",
+    "编程/前端/JavaScript/Object.defineProperty.md",
+    "编程/前端/JavaScript/Object.defineproperies.md",
+    "编程/前端/JavaScript/null 和 undefined 的区别，如何让一个属性变为 null.md",
+    "编程/前端/JavaScript/JavaScript 数据类型.md",
+    "编程/前端/JavaScript/call apply 和 bind 的作用和区别.md",
+    "编程/网络/http status code.md"
   ]
 }
