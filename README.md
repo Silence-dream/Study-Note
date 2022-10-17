@@ -5,16 +5,6 @@ HTML+CSS+JavaStript
 
 博客 <https://silence-dream.github.io/blog/>
 
-
-## 链接已经废弃 2022-10-13 留作纪念
-
-新的笔记形式用 [Obsidian](https://obsidian.md/) 进行管理
-新的工具方法转移到了 [这里](https://github.com/Silence-dream/Silence-dream.github.io/issues)
-
-老旧的渗透测试、信息收集教程已经移除,需要的可以联系我(希望在那之前我没有删除),此 GitHub 账号转变为学习笔记的存储库,以前的 GitHub 账号已经存档.转移至华团队账号中。
-
-<del>或许大概因为是不符合社会主义核心价值观吧???存档给予后来者查看啦!就当是数字遗产吧!</del>
-
 ## HTML
 
 [HTML 标签和概念介绍](./HTML/HTML语法规范.md)
