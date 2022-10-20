@@ -1,0 +1,2 @@
+docker run -p 8080:80 -d -v E:\01testcode\01code\docker\03hello-docker:/usr/share/nginx/html 03t
+              通过8080端口访问images里面的80端口;把电脑里面的index.html文件复制到/usr/share/nginx/html目录下  运行03t自己 build的名字

@@ -1,0 +1,12 @@
+version: "3.7"
+# 爷不想写命令了!!!!!!!!!!!!!
+services:
+  app:
+    build: ./
+    
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/usr/share/nginx/html
+    environment:
+      - TZ=Asia/Shanghai

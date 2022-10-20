@@ -1,0 +1,5 @@
+services:
+  serve:
+    build: ./
+    environment:
+      - TZ=Asia/Shanghai
