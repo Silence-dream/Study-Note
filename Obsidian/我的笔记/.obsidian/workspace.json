@@ -4,19 +4,29 @@
     "type": "split",
     "children": [
       {
-        "id": "41d2947a34cc701a",
+        "id": "b9cb8e13eb338516",
         "type": "tabs",
         "children": [
           {
-            "id": "435ef46bc8a0fd5a",
+            "id": "9543a032988485c0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "编程/前端/浏览器/浏览器缓存.md",
+                "file": "日志/2022-10-29.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
+              }
+            }
+          },
+          {
+            "id": "b600a7d9254a05d9",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.0.3"
               }
             }
           }
@@ -78,7 +88,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "编程/前端/浏览器/浏览器缓存.md",
+                "file": "日志/2022-10-29.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -95,7 +105,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "编程/前端/浏览器/浏览器缓存.md"
+                "file": "日志/2022-10-29.md"
               }
             }
           },
@@ -105,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "编程/前端/浏览器/浏览器缓存.md",
+                "file": "日志/2022-10-29.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,26 +138,23 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
     "width": 272
   },
-  "ribbon": {
-    "mostRecentAction": ""
-  },
-  "active": "435ef46bc8a0fd5a",
+  "active": "9682698329ae7f4a",
   "lastOpenFiles": [
+    "编程/前端/JavaScript/事件循环.md",
+    "日志/2022-10-28.md",
+    "编程/前端/浏览器/浏览器缓存.md",
     "日志/2022-10-26.md",
     "编程/后端/GoLand/Go.md",
     "编程/后端/Docker/Docker.md",
     "日志/2022-10-20.md",
-    "编程/前端/JavaScript/事件循环.md",
     "日志/2022-10-13.md",
     "模板/笔记模板.md",
-    "模板/日志模板.md",
-    "人文社科/韭菜 韭菜.md",
-    "编程/前端/测试/Cypress/Cypress.md"
+    "模板/日志模板.md"
   ]
 }
