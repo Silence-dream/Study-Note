@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "日志/2022-10-29.md",
+                "file": "人文社科/韭菜 韭菜.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -88,7 +88,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "日志/2022-10-29.md",
+                "file": "人文社科/韭菜 韭菜.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +105,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "日志/2022-10-29.md"
+                "file": "人文社科/韭菜 韭菜.md"
               }
             }
           },
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "日志/2022-10-29.md",
+                "file": "人文社科/韭菜 韭菜.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,8 +144,9 @@
     "direction": "horizontal",
     "width": 272
   },
-  "active": "9682698329ae7f4a",
+  "active": "9543a032988485c0",
   "lastOpenFiles": [
+    "日志/2022-10-29.md",
     "编程/前端/JavaScript/事件循环.md",
     "日志/2022-10-28.md",
     "编程/前端/浏览器/浏览器缓存.md",
@@ -154,7 +155,6 @@
     "编程/后端/Docker/Docker.md",
     "日志/2022-10-20.md",
     "日志/2022-10-13.md",
-    "模板/笔记模板.md",
-    "模板/日志模板.md"
+    "模板/笔记模板.md"
   ]
 }
