@@ -17,5 +17,4 @@ func main() {
 	*p = *p / 2
 
 	fmt.Println(b)
-
 }
