@@ -1,0 +1,47 @@
+<keymap version="1" name="VSCode kuai" parent="VSCode">
+  <action id="$EditorTranslateAction">
+    <keyboard-shortcut first-keystroke="alt t" />
+  </action>
+  <action id="ActivateDebugToolWindow" />
+  <action id="Android.Designer.PreviousDevice" />
+  <action id="CollapseExpandableComponent">
+    <keyboard-shortcut first-keystroke="ctrl subtract" />
+  </action>
+  <action id="CommentByBlockComment">
+    <keyboard-shortcut first-keystroke="shift ctrl slash" />
+  </action>
+  <action id="EditorDuplicate">
+    <keyboard-shortcut first-keystroke="ctrl d" />
+  </action>
+  <action id="EditorStartNewLine">
+    <keyboard-shortcut first-keystroke="shift enter" />
+  </action>
+  <action id="EditorStartNewLineBefore">
+    <keyboard-shortcut first-keystroke="ctrl enter" />
+  </action>
+  <action id="ExpandExpandableComponent">
+    <keyboard-shortcut first-keystroke="ctrl add" />
+  </action>
+  <action id="Help.KeymapReference" />
+  <action id="OpenElementInNewWindow" />
+  <action id="RecentFiles" />
+  <action id="ReformatCode">
+    <keyboard-shortcut first-keystroke="ctrl k" second-keystroke="ctrl d" />
+  </action>
+  <action id="ReformatWithPrettierAction" />
+  <action id="SaveAll">
+    <keyboard-shortcut first-keystroke="ctrl s" />
+  </action>
+  <action id="SelectNextOccurrence">
+    <keyboard-shortcut first-keystroke="shift ctrl d" />
+  </action>
+  <action id="ShowReformatFileDialog" />
+  <action id="Terminal.SmartCommandExecution.Run" />
+  <action id="Vcs.ReformatCommitMessage" />
+  <action id="tasks.open.in.browser">
+    <keyboard-shortcut first-keystroke="alt b" />
+  </action>
+  <action id="编辑EditorTranslateAction">
+    <keyboard-shortcut first-keystroke="alt t" />
+  </action>
+</keymap>

@@ -54,7 +54,7 @@ docker run [可选参数] [image]
 
 docker ps #查看当前运行中的容器     -a 查看所有容器  
 docker start/stop/restart containner-id # 启动/停止/重启 容器  
-docker rmi image-id #删除指定 id 的镜像  
+docker rm image-id #删除指定 id 的镜像  
 docker kill container-id # 杀死进程  
 docker stop $(docker ps -aq) # 停止并且杀死所有容器
 

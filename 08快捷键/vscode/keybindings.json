@@ -1,0 +1,69 @@
+// 将键绑定放在此文件中以覆盖默认值auto[]
+[
+  {
+    "key": "ctrl+numpad_decimal",
+    "command": "quokka.createJavaScriptFile",
+    "when": "!quokka.isLiveShareClient && !terminalFocus"
+  },
+  {
+    "key": "ctrl+k j",
+    "command": "-quokka.createJavaScriptFile",
+    "when": "!quokka.isLiveShareClient && !terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+/",
+    "command": "editor.action.blockComment",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+alt+a",
+    "command": "-editor.action.blockComment",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+alt+u",
+    "command": "-java.projectConfiguration.update",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "-workbench.debug.viewlet.action.addFunctionBreakpointAction"
+  },
+  {
+    "key": "ctrl+shift+d",
+    "command": "-workbench.view.debug"
+  },
+  {
+    "key": "alt+t",
+    "command": "extension.showTranslation"
+  },
+  {
+    "key": "shift+win+t",
+    "command": "-extension.showTranslation"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "-editor.action.goToDeclaration",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+  {
+    "key": "ctrl+; b",
+    "command": "-jupyter.insertCellBelow",
+    "when": "editorTextFocus && jupyter.hascodecells && !notebookEditorFocused"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "-editor.action.addSelectionToNextFindMatch",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+shift+d",
+    "command": "editor.action.addSelectionToNextFindMatch",
+    "when": "editorFocus"
+  },
+  {
+    "key": "shift+alt+.",
+    "command": "-editor.action.addSelectionToNextFindMatch",
+    "when": "editorFocus"
+  }
+]
