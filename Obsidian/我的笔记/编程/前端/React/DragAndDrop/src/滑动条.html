@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        background-color: gray;
+      }
+      .slider {
+        border-radius: 5px;
+        background: #e0e0e0;
+        background: linear-gradient(left top, #e0e0e0, #eeeeee);
+        width: 310px;
+        height: 15px;
+        margin: 5px;
+        margin: 300px auto;
+      }
+
+      .thumb {
+        width: 10px;
+        height: 25px;
+        border-radius: 3px;
+        position: relative;
+        left: 10px;
+        top: -5px;
+        background: blue;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="slider" class="slider">
+      <div class="thumb"></div>
+    </div>
+
+    <script>
+      let thumb = slider.querySelector(".thumb");
+
+      thumb.onmousedown = function (event) {
+        event.preventDefault();
+
+        let shiftX = event.clientX - thumb.getBoundingClientRect().left; // 当前鼠标位置 - thumb相对于页面的位置
+        console.log(event.clientX, thumb.getBoundingClientRect().left, shiftX);
+        document.addEventListener("mousemove", onMouseMove);
+        document.addEventListener("mouseup", onMouseUp);
+
+        function onMouseMove(event) {
+          let newLeft =
+            event.clientX - shiftX - slider.getBoundingClientRect().left; // 当前鼠标位置 - 鼠标相对于thumb的位置 - slider相对于页面的位置
+
+          console.log({
+            newLeft,
+            eventClientX: event.clientX,
+            shiftX,
+            sliderLeft: slider.getBoundingClientRect().left,
+          });
+          // 滑块的最大最小位置
+          if (newLeft < 0) {
+            newLeft = 0;
+          }
+          let rightEdge = slider.offsetWidth - thumb.offsetWidth; // slider的宽度 - thumb的宽度
+          if (newLeft > rightEdge) {
+            newLeft = rightEdge;
+          }
+
+          thumb.style.left = newLeft + "px";
+        }
+
+        function onMouseUp() {
+          document.removeEventListener("mouseup", onMouseUp);
+          document.removeEventListener("mousemove", onMouseMove);
+        }
+      };
+
+      thumb.ondragstart = function () {
+        return false;
+      };
+    </script>
+  </body>
+</html>
