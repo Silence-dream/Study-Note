@@ -13,7 +13,8 @@ const Wrapper = styled.div`
   place-items: center;
 `;
 const PlaceHolder = styled.div`
-  border: 0.7rem dashed hsl(192.6315789473684, 22.891566265060245%, 16.274509803921568%);
+  border: 0.7rem dashed
+    hsl(192.6315789473684, 22.891566265060245%, 16.274509803921568%);
   padding: 0.7rem;
   &.current {
     background-color: rgba(255, 255, 255, 0.7);
