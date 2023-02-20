@@ -65,27 +65,37 @@ export default function Example() {
   // 当前拖拽的目标ID
   const [target, setTarget] = React.useState<null | number>(null);
 
-  // 拖拽开始
-  function ondragstart(index: number) {
-    console.log("拖拽开始");
+  const onDragStart = (index: number) => () => {
+    console.log("onDragStart", { index });
     setSource(index);
-  }
+  };
 
-  // 拖拽中   注意： 在拖动元素时，每隔 350 毫秒会触发 ondrag 事件。
-  function ondrag() {
-    console.log("index");
-  }
+  const onDragEnd = () => {
+    // 获取source之后的值
+    setSource(null);
 
-  // 拖拽结束
-  function ondragend() {
-    console.log("拖拽结束");
-  }
-  function ondragover(index: number, e: any) {
-    e.preventDefault();
-    console.log(index);
+    setTarget(null);
+  };
 
-    setTarget(index);
-  }
+  const onDrageOver =
+    (index: number) => (e: React.DragEvent<HTMLDivElement>) => {
+      e.preventDefault();
+      setTarget(index);
+    };
+
+  //  在一个拖动过程中，释放鼠标键时触发此事件
+  const onDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    // 释放的时候就是处理数据的时候
+
+    if (source === null || target === null) return;
+    items[target] = items[source];
+    items[source] = "";
+    setItems([...items]);
+
+    setTarget(null);
+    setSource(null);
+    console.log("Drop");
+  };
   return (
     <>
       <Wrapper>
@@ -94,9 +104,11 @@ export default function Example() {
           <PlaceHolder key={index}>
             <ItemContainer
               draggable={!!x}
-              onDragStart={() => ondragstart(index)}
-              onDragOver={(e) => ondragover(index, e)}
-              onDrag={() => ondrag}
+              onDragStart={onDragStart(index)}
+              onDragEnd={onDragEnd}
+              onDragOver={!x ? onDrageOver(index) : undefined}
+              onDrop={onDrop}
+              className={source === index ? "current" : ""}
             >
               <Card>{x}</Card>
             </ItemContainer>
