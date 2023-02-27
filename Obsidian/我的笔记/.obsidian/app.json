@@ -7,7 +7,7 @@
   "newFileLocation": "current",
   "attachmentFolderPath": "附件",
   "showUnsupportedFiles": false,
-  "showLineNumber": false,
+  "showLineNumber": true,
   "newLinkFormat": "shortest",
   "tabSize": 2
 }
