@@ -38,7 +38,7 @@ contract ReferenceType {
       array4 = array10;
       array4.push(1);
     }
-
+    
     // 结构体
     struct Student{
         uint256 id;
@@ -52,6 +52,12 @@ contract ReferenceType {
         Student storage _student = student; // assign a copy of student
         _student.id = 11;
         _student.score = 100;
+    }
+
+    // 方法2:直接引用状态变量的struct
+    function initStudent2() external{
+        student.id = 1;
+        student.score = 80;
     }
 
 }

@@ -515,3 +515,26 @@ function addArray() public {
 ```
 
 给结构体赋值的两种方法：
+
+方法一
+```sol
+    //  给结构体赋值
+    // 方法1:在函数中创建一个storage的struct引用
+    function initStudent1() external{
+        Student storage _student = student; // assign a copy of student
+        _student.id = 11;
+        _student.score = 100;
+    }
+```
+
+方法二
+
+```solidity
+     // 方法2:直接引用状态变量的struct
+    function initStudent2() external{
+        student.id = 1;
+        student.score = 80;
+    }
+```
+
+![image.png](https://cdn.jsdelivr.net/gh/Silence-dream/bed@master/img/202303031437184.png)
