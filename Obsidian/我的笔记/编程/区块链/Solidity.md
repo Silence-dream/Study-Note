@@ -538,3 +538,18 @@ function addArray() public {
 ```
 
 ![image.png](https://cdn.jsdelivr.net/gh/Silence-dream/bed@master/img/202303031437184.png)
+
+
+## 7.映射(Mapping)
+
+在映射中，人们可以通过键（`Key`）来查询对应的值（`Value`），比如：通过一个人的`id`来查询他的钱包地址。
+
+如果你学习过 JavaScript 那么你可以将映射类比成对象来理解。
+
+声明映射的格式为`mapping(_KeyType => _ValueType)`，其中`_KeyType`和`_ValueType`分别是`Key`和`Value`的变量类型。例子：
+
+```solidity
+    mapping(uint => address) public idToAddress; // id映射到地址
+    mapping(address => address) public swapPair; // 币对的映射，地址到地址
+```
+
