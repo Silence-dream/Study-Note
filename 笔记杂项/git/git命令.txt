@@ -6,6 +6,9 @@ windows快速删除文件命令
 del /f/s/q 文件夹名字 > null
 rmdir /s/q 文件夹名字
 
+创建一个干净的分支
+git checkout --orphan new_master
+
 windows修复命令
 在管理员命令提示符下键入以下命令：
 Dism /Online /Cleanup-Image /ScanHealth
