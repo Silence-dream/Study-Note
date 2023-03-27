@@ -10,10 +10,13 @@ contract Mapping {
         uint256 id;
         uint256 score;
     }
-    mapping(Student => uint256) public testVar;
+    /* 
+      Error
+      DeclarationError: Identifier not found or not unique.
+     */
+    // mapping(Student => uint256) public testVar;
 
     function writeMap(uint256 _Key, address _Value) public {
         idToAddress[_Key] = _Value;
     }
-
 }

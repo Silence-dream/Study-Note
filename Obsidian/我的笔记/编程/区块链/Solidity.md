@@ -584,3 +584,51 @@ function addArray() public {
 -   **原理3**: 因为Ethereum会定义所有未使用的空间为0，所以未赋值（`Value`）的键（`Key`）初始值都是0。
 
 ## 8.变量的初始值
+
+### 值类型初始值
+
+跟一些编程语言一样,在 solidity 中变量也拥有初始值
+
+-   `boolean`: `false`
+-   `string`: `""`
+-   `int`: `0`
+-   `uint`: `0`
+-   `enum`: 枚举中的第一个元素
+-   `address`: `0x0000000000000000000000000000000000000000` (或 `address(0)`)
+-   `function`
+    -   `internal`: 空白方程
+    -   `external`: 空白方程
+
+可以用`public`变量的`getter`函数验证上面写的初始值是否正确：
+
+```solidity
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.4;
+contract Variable{
+  // 值类型初始值
+  bool public _bool; // false
+  string public _string; // ""
+  uint public _uint; // 0
+  address public _address; // 0x0000000
+  enum ActionSet { Buy, Hold, Sell}
+  ActionSet public _enum; // 第一个元素是 0
+
+  function fi() internal{} // internal 空白方程
+  function fe() external{} // external 空白方程
+
+}
+```
+
+### 引用类型初始值
+
+-   映射`mapping`: 所有元素都为其默认值的`mapping`
+    
+-   结构体`struct`: 所有成员设为其默认值的结构体
+    
+-   数组`array`
+    
+    -   动态数组: `[]`
+    -   静态数组（定长）: 所有成员设为其默认值的静态数组
+
+可以用`public`变量的`getter`函数验证上面写的初始值是否正确：
