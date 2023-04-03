@@ -26,7 +26,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "编程/区块链/Solidity.md",
+                "file": "日志/2023-04-03.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -92,7 +92,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "编程/区块链/Solidity.md",
+                "file": "日志/2023-04-03.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "编程/区块链/Solidity.md"
+                "file": "日志/2023-04-03.md"
               }
             }
           },
@@ -119,7 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "编程/区块链/Solidity.md",
+                "file": "日志/2023-04-03.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,6 +166,10 @@
   },
   "active": "af6ed16a1411d7d1",
   "lastOpenFiles": [
+    "日志/2023-03-28.md",
+    "日志/2023-04-03.md",
+    "日志/2023-03-27.md",
+    "编程/区块链/Solidity.md",
     "编程/区块链/code/08-VariableInitialValue.sol",
     "编程/区块链/08-VariableInitialValue.sol",
     "编程/区块链/gas.md",
@@ -182,7 +186,6 @@
     "编程/区块链/test.js",
     "日志/2023-02-27.md",
     "编程/常用工具方法.md",
-    "编程/区块链/Solidity.md",
     "编程/区块链/code/07-Mapping.sol",
     "编程/区块链/code/06-ReferenceType.sol",
     "编程/区块链/code/05.1-Value-Scope.sol",
@@ -196,13 +199,10 @@
     "日志/2023-03-02.md",
     "日志/2022-05-20.md",
     "编程/区块链/code/05-Value-storage-memory-calldata.sol",
-    "编程/区块链/code/05-Value-storage-memory-called",
     "编程/前端/Typescript/高级类型.md",
     "模板/日志模板.md",
     "日志/2022-05-17.md",
     "日志/2022-06-24.md",
-    "日志/2023-01-27.md",
-    "日志/2023-02-14.md",
-    "编程/前端/TSRPC/Learn-TSRPC/frontend/node_modules/enquirer/README.md"
+    "日志/2023-01-27.md"
   ]
 }
