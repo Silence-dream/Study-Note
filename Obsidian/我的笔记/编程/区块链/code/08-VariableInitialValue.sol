@@ -6,6 +6,7 @@ contract Variable{
   string public _string; // ""
   uint public _uint; // 0
   address public _address; // 0x0000000
+  bytes1 public _bytes1; // 0x00
   enum ActionSet { Buy, Hold, Sell}
   ActionSet public _enum; // 第一个元素是 0
 

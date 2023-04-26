@@ -632,3 +632,35 @@ contract Variable{
     -   静态数组（定长）: 所有成员设为其默认值的静态数组
 
 可以用`public`变量的`getter`函数验证上面写的初始值是否正确：
+
+## 9.常数
+
+我们介绍`solidity`中两个关键字，`constant`（常量）和`immutable`（不变量）。状态变量声明这个两个关键字之后，不能在合约后更改数值；并且还可以节省`gas`。另外，只有数值变量可以声明`constant`和`immutable`；`string`和`bytes`可以声明为`constant`，但不能为`immutable`。
+
+### constant和immutable
+
+#### constant
+
+`constant`变量必须在声明的时候初始化，之后再也不能改变。尝试改变的话，编译不通过。
+
+```solidity
+    // constant变量必须在声明的时候初始化，之后不能改变
+    uint256 constant CONSTANT_NUM = 10;
+    string constant CONSTANT_STRING = "0xAA";
+    bytes constant CONSTANT_BYTES = "WTF";
+    address constant CONSTANT_ADDRESS = 0x0000000000000000000000000000000000000000;
+```
+
+
+#### immutable
+
+`immutable`变量可以在声明时或构造函数中初始化，因此更加灵活。
+
+
+```solidity
+    // immutable变量可以在constructor里初始化，之后不能改变
+    uint256 public immutable IMMUTABLE_NUM = 9999999999;
+    address public immutable IMMUTABLE_ADDRESS;
+    uint256 public immutable IMMUTABLE_BLOCK;
+    uint256 public immutable IMMUTABLE_TEST;
+```
