@@ -13,10 +13,20 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "日志/2023-04-26.md",
+                "file": "编程/机器学习/微软.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
+              }
+            }
+          },
+          {
+            "id": "2d4e72ef1b32b9aa",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "编程/机器学习/微软研究院ChatGPT4.pdf"
               }
             }
           }
@@ -78,7 +88,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "日志/2023-04-26.md",
+                "file": "编程/机器学习/微软.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -95,7 +105,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "日志/2023-04-26.md"
+                "file": "编程/机器学习/微软.md"
               }
             }
           },
@@ -105,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "日志/2023-04-26.md",
+                "file": "编程/机器学习/微软.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -152,8 +162,12 @@
   },
   "active": "c0eee94f2e62a557",
   "lastOpenFiles": [
-    "日志/2023-04-24.md",
+    "日志/2023-04-29.md",
+    "编程/机器学习/微软.md",
+    "编程/机器学习/微软研究院ChatGPT4.pdf",
+    "编程/机器学习",
     "日志/2023-04-26.md",
+    "日志/2023-04-24.md",
     "日志/2023-04-18.md",
     "日志/2023-03-20.md",
     "编程/区块链/Solidity.md",
@@ -170,8 +184,6 @@
     "编程/区块链/bin",
     "编程/区块链/bin/code/ValueTypes.json",
     "编程/区块链/bin/code/ValueTypes.abi",
-    "编程/区块链/bin/code/ValueTypes.bin",
-    "编程/区块链/bin/code/02-ValueTypes-solc-output.json",
     "日志/2023-04-03.md",
     "日志/2023-03-28.md",
     "日志/2023-03-27.md",
@@ -185,10 +197,7 @@
     "日志/2023-03-06.md",
     "日志/2023-02-27.md",
     "编程/常用工具方法.md",
-    "日志/2023-03-01.md",
     "未命名 1.canvas",
-    "未命名.canvas",
-    "编程/前端/JavaScript/拖拽API.md",
-    "编程/前端/JavaScript/拖拽API~.md"
+    "未命名.canvas"
   ]
 }
