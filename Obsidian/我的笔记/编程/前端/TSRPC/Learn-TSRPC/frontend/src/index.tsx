@@ -26,9 +26,17 @@ const App = () => {
   // Send Message
   async function send() {
     console.log(111);
-    let ret = await client.callApi("AddData", {
-      content: input,
-    });
+    let ret = await client.callApi(
+      "AddData",
+      {
+        content: input,
+      },
+      {
+        onProgress: (value) => {
+          console.log(value);
+        },
+      }
+    );
 
     // Error
     if (!ret.isSucc) {
@@ -47,13 +55,20 @@ const App = () => {
   }, []);
 
   async function handleClick() {
-    console.log("test");
+    let res = await client.callApi(
+      "computed/GetSum",
+      {
+        num1: 10,
+        num2: 20,
+      },
+      {
+        onProgress: (ratio) => {
+          console.log(ratio);
+        },
+      }
+    );
 
-    let res = await client.callApi("SetData", {
-      content:"test"
-    });
-
-    console.log(res);
+    console.log(res.res?.sum);
   }
 
   return (
