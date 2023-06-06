@@ -4,20 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "792f6329f7e45967",
+        "id": "66278a66eac6da69",
         "type": "tabs",
         "children": [
           {
-            "id": "5e25b33ca7a69b99",
+            "id": "9ea1b348daee66be",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "编程/前端/TSRPC/01-介绍.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": true
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -49,7 +44,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tsr",
+                "query": "装饰器",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,7 +61,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -86,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "编程/前端/TSRPC/01-介绍.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,9 +97,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "编程/前端/TSRPC/01-介绍.md"
-              }
+              "state": {}
             }
           },
           {
@@ -113,7 +106,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "编程/前端/TSRPC/01-介绍.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -158,8 +150,16 @@
       "open-vscode:VSCode": false
     }
   },
-  "active": "5e25b33ca7a69b99",
+  "active": "9ea1b348daee66be",
   "lastOpenFiles": [
+    "日志/2023-06-05.md",
+    "未命名.canvas",
+    "编程/前端/Nest/a.md",
+    "编程/前端/TSRPC/TSRPC.md",
+    "编程/前端/Typescript/装饰器.md",
+    "编程/前端/TSRPC/01-介绍.md",
+    "日志/2023-06-06.md",
+    "编程/前端/Zustand",
     "编程/前端/TSRPC/Learn-TSRPC/backend/src/api/computed/ApiGetSum.ts",
     "编程/前端/TSRPC/Learn-TSRPC/backend/src/api/computed",
     "编程/前端/TSRPC/Learn-TSRPC/backend/src/shared/protocols/computed/PtlGetSum.ts",
@@ -169,10 +169,6 @@
     "编程/前端/TSRPC/Learn-TSRPC/backend/src/api/ApiGetSalary.ts",
     "编程/前端/TSRPC/Learn-TSRPC/backend/src/api/ApiTest.ts",
     "编程/前端/TSRPC/Learn-TSRPC/backend/src/shared/protocols/PtlTest.ts",
-    "编程/前端/TSRPC/Learn-TSRPC/frontend/src/index.tsx",
-    "编程/前端/TSRPC/Learn-TSRPC/frontend/index.html",
-    "编程/前端/TSRPC/TSRPC.md",
-    "编程/前端/TSRPC/01-介绍.md",
     "日志/2023-06-02.md",
     "编程/前端/TSRPC/Learn-TSRPC/backend/README.md",
     "编程/网络/http header.md",
@@ -186,17 +182,12 @@
     "日志/2023-03-20.md",
     "日志/2022-06-23.md",
     "日志/2022-05-30.md",
-    "未命名.canvas",
-    "编程/前端/Nest/a.md",
     "日志/2023-05-29.md",
     "编程/区块链/Solidity.md",
     "编程/区块链/gas.md",
     "编程/网络/http status code.md",
     "编程/网络/http cache-control.md",
     "编程/网络/跨域.md",
-    "编程/npm/npm 别名.md",
-    "编程/常用工具方法.md",
-    "人文社科/韭菜 韭菜.md",
     "未命名 1.canvas"
   ]
 }

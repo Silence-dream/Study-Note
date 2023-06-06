@@ -1,4 +1,4 @@
-import { HttpClient } from "tsrpc-browser";
+import { HttpClient,Overwrite } from "tsrpc-browser";
 import { serviceProto } from "./shared/protocols/serviceProto";
 
 // Create Client
@@ -8,3 +8,19 @@ export const client = new HttpClient(serviceProto, {
     json: true,
     logger: console,
 });
+
+interface A{
+  name:string
+  age:number
+}
+
+type B = Overwrite<A,{
+  name:number
+}>
+
+interface C{
+  aaa:string
+}
+
+
+
