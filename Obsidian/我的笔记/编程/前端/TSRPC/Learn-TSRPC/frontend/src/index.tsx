@@ -11,7 +11,9 @@ const App = () => {
 
   // Reload message list
   async function loadList() {
-    let ret = await client.callApi("GetData", {});
+    let ret = await client.callApi("GetData", {
+      
+    });
 
     // Error
     if (!ret.isSucc) {
