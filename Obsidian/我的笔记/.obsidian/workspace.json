@@ -11,8 +11,13 @@
             "id": "7b5e3d2393f51df1",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "日志/2023-07-04.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
             }
           }
         ]
@@ -44,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "docker",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,7 +66,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -81,6 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "日志/2023-07-04.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,7 +103,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "日志/2023-07-04.md"
+              }
             }
           },
           {
@@ -105,6 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "日志/2023-07-04.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,8 +159,12 @@
       "open-vscode:VSCode": false
     }
   },
-  "active": "9682698329ae7f4a",
+  "active": "7b5e3d2393f51df1",
   "lastOpenFiles": [
+    "日志/2023-07-03.md",
+    "日志/2023-07-04.md",
+    "编程/后端/Docker/Docker.md",
+    "日志/2023-06-25.md",
     "未命名 2.canvas",
     "未命名 1.canvas",
     "日志/2023-06-20.md",
@@ -185,9 +199,6 @@
     "日志/2023-01-27.md",
     "日志/2023-03-06.md",
     "日志/2023-03-22.md",
-    "日志/2023-03-20.md",
-    "日志/2022-06-23.md",
-    "日志/2022-05-30.md",
-    "日志/2023-05-29.md"
+    "日志/2023-03-20.md"
   ]
 }
