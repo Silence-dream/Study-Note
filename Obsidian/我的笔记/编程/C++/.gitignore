@@ -1,0 +1,51 @@
+# 编译产物
+*.o
+*.out
+
+# 依赖目录
+vendor/
+
+# 忽略特定文件
+secret.txt
+
+# 忽略 Unix 可执行文件
+*
+!*/
+!*.*
+
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+.vs/
+x64/
