@@ -24,8 +24,13 @@
             "id": "8200968eb6f3d17a",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "日志/2023-09-25.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
             }
           }
         ],
@@ -95,6 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "日志/2023-09-25.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +116,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "日志/2023-09-25.md"
+              }
             }
           },
           {
@@ -119,6 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "日志/2023-09-25.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
