@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "日志/2022-05-13.md",
+                "file": "编程/后端/Nginx/Nginx.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "日志/2022-05-13.md",
+                "file": "编程/后端/Nginx/Nginx.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "日志/2022-05-13.md"
+                "file": "编程/后端/Nginx/Nginx.md"
               }
             }
           },
@@ -113,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "日志/2022-05-13.md",
+                "file": "编程/后端/Nginx/Nginx.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -170,6 +170,12 @@
   },
   "active": "cb80277801b0f84d",
   "lastOpenFiles": [
+    "编程/区块链/Solidity.md",
+    "编程/区块链/gas.md",
+    "编程/后端/Nginx/Nginx.md",
+    "日志/2022-05-13.md",
+    "编程/后端/Nginx",
+    "编程/后端/未命名.md",
     "编程/后端/GoLand/Go.md",
     "编程/后端/Redis/Redis.md",
     "日志/2023-09-26.md",
@@ -185,7 +191,6 @@
     "日志/2023-09-11.md",
     "日志/2023-08-30.md",
     "日志/2023-08-31.md",
-    "编程/后端/未命名.md",
     "编程/后端/Redis",
     "日志/2023-08-17.md",
     "编程/前端/React/监听路由变化.md",
@@ -196,10 +201,6 @@
     "编程/前端/浏览器/浏览器缓存.md",
     "编程/机器学习/微软.md",
     "编程/机器学习/微软研究院ChatGPT4.pdf",
-    "日志/2023-07-27.md",
-    "日志/2023-07-20.md",
-    "编程/区块链/Solidity.md",
-    "日志/2023-07-13.md",
     "未命名.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",
@@ -207,7 +208,6 @@
     "编程/前端/TSRPC/Learn-TSRPC/backend/src/api/computed/ApiGetSum.ts",
     "编程/前端/TSRPC/Learn-TSRPC/backend/src/api/computed",
     "编程/前端/TSRPC/Learn-TSRPC/backend/src/shared/protocols/computed/PtlGetSum.ts",
-    "编程/前端/TSRPC/Learn-TSRPC/backend/src/shared/protocols/computed",
-    "编程/前端/TSRPC/Learn-TSRPC/backend/src/api/ApiJack.ts"
+    "编程/前端/TSRPC/Learn-TSRPC/backend/src/shared/protocols/computed"
   ]
 }
