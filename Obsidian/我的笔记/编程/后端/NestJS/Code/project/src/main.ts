@@ -8,6 +8,7 @@ import * as express from 'express';
 import { TransformInterceptor } from './interceptor/transform/transform.interceptor';
 import { HttpExceptionFilter } from './filter/http-exception/http-exception.filter';
 import { AllExceptionsFilter } from './filter/any-exception/any-exception.filter';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -27,6 +28,19 @@ async function bootstrap() {
   // 过滤处理 HTTP 异常
   app.useGlobalFilters(new AllExceptionsFilter());
   app.useGlobalFilters(new HttpExceptionFilter());
+
+  // Swagger 配置
+  const options = new DocumentBuilder()
+    .setTitle('一个 Swagger 文档标题')
+    .setDescription('一个 Swagger 文档描述')
+    .setVersion('1.0')
+    .addTag('一个 tag')
+    .addBearerAuth()
+    .build();
+
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('api-doc', app, document);
+
   await app.listen(3000);
 }
 bootstrap();
