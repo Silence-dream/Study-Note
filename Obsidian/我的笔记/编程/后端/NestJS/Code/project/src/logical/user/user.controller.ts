@@ -1,7 +1,9 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards, UsePipes } from '@nestjs/common';
 import { UserService } from './user.service';
 import { AuthService } from '../auth/auth.service';
 import { AuthGuard } from '@nestjs/passport';
+import { ValidationPipe } from '../../pipe/validation/validation.pipe';
+import { RegisterInfoDTO } from './user.dto';
 
 @Controller('user')
 export class UserController {
@@ -16,8 +18,10 @@ export class UserController {
     return this.userService.findOne(body);
   }
 
+  @UsePipes(new ValidationPipe()) // 使用管道验证
   @Post('register')
-  async register(@Body() body: any) {
+  // DTO 调用需要指定 body 类型的同时还需要进行类型注解 @UsePipes(new V)
+  async register(@Body() body: RegisterInfoDTO) {
     return await this.userService.register(body);
   }
 
