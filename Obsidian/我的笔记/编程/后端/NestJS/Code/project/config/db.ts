@@ -8,6 +8,12 @@ const productConfig = {
     database: 'nest_zero_to_one', // 库名
     connectionLimit: 10, // 连接限制
   },
+  redis: {
+    port: 6379,
+    host: '127.0.0.1',
+    db: 0,
+    password: '',
+  },
 };
 
 const localConfig = {
@@ -18,6 +24,12 @@ const localConfig = {
     password: 'root',
     database: 'nest_zero_to_one', // 库名
     connectionLimit: 10, // 连接限制
+  },
+  redis: {
+    port: 6379,
+    host: '127.0.0.1',
+    db: 0,
+    password: '',
   },
 };
 

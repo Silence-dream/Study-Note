@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "日志/2023-10-12.md",
+                "file": "日志/2023-10-17.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -87,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "日志/2023-10-12.md",
+                "file": "日志/2023-10-17.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "日志/2023-10-12.md"
+                "file": "日志/2023-10-17.md"
               }
             }
           },
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "日志/2023-10-12.md",
+                "file": "日志/2023-10-17.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -169,10 +169,14 @@
       "open-vscode:VSCode": false
     }
   },
-  "active": "201c09d2ffc16fa6",
+  "active": "cb80277801b0f84d",
   "lastOpenFiles": [
-    "编程/后端/NestJS/NestJs.md",
+    "编程/后端/NestJS/Code/project/logs/errors/error.20231017.log",
+    "编程/后端/NestJS/Code/project/logs/app-out/app.20231017.log",
+    "编程/后端/NestJS/Code/project/logs/access/access.20231017.log",
     "日志/2023-10-12.md",
+    "日志/2023-10-17.md",
+    "编程/后端/NestJS/NestJs.md",
     "编程/后端/NestJS/Code/project/dist/tsconfig.build.tsbuildinfo",
     "编程/后端/NestJS/Code/project/dist/src/main.d.ts",
     "编程/后端/NestJS/Code/project/dist/src/main.js",
@@ -181,8 +185,6 @@
     "编程/后端/NestJS/Code/project/dist/src/app.module.js",
     "编程/后端/NestJS/Code/project/dist/src/app.module.js.map",
     "编程/后端/NestJS/Code/project/dist/src/logical/user/user.service.js.map",
-    "编程/后端/NestJS/Code/project/dist/src/logical/user/user.service.js",
-    "编程/后端/NestJS/Code/project/dist/src/logical/user/user.service.d.ts",
     "日志/2023-10-10.md",
     "编程/后端/NestJS/Code/project/README.md",
     "编程/后端/NestJS/Code/README.md",
@@ -205,8 +207,6 @@
     "编程/正则/正则表达式.md",
     "日志/2023-09-15.md",
     "编程/前端/Vue/Vue首屏加载白屏问题及解决方案.md",
-    "日志/2023-09-11.md",
-    "日志/2023-08-30.md",
     "未命名.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas"
