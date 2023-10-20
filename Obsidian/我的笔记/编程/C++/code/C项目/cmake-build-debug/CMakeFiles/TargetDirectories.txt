@@ -1,0 +1,3 @@
+/Users/silence/Documents/01MyCode/01MyRepo/Study-Note/Obsidian/我的笔记/编程/C++/code/C项目/cmake-build-debug/CMakeFiles/C.dir
+/Users/silence/Documents/01MyCode/01MyRepo/Study-Note/Obsidian/我的笔记/编程/C++/code/C项目/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/silence/Documents/01MyCode/01MyRepo/Study-Note/Obsidian/我的笔记/编程/C++/code/C项目/cmake-build-debug/CMakeFiles/rebuild_cache.dir

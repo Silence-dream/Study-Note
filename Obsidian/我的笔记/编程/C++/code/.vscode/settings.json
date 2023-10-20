@@ -1,0 +1,13 @@
+{
+  "files.associations": {
+    "*.html": "html",
+    "*.art": "html",
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript",
+    "*.wxml": "html",
+    "iostream": "cpp",
+    "ostream": "cpp"
+  },
+  "C_Cpp.errorSquiggles": "disabled"
+}
