@@ -19,8 +19,22 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "4c0f6153c4de4b48",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "编程/前端/JavaScript/Promise 高级用法.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "编程/C++/一些语法.md",
+                "file": "编程/前端/JavaScript/Promise 高级用法.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +117,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "编程/C++/一些语法.md"
+                "file": "编程/前端/JavaScript/Promise 高级用法.md"
               }
             }
           },
@@ -113,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "编程/C++/一些语法.md",
+                "file": "编程/前端/JavaScript/Promise 高级用法.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -168,8 +182,16 @@
       "open-vscode:VSCode": false
     }
   },
-  "active": "9682698329ae7f4a",
+  "active": "4c0f6153c4de4b48",
   "lastOpenFiles": [
+    "编程/前端/JavaScript/code/fetch.html",
+    "编程/前端/JavaScript/code/promise 高级用法.js",
+    "编程/前端/JavaScript/code/promise.js",
+    "编程/前端/Nest/a.md",
+    "编程/前端/JavaScript/Promise 高级用法.md",
+    "编程/前端/Promise",
+    "编程/前端/pnpm/pnpm workspace.md",
+    "日志/2023-10-23.md",
     "编程/C++/code/Wasm/main.html",
     "编程/C++/code/Wasm/main.js",
     "编程/C++/code/Wasm/main.wasm",
@@ -177,10 +199,6 @@
     "编程/C++/code/Wasm/a.out.js",
     "编程/C++/code/Wasm/a.out.wasm",
     "编程/C++/code/Wasm/main",
-    "编程/C++/code/Wasm/main.cpp",
-    "编程/C++/code/Wasm",
-    "编程/C++/code/NodeJS调用C/build/Release/native.node",
-    "编程/C++/code/NodeJS调用C/build/Release/obj.target/native/src/main.o",
     "未命名.canvas",
     "编程/C++/一些语法.md",
     "编程/C++/编辑器配置.md",
@@ -192,7 +210,6 @@
     "编程/后端/NestJS/Code/project/README.md",
     "编程/后端/NestJS/Code/README.md",
     "编程/后端/NestJS/project-name/README.md",
-    "编程/前端/Nest/a.md",
     "日志/2023-10-09.md",
     "编程/后端/Redis/Redis.md",
     "编程/后端/kubernetes/kubernetes.md",
@@ -204,9 +221,6 @@
     "编程/后端/未命名.md",
     "编程/后端/GoLand/Go.md",
     "日志/2023-09-26.md",
-    "日志/2023-09-28.md",
-    "日志/2023-09-25.md",
-    "编程/后端/Redis/Redis~.md",
     "未命名 2.canvas",
     "未命名 1.canvas"
   ]
