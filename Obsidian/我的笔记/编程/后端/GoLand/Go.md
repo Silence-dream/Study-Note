@@ -40,6 +40,20 @@ b := 2
 
 程序从 main 包开始运行。
 
+```go
+package main
+
+import (
+	"fmt"
+	"math/rand"
+)
+
+func main() {
+	fmt.Println("My favorite number is", rand.Intn(10))
+}
+
+```
+
 
 ## 模板字符串
 

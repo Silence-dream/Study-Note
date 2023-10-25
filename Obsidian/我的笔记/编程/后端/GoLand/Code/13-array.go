@@ -70,4 +70,8 @@ func main() {
 		fmt.Println("当前 index ", i2, "当前元素的副本", i3)
 	}
 
+	for i := 0; i < len(pow); i++ {
+		fmt.Printf("%d\t", pow[i])
+	}
+
 }
