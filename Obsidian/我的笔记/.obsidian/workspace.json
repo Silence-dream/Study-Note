@@ -26,7 +26,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "编程/后端/GoLand/Go.md",
+                "file": "日志/2023-10-26.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -100,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "编程/后端/GoLand/Go.md",
+                "file": "日志/2023-10-26.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +117,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "编程/后端/GoLand/Go.md"
+                "file": "日志/2023-10-26.md"
               }
             }
           },
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "编程/后端/GoLand/Go.md",
+                "file": "日志/2023-10-26.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -184,6 +184,8 @@
   },
   "active": "4c0f6153c4de4b48",
   "lastOpenFiles": [
+    "编程/后端/GoLand/Go.md",
+    "日志/2023-10-26.md",
     "编程/后端/GoLand/Code/练习01-循环和函数.go",
     "日志/2023-10-25.md",
     "编程/前端/JavaScript/Promise 高级用法.md",
@@ -199,7 +201,6 @@
     "编程/C++/code/Wasm/main.wasm",
     "编程/C++/code/Wasm/main.htmk",
     "编程/C++/code/Wasm/a.out.js",
-    "编程/C++/code/Wasm/a.out.wasm",
     "未命名.canvas",
     "编程/C++/一些语法.md",
     "编程/C++/编辑器配置.md",
@@ -220,7 +221,6 @@
     "编程/区块链/gas.md",
     "日志/2022-05-13.md",
     "编程/后端/未命名.md",
-    "编程/后端/GoLand/Go.md",
     "未命名 2.canvas",
     "未命名 1.canvas"
   ]
