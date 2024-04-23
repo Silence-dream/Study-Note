@@ -26,7 +26,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "人文社科/修图/01.基础修容.md",
+                "file": "日志/2024-04-23.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -100,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "人文社科/修图/01.基础修容.md",
+                "file": "日志/2024-04-23.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +117,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "人文社科/修图/01.基础修容.md"
+                "file": "日志/2024-04-23.md"
               }
             }
           },
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "人文社科/修图/01.基础修容.md",
+                "file": "日志/2024-04-23.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -155,9 +155,7 @@
             "state": {
               "type": "all-properties",
               "state": {
-                "sortOrder": "frequency",
-                "showSearch": false,
-                "searchQuery": ""
+                "sortOrder": "frequency"
               }
             }
           }
@@ -186,10 +184,11 @@
   },
   "active": "327b6e75697346d7",
   "lastOpenFiles": [
-    "人文社科/修图/02.修妆容.md",
-    "人文社科/修图/03.调色.md",
-    "日志/2024-04-09.md",
     "人文社科/修图/01.基础修容.md",
+    "日志/2024-04-23.md",
+    "人文社科/修图/03.调色.md",
+    "人文社科/修图/02.修妆容.md",
+    "日志/2024-04-09.md",
     "人文社科/修图/画烟.md",
     "日志/2024-04-04.md",
     "日志/2024-04-03.md",
@@ -218,7 +217,6 @@
     "编程/前端/JavaScript/code/promise.js",
     "编程/前端/Nest/a.md",
     "编程/前端/Promise",
-    "编程/前端/pnpm/pnpm workspace.md",
     "编程/C++/code/Wasm/main.html",
     "编程/C++/code/Wasm/main.js",
     "编程/C++/code/Wasm/main.wasm",
