@@ -39,7 +39,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "日志/2024-04-24.md",
+                "file": "日志/2024-04-25.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -113,7 +113,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "日志/2024-04-24.md",
+                "file": "日志/2024-04-25.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -130,7 +130,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "日志/2024-04-24.md"
+                "file": "日志/2024-04-25.md"
               }
             }
           },
@@ -140,7 +140,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "日志/2024-04-24.md",
+                "file": "日志/2024-04-25.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -192,14 +192,15 @@
       "markdown-importer:打开 Markdown 格式转换器": false,
       "random-note:开始漫游笔记": false,
       "workspaces:管理工作区布局": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
       "templater-obsidian:Templater": false,
-      "open-vscode:VSCode": false
+      "open-vscode:VSCode": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
   "active": "5ed58ca0c2f90da2",
   "lastOpenFiles": [
     "日志/2024-04-24.md",
+    "日志/2024-04-25.md",
     "日志/2024-04-23.md",
     "人文社科/修图/01.基础修容.md",
     "人文社科/修图/03.调色.md",
@@ -227,7 +228,6 @@
     "编程/后端/GoLand/Go.md",
     "编程/后端/GoLand/Code/练习01-循环和函数.go",
     "日志/2023-10-25.md",
-    "编程/前端/JavaScript/Promise 高级用法.md",
     "编程/前端/JavaScript/code/fetch.html",
     "编程/前端/JavaScript/code/promise 高级用法.js",
     "编程/前端/JavaScript/code/promise.js",
