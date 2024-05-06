@@ -8,25 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "327b6e75697346d7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "编程/后端/Docker/Docker.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
-            }
-          },
-          {
             "id": "5ed58ca0c2f90da2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "编程/后端/Redis/Redis.md",
+                "file": "编程/前端/NextJS/NextJS.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -62,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#include",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -99,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "编程/后端/Docker/Docker.md",
+                "file": "编程/前端/NextJS/NextJS.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +103,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "编程/后端/Docker/Docker.md"
+                "file": "编程/前端/NextJS/NextJS.md"
               }
             }
           },
@@ -126,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "编程/后端/Docker/Docker.md",
+                "file": "编程/前端/NextJS/NextJS.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -183,11 +170,16 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "327b6e75697346d7",
+  "active": "5ed58ca0c2f90da2",
   "lastOpenFiles": [
-    "人文社科/修图/03.调色.md",
+    "编程/前端/NextJS/Code",
+    "日志/2024-04-30.md",
+    "编程/前端/NextJS/NextJS.md",
+    "编程/前端/NextJS",
     "编程/后端/Redis/Redis.md",
+    "未命名.canvas",
     "编程/后端/Docker/Docker.md",
+    "人文社科/修图/03.调色.md",
     "编程/后端/GoLand/Go.md",
     "日志/2024-04-25.md",
     "日志/2024-04-24.md",
@@ -209,10 +201,7 @@
     "日志/2023-11-22.md",
     "日志/2024-03-26.md",
     "人文社科/修图",
-    "日志/2024-03-25.md",
     "人文社科/汉朝",
-    "日志/2023-10-31.md",
-    "日志/2023-10-30.md",
     "编程/后端/GoLand/Code/练习01-循环和函数.go",
     "编程/前端/JavaScript/code/fetch.html",
     "编程/前端/JavaScript/code/promise 高级用法.js",
@@ -220,8 +209,6 @@
     "编程/前端/Promise",
     "编程/C++/code/Wasm/main.html",
     "编程/C++/code/Wasm/main.js",
-    "编程/C++/code/Wasm/main.wasm",
-    "未命名.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas"
   ]
