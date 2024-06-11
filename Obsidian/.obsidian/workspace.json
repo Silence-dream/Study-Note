@@ -121,7 +121,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -138,6 +139,8 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "ee42b8d92466b0da",
-  "lastOpenFiles": []
+  "active": "38bb462a0bedc9dd",
+  "lastOpenFiles": [
+    "我的笔记/日志/2024-05-08.md"
+  ]
 }

@@ -13,28 +13,14 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "人文社科/修图/03.调色.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "327b6e75697346d7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "人文社科/修图/01.基础修容.md",
+                "file": "人文社科/修图/画雾技巧.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -100,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "人文社科/修图/01.基础修容.md",
+                "file": "人文社科/修图/画雾技巧.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +103,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "人文社科/修图/01.基础修容.md"
+                "file": "人文社科/修图/画雾技巧.md"
               }
             }
           },
@@ -127,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "人文社科/修图/01.基础修容.md",
+                "file": "人文社科/修图/画雾技巧.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -184,13 +170,22 @@
       "open-vscode:VSCode": false
     }
   },
-  "active": "327b6e75697346d7",
+  "active": "9682698329ae7f4a",
   "lastOpenFiles": [
-    "人文社科/修图/02.修妆容.md",
-    "人文社科/修图/03.调色.md",
-    "日志/2024-04-09.md",
-    "人文社科/修图/01.基础修容.md",
     "人文社科/修图/画烟.md",
+    "人文社科/修图/画雾技巧.md",
+    "日志/2024-06-10.md",
+    "人文社科/修图/平面.md",
+    "人文社科/修图/灰调.md",
+    "人文社科/修图/03.调色.md",
+    "日志/2024-06-05.md",
+    "人文社科/修图/02.修妆容.md",
+    "人文社科/修图/01.基础修容.md",
+    "日志/2024-05-08.md",
+    "日志/2024-04-14.md",
+    "日志/2024-04-13.md",
+    "日志/2024-04-10.md",
+    "日志/2024-04-09.md",
     "日志/2024-04-04.md",
     "日志/2024-04-03.md",
     "日志/2024-04-01.md",
@@ -204,21 +199,12 @@
     "日志/2023-11-22.md",
     "日志/2024-03-26.md",
     "人文社科/修图",
-    "日志/2024-03-25.md",
     "人文社科/汉朝",
-    "日志/2023-10-31.md",
-    "日志/2023-10-30.md",
-    "日志/2023-10-26.md",
-    "编程/后端/GoLand/Go.md",
     "编程/后端/GoLand/Code/练习01-循环和函数.go",
-    "日志/2023-10-25.md",
-    "编程/前端/JavaScript/Promise 高级用法.md",
     "编程/前端/JavaScript/code/fetch.html",
     "编程/前端/JavaScript/code/promise 高级用法.js",
     "编程/前端/JavaScript/code/promise.js",
-    "编程/前端/Nest/a.md",
     "编程/前端/Promise",
-    "编程/前端/pnpm/pnpm workspace.md",
     "编程/C++/code/Wasm/main.html",
     "编程/C++/code/Wasm/main.js",
     "编程/C++/code/Wasm/main.wasm",
