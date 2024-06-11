@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "编程/前端/NextJS/NextJS.md",
+                "file": "人文社科/修图/01.基础修容.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "编程/前端/NextJS/NextJS.md",
+                "file": "人文社科/修图/01.基础修容.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "编程/前端/NextJS/NextJS.md"
+                "file": "人文社科/修图/01.基础修容.md"
               }
             }
           },
@@ -113,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "编程/前端/NextJS/NextJS.md",
+                "file": "人文社科/修图/01.基础修容.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -172,20 +172,23 @@
   },
   "active": "5ed58ca0c2f90da2",
   "lastOpenFiles": [
+    "人文社科/修图/02.修妆容.md",
+    "人文社科/修图/03.调色.md",
+    "模板/日志模板.md",
+    "日志/2024-06-11.md",
+    "日志/2024-05-17.md",
+    "编程/前端/NextJS/NextJS.md",
     "编程/前端/NextJS/Code",
     "日志/2024-04-30.md",
-    "编程/前端/NextJS/NextJS.md",
     "编程/前端/NextJS",
     "编程/后端/Redis/Redis.md",
     "未命名.canvas",
     "编程/后端/Docker/Docker.md",
-    "人文社科/修图/03.调色.md",
     "编程/后端/GoLand/Go.md",
     "日志/2024-04-25.md",
     "日志/2024-04-24.md",
     "日志/2024-04-23.md",
     "人文社科/修图/01.基础修容.md",
-    "人文社科/修图/02.修妆容.md",
     "日志/2024-04-09.md",
     "人文社科/修图/画烟.md",
     "日志/2024-04-04.md",
@@ -198,8 +201,6 @@
     "日志/2024-03-29.md",
     "日志/2024-03-28.md",
     "编程/C++/一些语法.md",
-    "日志/2023-11-22.md",
-    "日志/2024-03-26.md",
     "人文社科/修图",
     "人文社科/汉朝",
     "编程/后端/GoLand/Code/练习01-循环和函数.go",
@@ -208,7 +209,6 @@
     "编程/前端/JavaScript/code/promise.js",
     "编程/前端/Promise",
     "编程/C++/code/Wasm/main.html",
-    "编程/C++/code/Wasm/main.js",
     "未命名 2.canvas",
     "未命名 1.canvas"
   ]
