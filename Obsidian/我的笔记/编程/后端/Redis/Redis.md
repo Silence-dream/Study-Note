@@ -82,32 +82,32 @@ Redisinsight
 
 ### 基础操作
 
-| 命令                            | 说明         |
-| ------------------------------- | ------------ |
-| redis-server                    | 启动 redis   |
-| redis-cli telent 127.0.0.1:6379 | 连接到 redis |
-| redis-cli -rew                  | 连接到 redis(可显示中文)             |
-| quit/exit                       | 退出 redis   |
-| TTL key | 查看 key 过期时间 -2为已经过期 |
-| KEYS * | 查看所有的 key |
-| EXPIRE key seconds | 设置 key 的过期时间为 seconds 秒 |
-| RENAME oldkey newkey | 重命名 key 的值 |
+| 命令                              | 说明                      |
+| ------------------------------- | ----------------------- |
+| redis-server                    | 启动 redis                |
+| redis-cli telent 127.0.0.1:6379 | 连接到 redis               |
+| redis-cli -rew                  | 连接到 redis(可显示中文)        |
+| quit/exit                       | 退出 redis                |
+| TTL key                         | 查看 key 过期时间 -2为已经过期     |
+| KEYS *                          | 查看所有的 key               |
+| EXPIRE key seconds              | 设置 key 的过期时间为 seconds 秒 |
+| RENAME oldkey newkey            | 重命名 key 的值              |
 
 ### 字符串 String
 
-| 命令                             | 说明                                                                                             | 时间复杂度 |
-| -------------------------------- | ------------------------------------------------------------------------------------------------ | ---------- |
-| SET key value                    | 设置 key 的值为 value                                                                            | O(1)       |
-| GET key                          | 返回键 key 的值设置为 value                                                                      | O(1)       |
-| DEL key [key...]                 | 删除给定的一个或多个键的值                                                                       | O(1)       |
-| SETEX key seconds value          | 将键 key 的值设置为 value，并且超时时间为 seconds 秒                                             | O(1)       |
-| PSETEX key milliseconds value    | 将键 key 的值设置为 value，并且超时时间为 milliseconds 毫秒                                      | O(1)       |
-| SETNX key value                  | 只有在键key不存在的情况下，将 key 的值设置为 value                                               | O(1)       |
-| GETSET key value                 | 将键 key 的值为 value，并返回设置前的旧值。若没有旧值则返回 nil                                  | O(1)       |
-| MSET key value [key value ...]   | 同时为多个键设置值                                                                               | O(N)       |
-| MGET key [key ...]               | 返回给定的⼀个或多个键的值                                                                       | O(N)       |
-| MSETNX key value [key value ...] | 当所有给定的 key 都不存在时才同时为多个键设置值。只要有⼀个key已经存在，那么所有值都不会被继续设置 | O(N)       |
-| STRLEN key       | 获取键为 key 的值的字符串⻓度。   |            |
+| 命令                               | 说明                                                    | 时间复杂度 |
+| -------------------------------- | ----------------------------------------------------- | ----- |
+| SET key value                    | 设置 key 的值为 value                                      | O(1)  |
+| GET key                          | 返回键 key 的值设置为 value                                   | O(1)  |
+| DEL key [key...]                 | 删除给定的一个或多个键的值                                         | O(1)  |
+| SETEX key seconds value          | 将键 key 的值设置为 value，并且超时时间为 seconds 秒                  | O(1)  |
+| PSETEX key milliseconds value    | 将键 key 的值设置为 value，并且超时时间为 milliseconds 毫秒            | O(1)  |
+| SETNX key value                  | 只有在键key不存在的情况下，将 key 的值设置为 value                      | O(1)  |
+| GETSET key value                 | 将键 key 的值为 value，并返回设置前的旧值。若没有旧值则返回 nil               | O(1)  |
+| MSET key value [key value ...]   | 同时为多个键设置值                                             | O(N)  |
+| MGET key [key ...]               | 返回给定的⼀个或多个键的值                                         | O(N)  |
+| MSETNX key value [key value ...] | 当所有给定的 key 都不存在时才同时为多个键设置值。只要有⼀个key已经存在，那么所有值都不会被继续设置 | O(N)  |
+| STRLEN key                       | 获取键为 key 的值的字符串⻓度。                                    |       |
 
 
 
@@ -117,25 +117,25 @@ Redisinsight
 
 相当于数组
 
-| 命令                             | 说明                                                         | 时间复杂度 |
-| -------------------------------- | ------------------------------------------------------------ | ---------- |
-| LPUSH key element [element ...]  | 将⼀个或多个元素添加到列表key的表头（左侧）,多个值则从左⾄右依次插⼊表头；<br />如果列表key不存在，则创建⼀个然后执⾏LPUSH插⼊操作；<br />如果列表key存在但不是列表类型，则返回错误。 | O(1)       |
-| LRANGE key start stop            | 返回列表key中，位于start和stop之间的元素（包括start和stop）  | O(S+N)     |
-| LPUSHX key element [element ...] | 当且仅当key存在并且是⼀个列表的时候，才执⾏LPUSH操作         | O(1)       |
-| RPUSH key element [element ...]  | 将⼀个或多个元素添加到列表key的表尾（右侧）,多个值则从左⾄右依次插⼊表尾；<br />如果列表key不存在，则创建⼀个然后执⾏RPUSH插⼊操作；<br />如果列表key存在但不是列表类型，则返回错误。 | O(1)       |
-| RPUSHX key element [element ...] | 当且仅当key存在并且是⼀个列表的时候，才执⾏RPUSH操作。       | O(1)       |
-| LPOP key [count ...]             | 将⼀个或count个元素从列表头⽅向移除并将其返回；<br />如果列表key不存在，则返回nil。 | O(1)       |
-| RPOP key [count ...]             | 将⼀个或count个元素从列表头⽅向移除并将其返回；<br />如果列表key不存在，则返回nil。 | O(1)       |
-| RPOPLPUSH source destination     | 在⼀个原⼦时间内，将source列表的尾部元素弹出，并插⼊到destination列表的头 部，返回该元素；如果列表key不存在，则返回nil。 | O(1)       |
-| LREM key count element           | 移除列表key中与element相等的count个元素，返回被移除的元素的数量 | O(N)       |
-| LINDEX key index                 | 返回列表key中索引为index的元素                               | O(N)       |
-| LINSERT key BEFORE \| AFTER pivot element                                      | 将元素element插⼊到列表key中，位于 pivot(元素)之前(BEFORE)或者之后(AFTER)。 |O(N)|
-| LSET key index element | 将列表key中索引为index的元素设置为element。 | O(N) |
-| LRANGE key start stop | 返回列表key中，位于start和stop之间的元素（包括start和stop） | O(S+N) |
-| LTRIM key start stop | 只保留列表key中索引为start和stop之间的元素 | O(N) |
-| BLPOP key [key ...] timeout | 列表阻塞式(Blocking)弹出。是LPOP的阻塞版本，当列表中没有任何元素时阻塞， 直到超时或发现新的可弹出元素为⽌ | O(1) |
-| BRPOP key [key ...] timeout | 列表阻塞式(Blocking)弹出。是RPOP的阻塞版本，当列表中没有任何元素时阻塞， 直到超时或发现新的可弹出元素为⽌ | O(1) |
-| BRPOPLPUSH source destination timeout | 是RPOPLPUSH的阻塞版本，当列表source中没有任何元素时阻塞， 直到超时或发现新的可弹出元素为⽌ | O(1) |
+| 命令                                        | 说明                                                                                                       | 时间复杂度  |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------ |
+| LPUSH key element [element ...]           | 将⼀个或多个元素添加到列表key的表头（左侧）,多个值则从左⾄右依次插⼊表头；<br />如果列表key不存在，则创建⼀个然后执⾏LPUSH插⼊操作；<br />如果列表key存在但不是列表类型，则返回错误。 | O(1)   |
+| LRANGE key start stop                     | 返回列表key中，位于start和stop之间的元素（包括start和stop）                                                                 | O(S+N) |
+| LPUSHX key element [element ...]          | 当且仅当key存在并且是⼀个列表的时候，才执⾏LPUSH操作                                                                           | O(1)   |
+| RPUSH key element [element ...]           | 将⼀个或多个元素添加到列表key的表尾（右侧）,多个值则从左⾄右依次插⼊表尾；<br />如果列表key不存在，则创建⼀个然后执⾏RPUSH插⼊操作；<br />如果列表key存在但不是列表类型，则返回错误。 | O(1)   |
+| RPUSHX key element [element ...]          | 当且仅当key存在并且是⼀个列表的时候，才执⾏RPUSH操作。                                                                          | O(1)   |
+| LPOP key [count ...]                      | 将⼀个或count个元素从列表头⽅向移除并将其返回；<br />如果列表key不存在，则返回nil。                                                       | O(1)   |
+| RPOP key [count ...]                      | 将⼀个或count个元素从列表头⽅向移除并将其返回；<br />如果列表key不存在，则返回nil。                                                       | O(1)   |
+| RPOPLPUSH source destination              | 在⼀个原⼦时间内，将source列表的尾部元素弹出，并插⼊到destination列表的头 部，返回该元素；如果列表key不存在，则返回nil。                                 | O(1)   |
+| LREM key count element                    | 移除列表key中与element相等的count个元素，返回被移除的元素的数量                                                                  | O(N)   |
+| LINDEX key index                          | 返回列表key中索引为index的元素                                                                                      | O(N)   |
+| LINSERT key BEFORE \| AFTER pivot element | 将元素element插⼊到列表key中，位于 pivot(元素)之前(BEFORE)或者之后(AFTER)。                                                   | O(N)   |
+| LSET key index element                    | 将列表key中索引为index的元素设置为element。                                                                            | O(N)   |
+| LRANGE key start stop                     | 返回列表key中，位于start和stop之间的元素（包括start和stop）                                                                 | O(S+N) |
+| LTRIM key start stop                      | 只保留列表key中索引为start和stop之间的元素                                                                              | O(N)   |
+| BLPOP key [key ...] timeout               | 列表阻塞式(Blocking)弹出。是LPOP的阻塞版本，当列表中没有任何元素时阻塞， 直到超时或发现新的可弹出元素为⽌                                             | O(1)   |
+| BRPOP key [key ...] timeout               | 列表阻塞式(Blocking)弹出。是RPOP的阻塞版本，当列表中没有任何元素时阻塞， 直到超时或发现新的可弹出元素为⽌                                             | O(1)   |
+| BRPOPLPUSH source destination timeout     | 是RPOPLPUSH的阻塞版本，当列表source中没有任何元素时阻塞， 直到超时或发现新的可弹出元素为⽌                                                    | O(1)   |
 
 
 

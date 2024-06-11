@@ -40,7 +40,7 @@ git commit -m "注释"
 git push 
 
 git ssh秘钥生成
-ssh-keygen -t rsa -C "1428482231@qq.com"
+ssh-keygen -t rsa -C "lyqsl@foxmail.com"
 
 
 git status  //显示工作目录和暂存区的状态
