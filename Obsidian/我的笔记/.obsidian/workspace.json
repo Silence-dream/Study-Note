@@ -8,14 +8,33 @@
         "type": "tabs",
         "children": [
           {
-            "id": "be90082acb4c5dbb",
+            "id": "5ed58ca0c2f90da2",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "人文社科/修图/01.基础修容.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "404c37a9bb5c9c70",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "人文社科/修图/03.调色.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -82,6 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "人文社科/修图/03.调色.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,7 +117,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "人文社科/修图/03.调色.md"
+              }
             }
           },
           {
@@ -106,6 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "人文社科/修图/03.调色.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +167,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 272
+    "width": 272,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -162,10 +186,18 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "be90082acb4c5dbb",
+  "active": "404c37a9bb5c9c70",
   "lastOpenFiles": [
-    "日志/2024-06-24.md",
-    "人文社科/修图/未命名.md",
+    "人文社科/修图/美术知识点.md",
+    "人文社科/修图/03.调色.md",
+    "人文社科/修图/画雾技巧.md",
+    "人文社科/修图/灰调.md",
+    "日志/2024-06-22.md",
+    "人文社科/修图/02.修妆容.md",
+    "日志/2024-06-20.md",
+    "模板/日志模板.md",
+    "日志/2024-06-11.md",
+    "日志/2024-05-17.md",
     "编程/前端/NextJS/NextJS.md",
     "编程/前端/NextJS/Code/nextjs-dashboard/node_modules/bcrypt/lib/binding/napi-v3/bcrypt_lib.node",
     "编程/前端/NextJS/Code/nextjs-dashboard/node_modules/bcrypt/lib/binding/napi-v3",
@@ -211,6 +243,26 @@
     "编程/前端/NextJS/Code/nextjs-dashboard/public/customers/hector-simpson.png",
     "编程/前端/NextJS/Code/nextjs-dashboard/public/customers/guillermo-rauch.png",
     "未命名.canvas",
+    "编程/后端/Docker/Docker.md",
+    "编程/后端/GoLand/Go.md",
+    "日志/2024-04-25.md",
+    "日志/2024-04-24.md",
+    "日志/2024-04-23.md",
+    "人文社科/修图/01.基础修容.md",
+    "日志/2024-04-09.md",
+    "人文社科/修图/画烟.md",
+    "日志/2024-06-10.md",
+    "人文社科/修图/平面.md",
+    "日志/2024-06-05.md",
+    "人文社科/修图/01.基础修容.md",
+    "人文社科/修图",
+    "人文社科/汉朝",
+    "编程/后端/GoLand/Code/练习01-循环和函数.go",
+    "编程/前端/JavaScript/code/fetch.html",
+    "编程/前端/JavaScript/code/promise 高级用法.js",
+    "编程/前端/JavaScript/code/promise.js",
+    "编程/前端/Promise",
+    "编程/C++/code/Wasm/main.html",
     "未命名 2.canvas",
     "未命名 1.canvas"
   ]
