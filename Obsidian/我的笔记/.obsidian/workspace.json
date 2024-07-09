@@ -26,7 +26,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "日志/2024-06-30.md",
+                "file": "人文社科/修图/03.调色.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -100,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "日志/2024-06-30.md",
+                "file": "人文社科/修图/03.调色.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +117,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "日志/2024-06-30.md"
+                "file": "人文社科/修图/03.调色.md"
               }
             }
           },
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "日志/2024-06-30.md",
+                "file": "人文社科/修图/03.调色.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -187,22 +187,24 @@
   },
   "active": "90bb0c912a6ee5ff",
   "lastOpenFiles": [
-    "日志/2024-06-30.md",
-    "人文社科/修图/灰调.md",
-    "人文社科/修图/视觉引导.md",
-    "人文社科/修图/画头发.md",
-    "人文社科/修图/特效.md",
     "人文社科/修图/01.基础修容.md",
-    "人文社科/修图/02.修妆容.md",
     "人文社科/修图/03.调色.md",
-    "人文社科/修图/中性灰磨皮.md",
+    "人文社科/修图/灰调.md",
+    "人文社科/修图/画雾技巧.md",
+    "日志/2024-07-08.md",
+    "人文社科/修图/画头发.md",
     "人文社科/修图/美术知识点.md",
     "人文社科/修图/平面.md",
+    "人文社科/修图/视觉引导.md",
+    "人文社科/修图/中性灰磨皮.md",
+    "人文社科/修图/特效.md",
+    "人文社科/修图/02.修妆容.md",
+    "日志/2024-07-03.md",
+    "日志/2024-06-30.md",
     "未命名.canvas",
     "未命名 1.canvas",
     "日志/2024-06-29.md",
     "日志/2024-06-25.md",
-    "人文社科/修图/画雾技巧.md",
     "日志/2024-06-22.md",
     "日志/2024-06-20.md",
     "模板/日志模板.md",
@@ -223,8 +225,6 @@
     "编程/前端/NextJS/Code/nextjs-dashboard/node_modules/next/dist/compiled/@babel/runtime/README.md",
     "编程/前端/NextJS/Code/nextjs-dashboard/node_modules/next/license.md",
     "编程/前端/NextJS/Code/nextjs-dashboard/node_modules/typescript/SECURITY.md",
-    "编程/前端/NextJS/Code/nextjs-dashboard/node_modules/typescript/README.md",
-    "编程/前端/NextJS/Code/nextjs-dashboard/node_modules/es-abstract/README.md",
     "编程/前端/NextJS/Code/nextjs-dashboard/public/opengraph-image.png",
     "编程/前端/NextJS/Code/nextjs-dashboard/public/hero-mobile.png",
     "编程/前端/NextJS/Code/nextjs-dashboard/public/hero-desktop.png",
