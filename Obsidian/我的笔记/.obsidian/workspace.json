@@ -8,33 +8,63 @@
         "type": "tabs",
         "children": [
           {
-            "id": "33050713b4d23d47",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "编程/区块链/学习日记/2024.11.07 第二天-区块链基础知识.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2024.11.07 第二天-区块链基础知识"
-            }
-          },
-          {
             "id": "de552e89499968a7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "编程/区块链/学习日记/pow.md",
+                "file": "编程/区块链/学习日记/2024.11.08 第三天-区块链基础知识.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "pow"
+              "title": "2024.11.08 第三天-区块链基础知识"
+            }
+          },
+          {
+            "id": "3d5bcf173910c786",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "编程/区块链/学习日记/NFT.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "NFT"
+            }
+          },
+          {
+            "id": "b5f350e47ccf5e89",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "编程/区块链/学习日记/DAO.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DAO"
+            }
+          },
+          {
+            "id": "d966a50433ec8326",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "编程/区块链/学习日记/DeFi.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DeFi"
             }
           },
           {
@@ -123,7 +153,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 255
+    "width": 255,
+    "collapsed": true
   },
   "right": {
     "id": "99e3e5d312b45ea3",
@@ -158,10 +189,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "编程/区块链/学习日记/2024.11.07 第二天-区块链基础知识.md"
+                "file": "编程/区块链/学习日记/2024.11.08 第三天-区块链基础知识.md"
               },
               "icon": "lucide-list",
-              "title": "2024.11.07 第二天-区块链基础知识 的大纲"
+              "title": "2024.11.08 第三天-区块链基础知识 的大纲"
             }
           },
           {
@@ -235,14 +266,16 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "33050713b4d23d47",
+  "active": "de552e89499968a7",
   "lastOpenFiles": [
-    "编程/区块链/学习日记/pow.md",
-    "编程/区块链/学习日记/2024.11.07 第二天-区块链基础知识.md",
-    "编程/区块链/学习日记/2024.11.05 第一天-区块链基础知识.md",
-    "编程/区块链/学习日记/DAO.md",
     "编程/区块链/学习日记/NFT.md",
+    "编程/区块链/学习日记/DAO.md",
+    "编程/区块链/学习日记/2024.11.08 第三天-区块链基础知识.md",
     "编程/区块链/学习日记/DeFi.md",
+    "编程/区块链/学习日记/2024.11.07 第二天-区块链基础知识.md",
+    "编程/区块链/学习日记/pow.md",
+    "日志/2024-11-08.md",
+    "编程/区块链/学习日记/2024.11.05 第一天-区块链基础知识.md",
     "编程/区块链/学习日记/pos.md",
     "编程/前端/NextJS/Code/nextjs-dashboard/node_modules/eslint-plugin-import/CONTRIBUTING.md",
     "日志/2024-11-07.md",
@@ -265,8 +298,6 @@
     "人文社科/修图/视觉引导.md",
     "人文社科/修图/中性灰磨皮.md",
     "人文社科/修图/特效.md",
-    "人文社科/修图/视觉引导.md",
-    "人文社科/修图/平面.md",
     "编程/前端/NextJS/Code/nextjs-dashboard/node_modules/bcrypt/lib/binding/napi-v3/bcrypt_lib.node",
     "编程/前端/NextJS/Code/nextjs-dashboard/node_modules/bcrypt/lib/binding/napi-v3",
     "编程/前端/NextJS/Code/nextjs-dashboard/node_modules/bcrypt/lib/binding",
