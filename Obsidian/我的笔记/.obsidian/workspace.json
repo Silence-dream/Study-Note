@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "编程/区块链/学习日记/2024.11.09 第四天-Telos 概念入门.md",
+                "file": "人文社科/修图/光效.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2024.11.09 第四天-Telos 概念入门"
+              "title": "光效"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 255,
-    "collapsed": true
+    "width": 255
   },
   "right": {
     "id": "99e3e5d312b45ea3",
@@ -114,10 +113,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "编程/区块链/学习日记/2024.11.09 第四天-Telos 概念入门.md"
+                "file": "人文社科/修图/光效.md"
               },
               "icon": "lucide-list",
-              "title": "2024.11.09 第四天-Telos 概念入门 的大纲"
+              "title": "光效 的大纲"
             }
           },
           {
@@ -193,8 +192,10 @@
   },
   "active": "508725292f91f8c6",
   "lastOpenFiles": [
-    "日志/2024-11-11.md",
+    "日志/2024-12-06.md",
+    "人文社科/修图/光效.md",
     "编程/区块链/学习日记/2024.11.09 第四天-Telos 概念入门.md",
+    "日志/2024-11-11.md",
     "编程/区块链/学习日记/2024.11.08 第三天-区块链基础知识.md",
     "日志/2024-11-09.md",
     "日志/2024-11-08.md",
@@ -221,8 +222,6 @@
     "人文社科/修图/画雾技巧.md",
     "日志/2024-07-08.md",
     "人文社科/修图/画头发.md",
-    "人文社科/修图/美术知识点.md",
-    "人文社科/修图/平面.md",
     "编程/前端/NextJS/Code/nextjs-dashboard/node_modules/bcrypt/lib/binding/napi-v3/bcrypt_lib.node",
     "编程/前端/NextJS/Code/nextjs-dashboard/node_modules/bcrypt/lib/binding/napi-v3",
     "编程/前端/NextJS/Code/nextjs-dashboard/node_modules/bcrypt/lib/binding",
