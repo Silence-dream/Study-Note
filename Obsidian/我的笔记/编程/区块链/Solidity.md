@@ -664,3 +664,15 @@ contract Variable{
     uint256 public immutable IMMUTABLE_BLOCK;
     uint256 public immutable IMMUTABLE_TEST;
 ```
+
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/11-区块链与Web3|区块链与Web3]]
+
+相关笔记：
+
+- [[编程/区块链/gas|gas]] — 智能合约执行与费用
+- [[编程/区块链/学习日记/DAO|DAO]] — 智能合约与组织治理
+- [[编程/区块链/学习日记/DeFi|DeFi]] — 智能合约与金融应用

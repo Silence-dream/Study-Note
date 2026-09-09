@@ -173,3 +173,13 @@ hash 路由通过 window.hashchange 事件监听变化
 history 路由通过 window.popstate  事件监听变化
 
 [前端路由的两种模式：hash模式和 history模式_蒲公英芽的博客-CSDN博客_history](https://blog.csdn.net/Charissa2017/article/details/104779412)
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/06-浏览器网络与安全|浏览器网络与安全]]
+
+相关笔记：
+
+- [[编程/前端/React/监听路由变化|监听路由变化]] — 路由变化与底层实现
+- [[编程/前端/Vue/Vue Router 路由守卫|Vue Router 路由守卫]] — 路由实现与导航控制

@@ -952,3 +952,12 @@ pm2 start npm --name "webapi-travel" -- run start:prod
 
 ## 文章来源
 [blogs/1.md at master · a1029563229/blogs · GitHub](https://github.com/a1029563229/blogs/blob/master/BestPractices/nest/1.md)
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/08-后端与服务通信|后端与服务通信]]
+
+相关笔记：
+
+- [[编程/后端/NestJS/NestJs|NestJs]] — NestJS 教程与参考资料

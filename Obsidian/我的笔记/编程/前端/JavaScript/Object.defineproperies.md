@@ -46,3 +46,12 @@ console.log(Object.getOwnPropertyDescriptors(obj))
 }
 */
 ```
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/01-JavaScript与语言基础|JavaScript与语言基础]]
+
+相关笔记：
+
+- [[编程/前端/JavaScript/Object.defineProperty|Object.defineProperty]] — 单个与批量属性描述符

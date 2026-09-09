@@ -48,3 +48,12 @@ call 和apply 改变了函数的 this 上下文后便执行该函数,而 bind �
   cat.showName();   //TONY
 
 ```
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/01-JavaScript与语言基础|JavaScript与语言基础]]
+
+相关笔记：
+
+- [[编程/前端/JavaScript/this 指向|this 指向]] — this 绑定与调用方式

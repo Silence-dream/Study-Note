@@ -63,3 +63,12 @@ export default function UseMemo() {
 
 
 [Hook API 索引 – React](https://zh-hans.reactjs.org/docs/hooks-reference.html#usememo)
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/05-React与组件设计|React与组件设计]]
+
+相关笔记：
+
+- [[编程/前端/React/如何更新组件状态|如何更新组件状态]] — 状态变化与重复计算

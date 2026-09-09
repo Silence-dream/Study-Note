@@ -14,3 +14,14 @@ shim:shim可以将新的API引入到旧的环境中，而且仅靠就环境中�
 	2、自身必须有一个 update()方法
 	3、待属性变动 dep.notice()通知时，能调用自身的 update()方法，并触发 Compile 中绑定的回调，则功成身退。
 第四步：MVVM 作为数据绑定的入口，整合 Observer、Compile 和 Watcher 三者，通过 Observer 来监听自己的 model 数据变化，通过 Compile 来解析编译模 板指令，最终利用 Watcher 搭起 Observer 和 Compile 之间的通信桥梁，达到数据 变化 -> 视图更新；视图交互变化(input) -> 数据 model 变更的双向绑定效果。
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/04-Vue与响应式|Vue与响应式]]
+
+相关笔记：
+
+- [[编程/前端/JavaScript/Object.defineProperty 和 Proxy 的区别|Object.defineProperty 和 Proxy 的区别]] — 响应式依赖的对象拦截机制
+- [[编程/前端/JavaScript/Vue 和 React 的差异|Vue 和 React 的差异]] — 框架的数据更新机制
+- [[编程/前端/Vue/Vuex 数据传递流程|Vuex 数据传递流程]] — 响应式与共享状态

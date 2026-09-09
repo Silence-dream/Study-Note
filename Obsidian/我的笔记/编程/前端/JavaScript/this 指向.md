@@ -42,3 +42,12 @@ obj.getThis()(); //window
 1. 箭头函数中的this是在函数定义的时候就确定下来的，而不是在函数调用的时候确定的；
 2. 箭头函数中的this指向父级作用域的执行上下文；（技巧：**因为javascript中除了全局作用域，其他作用域都是由函数创建出来的，所以如果想确定this的指向，则找到离箭头函数最近的function，与该function平级的执行上下文中的this即是箭头函数中的this**）
 3. 箭头函数无法使用apply、call和bind方法改变this指向，因为其this值在函数定义的时候就被确定下来。
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/01-JavaScript与语言基础|JavaScript与语言基础]]
+
+相关笔记：
+
+- [[编程/前端/JavaScript/call apply 和 bind 的作用和区别|call apply 和 bind 的作用和区别]] — this 绑定与调用方式

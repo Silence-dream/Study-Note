@@ -151,3 +151,13 @@ console.log(Object.getOwnPropertyDescriptor(obj, "name"))
 一个一个的定义是很烦的，所以我们可以使用 [[Object.defineproperies]]来一次定义多个属性
 
 [属性标志和属性描述符](https://zh.javascript.info/property-descriptors)
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/01-JavaScript与语言基础|JavaScript与语言基础]]
+
+相关笔记：
+
+- [[编程/前端/JavaScript/Object.defineProperty 和 Proxy 的区别|Object.defineProperty 和 Proxy 的区别]] — 属性拦截方案对比
+- [[编程/前端/JavaScript/Object.defineproperies|Object.defineProperties（原文件拼写保留）]] — 单个与批量属性描述符

@@ -14,3 +14,12 @@ beforeEnter
 beforeRouteEnter
 beforeRouteUpdate
 beforeRouteLeave
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/04-Vue与响应式|Vue与响应式]]
+
+相关笔记：
+
+- [[编程/前端/浏览器/hash 和 history 路由的区别|hash 和 history 路由的区别]] — 路由实现与导航控制

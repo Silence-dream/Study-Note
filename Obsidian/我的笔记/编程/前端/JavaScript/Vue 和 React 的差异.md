@@ -19,3 +19,13 @@ Vue递归监听data的所有属性,直接修改。
 当数据改变时，自动找到引用组件重新渲染。
 
 React基于状态机，手动优化，数据不可变，需要setState驱动新的state替换老的state。当数据改变时，以组件为根目录，默认全部重新渲染, 所以 React 中会需要 shouldComponentUpdate 这个生命周期函数方法来进行控制
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/01-JavaScript与语言基础|JavaScript与语言基础]]
+
+相关笔记：
+
+- [[编程/前端/React/Real DOM和Virtual DOM|Real DOM和Virtual DOM]] — 框架与渲染机制
+- [[编程/前端/Vue/Vue 响应式原理|Vue 响应式原理]] — 框架的数据更新机制

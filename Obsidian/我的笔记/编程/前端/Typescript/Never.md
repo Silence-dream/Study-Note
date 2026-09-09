@@ -33,3 +33,12 @@ function infiniteLoop(): never {
 ```
 
 实际应用中，never类型用的并不多，我通常给过期的方法返回值设置为never类型。
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/02-TypeScript类型系统|TypeScript类型系统]]
+
+相关笔记：
+
+- [[编程/前端/Typescript/unknown|unknown]] — 特殊类型的语义

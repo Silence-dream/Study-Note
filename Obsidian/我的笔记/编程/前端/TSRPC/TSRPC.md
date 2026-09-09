@@ -61,3 +61,12 @@ TSRPC 具有一些前所未有的强大特性，给您带来极致的开发体�
 
 笔记暂存b战
 https://www.bilibili.com/video/BV1hM4y1u7B4/?spm_id_from=..search-card.all.click&vd_source=f98b43858b5992ffd82a2a5cf18fe873
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/08-后端与服务通信|后端与服务通信]]
+
+相关笔记：
+
+- [[编程/前端/TSRPC/01-介绍|01-介绍]] — 同主题介绍的两个版本

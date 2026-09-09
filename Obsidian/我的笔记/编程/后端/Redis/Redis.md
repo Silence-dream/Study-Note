@@ -355,3 +355,13 @@ redis-sentinel sentinel.conf # 启动哨兵节点
 ## 参考
 
 [【GeekHour】一小时Redis教程\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1Jj411D7oG/?)
+
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/09-部署与数据存储|部署与数据存储]]
+
+相关笔记：
+
+- [[编程/后端/Nginx/Nginx|Nginx]] — 缓存所在的不同服务层

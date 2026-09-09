@@ -182,3 +182,14 @@ module.exports = {
 
 [Web性能领域常见的专业术语 - 知乎 (zhihu.com)](https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F98880815 "https://zhuanlan.zhihu.com/p/98880815")
 
+
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/04-Vue与响应式|Vue与响应式]]
+
+相关笔记：
+
+- [[编程/前端/浏览器/浏览器缓存|浏览器缓存]] — 首屏加载与资源缓存
+- [[编程/后端/Nginx/Nginx|Nginx]] — 页面部署与资源加载

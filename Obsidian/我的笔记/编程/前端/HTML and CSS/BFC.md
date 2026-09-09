@@ -266,3 +266,13 @@ BFC 的原理，其实也就是 BFC 的渲染规则（能说出以下四点就�
 ```
 ![](https://cdn.jsdelivr.net/gh/Silence-dream/bed@master/img/202205192131161.png)
 
+
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/03-HTML与CSS|HTML与CSS]]
+
+相关笔记：
+
+- [[编程/前端/HTML and CSS/盒模型|盒模型]] — 布局尺寸与格式化上下文

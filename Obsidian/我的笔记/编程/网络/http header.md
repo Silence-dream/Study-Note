@@ -40,3 +40,13 @@ tags :
 | User-Agent          | User-Agent 的内容包含发出请求的用户信息                                                        | User-Agent: Mozilla/5.0 (Linux; X11)                    |
 | Via                 | 通知中间网关或代理服务器地址，通信协议                                                         | Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)             |
 | Warning             | 关于消息实体的警告信息                                                                         | Warn: 199 Miscellaneous warning                         |
+
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/06-浏览器网络与安全|浏览器网络与安全]]
+
+相关笔记：
+
+- [[编程/网络/http cache-control|http cache-control]] — HTTP 头中的缓存字段

@@ -208,3 +208,12 @@ Encode的作用是将`$var`等一些字符进行转化，使得浏览器在最�
 
 
 [Web/07-安全问题：CSRF和XSS.md at master · qianguyihao/Web · GitHub](https://github.com/qianguyihao/Web/blob/master/15-%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/07-%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%EF%BC%9ACSRF%E5%92%8CXSS.md)
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/06-浏览器网络与安全|浏览器网络与安全]]
+
+相关笔记：
+
+- [[编程/前端/浏览器/跨域通信类|跨域通信类]] — 同源策略与浏览器安全

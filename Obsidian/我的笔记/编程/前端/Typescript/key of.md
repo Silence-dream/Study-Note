@@ -30,3 +30,13 @@ let b: PersonKey = "name"
 -   `Key` 就是对象键值 `key` 本身；
    
 -   `T[Key]`是指定 `Key` 的值；
+
+<!-- 知识导航：主题归属与经过整理的关联文章。 -->
+## 知识导航
+
+所属主题：[[00-知识导航/02-TypeScript类型系统|TypeScript类型系统]]
+
+相关笔记：
+
+- [[编程/前端/Typescript/Readonly|Readonly]] — 键集合与映射类型
+- [[编程/前端/Typescript/索引签名|索引签名]] — 对象键与类型约束
