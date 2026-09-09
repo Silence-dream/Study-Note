@@ -9,5 +9,6 @@
   "showUnsupportedFiles": false,
   "showLineNumber": true,
   "newLinkFormat": "shortest",
-  "tabSize": 2
+  "tabSize": 2,
+  "openBehavior": "daily"
 }

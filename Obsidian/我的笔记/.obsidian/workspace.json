@@ -21,8 +21,69 @@
               "icon": "lucide-file",
               "title": "光效"
             }
+          },
+          {
+            "id": "41321f861a2a518a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "人文社科/修图/02.修妆容.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "02.修妆容"
+            }
+          },
+          {
+            "id": "750fab82f32f01a7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "日志/2026-09-09.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "2026-09-09"
+            }
+          },
+          {
+            "id": "4cda44a6b41c0b51",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.13.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "版本说明 1.13.7"
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -41,7 +102,10 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -113,10 +177,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "人文社科/修图/光效.md"
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "光效 的大纲"
+              "title": "大纲"
             }
           },
           {
@@ -176,6 +242,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:新建数据库": false,
       "canvas:新建白板": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
@@ -190,8 +257,10 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "508725292f91f8c6",
+  "active": "4cda44a6b41c0b51",
   "lastOpenFiles": [
+    "日志/2026-09-09.md",
+    "日志/2025-03-25.md",
     "日志/2024-12-06.md",
     "人文社科/修图/光效.md",
     "编程/区块链/学习日记/2024.11.09 第四天-Telos 概念入门.md",
@@ -220,8 +289,6 @@
     "人文社科/修图/03.调色.md",
     "人文社科/修图/灰调.md",
     "人文社科/修图/画雾技巧.md",
-    "日志/2024-07-08.md",
-    "人文社科/修图/画头发.md",
     "编程/前端/NextJS/Code/nextjs-dashboard/node_modules/bcrypt/lib/binding/napi-v3/bcrypt_lib.node",
     "编程/前端/NextJS/Code/nextjs-dashboard/node_modules/bcrypt/lib/binding/napi-v3",
     "编程/前端/NextJS/Code/nextjs-dashboard/node_modules/bcrypt/lib/binding",
